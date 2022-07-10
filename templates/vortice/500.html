@@ -1,0 +1,309 @@
+{% extends 'index.html' %}
+{% block metas %}
+    <meta property="og:url" content="http://vortice.ec/producto_detalle/{{ products.id }}" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ products.nombre_producto }}" />
+    <meta property="og:description" content="{{ products.descripcion}}" />
+    <meta property="og:image"  content="http://vortice.ec/media/{{ products.imagen }}" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="fb:app_id" content="926164441218858" />
+{% endblock %}
+{% block principal %}
+
+
+    <br>
+
+    <!-- product details -->
+    <div class="segments-page">
+        <div class="container">
+            <p>Error en la programación</p>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/media/{{ vortice.favicon_negro }}" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="/media/{{ vortice.favicon_negro }}">
+
+    <link rel="icon" href="/media/{{ vortice.favicon_negro }}">
+    <title>Vortice Store</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/static/css/materialize.css">
+    <link rel="stylesheet" href="/static/css/loaders.css">
+    <link rel="stylesheet" href="/static/css/line-awesome.css">
+    <link rel="stylesheet" href="/static/css/line-awesome-font-awesome.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '926164441218858',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+    </script>
+
+    {% block metas %}
+        <meta property="og:url" content="http://vortice.ec/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Vortice Store"/>
+        <meta property="og:description" content="Marca de Ropa"/>
+        <meta property="og:image" content="http://vortice.ec/static/images/logo_vortice.png"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+        <meta property="fb:app_id" content="926164441218858"/>
+
+    {% endblock %}
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v8.0&appId=926164441218858&autoLogAppEvents=1"
+        nonce="gq9HxCq3"></script>
+<!-- preloader -->
+<div class="preloader">
+    <div class="spinner"></div>
+</div>
+<!-- end preloader -->
+
+<!-- navbar -->
+<div class="navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <div class="content-left">
+                    <a href="#slide-out" data-activates="slide-out" class="sidebar"><i class="fa fa-bars"></i></a>
+                    <a href="/">
+                        <img src="/media/{{ vortice.logo_horizontal }}" alt="" width="170" height="40">
+                    </a>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="content-right">
+                    <a href="tel:+593 {{ vortice.celular }}" > <i class="fa fa-mobile"></i></a>
+                    <a  title="Click para chatear" href="https://api.whatsapp.com/send?phone=593{{ vortice.celular }}&text=Hola%20Vortice   " target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i></a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end navbar -->
+
+
+<!-- sidebar -->
+<div class="sidebar-panel">
+    <ul id="slide-out" class="collapsible side-nav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="/static/images/bg-user.jpg" alt="">
+                </div>
+                <img src="/media/{{ vortice.logo_horizontal }}" alt="" width="170" height="40">
+            </div>
+        </li>
+        <li><a href="/"><i style="color: #cc9900" class="fa fa-home"></i>Inicio</a></li>
+
+        {% for client in seccion %}
+            <li>
+                <div class="collapsible-header">
+                    <a href="/seccion/{{ client.seccion }}/"><img src="/media/{{ client.icono }}"
+                                                                  style="max-width:10%;width:auto;height:auto;"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ client.seccion }}<i
+                        class="fa fa-angle-right right"></i>
+                </div>
+                <div class="collapsible-body">
+                    <ul>
+                        {% for pren in prenda %}
+                            {% if pren.coleccion.seccion == client %}
+                                {% if pren.principal_visible == True %}
+                                    <li><a href="/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/"><img
+                                            src="/media/{{ pren.tipo.imagen }}"
+                                            style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ pren.tipo.tipo  }}
+                                    </a>
+                                    </li>
+                                {% endif %}
+
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        {% endfor %}
+
+        <li><a href="/blog/"><i style="color: #cc9900" class="fa fa-rss"></i>Blogs</a></li>
+
+        <li><a href="/contacto/"><i style="color: #cc9900" class="fa fa-envelope-o"></i>Contacto</a></li>
+
+    </ul>
+</div>
+<!-- end sidebar -->
+
+
+
+{% block principal %}
+
+
+    <!-- slide -->
+    <div class="container">
+        <div class="slide">
+            <div class="slide-show owl-carousel owl-theme">
+                {% for sli in slider %}
+                    <div class="slide-content ">
+                        <img src="/media/{{ sli.imagen }}" alt="">
+                        <div class="caption">
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <!-- end slide -->
+
+
+    <!-- category -->
+    <div class="category segments">
+        <div class="container">
+            <div class="row">
+                {% for client in seccion %}
+                    <div class="col s3">
+                        <div class="content">
+                            <a href="/seccion/{{ client.seccion }}/">
+                                <img src="/media/{{ client.icono }}" style="max-width:90%;width:auto;height:auto;">
+                                <span>{{ client.seccion }}</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- end category -->
+    <br>
+
+
+
+
+    <!-- product home -->
+    <div class="product-home segments">
+        <div class="container">
+            <div class="section-title">
+                <h3>Nuevas Colecciones</h3>
+            </div>
+            <div class="slide-show owl-carousel owl-theme">
+                {% for colec in coleccion %}
+                    {% if colec.nuevo %}
+                        <div class="content">
+                            <a href="/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/"><img
+                                    alt="Vortice" src="/media/{{ colec.portada }}"
+                                    style="max-width:100%;width:auto;height:auto;"></a>
+                            <div class="caption">
+                                <br>
+                                <h5 style="color: #777777 ; font-family: Calibri ; text-align: center">{{ colec.seccion.seccion }}
+                                    - {{ colec.tema }}</h5>
+                            </div>
+
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="l-more">
+
+                <p>
+                    <i class="fa fa-angle-left"></i>Desliza
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- product home -->
+    <div class="product-home segments">
+        <div class="container">
+            <div class="section-title">
+                <h3>Colecciones</h3>
+            </div>
+            <div class="product-slide owl-carousel owl-theme">
+
+
+                {% for colec in coleccion %}
+                    <div class="content">
+                        <a href="/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/"><img
+                                src="/media/{{ colec.imagen }}" alt="" width="100%" height="100%"></a>
+                        <p style="text-align: center">{{ colec.seccion.seccion }} - {{ colec.tema }}</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="l-more">
+                <p>
+                    <i class="fa fa-angle-left"></i>Desliza
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- end product home -->
+    <br><br>
+
+{% endblock %}
+
+<!-- footer -->
+<footer>
+    <div class="container">
+        <img src="/media/{{ vortice.logo_negro }}" alt="">
+        <p><a href="tel:+{{ vortice.celular }}">+593 {{ vortice.celular }}</a></p>
+
+        <ul>
+            <li><a href="https://www.facebook.com/{{ redes.facebook }}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.twitter.com/{{ redes.twitter }}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/{{ redes.youtube }}"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href="https://www.instagram.com/{{ redes.instagram }}"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+        <a style="color: #ffffff" href="https://www.girekstudio.com/">GirekStudio</a>
+        <p>Copyright © Todos los derechos reservados Vortice.ec - Ecuador</p>
+    </div>
+</footer>
+<!-- end footer -->
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/materialize.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/styleswitcher.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <div role="main" class="main">
+
+
+        <div class="container">
+
+            <div class="row py-4">
+                <div class="col-lg-6">
+
+
+                    <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="950">
+                        <br>
+
+                      <h2 class="font-weight-bold text-8 mt-2 mb-0">Trabaja con Nosotros</h2>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
+
+                        <ul class="list list-icons list-icons-style-3 mt-xlg">
+                            <li>
+                                <a href="https://api.whatsapp.com/send?phone=593{{ contacto.celular }}&text=Hola%20Grupo%20Benitez"
+                                   target="_blank" rel="noopener"><i class=" fab fa-whatsapp"></i> Envíanos tu curriculo
+                                </a></li>
+
+                            <li><i class="fa fa-phone"></i> <a href="tel:+593{{ marca_benitez.celular }}" >{{ marca_benitez.celular }}</a></li>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:{{ marca_benitez.correo }}">{{ marca_benitez.correo }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

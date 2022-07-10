@@ -1,0 +1,295 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block metas %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="author" content="Vortice Store">
+    <meta name="facebook-domain-verification" content="v7w5s5xba8nz4dq0bofm3ijfpe59w5"/>
+    <meta property="og:url" content="https://grupo-benitez.com/vortice/"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Vortice Store"/>
+    <meta property="og:description" content="Marca de Ropa Ecuatoriana"/>
+    <meta property="og:image" content="https://www.grupo-benitez.com/media/{{ vortice.wallpaper }}"/>
+    <meta property="fb:app_id" content="926164441218858"/>
+{% endblock %}
+{% block principal %}
+    <div class="header-banners">
+        <div class="holder fullboxed aside--bg-none holder-bg-carousel">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style"><a href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}"
+                                            class="prd-img"> Colección {{ colec.tema }}</a></h2>
+                    <p style="margin-top: -7px">{{ colec.seccion.seccion }}</p>
+                </div>
+
+                <div class="prd-grid prd-text-center prd-carousel js-prd-carousel js-product-isotope-sm slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2 xs-limit-1"
+                     data-slick='{"slidesToShow": 6, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 6}},{"breakpoint": 768,"settings": {"slidesToShow": 4}},{"breakpoint": 480,"settings": {"slidesToShow": 2}}]}'>
+
+                    {% for pren  in prendas %}
+                        <div class="prd prd-has-loader">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a
+                                        href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/coleccion/{{ pren.coleccion.tema }}/prenda/{{ pren.tipo.tipo }}/"
+                                        class="prd-img"><img
+                                        src="/media/{{ pren.tipo.imagen }}"
+                                        data-srcset="/media/{{ pren.tipo.imagen }}"
+                                        style="max-width:40%;width:auto;height:auto;" alt="Long tshirt"
+                                        class="js-prd-img lazyload"> </a>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/coleccion/{{ pren.coleccion.tema }}/prenda/{{ pren.tipo.tipo }}/">{{ pren.tipo.tipo }}</a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    {% endfor %}
+                    {% for pren  in prendaa %}
+                        <div class="prd prd-has-loader">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a
+                                        href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/coleccion/{{ pren.coleccion.tema }}/prenda/{{ pren.tipo.tipo }}/"
+                                        class="prd-img"><img
+                                        src="/media/{{ pren.tipo.imagen }}"
+                                        data-srcset="/media/{{ pren.tipo.imagen }}"
+                                        style="max-width:40%;width:auto;height:auto;" alt="Long tshirt"
+                                        class="js-prd-img lazyload"> </a>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/coleccion/{{ pren.coleccion.tema }}/prenda/{{ pren.tipo.tipo }}/">{{ pren.tipo.tipo }}</a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <hr>
+                <br><br>
+
+                <!-- Products Grid -->
+
+                <div class="prd-grid product-listing data-to-show-4 data-to-show-md-4 data-to-show-sm-2 js-category-grid">
+                    {% for produc in prod %}
+
+                        <div class="prd prd-has-loader prd-new prd-popular">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a href="/vortice/producto_detalle/{{ produc.id }}/"
+                                                             class="prd-img"><img src="/media/{{ produc.imagen }}"
+                                                                                  data-srcset="/media/{{ produc.imagen }}"
+                                                                                  alt="Glamor shoes"
+                                                                                  class="js-prd-img lazyload"></a>
+                                    {% if produc.new %}
+                                        <div class="label-new">Nuevo</div>
+                                    {% else %}
+                                    {% endif %}
+
+                                    {% if produc.offer %}
+
+                                        <div class="label-outstock">Promo</div>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if produc.stock %}
+                                    {% else %}
+                                        <div class="label-sale">Agotado</div>
+                                    {% endif %}
+                                    <ul class="list-options color-swatch prd-hidemobile">
+                                        <li data-image="/media/{{ produc.imagen }}"><a href="#" class="js-color-toggle"><img
+                                                src="/media/{{ produc.imagen }}"
+                                                data-srcset="/media/{{ produc.imagen }}" class="lazyload"
+                                                alt="Color Name"></a></li>
+                                        {% if produc.imagen_2 %}
+                                            <li data-image="/media/{{ produc.imagen_2 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_2 }}"
+                                                    data-srcset="/media/{{ produc.imagen_2 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                    {% if produc.imagen_3 %}
+                                            <li data-image="/media/{{ produc.imagen_3 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_3 }}"
+                                                    data-srcset="/media/{{ produc.imagen_3 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if produc.imagen_4 %}
+                                            <li data-image="/media/{{ produc.imagen_4 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_4 }}"
+                                                    data-srcset="/media/{{ produc.imagen_4 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+
+                                    </ul>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <div class="prd-tag prd-hidemobile">{{ produc.prenda.coleccion }}</div>
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/producto_detalle/{{ produc.id }}/">{{ produc.titulo }}</a></h2>
+                                    <div class="prd-rating prd-hidemobile"><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star"></i></div>
+                                    {% if produc.offer %}
+                                        <div class="prd-price" style="text-align: center">
+                                            <div class="price-old">$ {{ produc.precio }}</div>&nbsp;&nbsp;
+                                            <div class="price-new">$ {{ produc.precio_oferta }}</div>
+                                        </div>
+
+                                    {% else %}
+                                        <div class="prd-price">
+                                            <div class="price-new" style="text-align: center">
+                                                $ {{ produc.precio }}</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    {% for produc in products %}
+                        <div class="prd prd-has-loader prd-new prd-popular">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a href="/vortice/producto_detalle/{{ produc.id }}/"
+                                                             class="prd-img"><img src="/media/{{ produc.imagen }}"
+                                                                                  data-srcset="/media/{{ produc.imagen }}"
+                                                                                  alt="Glamor shoes"
+                                                                                  class="js-prd-img lazyload"></a>
+                                    {% if produc.new %}
+                                        <div class="label-new">Nuevo</div>
+                                    {% else %}
+                                    {% endif %}
+
+                                    {% if produc.offer %}
+
+                                        <div class="label-outstock">Promo</div>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if produc.stock %}
+                                    {% else %}
+                                        <div class="label-sale">Agotado</div>
+                                    {% endif %}
+                                    <ul class="list-options color-swatch prd-hidemobile">
+                                        <li data-image="/media/{{ produc.imagen }}"><a href="#" class="js-color-toggle"><img
+                                                src="/media/{{ produc.imagen }}"
+                                                data-srcset="/media/{{ produc.imagen }}" class="lazyload"
+                                                alt="Color Name"></a></li>
+                                        {% if produc.imagen_2 %}
+                                            <li data-image="/media/{{ produc.imagen_2 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_2 }}"
+                                                    data-srcset="/media/{{ produc.imagen_2 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if produc.imagen_3 %}
+                                            <li data-image="/media/{{ produc.imagen_3 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_3 }}"
+                                                    data-srcset="/media/{{ produc.imagen_3 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if produc.imagen_4 %}
+                                            <li data-image="/media/{{ produc.imagen_4 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_4 }}"
+                                                    data-srcset="/media/{{ produc.imagen_4 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                    </ul>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <div class="prd-tag prd-hidemobile">{{ produc.prenda.coleccion }}</div>
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/producto_detalle/{{ produc.id }}/">{{ produc.titulo }}</a></h2>
+                                    <div class="prd-rating prd-hidemobile"><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star"></i></div>
+                                    {% if produc.offer %}
+                                        <div class="prd-price" style="text-align: center">
+                                            <div class="price-old">$ {{ produc.precio }}</div>&nbsp;&nbsp;
+                                            <div class="price-new">$ {{ produc.precio_oferta }}</div>
+                                        </div>
+
+                                    {% else %}
+                                        <div class="prd-price">
+                                            <div class="price-new" style="text-align: center">
+                                                $ {{ produc.precio }}</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+
+        <div style="align-content: center">
+            <!-- banner from the editor Banner32 -->
+            <div class="bnr bnr32 bnr--style-1-6 bnr--left bnr--middle ">
+                <img src="/media/{{ colec.portada }}" alt=""></div>
+            <!-- //banner from the editor Banner32 -->
+        </div>
+
+        <div class="holder fullboxed aside--bg-none holder-bg-carousel">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style">Colecciones</h2>
+                </div>
+
+                <div class="prd-grid prd-text-center prd-carousel js-prd-carousel js-product-isotope-sm slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2 sm-limit-4"
+                     data-slick='{"slidesToShow": 4, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3}},{"breakpoint": 768,"settings": {"slidesToShow": 2}},{"breakpoint": 480,"settings": {"slidesToShow": 2}}]}'>
+
+
+                    {% for colec in colecciones %}
+
+
+                        <div class="prd prd-has-loader">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a
+                                        href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/"
+                                        class="prd-img"><img
+                                        src="/media/{{ colec.imagen }}"
+                                        data-srcset="/media/{{ colec.imagen }}" alt="Long tshirt"
+                                        class="js-prd-img lazyload"> </a>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/">{{ colec.seccion.seccion }}
+                                        - {{ colec.tema }}</a></h2>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+
+    <!-- end product home -->
+
+
+
+
+{% endblock %}
+
+
+
+

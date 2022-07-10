@@ -1,0 +1,730 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    {% block metas %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+        <meta name="author" content="Vortice Store">
+        <meta name="facebook-domain-verification" content="v7w5s5xba8nz4dq0bofm3ijfpe59w5"/>
+        <meta property="og:url" content="https://grupo-benitez.com/vortice/"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Vortice Store"/>
+        <meta property="og:description" content="Marca de Ropa Ecuatoriana"/>
+        <meta property="og:image" content="https://grupo-benitez.com/vortice/media/{{ vortice.wallpaper }}"/>
+        <meta property="og:image:secure_url" content="https:grupo-benitez.com/vortice/media/{{ vortice.logo_amarillo }}"/>
+        <meta property="fb:app_id" content="926164441218858"/>
+    {% endblock %}
+
+    <title>Vortice Store</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/media/{{ vortice.favicon_negro }}">
+    <!-- Vendor CSS -->
+    <link href="/static/static_vortice/js/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/static_vortice/js/vendor/slick/slick.min.css" rel="stylesheet">
+    <link href="/static/static_vortice/js/vendor/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/static/static_vortice/js/vendor/animate/animate.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/static_vortice/css/style-tshirts_1_light.css" rel="stylesheet">
+    <!--icon font-->
+    <link href="/static/static_vortice/fonts/icomoon/icomoon.css" rel="stylesheet">
+    <!--custom font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '926164441218858',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v13.0'
+        });
+      };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+</head>
+
+<body class="home-page is-dropdn-click">
+<!-- todos los menu -->
+<div class="hdr-wrap bg-bottom bg-cover"
+     style="background-image: url(/media/{{ vortice.imagen_encabezado }} ) !important; background-color: #232323;">
+    <header class="hdr global_width hdr-style-2 hdr--dark hdr--dark-drop hdr_sticky minicart-icon-style-2 hdr-mobile-style2">
+        <!-- Mobile Menu -->
+        <div class="mobilemenu js-push-mbmenu">
+            <div class="mobilemenu-content">
+                <div class="mobilemenu-close mobilemenu-toggle">CERRAR</div>
+                <div class="mobilemenu-scroll">
+                    <div class="mobilemenu-search"></div>
+                    <div class="nav-wrapper show-menu">
+                        <div class="nav-toggle"><span class="nav-back"><i class="icon-arrow-left"></i></span> <span
+                                class="nav-title"></span></div>
+
+                        <ul class="nav nav-level-1">
+                            <li><a href="/vortice/">INICIO</a></li>
+
+                            <li><a href="#" title="">Clientes</a><span class="arrow"></span>
+                                <ul class="nav-level-2">
+
+                                    {% for client in seccion %}
+                                        <li><a href="/vortice/seccion/{{ client.seccion }}/" title="">
+                                            <img src="/media/{{ client.icono }}"
+                                                 style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ client.seccion }}
+                                        </a><span class="arrow"></span>
+                                            <ul class="nav-level-3">
+                                                {% for pren in prenda %}
+                                                    {% if pren.coleccion.seccion == client %}
+                                                        {% if pren.principal_visible == True %}
+                                                            <li>
+                                                                <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/"
+                                                                   title=""><img src="/media/{{ pren.tipo.imagen }}"
+                                                                                 style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ pren.tipo.tipo }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="/vortice/contacto/">CONTACTO</a></li>
+                        </ul>
+                    </div>
+                    <div class="mobilemenu-bottom">
+                        <div class="mobilemenu-currency"></div>
+                        <div class="mobilemenu-language"></div>
+                        <div class="mobilemenu-settings"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Mobile Menu -->
+        <div class="hdr-mobile show-mobile">
+            <div class="hdr-content">
+                <div class="container">
+                    <!-- Menu Toggle -->
+                    <div class="menu-toggle"><a href="#" class="mobilemenu-toggle"><i class="icon icon-menu"></i></a>
+                    </div>
+                    <!-- /Menu Toggle -->
+                    <div class="logo-holder"><a href="/vortice/" class="logo"><img
+                            src="/media/{{ vortice.logo_horizontal }}" srcset="/media/{{ vortice.logo_horizontal }} 2x"
+                            alt=""></a></div>
+                    <div class="hdr-mobile-right">
+                        <div class="hdr-topline-right links-holder"></div>
+                        <div class="minicart-holder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hdr-desktop hide-mobile">
+            <div class="hdr-content">
+                <div class="container">
+                    <div class="hdr-content-left">
+                    </div>
+                    <div class="logo-holder"><a href="/vortice/" class="logo"><img src="/media/{{ vortice.logo_horizontal }}"
+                                                                           srcset="/media/{{ vortice.logo_horizontal }} 2x"
+                                                                           alt=""></a>
+                    </div>
+                    <div class="hdr-content-right">
+                        <div class="links-holder">
+                            <!-- Header Account -->
+                            <div class=" only-icon">
+                                <a href="tel:{{ vortice.celular }}">
+                                    <i class="icon icon-call  " style="font-size: large; color: #e0a800"></i>
+                                </a>
+                            </div>
+                            <br>
+
+                            <div class=" only-icon">
+                                <a href="https://api.whatsapp.com/send?phone=593{{ vortice.celular }}&text=Hola%20Vortice  "
+                                   target="_blank" rel="noopener">
+                                    <i class="icon icon-chat3  "
+                                       style="font-size: large; color: #e0a800 "></i>
+                                </a>
+                            </div>
+                            <!-- /Header Account -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-holder">
+                <div class="container">
+                    <div class="hdr-nav">
+                        <!--mmenu horizontal-->
+                        <ul class="mmenu mmenu-js">
+
+
+                            {% for client in seccion %}
+
+                                <li class="mmenu-item--mega"><a
+                                        href="/vortice/seccion/{{ client.seccion }}/">{{ client.seccion }}</a>
+                                    <div class="mmenu-submenu mmenu-submenu-with-sublevel">
+                                        <div class="mmenu-submenu-inside">
+                                            <div class="container">
+                                                <div class="mmenu-left width-20">
+
+                                                    <img src="/media/{{ client.imagen_horizontal }}"
+                                                         style=" width: 440px ; height: 250px">
+                                                </div>
+                                                <div class="mmenu-cols column-5">
+                                                    <div class="mmenu-col">
+
+
+                                                        <ul class="submenu-list">
+                                                            <h3 class="submenu-title">Vortice Store </h3>
+                                                            {% for pren in prenda %}
+                                                                {% if pren.coleccion.seccion == client %}
+                                                                    {% if pren.principal_visible == True %}
+
+
+                                                                        <li>
+                                                                            <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/">- {{ pren.tipo.tipo }}</a>
+                                                                        </li>
+
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                    <div class="mmenu-col">
+                                                        <ul class="submenu-list">
+                                                            <h3 class="submenu-title">Colecciones</h3>
+
+                                                            {% for colec in coleccion %}
+                                                                {% if colec.seccion == client %}
+                                                                    <li>
+                                                                        <a href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/">- {{ colec.tema }}</a>
+                                                                    </li>
+                                                                {% endif %}
+                                                            {% endfor %}
+
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="mmenu-bottom">
+                                                    <div class="custom-text">ENVÍO <span>GRATIS </span> EN PEDIDOS
+                                                        SUPERIORES A $ 100
+
+                                                    </div>
+                                                    <div class="custom-text">PRENDAS <span>100%</span> GARANTIZADAS
+                                                    </div>
+                                                    <div class="custom-text"><span>24/7</span> ATENCIÓN AL CLIENTE</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <!--/mmenu-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-holder compensate-for-scrollbar">
+            <div class="container">
+                <div class="row"><a href="/vortice/" class="mobilemenu-toggle show-mobile"><i class="icon icon-menu"></i></a>
+                    <div class="col-auto logo-holder-s"><a href="/vortice/" class="logo"><img
+                            src="/media/{{ vortice.logo_horizontal }}"
+                            srcset="/media/{{ vortice.logo_horizontal }} 2x" alt=""></a></div>
+                    <!--navigation-->
+                    <div class="prev-menu-scroll icon-angle-left prev-menu-js"></div>
+                    <div class="nav-holder-s"></div>
+                    <div class="next-menu-scroll icon-angle-right next-menu-js"></div>
+                    <!--//navigation-->
+                    <div class="col-auto minicart-holder-s"></div>
+                    <div class="hdr-content-right">
+                        <div class="links-holder">
+                            <!-- Header Account -->
+                            <div class=" only-icon">
+                                <a href="tel:+593 {{ vortice.celular }}">
+                                    <i class="icon icon-call  " style="font-size: large; color: #e0a800"></i>
+                                </a>
+                            </div>
+                            <br>
+
+                            <div class=" only-icon">
+                                <a href="https://api.whatsapp.com/send?phone=593{{ vortice.celular }}&text=Hola%20Vortice  "
+                                   target="_blank" rel="noopener">
+                                    <i class="icon icon-chat3  "
+                                       style="font-size: large; color: #e0a800 "></i>
+                                </a>
+                            </div>
+                            <!-- /Header Account -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<!-- fin todos los menu -->
+
+{% block principal %}
+    <div class="page-content">
+
+        <div class="header-banners" style=" margin-bottom:-0px">
+
+            <!-- banner from the editor Banner32 -->
+            {% for sli in slider %}
+                {% if sli.imagen %}
+                    <a href="#" class="bnr-wrap">
+                        <div class="bnr bnr32 bnr--style-1-6 bnr--left bnr--middle bnr-hover-scale"
+                             data-fontratio="11.4">
+                            <img src="/media/{{ sli.imagen }}" alt="">
+                            <span class="bnr-caption">
+                                    <span class="bnr-text-wrap">
+                                        <span class="btn-decor bnr-btn">{{ sli.titulo }}  <span class="btn-line"></span></span>
+                                    </span>
+                                </span>
+                        </div>
+                    </a>
+                {% else %}
+                {% endif %}
+            {% endfor %}
+            <!-- //banner from the editor Banner32 -->
+        </div>
+
+
+        <div class="holder fullboxed aside--bg-none holder-bg-carousel">
+            <div class="container">
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style">Nuevas Colecciones</h2>
+                </div>
+
+                <div class="prd-grid prd-text-center prd-carousel js-prd-carousel js-product-isotope-sm slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2 sm-limit-4"
+                     data-slick='{"slidesToShow": 4, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3}},{"breakpoint": 768,"settings": {"slidesToShow": 2}},{"breakpoint": 480,"settings": {"slidesToShow": 2}}]}'>
+
+                    {% for colec in coleccion %}
+                        {% if colec.activo %}
+                            {% if colec.nuevo %}
+                                <div class="prd prd-has-loader">
+                                    <div class="prd-inside">
+                                        <div class="prd-img-area"><a
+                                                href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/"
+                                                class="prd-img"><img
+                                                src="/media/{{ colec.imagen }}"
+                                                data-srcset="/media/{{ colec.imagen }}" alt="Long tshirt"
+                                                class="js-prd-img lazyload"> </a>
+                                            <div class="gdw-loader"></div>
+                                        </div>
+                                        <div class="prd-info">
+                                            <h2 class="prd-title">{{ colec.seccion.seccion }}- {{ colec.tema }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <div class="holder fullwidth full-nopad mt-0">
+            <div class="container">
+                <div class="row no-gutters bnr-grid">
+
+                    {% for client in seccion %}
+                        <div class="col-md">
+                            <div class="bnr banner-left-right bnr--style-1 bnr--center bnr--middle bnr-hover-scale has-loader">
+                                <img src="/media/{{ client.imagen_vertical }}"
+                                     data-src="/media/{{ client.imagen_vertical }}" alt="Banner" class="lazyload">
+                                <div class="gdw-loader"></div>
+                                <span class="bnr-caption">
+                                    <span class="bnr-text-wrap">
+
+                                        <a href="/vortice/seccion/{{ client.seccion }}" class="">
+                                            <span class="bnr-text3 btn-decor btn-decor--md ">{{ client.seccion }}<span
+                                                    class="btn-line"></span></span>
+                                        </a>
+                                        <span class="bnr-links">
+                                            {% for pren in prenda %}
+                                                {% if pren.coleccion.seccion == client %}
+                                                    {% if pren.principal_visible == True %}
+                                                        <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/"> {{ pren.tipo.tipo }}</a>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            <br><br>
+                                        </span>
+                                        <br>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+        <div style="align-content: center">
+            {% for pro in promo %}
+                {% if pro.activo %}
+                    <!-- banner from the editor Banner32 -->
+                    <a href="/vortice/{{ pro.enlace }}" class="bnr-wrap">
+                        <div class="bnr bnr32 bnr--style-1-6 bnr--left bnr--middle ">
+                            <img src="/media/{{ pro.imagen }}" alt=""> <span class="bnr-caption"><span
+                                class="bnr-text-wrap"><span class="bnr-text1">{{ pro.titulo }}</span> <span
+                                class="bnr-text2">{{ pro.sub_titulo }}</span> <span style="margin-top: -10px"
+                                                                                    class="btn-decor bnr-btn">Enlace<span
+                                class="btn-line"></span></span></span></span></div>
+                    </a>
+                    <!-- //banner from the editor Banner32 -->
+                {% else %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+        <br><br><br>
+        <hr>
+        <br>
+
+        {% for mues in muestra %}
+            {% if mues.estado %}
+                <div class="title-wrap text-center">
+                    <h2 class="h1-style">Vive tu estilo Vortice</h2>
+                </div>
+
+                <div class="row bnr-grid bnr-grid-1 no-gutters">
+                    <div class="col-7">
+                        <div class="row no-gutters">
+                            <div class="col-8">
+                                <div class="col-content"><a href="#" class="bnr-wrap">
+                                    <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
+                                         data-fontratio="4.57" style="font-size: 100.438px;"><img
+                                            src="/media/{{ mues.imagen_1 }}" style="width: 100%; height: 100%"
+                                            alt=""> <span class="bnr-caption" style="padding: 9% 7%;"><span
+                                            class="bnr-text-wrap"></span></span></div>
+                                </a></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="col-content"><a href="#" class="bnr-wrap">
+                                    <div class="bnr bnr31 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
+                                         data-fontratio="2.26" style="font-size: 100.442px;"><img
+                                            src="/media/{{ mues.imagen_2 }}" style="width: 100%; height: 100%"
+                                            alt=""> <span class="bnr-caption"
+                                                          style="padding: 5% 5% 19% 20%;"><span
+                                            class="bnr-text-wrap"></span></span></div>
+                                </a></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="col-content"><a href="#" class="bnr-wrap">
+                                    <div class="bnr bnr31 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
+                                         data-fontratio="2.26" style="font-size: 100.442px;"><img
+                                            src="/media/{{ mues.imagen_3 }}" style="width: 100%; height: 100%"
+                                            alt=""> <span class="bnr-caption"
+                                                          style="padding: 5% 5% 19% 20%;"><span
+                                            class="bnr-text-wrap"></span></span></div>
+                                </a></div>
+                            </div>
+                            <div class="col-8">
+                                <div class="col-content"><a href="#" class="bnr-wrap">
+                                    <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
+                                         data-fontratio="4.57" style="font-size: 100.438px;"><img
+                                            src="/media/{{ mues.imagen_4 }}" style="width: 100%; height: 100%"
+                                            alt=""> <span class="bnr-caption" style="padding: 9% 7%;"><span
+                                            class="bnr-text-wrap"></span></span></div>
+                                </a></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="col-content"><a href="#" class="bnr-wrap">
+                            <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
+                                 data-fontratio="4.57" style="font-size: 100.219px;"><img
+                                    src="/media/{{ mues.imagen_5 }}" alt=""> <span class="bnr-caption"
+                                                                                   style="padding: 5% 5% 7% 7%;"><span
+                                    class="bnr-text-wrap"></span></span></div>
+                        </a></div>
+
+                    </div>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+
+        {% for colec in coleccion %}
+            {% if colec.principal %}
+
+                <div style="background-color: #{{ colec.color }} !important;  margin-top: 0px "
+                     class="holder fullwidth full-nopad bgcolor bgcolor-1">
+                    <div class="container">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-md"><a
+                                    href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}"
+                                    class="bnr bnr--style-2 bnr--center bnr--middle fontratio-calc"
+                                    data-fontratio="9.52" style="font-size: 79.8319px;"><span class="bnr-caption"><span
+                                    class="bnr-text-wrap"><span class="bnr-text1">Nueva Colección</span> <span
+                                    class="bnr-text2">{{ colec.tema }} - {{ colec.seccion }}</span></span></span></a>
+                            </div>
+                            <div class="col-md d-none d-md-block"><a
+                                    href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}"
+                                    class="bnr bnr--left bnr--middle"><img src="/media/{{ colec.imagen }}"
+                                                                           data-src="/media/{{ colec.imagen }}"
+                                                                           alt="Banner" class=" lazyloaded"></a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Products Grid -->
+        <div class="container">
+            <div class="title-wrap text-center">
+                <br><br>
+                <h2 class="h1-style">Nuevos Productos</h2>
+            </div>
+
+            <div class="prd-grid product-listing data-to-show-4 data-to-show-md-4 data-to-show-sm-2 js-category-grid">
+                {% for produc in products %}
+                    {% if produc.new %}
+                        <div class="prd prd-has-loader prd-new prd-popular">
+                            <div class="prd-inside">
+                                <div class="prd-img-area"><a href="/vortice/producto_detalle/{{ produc.id }}/"
+                                                             class="prd-img"><img src="/media/{{ produc.imagen }}"
+                                                                                  data-srcset="/media/{{ produc.imagen }}"
+                                                                                  alt="Glamor shoes"
+                                                                                  class="js-prd-img lazyload"></a>
+                                    {% if produc.new %}
+                                        <div class="label-new">Nuevo</div>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if produc.offer %}
+
+                                        <div class="label-outstock">Promo</div>
+                                    {% else %}
+                                    {% endif %}
+                                    {% if produc.stock %}
+                                    {% else %}
+                                        <div class="label-sale">Agotado</div>
+                                    {% endif %}
+                                    <ul class="list-options color-swatch prd-hidemobile">
+                                        <li data-image="/media/{{ produc.imagen }}"><a href="#"
+                                                                                       class="js-color-toggle"><img
+                                                src="/media/{{ produc.imagen }}"
+                                                data-srcset="/media/{{ produc.imagen }}" class="lazyload"
+                                                alt="Color Name"></a>
+                                        </li>
+                                        {% if produc.imagen_2 %}
+                                            <li data-image="/media/{{ produc.imagen_2 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_2 }}"
+                                                    data-srcset="/media/{{ produc.imagen_2 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+
+                                        {% if produc.imagen_3 %}
+                                            <li data-image="/media/{{ produc.imagen_3 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_3 }}"
+                                                    data-srcset="/media/{{ produc.imagen_3 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if produc.imagen_4 %}
+                                            <li data-image="/media/{{ produc.imagen_4 }}"><a href="#"
+                                                                                             class="js-color-toggle"><img
+                                                    src="/media/{{ produc.imagen_4 }}"
+                                                    data-srcset="/media/{{ produc.imagen_4 }}" class="lazyload"
+                                                    alt="Color Name"></a></li>
+                                        {% else %}
+                                        {% endif %}
+                                    </ul>
+                                    <div class="gdw-loader"></div>
+                                </div>
+                                <div class="prd-info">
+                                    <div class="prd-tag prd-hidemobile">{{ produc.prenda.coleccion }}</div>
+                                    <h2 class="prd-title"><a
+                                            href="/vortice/producto_detalle/{{ produc.id }}/">{{ produc.titulo }}</a></h2>
+                                    <div class="prd-rating prd-hidemobile"><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star fill"></i><i
+                                            class="icon-star fill"></i><i class="icon-star fill"></i></div>
+                                    {% if produc.offer %}
+                                        <div class="prd-price" style="text-align: center">
+                                            <div class="price-old">$ {{ produc.precio }}</div>&nbsp;&nbsp;
+                                            <div class="price-new">$ {{ produc.precio_oferta }}</div>
+                                        </div>
+
+                                    {% else %}
+                                        <div class="prd-price">
+                                            <div class="price-new" style="text-align: center">
+                                                $ {{ produc.precio }}</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br><br><br><br><br><br>
+        </div>
+        <div class="side-fixed">
+            <div class="left-fixed">
+                <div><img src="/media/{{ vortice.imagen_flot_iz_1 }}" alt=""></div>
+                <div><img src="/media/{{ vortice.imagen_flot_iz_2 }}" alt=""></div>
+            </div>
+            <div class="right-fixed">
+                <div><img src="/media/{{ vortice.imagen_flot_de_1 }}" alt=""></div>
+                <div><img src="/media/{{ vortice.imagen_flot_de_2 }}" alt=""></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<br><br><br>
+<footer class="page-footer footer-style-11 global_width bg-bottom mt-0"
+        style="background-image: url(/media/{{ vortice.pie }}); background-color: #252525;">
+    <div class="holder footer-top-negative bg-top mt-0"
+         style="background-image: url(/media/{{ vortice.imagen_suscri }})">
+        <div class="container">
+            <div class="subscribe-form subscribe-form--style1 subscribe-form--whitecolor">
+                <p style=" text-align:center;  font-family: 'Comic Sans MS', serif; font-size:14pt; font-style:italic">
+                    Vive tu estilo Vórtice</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-top container py-3 py-md-5 py-lg-9">
+        <div class="row">
+            <div class="footer-left col-lg col-xl-6">
+                <div class="row">
+                    <div class="col-md mb-2 mb-md-0">
+                        <div class="footer-logo">
+                            <a href="/">
+                                <img src="/media/{{ vortice.logo_amarillo }}" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="footer-copyright">
+                            <p class="footer-copyright-text"><span>© Copyright</span> 2022 <span>All rights reserved.</span></p>
+                            <p><a href="/">Grupo Benitez</a> </p>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="footer-block collapsed-mobile">
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md ">
+                        <div class="footer-block collapsed-mobile">
+                            <div class="title">
+                                <h4>Clientes</h4>
+                                <div class="toggle-arrow"></div>
+                            </div>
+                            <div class="collapsed-content">
+                                <ul>
+                                    {% for client in seccion %}
+                                        <li>
+                                            <a href="/vortice/seccion/{{ client.seccion }}/" title="">
+                                                <img src="/media/{{ client.icono }}"
+                                                     style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ client.seccion }}
+                                                <span class="mmenu-preview">
+                                                    <img src="/media/{{ client.icono }}"
+                                                         data-src="/media/{{ client.icono }}" class="lazyload"
+                                                         alt=""></span></a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right col-lg col-xl-5 ml-auto">
+                <div class="footer-block">
+                    <div class="row align-items-end align-items-lg-start">
+                        <div class="col-sm col-lg">
+                            <div class="h6-style ">
+                                <a href="/vortice/contacto/"><h4 style="color: #e0a800">Contáctanos</h4></a>
+                            </div>
+                            <ul class="contact-list">
+                                <li><i class="icon-phone"></i><span><span class="h6-style">Celular:</span><span> <a
+                                        href="tel:+{{ vortice.celular }}"> &nbsp;{{ vortice.celular }}</a></span></span>
+
+                                </li>
+
+                                <li><i class="icon-phone"></i><span><span class="h6-style">WhatsApp:</span><span> <a
+                                        href="https://api.whatsapp.com/send?phone=593{{ vortice.whatsapp }}&text=Hola%20Vortice"
+                                        target="_blank" rel="noopener"> &nbsp;{{ vortice.whatsapp }}</a></span></span>
+                                </li>
+
+                                <li><i class="icon-mail-envelope1"></i><span><span
+                                        class="h6-style">E-mail:</span><span><a
+                                        href="mailto:vortice.ec@gmail.com"> &nbsp; {{ vortice.correo }}</a></span></span>
+                                </li>
+                                <li><i class="icon-location1"></i><span><span
+                                        class="h6-style">Dirección:</span><span> &nbsp; {{ vortice.direccion }}</span></span>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-sm col-lg-3 mt-2 mt-sm-0">
+                            <ul class="social-list">
+                                <li style="font-size: large; "><a style="color: #28a745 !important;"
+                                                                  href="https://api.whatsapp.com/send?phone=593{{ vortice.whatsapp }}&text=Hola%20Vortice"
+                                                                  target="_blank" rel="noopener"
+                                                                  class="icon  icon-chat3"></a>
+                                </li>
+
+                                <li><a href="https://www.facebook.com/{{ redes.facebook }}" target="_blank"
+                                       class="icon icon-facebook"></a></li>
+
+                                <li><a href="https://www.instagram.com/{{ redes.instagram }}" target="_blank"
+                                       class="icon icon-instagram"></a></li>
+
+                                <li><a href="https://www.youtube.com/{{ redes.youtube }}" target="_blank"
+                                       class="icon icon-youtube"></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="/static/static_vortice/js/vendor/jquery/jquery.min.js"></script>
+<script src="/static/static_vortice/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/static/static_vortice/js/vendor/slick/slick.min.js"></script>
+<script src="/static/static_vortice/js/vendor/scrollLock/jquery-scrollLock.min.js"></script>
+<script src="/static/static_vortice/js/vendor/instafeed/instafeed.min.js"></script>
+<script src="/static/static_vortice/js/vendor/countdown/jquery.countdown.min.js"></script>
+<script src="/static/static_vortice/js/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/static/static_vortice/js/vendor/ez-plus/jquery.ez-plus.min.js"></script>
+<script src="/static/static_vortice/js/vendor/tocca/tocca.min.js"></script>
+<script src="/static/static_vortice/js/vendor/bootstrap-tabcollapse/bootstrap-tabcollapse.min.js"></script>
+<script src="/static/static_vortice/js/vendor/isotope/jquery.isotope.min.js"></script>
+<script src="/static/static_vortice/js/vendor/fancybox/jquery.fancybox.min.js"></script>
+<script src="/static/static_vortice/js/vendor/cookie/jquery.cookie.min.js"></script>
+<script src="/static/static_vortice/js/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/static_vortice/js/vendor/lazysizes/lazysizes.min.js"></script>
+<script src="/static/static_vortice/js/vendor/lazysizes/ls.bgset.min.js"></script>
+<script src="/static/static_vortice/js/vendor/form/jquery.form.min.js"></script>
+<script src="/static/static_vortice/js/vendor/form/validator.min.js"></script>
+<script src="/static/static_vortice/js/vendor/slider/slider.js"></script>
+<script src="/static/static_vortice/js/app.js"></script>
+
+</body>
+
+</html>
+
