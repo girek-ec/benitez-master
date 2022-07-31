@@ -4,6 +4,42 @@ from django.db import models
 from django.utils.safestring import mark_safe
 
 
+class Editable(models.Model):
+    slider_fondo = models.ImageField(upload_to='delifrus', help_text='slider', null=True, blank=True)
+    slider_imagen = models.ImageField(upload_to='delifrus', help_text='slider', null=True, blank=True)
+    slider_titulo = models.CharField(max_length=80, null=True, blank=True)
+    slider_subtitulo = models.CharField(max_length=80, null=True, blank=True)
+    slider_detalle = models.TextField(max_length=500, null=True, blank=True)
+    sec1_imagen = models.ImageField(upload_to='delifrus', help_text='cuadrada', null=True, blank=True)
+    sec1_titulo = models.CharField(max_length=80, null=True, blank=True)
+    sec1_subtitulo = models.CharField(max_length=80, null=True, blank=True)
+    sec1_detalle = models.TextField(max_length=500, null=True, blank=True)
+    sec2_titulo = models.CharField(max_length=80, null=True, blank=True)
+    sec2_subtitulo = models.CharField(max_length=80, null=True, blank=True)
+    sec3_titulo = models.CharField(max_length=80, null=True, blank=True)
+    sec3_subtitulo = models.CharField(max_length=80, null=True, blank=True)
+    empr_imagen = models.ImageField(upload_to='delifrus', help_text='cuadrada', null=True, blank=True)
+    empr_titulo = models.CharField(max_length=80, null=True, blank=True)
+    empr_detalle = models.TextField(max_length=500, null=True, blank=True)
+    empr_imagen2 = models.ImageField(upload_to='delifrus', help_text='cuadrada', null=True, blank=True)
+    empr_titulo2 = models.CharField(max_length=80, null=True, blank=True)
+    empr_detalle2 = models.TextField(max_length=500, null=True, blank=True)
+    empr_imagen3 = models.ImageField(upload_to='delifrus', help_text='cuadrada', null=True, blank=True)
+    empr_titulo3 = models.CharField(max_length=80, null=True, blank=True)
+    empr_detalle3 = models.TextField(max_length=500, null=True, blank=True)
+    fondo_produ = models.ImageField(upload_to='delifrus', help_text='horizontal', null=True, blank=True)
+    publicidad = models.ImageField(upload_to='delifrus', help_text='vertical', null=True, blank=True)
+    contac_imagen = models.ImageField(upload_to='delifrus', help_text='cuadrada', null=True, blank=True)
+    contac_titulo = models.CharField(max_length=80, null=True, blank=True)
+    contac_subtitulo = models.CharField(max_length=80, null=True, blank=True)
+    contac_detalle = models.TextField(max_length=500, null=True, blank=True)
+
+
+    class Meta:
+        verbose_name_plural = "1. Editable"
+
+
+
 class Marca(models.Model):
     favicon = models.ImageField(upload_to='delifrus', help_text='imagenes 20*20', null=True, blank=True)
     logo_horizontal = models.ImageField(upload_to='delifrus',null=True, blank=True, help_text='imagenes 20*20')
@@ -19,7 +55,7 @@ class Marca(models.Model):
 
 
     class Meta:
-        verbose_name_plural = "1. Delifrus"
+        verbose_name_plural = "2. Delifrus"
 
 
 

@@ -47,6 +47,8 @@ urlpatterns = [
     # web zatuar/
     path('zatuar/', index_zatuar),
     path('zatuar/empresa/', empresa_zatuar),
+    path('zatuar/linea/', linea),
+    path('zatuar/linea/<slug:lineaa>/', linea_cate),
     path('zatuar/productos/', producto_zatuar),
     path('zatuar/productos/<int:id>/', producto_cate_zatuar),
     path('zatuar/producto/<int:id>/', producto_id_zatuar),
@@ -71,8 +73,8 @@ urlpatterns = [
     path('delifrus/empresa/', nosotros_delifrus ),
     path('delifrus/productos/', productos_delifrus),
     # path('delifrus/productos/<int:id>/', producto_cate_zatuar),
-    # path('delifrus/producto/<int:id>/', producto_id_zatuar),
-    path('delifrus/contacto', contacto_delifrus),
+    path('delifrus/producto/<int:n>/', producto_id_delifrus),
+    path('delifrus/contacto/', contacto_delifrus),
     # web delifrus/
 
 

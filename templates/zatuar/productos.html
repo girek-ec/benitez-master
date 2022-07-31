@@ -111,13 +111,21 @@
                     <div class="col-lg-2">
                         <aside class="sidebar">
 
-                            <h5 class="font-weight-bold pt-2">Categorias</h5>
-                            <ul class="nav nav-list flex-column">
-                                {% for categoria in clasif_producto %}
-                                    <li><a class="dropdown-item"
-                                           href="/zatuar/productos/{{ categoria.id }}">{{ categoria.clasificacion_producto }}</a>
+                            <h5 class="font-weight-semi-bold pt-4">Categorias</h5>
+                            <ul class="nav nav-list flex-column mb-5">
+                                {% for line in linea %}
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="/zatuar/linea/{{ line.linea}} "style="color: #0aa1e8;text-transform: uppercase">{{ line.linea}}</a>
+                                        <ul>
+                                            {% for cla in clasif_producto %}
+                                                {% if line == cla.linea %}
+                                                    <li class="nav-item"><a class="nav-link" href="/zatuar/productos/{{ cla.id }}">{{ cla.clasificacion_producto }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
                                     </li>
                                 {% endfor %}
+
                             </ul>
                         </aside>
                     </div>

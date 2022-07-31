@@ -5,6 +5,10 @@ from Delifrus.models import *
 from Home.models import *
 from benitez.snippers import Attr
 
+@admin.register(Editable)
+class EditableAdmin(admin.ModelAdmin):
+    list_display = Attr(Editable)
+    list_display_links = Attr(Editable)
 
 @admin.register(Marca)
 class MarcaAdmin(admin.ModelAdmin):

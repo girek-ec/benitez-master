@@ -67,6 +67,12 @@ class ProductAdminn(admin.ModelAdmin):
     list_display_links = Attr(Product)
 admin.site.register(Product,ProductAdminn)
 
+class Linea_ProductAdminn(admin.ModelAdmin):
+    list_display = Attr(Linea_Product)+["miniatura"]
+    list_display_links = Attr(Linea_Product)
+admin.site.register(Linea_Product, Linea_ProductAdminn)
+
+
 class Clasif_productoAdmin(admin.ModelAdmin):
     list_display = Attr(Clasif_producto)
     list_display_links = Attr(Clasif_producto)

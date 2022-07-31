@@ -29,6 +29,7 @@ class Zatuar_marca(models.Model):
     logo_negro = models.FileField(upload_to='zatuar/', blank=True, null=True)
     favicon = models.FileField(upload_to='zatuar/', blank=True, null=True)
     imagen = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='400x400')
+    imagen_2 = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='400x400')
     portada = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='1280x400')
     descripcion = models.TextField(blank=True, null=True)
 
@@ -166,20 +167,32 @@ class Descarga(models.Model):
     class Meta:
         verbose_name_plural="9.2. Descarga"
 
+class Linea_Product(models.Model):
+    orden = models.IntegerField(default=0)
+    linea = models.CharField(max_length=50, null=True, blank=True)
+    imagen = models.FileField(upload_to='products/', null=True, blank=True, help_text='100x100')
 
+    def __str__(self):
+        return ' %s ' % (self.linea)
+
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.imagen)
+    class Meta:
+        verbose_name_plural = "9.3 Linea de Producto"
 
 class Clasif_producto(models.Model):
     clasificacion_producto = models.CharField(max_length=90, null=True, blank=True)
+    linea = models.ForeignKey(Linea_Product, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return ' %s ' % (self.clasificacion_producto)
+        return ' %s %s' % (self.clasificacion_producto, self.linea)
 
     class Meta:
-        verbose_name_plural = "9.3. Clasificaciòn de Producto"
+        verbose_name_plural = "9.4. Clasificaciòn de Producto"
 
 
 class Product(models.Model):
-    orden = models.IntegerField(default=0)
+    orden = models.IntegerField(default=0, null=True, blank=True)
     clasif = models.ForeignKey(Clasif_producto, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=True, blank=True)
     image_a = models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='100x100')
@@ -197,7 +210,7 @@ class Product(models.Model):
     gramaje = models.CharField(max_length=30, null=True, blank=True)
     nuevo = models.BooleanField(default=False)
     cantidad = models.IntegerField(null=True, blank=True)
-    precio = models.DecimalField(max_digits=5, decimal_places=2)
+    precio = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     disponivilidad = models.BooleanField(default=True)
     azul = models.BooleanField(default=False)
     amarillo = models.BooleanField(default=False)
@@ -207,6 +220,7 @@ class Product(models.Model):
     plomo = models.BooleanField(default=False)
     gris = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
+    ficha_tec= models.FileField(upload_to='products/', null=True, blank=True, help_text='pdf')
     slug = models.SlugField(null=False, blank=True, unique=True)
 
     def __str__(self):
@@ -216,7 +230,7 @@ class Product(models.Model):
         return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.image_a)
 
     class Meta:
-        verbose_name_plural = "9.4. Producto"
+        verbose_name_plural = "9.5. Producto"
 
 def set_slug(sender, instance, *args, **kwargs):  # callback
     if instance.title and not instance.slug:
@@ -246,7 +260,7 @@ class Producto_Imagen(models.Model):
         return mark_safe("<img src='/media/%s' style='width: 200px'>" % self.galeria_articulo)
 
     class Meta:
-        verbose_name_plural = '9.5. Producto Imagenes'
+        verbose_name_plural = '9.6. Producto Imagenes'
 
 
 
@@ -267,7 +281,7 @@ class Producto_Personalizacion(models.Model):
     vista_previa.allow_tags = True
 
     class Meta:
-        verbose_name_plural = "9.6. Producto Personalizacion"
+        verbose_name_plural = "9.7. Producto Personalizacion"
 
 
 
@@ -287,7 +301,7 @@ class Producto_Slider(models.Model):
     vista_previa.allow_tags = True
 
     class Meta:
-        verbose_name_plural = "9.7. Slider"
+        verbose_name_plural = "9.8. Slider"
 
 
 class Cliente(models.Model):

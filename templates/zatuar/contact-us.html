@@ -103,15 +103,9 @@
 
         <div class="row py-4">
             <div class="col-lg-6">
-                <div style="text-align: center">
-                    <br><br>
-                    <img alt="Zatuar" width="175" height="55" data-sticky-width="125" src="/media/{{ zatuar.logo }}">
-                </div>
-
                 <div class="row text-center pt-3">
                     <div class="col-md-12 mx-md-auto">
-                        <hr>
-                        <h2 class="word-rotator slide mb-2">
+                        <h4 class="word-rotator slide mb-2">
                             <span>Zatuar es  </span>
                             <span style="text-align: center" class="word-rotator-words bg-color-tertiary ">
                                 <b class="is-visible">Garantía</b>
@@ -119,9 +113,19 @@
                                 <b>Seguridad</b>
                             </span>
                             <span> para su empresa.</span>
-                        </h2>
+                        </h4>
+                        <br>
                     </div>
                 </div>
+
+                <div id="slider" class="owl-carousel owl-theme"
+                     data-plugin-options='{"items": 1, "autoplay": true, "autoplayTimeout": 3000}'>
+                    <div>
+                        <img alt="" style="border: 10px" class="img-responsive img-rounded"
+                             src="/media/{{ zatuar.imagen_2 }}">
+                    </div>
+                </div>
+
             </div>
             <div class="col-lg-6">
                 <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
@@ -133,10 +137,10 @@
                     <h4 class="heading-primary">Oficina</h4>
                     <ul class="list list-icons list-icons-style-3 mt-xlg">
                         <li><i class="fa fa-map-marker"></i> <strong>Dirección:</strong>{{ contacto.direccion }}</li>
-                        <li><i class="fa fa-phone"></i> <strong>Celular:</strong><a href="tel:+{{ contacto.celular }}"> &nbsp;{{ contacto.celular }}</a>  </li>
-                        <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="tel:+{{ contacto.celular2 }}"> &nbsp;{{ contacto.celular2 }}</a></li>
-                        <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:{{ contacto.correo }}"> &nbsp; {{ contacto.correo }}</a></li>
-
+                        <li><i class="fa fa-phone"></i> <strong>Teléfono:</strong> <a href="tel:{{ contacto.celular }}"> {{ contacto.celular }}</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://api.whatsapp.com/send?phone=593{{ contacto.celular2 }}&text=Hola%20Zatuar  " target="_blank" rel="noopener">{{ contacto.celular2 }}</a></li>
+                        <li><i class="fa fa-phone"></i> <strong>Teléfono:</strong>   <a href="tel:{{ contacto.telefono }}"> {{ contacto.telefono }}</a></li>
+                        <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:{{ contacto.correo }}">{{ contacto.correo }}</a></li>
                     </ul>
 
                     <hr>

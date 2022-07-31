@@ -8,7 +8,7 @@
     <meta property="og:url" content="https://www.girekstudio.com/servicios/{{ servicio.id }}"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ servicio.titulo }}"/>
-    <meta property="og:description" content="{{ servicio.descripcion }}"/>
+    <meta property="og:description" content="{{ marca.mision|safe|truncatechars:"60" }}"/>
     <meta property="og:image" content="https://www.girekstudio.com/media/{{ servicio.imagen }}"/>
     <meta property="og:image:secure_url" content="https://www.girekstudio.com/media/{{ servicio.imagen  }}"/>
 {% endblock %}

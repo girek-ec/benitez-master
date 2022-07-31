@@ -37,6 +37,31 @@ def empresa_zatuar(request):
     return render(request, "zatuar/empresa.html", contexto)
 
 
+def linea(request):
+    contexto = {
+        'clasif_producto': Clasif_producto.objects.all(),
+        'product': Product.objects.all().order_by('-id'),
+        'producto_personalizacion':Producto_Personalizacion.objects.all(),
+        'zatuar': Zatuar_marca.objects.all().first(),
+        'contacto': Contacto_empresa.objects.all().first(),
+        'redes': Redes_sociales.objects.all().first(),
+        'linea': Linea_Product.objects.all(),
+    }
+    return render(request,"zatuar/productos.html", contexto)
+
+def linea_cate(request, lineaa):
+    contexto = {
+        'clasif_producto': Clasif_producto.objects.filter(linea__linea=lineaa),
+        'product': Product.objects.filter(clasif__linea__linea=lineaa),
+        'zatuar': Zatuar_marca.objects.all().first(),
+        'contacto': Contacto_empresa.objects.all().first(),
+        'linea': Linea_Product.objects.all(),
+        'redes': Redes_sociales.objects.all().first(),
+
+    }
+    return render(request, 'zatuar/productos.html', contexto,)
+
+
 def producto_zatuar(request):
     contexto = {
         'clasif_producto': Clasif_producto.objects.all(),
