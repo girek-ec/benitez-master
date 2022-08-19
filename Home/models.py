@@ -40,6 +40,8 @@ class Marca_benitez(models.Model):
 
 class Empresas(models.Model):
     logo = models.ImageField(upload_to='empresas', null=True, blank=True)
+    activo=models.BooleanField(default=False)
+    link_exterior = models.CharField(max_length=100, null=True, blank=True)
     link = models.CharField(max_length=100, null=True, blank=True)
     nombre_marcas = models.CharField(max_length=100, null=True, blank=True)
     slider = models.ImageField(upload_to='slider_marcas', null=True, blank=True)

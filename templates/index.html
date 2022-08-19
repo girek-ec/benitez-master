@@ -161,19 +161,28 @@
                         <div class=" mt-4 pt-2">
                             <div class="row portfolio-list " >
                                 {% for empresa in empresas %}
+                                    <div class="col-6 col-sm-6 col-md-69 col-lg-6 col-xl-6  col-lg-1-5 isotope-item ">
+                                        <div class="portfolio-item">
+                                            {% if empresa.activo %}
+                                                <a href="https://{{ empresa.link_exterior }}/">
+                                                    <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
+                                                        <span class="thumb-info-action border-radius-0">
+                                                            <img src="/media/{{ empresa.logo }}" class="img-fluid border-radius-0" alt="">
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                                {% else %}
+                                                <a href="/{{ empresa.link }}/">
+                                                    <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
+                                                        <span class="thumb-info-action border-radius-0">
+                                                            <img src="/media/{{ empresa.logo }}" class="img-fluid border-radius-0" alt="">
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            {% endif %}
 
-                                <div class="col-6 col-sm-6 col-md-69 col-lg-6 col-xl-6  col-lg-1-5 isotope-item ">
-                                    <div class="portfolio-item">
-                                        <a href="/{{ empresa.link }}/">
-                                            <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
-                                                <span class="thumb-info-action border-radius-0">
-                                                    <img src="/media/{{ empresa.logo }}" class="img-fluid border-radius-0" alt="">
-                                                </span>
-                                            </span>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
-
                                 {% endfor %}
                             </div>
                         </div>
