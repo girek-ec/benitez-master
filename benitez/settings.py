@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_ROOT='static'
-# STATIC_ROOT="/var/www/girekstudiov2/media"
+# STATIC_ROOT="/var/www/grupo-benitez/media"
 
 STATICFILES_DIRS=[
     'static',
@@ -135,7 +135,7 @@ STATICFILES_DIRS=[
 
 MEDIA_URL='/media/'
 MEDIA_ROOT='media'
-# MEDIA_ROOT="/var/www/girekstudiov2/media"
+# MEDIA_ROOT="/var/www/grupo-benitez/media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
