@@ -133,6 +133,7 @@ STATICFILES_DIRS=[
 ]
 
 
+
 MEDIA_URL='/media/'
 MEDIA_ROOT='media'
 # MEDIA_ROOT="/var/www/grupo-benitez/media"
