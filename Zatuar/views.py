@@ -22,6 +22,7 @@ def index_zatuar(request):
         'catalogo': Descarga.objects.all().first(),
         'identidad': Identidad.objects.all(),
         'detalles': Detalles.objects.first(),
+        'linea': Linea_Product.objects.all(),
         'clientes': Cliente.objects.all(),
     }
     return render(request, "zatuar/index_zatuar.html", contexto)
@@ -70,6 +71,7 @@ def producto_zatuar(request):
         'zatuar': Zatuar_marca.objects.all().first(),
         'contacto': Contacto_empresa.objects.all().first(),
         'redes': Redes_sociales.objects.all().first(),
+        'linea': Linea_Product.objects.all(),
     }
     return render(request, "zatuar/productos.html", contexto)
 

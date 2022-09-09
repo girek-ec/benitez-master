@@ -229,7 +229,7 @@
              <div class="container">
                 <div class="col my-5">
                     <h4 style="text-align: center">Línea de Productos</h4>
-                    <div class="owl-carousel owl-theme" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'loop': false, 'autoHeight': true, 'margin': 20,  'autoplay': true, 'autoplayTimeout': 5000, 'dots': false}">
+                    <div class="owl-carousel owl-theme" style="display: flex; justify-content: center !important;"  data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'loop': false, 'autoHeight': true, 'margin': 20,  'autoplay': true, 'autoplayTimeout': 5000, 'dots': false}">
                         {% for line in linea %}
                             <div>
                                 <a href="/zatuar/linea/{{ line.linea}}/" title="Imagen" class="zoom">
@@ -405,7 +405,7 @@
                                      data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="900"
                                      style="bottom: -60px; right: -90px;">
                                     <span class="arrow hlt" style="margin-right: -70px;"></span>
-                                    <strong class="text-color-dark mb-4 pb-3">personalización!</strong>
+{#                                    <strong class="text-color-dark mb-4 pb-3">personalización!</strong>#}
                                 </div>
                             </div>
                             <div class="col-11 col-md-9 pl-0 pr-5 pb-5 pb-md-0 mb-5 mb-md-0">
@@ -430,7 +430,7 @@
                                     <div class="position-absolute d-none d-md-flex align-items-end appear-animation"
                                          data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100"
                                          style="bottom: -135px; right: -20px;">
-                                        <strong class="text-color-dark mb-3">identidad!</strong>
+{#                                        <strong class="text-color-dark mb-3">identidad!</strong>#}
                                         <span class="arrow hru"></span>
                                     </div>
                                 </div>
