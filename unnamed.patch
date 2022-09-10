@@ -1,0 +1,32 @@
+Index: benitez/settings.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/benitez/settings.py b/benitez/settings.py
+--- a/benitez/settings.py	(revision e1835c1e93facd33ef15c613c1e0c9772d397fef)
++++ b/benitez/settings.py	(revision 08f2fcd33bcba2b1f6de5c725048978540d90feb)
+@@ -133,6 +133,7 @@
+ ]
+ 
+ 
++
+ MEDIA_URL='/media/'
+ MEDIA_ROOT='media'
+ # MEDIA_ROOT="/var/www/grupo-benitez/media"
+Index: templates/delifrus/product.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/delifrus/product.html b/templates/delifrus/product.html
+--- a/templates/delifrus/product.html	(revision e1835c1e93facd33ef15c613c1e0c9772d397fef)
++++ b/templates/delifrus/product.html	(revision 08f2fcd33bcba2b1f6de5c725048978540d90feb)
+@@ -7,6 +7,7 @@
+     <li><a href="/delifrus/contacto/" class="nav-link">Contacto</a></li>
+ {% endblock %}
+ {% block content %}
++
+     <div role="main" class="main shop py-4">
+     <br><br><br>
+      <section class=" page-header-modern  page-header-md ">
