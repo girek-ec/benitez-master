@@ -15,7 +15,7 @@ class Ciudad(models.Model):
 
 class Proveedor(models.Model):
     proveedor=models.CharField(max_length=100, null=True, blank=True)
-    logo=models.FileField(upload_to='proveedor/', null=True, blank=True)
+    logo=models.FileField(upload_to='girekstudio/', null=True, blank=True)
     detalle=models.CharField(max_length=300, null=True, blank=True)
     ciudad=models.ForeignKey(Ciudad,on_delete=models.CASCADE, null=True, blank=True)
     direccion=models.CharField(max_length=100, null=True, blank=True)
@@ -45,7 +45,7 @@ class Producto(models.Model):
     proveedor=models.ForeignKey(Proveedor,on_delete=models.CASCADE)
     nombre_producto=models.CharField(max_length=100, null=True, blank=True)
     stock=models.CharField(max_length=20, default='stock', choices=(("stock", "stock"), ("no_stock", "no_stock")))
-    imagen=models.ImageField(upload_to='producto/', null=True, blank=True)
+    imagen=models.ImageField(upload_to='girekstudio/', null=True, blank=True)
     descripcion=models.TextField(max_length=500, null=True, blank=True)
     caracteristicas=RichTextField(max_length=500, null=True, blank=True)
     tamanos=models.TextField(max_length=500, null=True, blank=True)
@@ -64,7 +64,7 @@ class Producto(models.Model):
 
 class Producto_Imagen(models.Model):
     producto=models.ForeignKey(Producto,on_delete=models.CASCADE,blank=True, null=True)
-    galeria_articulo=models.ImageField(upload_to='media',help_text='imagen producto 800x800',null=True,blank=True)
+    galeria_articulo=models.ImageField(upload_to='girekstudio',help_text='imagen producto 800x800',null=True,blank=True)
 
     def __str__(self):
         return self.producto.nombre_producto
@@ -80,12 +80,12 @@ class Producto_Imagen(models.Model):
 
 
 class Marca(models.Model):
-    favicon = models.ImageField(upload_to='empresa', null=True, blank=True)
-    logo=models.ImageField(upload_to='empresa', null=True, blank=True)
-    logo_blanco=models.ImageField(upload_to='empresa/', null=True, blank=True)
-    logo_gris = models.ImageField(upload_to='empresa', null=True, blank=True)
-    logo_negro=models.ImageField(upload_to='empresa', null=True, blank=True)
-    imagen = models.ImageField(upload_to='empresa', null=True, blank=True)
+    favicon = models.ImageField(upload_to='girekstudio/', null=True, blank=True)
+    logo=models.ImageField(upload_to='girekstudio/', null=True, blank=True)
+    logo_blanco=models.ImageField(upload_to='girekstudio/', null=True, blank=True)
+    logo_gris = models.ImageField(upload_to='girekstudio/', null=True, blank=True)
+    logo_negro=models.ImageField(upload_to='girekstudio/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='girekstudio/', null=True, blank=True)
     facebook = models.CharField(max_length=100, null=True, blank=True)
     instagram = models.CharField(max_length=100, null=True, blank=True)
     tiktok = models.CharField(max_length=100, null=True, blank=True)
@@ -121,7 +121,7 @@ class Marca(models.Model):
 
 
 class Editables(models.Model):
-    sec_1_imagen=models.FileField(upload_to='editable', null=True, blank=True)
+    sec_1_imagen=models.FileField(upload_to='girekstudio/', null=True, blank=True)
     sec_1_titulo = models.CharField(max_length=100, null=True, blank=True)
     sec_1_detalle = models.TextField(max_length=700, null=True, blank=True)
     sec_1_sub_1_icono_1 = models.CharField(max_length=100, null=True, blank=True)
@@ -133,7 +133,7 @@ class Editables(models.Model):
     sec_1_sub_3_icono_1 = models.CharField(max_length=100, null=True, blank=True)
     sec_1_sub_3_titulo_1 = models.CharField(max_length=100, null=True, blank=True)
     sec_1_sub_3_detalle_1 = models.TextField(max_length=700, null=True, blank=True)
-    sec_2_imagen = models.FileField(upload_to='editable', null=True, blank=True)
+    sec_2_imagen = models.FileField(upload_to='girekstudio/', null=True, blank=True)
     sec_2_titulo = models.CharField(max_length=100, null=True, blank=True)
     sec_2_detalle = models.TextField(max_length=700, null=True, blank=True)
     sec_2_sub_1_icono_1 = models.CharField(max_length=100, null=True, blank=True)
@@ -193,7 +193,7 @@ class Contacto_empresa(models.Model):
 class Servicio(models.Model):
     orden=models.IntegerField()
     icono = models.CharField(max_length=20, null=True, blank=True)
-    imagen=models.ImageField(upload_to='servicio' ,null=True,blank=True)
+    imagen=models.ImageField(upload_to='girekstudio/' ,null=True,blank=True)
     titulo=models.CharField(max_length=100, null=True,blank=True)
     sub_titulo = models.CharField(max_length=200, null=True, blank=True)
     descripcion=models.TextField(default="",null=True, blank=True)
@@ -234,7 +234,7 @@ class Imag_Video_Servicio(models.Model):
     activo = models.BooleanField(default=False)
     servicio=models.ForeignKey(Servicio,on_delete=models.CASCADE)
     tipo_archivo = models.CharField(max_length=20, default='imagen', choices=(("imagen", "imagen"), ("video", "video")))
-    archivo=models.FileField(upload_to='servicio', null=True, blank=True,)
+    archivo=models.FileField(upload_to='girekstudio/', null=True, blank=True,)
 
 
     def vista_previa(self):
@@ -277,7 +277,7 @@ class Planes(models.Model):
 class Cliente(models.Model):
     nombre=models.CharField(max_length=90, null=True, blank=True)
     sitio=models.CharField(max_length=90, null=True, blank=True)
-    logo=models.FileField(upload_to='cliente', null=True, blank=True)
+    logo=models.FileField(upload_to='girekstudio', null=True, blank=True)
 
     def __str__(self):
         return  self.nombre
@@ -314,7 +314,7 @@ class Proyecto(models.Model):
     nombreproyecto=models.CharField(max_length=120, null=True,blank=True, help_text="Texto de maximo 120 caracteres")
     detalle=models.TextField(null=True,blank=True)
     tipo_archivo=models.CharField(max_length=20,default='imagen',choices=(("imagen","imagen"),("video_vertical","video_vertical"),("video","video")))
-    imagen=models.FileField(upload_to='portafolio/',help_text='imagen producto 851x315',null=True,blank=True)
+    imagen=models.FileField(upload_to='girekstudio/',help_text='imagen producto 851x315',null=True,blank=True)
     link=models.CharField(max_length=250,null=True,blank=True)
 
     def __str__(self):
@@ -330,7 +330,7 @@ class Proyecto(models.Model):
 
 class Imagenesproyecto(models.Model):
     proyecto=models.ForeignKey(Proyecto, on_delete=models.CASCADE)
-    galeriaproyecto=models.FileField(upload_to='galeriaproyecto/')
+    galeriaproyecto=models.FileField(upload_to='girekstudio/')
 
 
     def vista_previa(self):

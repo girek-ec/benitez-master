@@ -75,7 +75,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-										<a href="index_girekstudio.html">
+										<a href="/girekstudio/">
 											<img alt="GirekStudio" width="130" height="50" src="/media/{{ marca.logo }}">
 										</a>
 									</div>
@@ -89,7 +89,7 @@
 												<ul class="nav nav-pills" id="mainNav">
                                                     {% block menu %}
 													<li>
-														<a class="nav-link active" href="/">
+														<a class="nav-link active" href="/girekstudio/">
 															Inicio
 														</a>
 													</li>
@@ -170,7 +170,7 @@
                                                 <div  class="col-md-12" >
                                                     <h1 class="text-color-dark font-weight-bold text-10 mb-3 ">{{ serv.titulo }}</h1>
                                                     <p class="custom-text-color-grey-1 text-4 mb-4 " >{{ serv.sub_titulo }}</p>
-                                                    <a href="/servicios/{{ serv.id }}" class="btn btn-gradient btn-rounded font-weight-semibold px-5 py-3 text-3 mb-md-5 " >Ver más!</a>
+                                                    <a href="/girekstudio/servicios/{{ serv.id }}" class="btn btn-gradient btn-rounded font-weight-semibold px-5 py-3 text-3 mb-md-5 " >Ver más!</a>
                                                 </div>
                                                 <div class="row col-md-12" >
                                                     <div class="col-lg-4 col-sm-4">
@@ -649,14 +649,14 @@
 {#                                                <article>#}
 {#                                                    <div class="card border-0 border-radius-0 box-shadow-1">#}
 {#                                                        <div class="card-body p-4 z-index-1">#}
-{#                                                            <a href="/post/{{ blo.id }}">#}
+{#                                                            <a href="/girekstudio/post/{{ blo.id }}">#}
 {#                                                                <img class="card-img-top border-radius-0" src="/media/{{ blo.imagen }}" alt="Card Image" style="height: 230px!important;">#}
 {#                                                            </a>#}
 {#                                                            <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="2021-01-10">{{ blo.fecha }}</time>  Visitas: <strong> {% vistanumero blog.id %} | </strong> <span class="opacity-3 d-inline-block px-2">|</span> {{ blo.autor }}</p>#}
 {#                                                            <div class="card-body p-0">#}
-{#                                                                <h4 class="card-title mb-3 text-5 font-weight-semibold"><a class="text-color-dark" href="/post/{{ blo.id }}">{{ blo.titulo |truncatechars:"50"  }}</a></h4>#}
+{#                                                                <h4 class="card-title mb-3 text-5 font-weight-semibold"><a class="text-color-dark" href="/girekstudio/post/{{ blo.id }}">{{ blo.titulo |truncatechars:"50"  }}</a></h4>#}
 {#                                                                <p class="card-text mb-3">{{ blo.articulo|safe |truncatechars:"100"  }}</p>#}
-{#                                                                <a href="/post/{{ blo.id }}" class="font-weight-bolder text-uppercase text-decoration-none d-block mt-3">Leer más!</a>#}
+{#                                                                <a href="/girekstudio/post/{{ blo.id }}" class="font-weight-bolder text-uppercase text-decoration-none d-block mt-3">Leer más!</a>#}
 {#                                                            </div>#}
 {#                                                        </div>#}
 {#                                                    </div>#}
@@ -668,7 +668,7 @@
                             </div>
                             <div class="row justify-content-center mb-5">
                                 <div class="col-auto">
-                                    <a href="/blog/" class="btn btn-gradient btn-rounded font-weight-semibold px-5 py-3 text-3">Ver Todos!</a>
+                                    <a href="/girekstudio/blog/" class="btn btn-gradient btn-rounded font-weight-semibold px-5 py-3 text-3">Ver Todos!</a>
                                 </div>
                             </div>
                             <div class="custom-circle custom-circle-big custom-circle-pos-47 appear-animation" data-appear-animation="expandInWithBlur" data-appear-animation-delay="200" data-appear-animation-duration="2s">
@@ -744,7 +744,7 @@
                         <div class="row py-5">
                             <div class="col-lg-3 mb-5 mb-lg-0">
 
-                                <a href="index_girekstudio.html">
+                                <a href="/girekstudio/">
                                     <img src="/media/{{ marca.logo_blanco }}" class="img-fluid"  width="80%" alt="GirekStudio" />
                                 </a>
                             </div>

@@ -6,9 +6,9 @@ from django.utils.safestring import mark_safe
 
 class Seccion_Cliente(models.Model):
     seccion=models.CharField(max_length=30, null=True, blank=True)
-    icono=models.FileField(upload_to='cliente' , null=True, blank=True, help_text='cuadrada')
-    imagen_vertical = models.FileField(upload_to='cliente', null=True, blank=True, help_text='vertical')
-    imagen_horizontal =models.FileField(upload_to='cliente', null=True, blank=True,  help_text='horizontal')
+    icono=models.FileField(upload_to='vortice/' , null=True, blank=True, help_text='cuadrada')
+    imagen_vertical = models.FileField(upload_to='vortice/', null=True, blank=True, help_text='vertical')
+    imagen_horizontal =models.FileField(upload_to='vortice/', null=True, blank=True,  help_text='horizontal')
 
     def __str__(self):
         return '%s '% (self.seccion)
@@ -106,7 +106,7 @@ class Prenda(models.Model):
 
 class Slider(models.Model):
     orden=models.IntegerField()
-    imagen=models.ImageField(upload_to='media', null=True, blank=True, help_text='imagenes 500*900')
+    imagen=models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*900')
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 200px'>"%self.imagen)
@@ -185,7 +185,7 @@ class Vorti_Promo(models.Model):
     activo = models.BooleanField(default=False)
     titulo = models.CharField(max_length=100, null=True, blank=True)
     sub_titulo = models.CharField(max_length=100, null=True, blank=True)
-    imagen = models.ImageField(upload_to='promo', null=True, blank=True, help_text='imagenes 50*50')
+    imagen = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
     enlace= models.CharField(max_length=100, null=True, blank=True)
 
     def miniatura(self):
@@ -221,11 +221,11 @@ class Contacto_redes(models.Model):
 
 
 class Camiseta_Imagen_detalle(models.Model):
-    imagen_cuello_o = models.ImageField(upload_to='media', null=True, blank=True, help_text='500x500')
+    imagen_cuello_o = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
     detalle_cuello_o = models.CharField(max_length=100, null=True, blank=True)
-    imagen_cuello_v_hombre = models.ImageField(upload_to='media', null=True, blank=True, help_text='500x500')
+    imagen_cuello_v_hombre = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
     detalle_cuello_v_hombre = models.CharField(max_length=100, null=True, blank=True)
-    imagen_cuello_v_mujer = models.ImageField(upload_to='media', null=True, blank=True, help_text='500x500')
+    imagen_cuello_v_mujer = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
     detalle_cuello_v_mujer = models.CharField(max_length=100, null=True, blank=True)
 
 
@@ -314,11 +314,11 @@ class Product(models.Model):
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, null=True, blank=True )
     prenda= models.ForeignKey(Prenda, on_delete=models.CASCADE, null=True, blank=True )
     titulo= models.CharField(max_length=50, null=True, blank=True)
-    imagen= models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    imagen_2= models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    imagen_3 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    imagen_4 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    youtube = models.FileField(upload_to='producto', null=True, blank=True, )
+    imagen= models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    imagen_2= models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    imagen_3 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    imagen_4 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    youtube = models.FileField(upload_to='vortice/', null=True, blank=True, )
     T_unica = models.BooleanField(default=False)
     T_24 = models.BooleanField(default=False)
     T_26 = models.BooleanField(default=False)
@@ -332,13 +332,13 @@ class Product(models.Model):
     precio= models.DecimalField(max_digits=999, decimal_places=2)
     precio_oferta= models.DecimalField(max_digits=999, decimal_places=2, null=True, blank=True)
     descripcion= models.TextField(max_length=500, null=True, blank=True)
-    wallpapers = models.ImageField(upload_to='producto', null=True, blank=True, help_text='imagenes 500*400')
-    galeria_producto_1 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    galeria_producto_2 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    galeria_producto_3 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    galeria_producto_4 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    galeria_producto_5 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
-    galeria_producto_6 = models.ImageField(upload_to='producto', null=True, blank=True, help_text='360x360')
+    wallpapers = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*400')
+    galeria_producto_1 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    galeria_producto_2 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    galeria_producto_3 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    galeria_producto_4 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    galeria_producto_5 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
+    galeria_producto_6 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
     create_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     def __str__(self):
         return '%s %s' % (self.titulo,self.prenda)

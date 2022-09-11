@@ -17,7 +17,7 @@
 
 {% block menu %}
     <li>
-        <a href="/">
+        <a href="/girekstudio/">
             Inicio
         </a>
     </li>
@@ -228,9 +228,9 @@
                         <aside class="sidebar">
                             <h5 class="font-weight-semi-bold pt-3">Categoria</h5>
                             <ul class="nav nav-list flex-column">
-                                <li data-option-value=".websites" class="nav-item"><a class="nav-link" href="/tienda/">Todos</a></li>
+                                <li data-option-value=".websites" class="nav-item"><a class="nav-link" href="/girekstudio/tienda/">Todos</a></li>
                                 {% for categoria in categorias %}
-                                    <li class="nav-item"><a class="nav-link" href="/tienda/{{ categoria.id }}">{{ categoria.clasificacion_producto }}</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/girekstudio/tienda/{{ categoria.id }}">{{ categoria.clasificacion_producto }}</a></li>
                                 {% endfor %}
                             </ul>
                         </aside>

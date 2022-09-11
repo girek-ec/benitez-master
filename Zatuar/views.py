@@ -83,6 +83,7 @@ def producto_cate_zatuar(request, id):
         'zatuar': Zatuar_marca.objects.all().first(),
         'contacto': Contacto_empresa.objects.all().first(),
         'redes': Redes_sociales.objects.all().first(),
+        'linea': Linea_Product.objects.all(),
 
     }
     return render(request, 'zatuar/productos.html', contexto, )
