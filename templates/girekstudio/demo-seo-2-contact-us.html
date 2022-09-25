@@ -47,7 +47,7 @@
 
 {% endblock %}
 {% block principal %}
-			<div role="main" class="main">
+		<div role="main" class="main">
 
             <section class="page-header page-header-lg custom-bg-color-light-1 border-0 m-0">
                 <div class="container position-relative pt-5 pb-4 mt-5">
@@ -113,113 +113,70 @@
                     </div>
                 </div>
             </div>
+            <section class="section bg-color-light position-relative border-0 ">
+                <div class="container " style="margin-top: -100px!important;">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-6">
 
+                            <div class="feature-box align-items-center mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
+                                <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
+                                    <i class="icon-globe icons position-relative"></i>
+                                </div>
+                                <div class="feature-box-info">
+                                    <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Dirección</h4>
+                                    <p class="mb-0">Estudio de Diseño Virtual</p>
+                                </div>
+                            </div>
 
+                            <div class="feature-box align-items-center mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2000">
+                                <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-quaternary top-0">
+                                    <i class="icon-call-in icons position-relative top-2 right-1"></i>
+                                </div>
+                                <div class="feature-box-info">
+                                    <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Celular</h4>
+                                    <p class="mb-0"><a href="tel:{{ marca.celular }}" class="custom-text-color-grey-1">{{ marca.celular }}</a></p>
+                                </div>
+                            </div>
 
-				<section class="section bg-color-light position-relative border-0 ">
+                            <div class="feature-box align-items-center  mb-4 pb-1  appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2200">
+                                <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
+                                    <i class="icon-envelope icons position-relative top-1"></i>
+                                </div>
+                                <div class="feature-box-info">
+                                    <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">WhatsApp</h4>
+                                    <p class="mb-0">
+                                        <a href="https://api.whatsapp.com/send?phone=593{{ marca.whatsapp }}&text=Hola%20GirekStudio%20{{ contacto.ciudad }}"
+                                                target="_blank" rel="noopener"> &nbsp {{ marca.whatsapp }}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
 
-					<div class="container " style="margin-top: -100px!important;">
-						<div class="row justify-content-center">
-							<div class="col-md-10 col-lg-6">
+                            <div class="feature-box align-items-center  mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2200">
+                                <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-quaternary top-0">
+                                    <i class="icon-envelope icons position-relative top-1"></i>
+                                </div>
+                                <div class="feature-box-info">
+                                    <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">E-mail</h4>
+                                    <p class="mb-0"><a href="mailto:maile@example.com" class="custom-text-color-grey-1">{{ marca.correo }}</a></p>
+                                </div>
+                            </div>
 
-                                <div class="feature-box align-items-center mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
-                                    <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
-										<i class="icon-globe icons position-relative"></i>
-									</div>
-									<div class="feature-box-info">
-										<h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Dirección</h4>
-										<p class="mb-0">Estudio de Diseño Virtual</p>
-									</div>
-								</div>
-
-								<div class="feature-box align-items-center mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2000">
-									<div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-quaternary top-0">
-										<i class="icon-call-in icons position-relative top-2 right-1"></i>
-									</div>
-									<div class="feature-box-info">
-										<h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Celular</h4>
-										<p class="mb-0"><a href="tel:{{ marca.celular }}" class="custom-text-color-grey-1">{{ marca.celular }}</a></p>
-									</div>
-								</div>
-
-								<div class="feature-box align-items-center  mb-4 pb-1  appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2200">
-									<div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
-										<i class="icon-envelope icons position-relative top-1"></i>
-									</div>
-									<div class="feature-box-info">
-										<h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">WhatsApp</h4>
-										<p class="mb-0">
-                                            <a href="https://api.whatsapp.com/send?phone=593{{ marca.whatsapp }}&text=Hola%20GirekStudio%20{{ contacto.ciudad }}"
-                                                   target="_blank" rel="noopener"> &nbsp {{ marca.whatsapp }}
-                                            </a>
-                                        </p>
-									</div>
-								</div>
-
-                                <div class="feature-box align-items-center  mb-4 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2200">
-									<div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-quaternary top-0">
-										<i class="icon-envelope icons position-relative top-1"></i>
-									</div>
-									<div class="feature-box-info">
-										<h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">E-mail</h4>
-										<p class="mb-0"><a href="mailto:maile@example.com" class="custom-text-color-grey-1">{{ marca.correo }}</a></p>
-									</div>
-								</div>
-
-							</div>
-							<div class="col-md-10 col-lg-6 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="2000">
-								<div class="card border-0 custom-border-radius-1 box-shadow-1 p-2">
-									<div class="card-body p-4 z-index-1">
-										<h4 class="text-color-dark font-weight-semibold text-5 line-height-3 ls-0 mb-1 mt-2 pr-5 mr-5">Mandanos un mensaje</h4>
-
-										<form class="contact-form custom-form-style-1" action="" method="POST">
-											{% csrf_token %}
-                                            {% for message in messages %}
-                                            <div class="contact-form-success alert alert-success" role="alert">
-                                                <strong>¡Éxito!</strong> {{ message }}
-                                            </div>
-                                            {% endfor %}
-
-											<div class="contact-form-error alert alert-danger d-none mt-4">
-												<strong>Error!</strong> There was an error sending your message.
-												<span class="mail-error-message text-1 d-block"></span>
-											</div>
-											
-
-                                            <div class="form-row">
-												<div class="form-group col mb-3">
-													<input type="text" value="" data-msg-required="Ingrese un Tema" maxlength="100" class="form-control custom-bg-color-light-1 border-0" name="subject"  placeholder="Ingrese un Tema" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col mb-3">
-													<input type="email" value="" data-msg-required="Ingrese su correo electrónico" data-msg-email="Ingrese su correo electrónico" maxlength="100" class="form-control custom-bg-color-light-1 border-0" name="email"  placeholder="Su E-mail " required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col mb-3">
-													<input type="celular" value="" data-msg-required="Ingrese su número de celular." data-msg-email="Ingrese su número de celular." maxlength="100" class="form-control custom-bg-color-light-1 border-0" name="celular"  placeholder="Su Celular " required>
-												</div>
-											</div>
-                                            <div class="form-row">
-												<div class="form-group col mb-3">
-													<textarea maxlength="5000" data-msg-required="Ingrese su mensaje." rows="6" class="form-control custom-bg-color-light-1 border-0" name="message" id="message" placeholder="Su mensaje" requiid=""></textarea>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col mb-3">
-													<input type="submit" value="ENVIAR" class="btn btn-gradient btn-rounded font-weight-bold px-5 py-3 text-3" data-loading-text="Loading...">
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="section section-height-3 bg-color-quaternary position-relative border-0 m-0">
-                </section>
-			</div> 
+                        </div>
+                        <div class="col-md-16 col-lg-6 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="2000">
+                            <div class="border-0 custom-border-radius-1  p-2">
+                                
+                                    <div class="col-md-12 col-lg-12 offset-lg-1 pl-5 pb-lg-3 mb-md-4 mb-lg-5 ">
+                                        <br><br><br>
+                                        <img src="/media/{{ marca.imagen }}" class="img-fluid mb-4 pb-2" width="80%" height="80%" alt=""  >
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-height-3 bg-color-quaternary position-relative border-0 m-0">
+            </section>
+		</div> 
 {% endblock %}
 

@@ -47,7 +47,7 @@ class Producto(models.Model):
     stock=models.CharField(max_length=20, default='stock', choices=(("stock", "stock"), ("no_stock", "no_stock")))
     imagen=models.ImageField(upload_to='girekstudio/', null=True, blank=True)
     descripcion=models.TextField(max_length=500, null=True, blank=True)
-    caracteristicas=RichTextField(max_length=500, null=True, blank=True)
+    caracteristicas=models.TextField(max_length=500, null=True, blank=True)
     tamanos=models.TextField(max_length=500, null=True, blank=True)
     material=models.TextField(max_length=500, null=True, blank=True)
     precio=models.DecimalField(max_digits=5,decimal_places=2, null=True, blank=True)

@@ -176,7 +176,7 @@
                                                     <div class="col-lg-4 col-sm-4">
                                                         <div class="feature-box feature-box-style-2 ">
                                                             <div class="feature-box-icon">
-                                                                <i class="{{ serv.info_1_icono  }}  text-color-primary"></i>
+                                                                <i class="icon-{{ serv.info_1_icono }} icons  text-color-primary"></i>
                                                             </div>
                                                         </div>
                                                         <p class="custom-text-color-grey-1 text-2 mb-4 " style="text-align: center">{{ serv.info_1_titulo }}</p>
@@ -184,7 +184,7 @@
                                                     <div class="col-lg-4 col-sm-4">
                                                         <div class="feature-box feature-box-style-2 ">
                                                             <div class="feature-box-icon">
-                                                                <i class="{{ serv.info_2_icono }}text-color-primary"></i>
+                                                                <i class="icon-{{ serv.info_2_icono }} icons text-color-primary"></i>
                                                             </div>
                                                         </div>
                                                         <p class="custom-text-color-grey-1 text-2 mb-4 " style="text-align: center">{{ serv.info_2_titulo }}</p>
@@ -192,7 +192,7 @@
                                                     <div class="col-lg-4 col-sm-4">
                                                         <div class="feature-box feature-box-style-2 ">
                                                             <div class="feature-box-icon">
-                                                                <i class="{{ serv.info_3_icono }}text-color-primary"></i>
+                                                                <i class="icon-{{ serv.info_3_icono }} icons text-color-primary"></i>
                                                             </div>
                                                         </div>
                                                         <p class="custom-text-color-grey-1 text-2 mb-4 " style="text-align: center">{{ serv.info_3_titulo }}</p>
@@ -249,7 +249,7 @@
                                     <br>
                                     <div class="feature-box">
                                         <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
-                                            <i class="{{ editable.sec_1_sub_1_icono_1 }} position-relative left-1"></i>
+                                            <i class="icon-{{ editable.sec_1_sub_1_icono_1 }} icons position-relative left-1"></i>
                                         </div>
                                         <div class="feature-box-info mb-4 pb-3">
                                             <h3 class="word-rotator clip mb-2" style="text-transform:capitalize!important;">
@@ -266,7 +266,7 @@
 
                                     <div class="feature-box mb-4 pb-3">
                                         <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-tertiary top-0">
-                                            <i class="{{ editable.sec_1_sub_2_icono_1 }} position-relative top-2 right-1"></i>
+                                            <i class="icon-{{ editable.sec_1_sub_2_icono_1 }} icons position-relative top-2 right-1"></i>
                                         </div>
                                         <div class="feature-box-info">
                                                 <h3 class="word-rotator  is-full-widt mb-2" style="text-transform:capitalize!important;">
@@ -281,7 +281,7 @@
 
                                     <div class="feature-box mb-4 pb-3">
                                         <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-primary top-0">
-                                            <i class="{{ editable.sec_1_sub_3_icono_1 }} position-relative top-2 right-1"></i>
+                                            <i class="icon-{{ editable.sec_1_sub_3_icono_1 }} icons position-relative top-2 right-1"></i>
                                         </div>
                                         <div class="feature-box-info">
                                             <h3 class="word-rotator slide is-full-widt mb-2" style="text-transform:capitalize!important;">
@@ -715,31 +715,7 @@
                     <svg class="custom-section-curved-top-7" width="100%" height="400" xmlns="http://www.w3.org/2000/svg">
                         <path id="svg_2" fill="#171940" stroke="#000" stroke-width="0" d="m-16.68437,95.44889c0,0 5.33335,176.00075 660.00283,93.33373c327.33474,-41.33351 503.33549,15.3334 639.00274,35.66682c135.66725,20.33342 59.66691,9.66671 358.33487,28.33346c298.66795,18.66676 268.66829,-45.00088 382.66831,-112.00048c114.00002,-66.9996 718.31698,-59.48704 1221.66946,95.563c503.35248,155.05004 -221.83202,184.10564 -243.66935,197.60521c-21.83733,13.49958 -3008.67549,-19.83371 -3008.00467,-20.83335c-0.67082,0.99964 -30.00428,-232.33469 -10.00419,-317.66839z" class="svg-fill-color-quaternary"/>
                     </svg>
-                    {% for message in messages %}
-                    <div class="contact-form-success alert alert-success" role="alert">
-                        <strong>¡Éxito!</strong> {{ message }}
-                    </div>
-                    {% endfor %}
-                    <div class="col-md-12  col-lg-12 d-flex align-items-center justify-content-center " style="align-items: center">
-                        <p class="koho-semibold  text-center" style="color: #efefef!important; letter-spacing: 1px!important;">Suscribete para recibir información de servicios y descuentos especiales. </p>
-                    </div>
-                    <div class="col-md-12  col-lg-12 d-flex align-items-center justify-content-center " style="align-items: center">
-                        <br>
-                        <form action="" method="POST"
-                              class=" col-md-8  col-lg-8 mr-4 mb-12 mb-md-0  d-flex align-items-center justify-content-center">
-                            {% csrf_token %}
-                            <div class="input-group graphik-regular ">
-                                <input class="form-control form-control-sm bg-color-light"
-                                       placeholder="Ingresa aquí tu coreo electrónico"
-                                       name="email" id="email" type="text">
-                                <span>
-                                <button class=" koho-bold btn btn-primary text-color-dark"
-                                        type="submit"><strong>ENVIAR</strong>
-                                </button>
-                            </span>
-                            </div>
-                        </form>
-                    </div>
+                    
                     <div class="container mt-0 mb-4">
                         <div class="row py-5">
                             <div class="col-lg-3 mb-5 mb-lg-0">
@@ -782,7 +758,7 @@
                                 <h4 class="font-weight-bold text-color-light text-5 ls-0 pb-1 mb-2">Contacto</h4>
                                 <ul class="list list-unstyled">
                                     <li class="mb-1">
-                                        Email: <a href=mailto:"{{ marca.correo }}">{{ marca.correo }}</a>
+                                        Email: <a href="mailto: {{ marca.correo }}">{{ marca.correo }}</a>
                                     </li>
                                 </ul>
                                 <ul class="social-icons custom-social-icons-style-1">

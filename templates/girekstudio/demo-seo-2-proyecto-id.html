@@ -47,7 +47,6 @@
 
 {% endblock %}
 {% block principal %}
-    {% load contador %}
 			<div role="main" class="main">
 
                 <section class="page-header page-header-lg custom-bg-color-light-1 border-0 m-0">
@@ -163,7 +162,7 @@
 							<p>{{ proyecto.detalle }}</p>
 						</div>
 						<div class="col-md-5">
-							<h2 class="text-color-dark font-weight-normal text-5 mb-2"><strong class="font-weight-extra-bold">Detalle</strong>&nbsp; &nbsp;<i class="fa fa-eye text-1" > &nbsp; {% vistanumeropro proyecto.id %}</i></h2>
+							<h2 class="text-color-dark font-weight-normal text-5 mb-2"><strong class="font-weight-extra-bold">Detalle</strong></i></h2>
 
 							<ul class="list list-icons list-primary list-borders text-2">
 								<li><i class="fas fa-caret-right left-10"></i> <strong class="text-color-primary">Cliente:</strong> {{ proyecto.cliente }}</li>

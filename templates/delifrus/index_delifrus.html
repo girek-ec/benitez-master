@@ -92,13 +92,16 @@
                                 </div>
                             </div>
                             <ul class="header-social-icons social-icons social-icons-clean social-icons-medium ml-0 ml-xl-3 d-none d-md-inline-flex">
-                                <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank"
+                                <li class="social-icons-facebook"><a href="http://www.facebook.com/{{marca.facebook}}" target="_blank"
                                                                      title="Facebook"><i class="fab fa-facebook-f"></i></a>
                                 </li>
-                                <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank"
+                                <li class="social-icons-twitter"><a href="http://www.twitter.com/{{marca.twitter}}" target="_blank"
                                                                     title="Twitter"><i class="fab fa-twitter"></i></a>
                                 </li>
-                                <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank"
+                                <li class="social-icons-instagram"><a href="http://www.instagram.com/{{marca.instagram}}" target="_blank"
+                                    title="instagram"><i class="fab fa-instagram"></i></a>
+</li>
+                                <li class="social-icons-linkedin"><a href="http://www.linkedin.com/{{marca.linkedin}}" target="_blank"
                                                                      title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
                                 </li>
                             </ul>
@@ -410,9 +413,9 @@
             </svg>
             <div class="container mt-5 mt-lg-0">
                 <div class="row">
-                    <div class="col-lg-6 text-center pb-3 pb-lg-0 mb-5 mb-lg-0">
-                        <span class="d-block text-color-grey positive-ls-2 font-weight-normal custom-font-size-2 text-color-light opacity-6 mb-1">GET IN TOUCH</span>
-                        <h2 class="font-weight-bold text-color-light text-10 mb-5">Contact Us</h2>
+                    <div class="col-lg-6 text-center pb-3 pb-lg-0 mb-6 mb-lg-0">
+                    
+                        <h2 class="font-weight-bold text-color-light text-10 mb-5">Contáctenos</h2>
                         <div class="row">
                             <div class="col-lg-6">
 
@@ -424,9 +427,8 @@
                                                  src="/static/img/demos/startup-agency/icons/icon-location.svg" alt=""
                                                  data-icon
                                                  data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mb-3'}"/>
-                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Address</h4>
-                                            <p class="text-4 text-color-light opacity-5 font-weight-light mb-0">123
-                                                Street Name, City, England</p>
+                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Dirección</h4>
+                                            <p class="text-4 text-color-light opacity-5 font-weight-light mb-0">{{marca.direccion}} </p>
                                         </div>
                                     </div>
                                 </div>
@@ -439,9 +441,9 @@
                                                  data-icon
                                                  data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary mb-3'}"/>
                                             <h4 class="font-weight-bold text-color-light text-5 mb-0">E-mail
-                                                Address</h4>
-                                            <a href="mailto:email@domain.com"
-                                               class="text-4 text-color-light text-color-hover-primary opacity-5 font-weight-light mb-0">porto@portotheme.com</a>
+                                               </h4>
+                                            <a href="mailto: {{ marca.correo }}"
+                                               class="text-4 text-color-light text-color-hover-primary opacity-5 font-weight-light mb-0">{{marca.correo}} </a>
                                         </div>
                                     </div>
                                 </div>
@@ -457,10 +459,9 @@
                                                  src="/static/img/demos/startup-agency/icons/icon-phone.svg" alt=""
                                                  data-icon
                                                  data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-secondary mb-3'}"/>
-                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Phone Number</h4>
-                                            <a href="tel:+1234567890"
-                                               class="text-4 text-color-light text-color-hover-primary opacity-5 font-weight-light mb-0">(800)
-                                                123-4567</a>
+                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Celular</h4>
+                                            <a href="tel:{{marca.celular}}"
+                                               class="text-4 text-color-light text-color-hover-primary opacity-5 font-weight-light mb-0">{{marca.celular}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -472,10 +473,8 @@
                                                  src="/static/img/demos/startup-agency/icons/icon-calendar.svg" alt=""
                                                  data-icon
                                                  data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary mb-3'}"/>
-                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Working
-                                                Days/Hours</h4>
-                                            <p class="text-4 text-color-light opacity-5 font-weight-light mb-0">Mon -
-                                                Sun / 9:00AM - 8:00PM</p>
+                                            <h4 class="font-weight-bold text-color-light text-5 mb-0">Días/Horas Laborables</h4>
+                                            <p class="text-4 text-color-light opacity-5 font-weight-light mb-0">Lun - Dom  9:00AM - 8:00PM</p>
                                         </div>
                                     </div>
                                 </div>
@@ -483,55 +482,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-lg-5">
-                        <span class="d-block text-color-grey positive-ls-2 font-weight-normal custom-font-size-2 text-color-light opacity-6 text-center mb-1">CONTACT FORM</span>
-                        <h2 class="font-weight-bold text-10 text-center pb-3 mb-4">Send a Message</h2>
+                    <div class="col-lg-6 pl-lg-6">
+                        
                         <div class="row">
-                            <div class="col">
-
-                                <form class="contact-form custom-form-style-1 form-errors-light"
-                                      action="php/contact-form.php" method="POST">
-                                    <div class="contact-form-success alert alert-success d-none mt-4">
-                                        <strong>Success!</strong> Your message has been sent to us.
-                                    </div>
-
-                                    <div class="contact-form-error alert alert-danger d-none mt-4">
-                                        <strong>Error!</strong> There was an error sending your message.
-                                        <span class="mail-error-message text-1 d-block"></span>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <input type="text" value="" data-msg-required="Please enter your name."
-                                                   maxlength="100" class="form-control" name="name"
-                                                   placeholder="Your Name" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <input type="email" value=""
-                                                   data-msg-required="Please enter your email address."
-                                                   data-msg-email="Please enter a valid email address." maxlength="100"
-                                                   class="form-control" name="email" placeholder="Email Address"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col">
-                                            <textarea maxlength="5000" data-msg-required="Please enter your message."
-                                                      rows="6" class="form-control" name="message"
-                                                      placeholder="Your Message" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col text-center">
-                                            <input type="submit" value="Send Message"
-                                                   class="btn btn-gradient text-3 font-weight-bold px-5 py-3"
-                                                   data-loading-text="Loading...">
-                                        </div>
-                                    </div>
-                                </form>
-
+                            <div class="thumb-info-wrapper">
+                                <br><br><br><br><br> <a href="/delifrus/">
+                                    <img src="/media/{{ marca.logo_horizontal }}"   class="img-fluid" alt=""/></a>
                             </div>
                         </div>
                     </div>

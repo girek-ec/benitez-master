@@ -74,7 +74,7 @@ def serviciosdescripcion_girekstudio(request, n):
         'marca': Marca.objects.all().first(),
         'clientes': Cliente.objects.all(),
         'servicio' : Servicio.objects.get(id=n),
-        'imag_video_serv' : Imag_Video_Servicio.objects.filter(servicio__titulo=servicios_girekstudio()),
+        'imag_video_serv' : Imag_Video_Servicio.objects.filter(servicio__titulo=servicios_girekstudio),
         'planes' : Planes.objects.filter(categoria_id=n),
         'contacto_empresa': Contacto_empresa.objects.all(),
     }
