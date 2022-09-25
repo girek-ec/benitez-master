@@ -49,7 +49,7 @@ class Marca(models.Model):
     celular2 = models.CharField(max_length=100, null=True, blank=True)
     correo = models.EmailField(null=True, blank=True)
     direccion = models.CharField(max_length=100, null=True, blank=True)
-    facebook = models.CharField(max_length=100, null=True, blank=True)
+    facebook= models.CharField(max_length=100, null=True, blank=True) 
     instagram = models.CharField(max_length=100, null=True, blank=True)
     tiktok = models.CharField(max_length=100, null=True, blank=True)
     twitter = models.CharField(max_length=100, null=True, blank=True)
