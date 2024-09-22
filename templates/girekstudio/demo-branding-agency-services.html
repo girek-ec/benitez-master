@@ -1,0 +1,129 @@
+﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+{% block principal %}
+        <!-- start banner -->
+        <section class="p-0 top-space-margin position-relative overflow-hidden">
+            <div class="container-fluid p-0 h-100 position-relative">
+                <div class="row g-0">
+                    <div class="col-xl-4 col-lg-5 d-flex justify-content-center align-items-center ps-10 xxl-ps-6 xl-ps-4 md-ps-4 sm-ps-0 position-relative order-2 order-lg-1" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <div class="vertical-title-center align-items-center justify-content-center flex-shrink-0 w-75px sm-w-50px">
+                            <h1 class="title fs-15 alt-font text-dark-gray fw-700 text-uppercase ls-1px text-uppercase d-flex w-auto align-items-center m-0" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["our services"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'>{{ editable.sec_2_titulo_1 }}</h1>
+                        </div>
+                        <div class="border-start border-color-extra-medium-gray ps-40px sm-ps-20px position-relative z-index-9">
+                            <h2 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-20 md-me-0 sm-mb-0 ls-minus-3px">{{ editable.sec_2_subti_1 }}</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7 position-relative one-half-screen order-1 order-lg-2 md-mb-50px">
+                        <div class="overflow-hidden position-relative">
+                            <div class="w-100" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
+                                <img src="/media/{{ editable.sec_2_imagen_1 }}" alt="" class="w-100 liquid-parallax" data-parallax-liquid="true" data-parallax-position="top" data-parallax-scale="1.05">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end banner -->
+
+
+        <!-- start section -->
+        <section>
+            <div class="container">
+                <div class="row mb-6 sm-mb-50px">
+                    <div class="col-md-12 text-center text-md-start" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px" data-bottom-top="transform: translate3d(-50px, 0px, 0px);" data-top-bottom="transform: translate3d(50px, 0px, 0px);">Digital solution</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row align-items-center align-items-lg-end" data-bottom-top="transform: translate3d(-30px, 0px, 0px);" data-top-bottom="transform: translate3d(30px, 0px, 0px);">
+                            <div class="col-lg-3 col-md-4 text-md-end text-center md-mt-30px md-mb-20px" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <div class="position-relative">
+                                    <img src="/media/{{ editable.sec_2_imagen_rota }}" class="animation-rotation position-relative z-index-2" alt="">
+                                    <div class="absolute-middle-center w-100 z-index-1"><img src="/media/{{ editable.sec_2_imag_rota_ico }}" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-6 text-center text-md-start" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px">agency</div>
+                            </div>
+                            <div class="col-lg-4 last-paragraph-no-margin md-mt-30px" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <p class="w-95 md-w-80 mx-auto text-center text-lg-start sm-w-100">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="separator-line-1px bg-extra-medium-gray"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        {% for servicio in servicios %}
+         <!-- start section -->
+        <section class="pt-0">
+            <div class="container">
+                <div class="row mb-8">
+                    <div class="col-lg-2 col-md-2 text-md-end">
+                        <span class="fs-130 xl-fs-100 md-fs-80 lh-100 md-lh-80 alt-font fw-700 text-sliding-line bg-extra-medium-gray">{{ servicio.orden }}</span>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-8 md-mt-15px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                         <a href="/girekstudio/servicios/{{ servicio.id }}" class="h-35px" alt="{{ servicio.titulo}}">
+                            <h3 class="alt-font fw-600 mb-0 text-dark-gray ls-minus-2px">{{ servicio.titulo}}</h3>
+                         </a>
+                    </div>
+                    <div class="col-lg-6 offset-xl-1 md-mt-20px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <p>{{ servicio.sub_titulo }}</p>
+                        <div class="row">
+                            <div class="col-xl-5 col-md-6">
+                                <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                                    {% for listservicio in listservicios %}
+                                        {% if listservicio.servicio == servicio %}
+                                            {% if listservicio.primera_colu %}
+                                                <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-xl-5 col-md-6">
+                                <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+
+                                   {% for listservicio in listservicios %}
+                                        {% if listservicio.servicio == servicio %}
+                                            {% if listservicio.Segunda_colu %}
+                                                <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
+                                            {% endif %}
+                                            {% else %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    	<div class=" {% if servicio.img_direc %} col-md-8  {% else %}col-md-4 {% endif %}  sm-mb-30px" data-bottom-top="transform: translate3d(0, -30px, 0px);" data-top-bottom="transform: translate3d(0, 30px, 0px);">
+                            <div class="position-relative" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
+                                {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_1}}" alt="" > {% else %}   <img src="/media/{{ servicio.imag_serv_2}}" alt="" >  {% endif %}
+                            </div>
+                        </div>
+                        <div class="{% if servicio.img_direc %} col-md-4  {% else %} col-md-8  {% endif %} " data-bottom-top="transform: translate3d(0, 30px, 0px);" data-top-bottom="transform: translate3d(0, -30px, 0px);">
+                            <div class="position-relative" data-anime='{ "effect": "slide", "direction": "rl", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
+                                {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_2}}" alt="" > {% else %}  <img src="/media/{{ servicio.imag_serv_1}}" alt="" >   {% endif %}
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        {% endfor %}
+        <!-- start section -->
+<section class="big-section position-relative">
+    <div class="background-position-center-top background-no-repeat position-absolute h-100 w-100 left-0px top-0px"
+         style="background-image: url('/media/{{ editable.sec_1_imagen_4 }}')"></div>
+
+</section>
+<!-- end section -->
+ {% endblock %}

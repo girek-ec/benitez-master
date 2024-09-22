@@ -1,0 +1,96 @@
+﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+{% block metas %}
+<!-- metas pagweb -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="author" content="GirekStudio">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta property="og:title" content="GirekStudio - Agencia de Diseño- {{proyecto.nombreproyecto}}"  />
+<meta property="og:description" content="{{proyecto.detalle_2}}" />
+<meta property="og:url" content="https://benitez-ec/girekstudio/portafolio/{{proyecto.id}}" />
+<meta property="og:image" content="/media/{{proyecto.imagen}}" />
+<meta property="og:type" content="website" />
+{% endblock %}
+{% block principal %}
+        <!-- start section -->
+        <section class="cover-background pt-6 lg-pt-15 md-pt-5 ipad-top-space-margin" style="background-image: url(/static/static_girekstudio/demo-elder-care-08.png )">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-12 col-lg-5 col-md-6 sm-mb-40px sm-mt-30px text-center text-md-start">
+                        <span class="alt-font fs-90 lh-80 d-block text-dark-gray fw-700 ls-minus-3px mb-15px w-80 lg-w-90">{{proyecto.nombreproyecto}}</span>
+                        <p class="w-75 lg-w-100">{{proyecto.detalle}}</p>
+                        <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20servicio%20de%20diseño  GirekStudio" class="btn btn-dark-gray btn-large btn-switch-text btn-box-shadow">
+                            <span>
+                                <span class="btn-double-text" data-text="whatsapp">escribenos</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-7 col-md-6">
+                        <img class="border-radius-8px" src="/media/{{proyecto.imagen}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+         <!-- start section -->
+         <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 text-center text-md-start last-paragraph-no-margin sm-mb-30px">
+                        <h5 class="alt-font fw-600 text-dark-gray mb-15px ls-minus-1px">Descripción del proyecto </h5>
+                        <p>{{proyecto.detalle_2}}</p>
+                    </div>
+                    <div class="col-lg-5 col-md-6 offset-lg-1">
+                        <div class="row row-cols-2 align-items-center text-center text-md-start">
+                            <div class="col mb-30px">
+                                <span class="lh-20 d-block">Publicado</span>
+                                <span class="alt-font fw-500 text-dark-gray">{{proyecto.fecha}}</span>
+                            </div>
+                            <div class="col mb-30px">
+                                <span class="lh-20 d-block">Servicios</span>
+                                <span class="alt-font fw-500 text-dark-gray">{{proyecto.portafolio.portafolio}}</span>
+                            </div>
+                            <div class="col">
+                                <span class="lh-20 d-block">Cliente</span>
+                                <span class="alt-font fw-500 text-dark-gray">{{proyecto.cliente}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+      
+        <!-- start section -->
+        <section class="ps-8 pe-8 xxl-ps-4 xxl-pe-4 xl-ps-2 xl-pe-2 sm-px-0 py-0">
+            <div class="container-fluid">
+              
+                <div class="row mb-30px">
+                    {% for imagenespro in imagenesproyecto  %}
+                        {% if imagenespro.imagen_cuadra %}
+                            <div class="col-sm-6 xs-mb-30px">
+                                <img class="w-100 border-radius-8px" src="/media/{{imagenespro.galeriaproyecto}}" alt="">
+                            </div>
+                        {% else %} 
+                        
+                        <div class="row mb-30px ">
+                            {% if imagenespro.imagen_rectangu %}
+                                <div class="col-12 ">
+                                    <br>
+                                    <img class="w-100 border-radius-8px" src="/media/{{imagenespro.galeriaproyecto}}" alt="">
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            
+            </div>
+        </section>
+        <!-- end section -->
+
+
+       
+{% endblock %}

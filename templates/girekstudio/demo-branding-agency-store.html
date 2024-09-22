@@ -1,0 +1,76 @@
+﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+{% block principal %}
+        
+
+ <!-- start section -->
+ <section class=" half-section bg-gradient-very-light-gray">
+    <div class="container">
+        <div class="row align-items-center justify-content-center" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
+            <div class="col-12 col-xl-8 col-lg-10 text-center position-relative page-title-extra-large">
+                <h1 class="alt-font fw-600 text-dark-gray mb-10px">Tienda - GirekStudio</h1> 
+            </div>
+            <div class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center">
+                <ul>
+                    <li><a href="/girekstudio/">Inicio</a></li> 
+                    <li>Tienda</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+<!-- start section -->
+<section class="pt-0 ps-6 pe-6 lg-ps-2 lg-pe-2 sm-ps-0 sm-pe-0">
+    <div class="container-fluid">
+        <div class="row flex-row-reverse"> 
+            <div class="col-xxl-10 col-lg-9 ps-5 md-ps-15px md-mb-60px">
+                <ul class="shop-modern shop-wrapper grid-loading grid grid-4col xl-grid-3col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <li class="grid-sizer"></li>
+                        {% for  producto in productos %}
+                            <!-- start shop item -->
+                            <li class="grid-item">
+                                <div class="shop-box mb-10px">
+                                    <div class="shop-image mb-20px">
+                                        <a href="/girekstudio/producto/{{producto.id}}">
+                                            <img src="/media/{{producto.imagen}}" alt=""> 
+                                            <span class="lable new">New</span>
+                                            <div class="shop-overlay bg-gradient-gray-light-dark-transparent"></div>
+                                        </a>
+                                        <div class="shop-buttons-wrap">
+                                            <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20producto%20 -  {{producto.nombre_producto}} -GirekStudio www.benitez-ec/girekstudio/producto/{{producto.id}} " class="alt-font btn btn-small btn-box-shadow btn-white btn-round-edge left-icon add-to-cart">
+                                                <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Comprar</span>
+                                            </a>
+                                        </div>
+                        
+                                    </div>
+                                    <div class="shop-footer text-center">
+                                        <a href="/girekstudio/producto/{{producto.id}}" class="alt-font text-dark-gray fs-19 fw-500">{{producto.nombre_producto}}</a>
+                                        <div class="price lh-22 fs-16">${{producto.precio}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- end shop item -->
+                            {% endfor %}
+                     
+                </ul>
+            </div>
+            <div class="col-xxl-2 col-lg-3 shop-sidebar" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="mb-30px">
+                    <span class="alt-font fw-500 fs-19 text-dark-gray d-block mb-10px">Filtrar por categorías</span>
+                    <ul class="shop-filter category-filter fs-16">
+                        {% for categoria in categorias %}
+                        <li><a href="/girekstudio/tienda/{{ categoria.id }}"><span class="product-cb product-category-cb"></span>{{categoria.clasificacion_producto}}</a>
+                        {% endfor %}
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+
+
+
+ {% endblock %}

@@ -1,0 +1,525 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>GirekStudio - Agencia de Diseño</title>
+    {% block metas %}
+        <!-- metas pagweb -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="author" content="GirekStudio">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <meta property="og:title" content="GirekStudio - Agencia de Diseño" />
+        <meta property="og:description" content="{{ editable.sec_2_detalle_4 }}" />
+        <meta property="og:url" content="https://benitez-ec/girekstudio/" />
+        <meta property="og:image" content="/media/{{ editable.sec_1_imagen_01 }}" />
+        <meta property="og:type" content="website" />
+    {% endblock %}
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="/media/{{ marca.favicon }}">
+    <link rel="apple-touch-icon" href="/media/{{ marca.favicon }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="/media/{{ marca.favicon }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="/media/{{ marca.favicon }}">
+    <!-- google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" href="/static/static_girekstudio/css/vendors.min.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/css/icon.min.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/css/style.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/css/responsive.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/demos/branding-agency/branding-agency.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/demos/fashion-store/fashion-store.css" />
+</head>
+<body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
+<!-- start header -->
+<header>
+    <!-- start navigation -->
+    <nav class="navbar navbar-expand-lg header-light bg-white header-reverse glass-effect">
+        <div class="container-fluid">
+            <div class="col-auto col-lg-2 me-lg-0 me-auto">
+                <a class="navbar-brand" href="/girekstudio/">
+                    <img src="/media/{{ marca.logo }}" data-at2x="/media/{{ marca.logo }}"
+                         alt="" class="default-logo">
+                    <img src="/media/{{ marca.logo }}" data-at2x="/media/{{ marca.logo }}"
+                         alt="" class="alt-logo">
+                    <img src="/media/{{ marca.logo }}" data-at2x="/media/{{ marca.logo }}"
+                         alt="" class="mobile-logo">
+                </a>
+            </div>
+            <div class="col-auto ms-auto md-ms-0 menu-order position-static">
+                <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav alt-font">
+                        <li class="nav-item"><a href="/girekstudio/" class="nav-link">Inicio</a></li>
+                        <li class="nav-item"><a href="/girekstudio/estudio/" class="nav-link">Agencia</a></li>
+                        <li class="nav-item dropdown dropdown-with-icon-style02">
+                            <a href="/girekstudio/servicios/" class="nav-link">Servicios</a>
+                            <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% for servicio in servicios %}
+                                    <li>
+                                        <a href="/girekstudio/servicios/{{ servicio.id }}"><i class="bi {{ servicio.icono }} text-dark-gray"></i>{{ servicio.titulo }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/girekstudio/portafolio/" class="nav-link">Portafolio</a></li>
+                        <li class="nav-item"><a href="/girekstudio/tienda/" class="nav-link">Tienda</a></li>
+                        <li class="nav-item"><a href="/girekstudio/contacto/" class="nav-link">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-auto text-end d-none d-sm-flex">
+                <div class="header-icon">
+                    <div class="header-button">
+                        <a href="mailto:{{ Contacto_empresa.correo }}" class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
+                            <span>
+                                <span><i class="fa-regular fa-envelope"></i></span>
+                                <span class="btn-double-text" data-text="Send a message">Escribir</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+</header>
+<!-- end header -->
+ {% block principal %}
+<!-- start banner -->
+<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto">
+    <div class="container-fluid p-0 h-100 position-relative">
+        <div class="row h-100 g-0">
+            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
+                <div class="vertical-title-center align-items-center w-75px justify-content-center position-absolute h-auto d-none d-md-flex">
+                    <div class="title fs-16 alt-font text-dark-gray fw-700 text-uppercase ls-05px text-uppercase"
+                         data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["{{ editable.sec_1_subsubti_01 }}"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></div>
+                </div>
+                <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0"
+                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 ls-minus-4px sm-ls-minus-2px md-me-0">{{ editable.sec_1_titulo_01 }}</h1>
+                    <p class="w-75 mb-35px lg-w-90 sm-w-100">{{ editable.sec_1_subti_01 }}</p>
+                    <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20servicio%20de%20diseño  GirekStudio  " class="btn btn-extra-large btn-gradient-fuel-yellow-blue fw-400">Chat whatsapp</a>
+                    
+
+
+
+
+
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px">
+                <div class="swiper h-100 banner-slider magic-cursor drag-cursor"
+                     data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-number-line-pagination", "clickable": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 4000, "stopOnLastSlide": true, "disableOnInteraction": false },"keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "fade" }'
+                     data-swiper-number-pagination-progress="true">
+                    <div class="swiper-wrapper">
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
+                                 style="background-image:url('/media/{{ editable.sec_1_imagen_01 }}');"></div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
+                                 style="background-image:url('/media/{{ editable.sec_1_imagen_02 }}');"></div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
+                                 style="background-image:url('/media/{{ editable.sec_1_imagen_03 }}');"></div>
+                        </div>
+                        <!-- end slider item -->
+                    </div>
+                    <!-- start slider pagination -->
+                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets d-block d-sm-none"></div>
+                    <!-- end slider pagination -->
+                    <!-- start slider navigation -->
+                    <!-- <div class="slider-one-slide-prev-1 icon-very-small text-white swiper-button-prev slider-navigation-style-06 d-none d-sm-inline-block"><i class="line-icon-Arrow-OutLeft icon-extra-large"></i></div>
+                        <div class="slider-one-slide-next-1 icon-very-small text-white swiper-button-next slider-navigation-style-06 d-none d-sm-inline-block"><i class="line-icon-Arrow-OutRight icon-extra-large"></i></div> -->
+                    <!-- end slider navigation -->
+                </div>
+                <!-- start slider pagination -->
+                <div class="swiper-pagination-wrapper d-none d-lg-flex align-items-center justify-content-center position-absolute bottom-40px md-bottom-30px sm-bottom-20px left-minus-45 md-left-30px sm-left-20px z-index-9">
+                    <div class="number-prev fs-14 fw-600 text-dark-gray"></div>
+                    <div class="swiper-pagination-progress bg-extra-medium-gray">
+                        <span class="swiper-progress"></span>
+                    </div>
+                    <div class="number-next fs-14 fw-600 text-dark-gray"></div>
+                </div>
+                <!-- end slider pagination -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end banner -->
+
+<section class="pt-0 border-top border-color-extra-medium-gray mt-6 md-mt-0 sm-border-top-0">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-0">
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- start section -->
+<section class="pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 position-relative">
+                <div class="row align-items-center position-relative md-mb-15"
+                     data-anime='{ "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <div class="col-md-5 sm-mb-30px" data-bottom-top="transform: translateY(50px)"
+                         data-top-bottom="transform: translateY(-50px)">
+                        <img class="w-100" src="/media/{{ editable.sec_1_imagen_1 }}" alt=""/>
+                    </div>
+                    <div class="col-lg-7 col-md-7 sm-mb-30px text-end" data-bottom-top="transform: translateY(-30px)"
+                         data-top-bottom="transform: translateY(30px)">
+                        <img src="/media/{{ editable.sec_1_imagen_2 }}" alt=""
+                             class="box-shadow-quadruple-large md-w-100"/>
+                    </div>
+                    <div class="w-50 sm-w-100 overflow-hidden position-absolute sm-position-relative left-140px bottom-minus-200px sm-bottom-0px sm-left-0px p-0 sm-ps-15px sm-pe-15px"
+                         data-shadow-animation="true" data-animation-delay="100"
+                         data-bottom-top="transform: translateY(20px)" data-top-bottom="transform: translateY(-20px)">
+                        <img src="/media/{{ editable.sec_1_imagen_3 }}" alt=""
+                             class="box-shadow-quadruple-large w-100"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 offset-xl-1 md-mt-20 sm-mt-0"
+                 data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="mb-10px">
+                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ editable.sec_1_subti_1 }}</span>
+                </div>
+                <h4 class="text-dark-gray alt-font fw-600 ls-minus-2px mb-20px">{{ editable.sec_1_titulo_1 }}</h4>
+                <p class="w-90 md-w-100 mb-35px sm-mb-20px">{{ editable.sec_1_detalle_1 }}</p>
+                <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20servicio%20de%20diseño  GirekStudio "
+                   class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow border-1 left-icon me-15px sm-mb-15px sm-mt-15px">
+                            <span>
+                                <span><i class="feather icon-feather-edit"></i></span>
+                                <span class="btn-double-text" data-text="  &nbsp; &nbsp; Whatsapp">Contactar</span>
+                            </span>
+                </a>
+                <a href="/girekstudio/servicios/"
+                   class="btn btn-large btn-transparent-light-gray border-1 btn-switch-text left-icon sm-mb-15px sm-mt-15px">
+                            <span>
+                                <span><i class="feather icon-feather-briefcase"></i></span>
+                                <span class="btn-double-text" data-text="&nbsp; Ver">Servicios</span>
+                            </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section -->
+<section class="overflow-hidden position-relative pt-0 lg-pb-0">
+    <div class="container-fluid">
+        <div class="row position-relative">
+            <div class="col swiper swiper-width-auto feather-shadow text-center"
+                 data-slider-options='{ "slidesPerView": "auto", "spaceBetween":40, "speed": 20000, "loop": true, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false, "reverseDirection": true }, "effect": "slide" }'>
+                <div class="swiper-wrapper pb-30px marquee-slide">
+                    <!-- start client item -->
+                    <div class="swiper-slide">
+                        <div class="fs-130 md-fs-90 sm-fs-70 alt-font text-dark-gray fw-600 ls-minus-6px sm-ls-minus-2px word-break-normal">{{ editable.frase }}
+                            <span class="ms-20px">-</span></div>
+                    </div>
+                    <!-- end client item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+
+<!-- start section -->
+<section class="stack-box py-0 z-index-99">
+    <div class="stack-box-contain">
+        {% for servicio in servicios %}
+            <!-- start stack item -->
+            <div class="stack-item stack-item-0{{ servicio.orden }} {% if servicio.white %} bg-white {% else %} bg-linen{% endif %}  lg-pt-8 lg-pb-8 md-pb-0">
+                <div class="stack-item-wrapper">
+                    <div class="container-fluid">
+                        <div class="row align-items-center full-screen md-h-auto">
+                            <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imagen }}')">
+                                <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
+                                <div class="position-absolute right-0px bottom-minus-1px">
+                                    <div class="vertical-title-center">
+                                        <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray bg-white pt-30px pb-30px ps-10px pe-10px">
+                                            <span class="d-inline-block">{{ servicio.titulo}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px position-relative align-self-center text-md-start text-center">
+                                <div class="mb-15px">
+                                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ servicio.titulo}}</span>
+                                </div>
+                                <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">{{ servicio.sub_titulo}}</h1>
+                                <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
+                                <a href="/girekstudio/servicios/{{ servicio.id }}" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Ir">Explorar</span>
+                                        <span><i class="feather icon-feather-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end stack item -->
+        {% endfor %}
+
+    </div>
+</section>
+<!-- end section -->
+<!-- start section -->
+<section class="pb-0">
+    <div class="container">
+        <div class="row mb-6">
+            <div class="col-xl-5 col-md-6"
+                 data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="mb-10px">
+                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ editable.sec_1_titulo_2 }}</span>
+                </div>
+                <h4 class="text-dark-gray alt-font fw-600 w-90 ls-minus-2px">{{ editable.sec_1_subti_2 }}</h4>
+            </div>
+            <div class="offset-xl-1 col-xl-5 col-md-6">
+                <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus"
+                     data-inactive-icon="icon-feather-plus"
+                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <!-- start accordion item -->
+                    <div class="accordion-item active-accordion">
+                        <div class="accordion-header border-bottom border-color-dark-gray">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-01"
+                               aria-expanded="true" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray">
+                                    <i class="feather icon-feather-minus"></i><span class="fw-600 alt-font fs-18">{{ editable.sec_1_titulo_3}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-01" class="accordion-collapse collapse show"
+                             data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-dark-gray">
+                                <p>{{ editable.sec_1_subti_3}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-dark-gray">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-02"
+                               aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray">
+                                    <i class="feather icon-feather-plus"></i><span class="fw-600 alt-font fs-18">{{ editable.sec_1_titulo_4}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-02" class="accordion-collapse collapse"
+                             data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-dark-gray">
+                                <p>{{ editable.sec_1_subti_4}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-03"
+                               aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray">
+                                    <i class="feather icon-feather-plus"></i><span class="fw-600 alt-font fs-18">{{ editable.sec_1_titulo_5}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-03" class="accordion-collapse collapse"
+                             data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent">
+                                <p>{{ editable.sec_1_subti_5}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+     <!-- start section -->
+        <section>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-sm-2" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateX":[30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    {% for equipo in equipos %}
+                    	<!-- start team member item -->
+                            <div class="col team-style-10 md-mb-30px">
+                                <figure class="mb-0 position-relative overflow-hidden">
+                                    <img src="/media/{{ equipo.foto }}" alt="" />
+                                    <img src="/media/{{ equipo.foto_2 }}" class="hover-switch-image" alt="" />
+                                    <figcaption class="w-100 h-100 d-flex flex-wrap">
+
+                                        <div class="team-member-strip w-100 mt-auto d-flex align-items-center pt-15px pb-15px ps-30px pe-30px bg-white">
+                                            <span class="team-member-name fw-600 alt-font text-dark-gray fs-18 ls-minus-05px">{{ equipo.nombre }}</span>
+                                            <span class="member-designation fs-15 lh-20 ms-auto alt-font flex-shrink-0">{{ equipo.cargo }}</span>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        <!-- end team member item -->
+                    {% endfor %}
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-center" data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <i class="bi bi-envelope text-dark-gray d-inline-block align-middle icon-extra-medium me-5px"></i>
+                        <div class="fs-18 text-dark-gray d-inline-block align-middle fw-500"> Ahorre tiempo y esfuerzo valiosos que dedica a buscar una solución.<a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20servicio%20de%20diseño  GirekStudio " class="text-dark-gray text-decoration-line-bottom fw-600"> Contáctenos ahora</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+
+
+
+<!-- start section -->
+<section class="big-section position-relative">
+    <div class="background-position-center-top background-no-repeat position-absolute h-100 w-100 left-0px top-0px"
+         style="background-image: url('/media/{{ editable.sec_1_imagen_4 }}')">
+    </div>
+    <div class="container position-relative">
+        <div class="row justify-content-center mb-8"
+             data-anime='{ "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="col-xl-4 col-md-5">
+                <h2 class="alt-font text-dark-gray mb-30px fw-600 ls-minus-3px">{{ editable.sec_1_titulo_6  }}<i
+                        class="bi bi-heart-fill d-inline-block align-top ms-10px animation-zoom icon-very-medium text-red"></i>
+                </h2>
+                <div class="d-flex md-mb-25px">
+                    <!-- start slider navigation -->
+                    <div class="slider-one-slide-prev-1 text-dark-gray swiper-button-prev slider-navigation-style-04 border border-1 border-color-extra-medium-gray bg-white">
+                        <i class="fa-solid fa-arrow-left"></i></div>
+                    <div class="slider-one-slide-next-1 text-dark-gray swiper-button-next slider-navigation-style-04 border border-1 border-color-extra-medium-gray bg-white">
+                        <i class="fa-solid fa-arrow-right"></i></div>
+                    <!-- end slider navigation -->
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-7 overflow-hidden offset-xl-2">
+                <div class="swiper"
+                     data-slider-options='{ "slidesPerView": 1, "spaceBetween": 40, "loop": true, "autoplay": { "delay": 8000, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "992": { "slidesPerView": 1 }, "768": { "slidesPerView":1 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                    <div class="swiper-wrapper">
+                        {% for frase in frases %}
+                        	<!-- start review item -->
+                        <div class="swiper-slide">
+                            <h5 class="text-dark-gray mb-15px w-95 xl-w-100 lh-40 ls-minus-1px alt-font">{{ frase.cita }}</h5>
+                            <span class="text-gradient-base-color fw-700 text-uppercase ls-1px">@{{ frase.autor}}</span>
+                        </div>
+                        <!-- end review item -->
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 clients-style-06 justify-content-center"
+             data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "skewX":[20, 0], "duration": 300, "delay":0, "staggervalue": 200, "easing": "easeOutQuad" }'>
+            {% for cliente in clientes %}
+                    <!-- start client item -->
+                    <div class="col client-box text-center md-mb-35px">
+                        <a href=""><img src="/media/{{ cliente.logo }}" class="h-35px" alt=""></a>
+                    </div>
+                    <!-- end client item -->
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+ {% endblock %}
+<!-- start footer -->
+<footer class="bg-charcoal-blue pb-4 sm-pb-50px" style="background-image: url('/media/{{ editable.sec_1_imagen_4}}')">
+    <div class="container">
+        <div class="row mb-6">
+            <div class="col-lg-5 col-md-6 sm-mb-30px order-2 order-md-1">
+                <h3 class="text-white fw-500 alt-font mb-50px ls-minus-1px sm-mb-30px">{{ editable.sec_1_titulo_7 }}</h3>
+                <div class="row">
+                    <div class="col-lg-5 col-6">
+                        <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Llama a nuestra oficina</span>
+                        <a href="tel:{{ contacto_empresa.celular}}">{{ contacto_empresa.celular}}</a>
+                    </div>
+                    <div class="col-lg-5 col-6">
+                        <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Enviar un mensaje</span>
+                        <a class="alt-font fs-14" href="mailto:{{ contacto_empresa.correo}}">{{ contacto_empresa.correo}}</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-2 offset-lg-1 col-6 order-3 order-md-2">
+                <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Agencia</span>
+                <ul>
+                    <li><a href="/girekstudio/">Inicio</a></li>
+                    <li><a href="/girekstudio/estudio/">Agencia</a></li>
+                    <li><a href="/girekstudio/servicios/">Servicios</a></li>
+                    <li><a href="/girekstudio/portafolio/">Portafolio</a></li>
+                    <li><a href="/girekstudio/contacto/">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-6 order-3 order-md-3">
+                <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Síguenos</span>
+                <ul>
+                    <li><a href="https://www.pinterest.com/{{ contacto_empresa.pinterest }}" target="_blank">Pinterest</a></li>
+                    <li><a href="http://www.twitter.com/{{ contacto_empresa.twitter }}" target="_blank">Twitter</a></li>
+                    <li><a href="http://www.facebook.com/{{ contacto_empresa.facebook }}" target="_blank">Facebook</a></li>
+                    <li><a href="http://www.instagram.com/{{ contacto_empresa.instagram }}" target="_blank">Instagram</a></li>
+                    <li><a href="http://www.youtube.com/{{ contacto_empresa.youtube }}" target="_blank">Youtube</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
+                <a href="/girekstudio/" class="footer-logo"><img
+                        src="/media/{{ marca.logo_blanco }}"
+                        data-at2x="/media/{{ marca.logo_blanco }}" alt=""></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 last-paragraph-no-margin">
+                <p class="fs-13 lh-22 w-95 sm-w-100">Este sitio está protegido por reCAPTCHA y se aplican la política de privacidad y los términos de servicio de Google.</p>
+            </div>
+            <div class="col-md-5 text-md-end sm-mt-15px last-paragraph-no-margin">
+                <p class="fs-13 lh-22">&copy; 2024 GirekStudio es una empresa de  <a href="https://www.benitez-ec.com/"
+                                                                           target="_blank"
+                                                                           class="text-decoration-line-bottom text-white">Grupo Benitez</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end footer -->
+<!-- start scroll progress -->
+<div class="scroll-progress d-none d-xxl-block">
+    <a href="#" class="scroll-top" aria-label="scroll">
+        <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+    </a>
+</div>
+<!-- end scroll progress -->
+<!-- javascript libraries -->
+<script type="text/javascript" src="/static/static_girekstudio/js/jquery.js"></script>
+<script type="text/javascript" src="/static/static_girekstudio/js/vendors.min.js"></script>
+<script type="text/javascript" src="/static/static_girekstudio/js/main.js"></script>
+</body>
+</html>

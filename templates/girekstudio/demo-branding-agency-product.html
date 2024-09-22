@@ -1,0 +1,177 @@
+﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+{% block metas %}
+<!-- metas pagweb -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="author" content="GirekStudio">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta property="og:title" content="GirekStudio - Agencia de Diseño - {{product.nombre_producto }}" />
+<meta property="og:description" content="{{product.descripcion }}" />
+<meta property="og:url" content="https://benitez-ec/girekstudio/producto/{{product.id}}" />
+<meta property="og:image" content="/media/{{product.imagen }}" />
+<meta property="og:type" content="website" />
+{% endblock %}
+  {% block principal %}
+                
+        <!-- start section -->
+        <section class="top-space-margin bg-gradient-very-light-gray pt-20px pb-20px ps-45px pe-45px sm-ps-15px sm-pe-15px">
+            <div class="container-fluid">
+                <div class="row align-items-center"> 
+                    <div class="col-12 breadcrumb breadcrumb-style-01 fs-14">
+                        <ul>
+                            <li><a href="/girekstudio/">Inicio</a></li>
+                            <li><a href="/girekstudio/tienda/">Tienda</a></li>
+                            <li>{{product.clasif.clasificacion_producto}} - {{product.nombre_producto}}  </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section --> 
+        <!-- start section -->
+        <section class="pt-60px pb-0 md-pt-30px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 pe-50px md-pe-15px md-mb-40px">
+                        <div class="row overflow-hidden position-relative">
+                            <div class="col-12 col-lg-10 position-relative order-lg-2 product-image ps-30px md-ps-15px">
+                                <div class="swiper product-image-slider" data-slider-options='{ "spaceBetween": 10, "loop": true, "autoplay": { "delay": 2000, "disableOnInteraction": false }, "watchOverflow": true, "navigation": { "nextEl": ".slider-product-next", "prevEl": ".slider-product-prev" }, "thumbs": { "swiper": { "el": ".product-image-thumb", "slidesPerView": "auto", "spaceBetween": 15, "direction": "vertical", "navigation": { "nextEl": ".swiper-thumb-next", "prevEl": ".swiper-thumb-prev" } } } }' data-thumb-slider-md-direction="horizontal">
+                                    <div class="swiper-wrapper">
+
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide gallery-box">
+                                            <a href="/media/{{product.imagen}}" data-group="lightbox-gallery" title="{{product.nombre_producto}}">
+                                                <img class="w-100" src="/media/{{product.imagen}}" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- end slider item -->
+
+                                        {% for producto_imag in producto_imagen %}
+                                            <!-- start slider item -->
+                                            <div class="swiper-slide gallery-box">
+                                                <a href="/media/{{producto_imag.galeria_articulo}}" data-group="lightbox-gallery" title="{{producto_imag.producto.nombre_producto}}">
+                                                    <img class="w-100" src="/media/{{producto_imag.galeria_articulo}}" alt="">
+                                                </a>
+                                            </div>
+                                            <!-- end slider item -->
+                                        {% endfor %}
+
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-12 col-lg-2 order-lg-1 position-relative single-product-thumb">
+                                <div class="swiper-container product-image-thumb slider-vertical">
+                                    <div class="swiper-wrapper">
+
+                                        <div class="swiper-slide"><img class="w-100" src="/media/{{product.imagen}}" alt=""></div>
+
+                                        {% for producto_imag in producto_imagen %}
+                                        <div class="swiper-slide"><img class="w-100" src="/media/{{producto_imag.galeria_articulo}}" alt=""></div>
+                                        {% endfor %}
+                                    </div>
+                             
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 product-info">
+                        <span class="fw-500 text-dark-gray d-block">{{product.clasif.clasificacion_producto}}</span>
+                        <h4 class="alt-font text-dark-gray fw-500 mb-5px">{{product.nombre_producto}}</h5>
+                            <div class="d-block d-sm-flex align-items-center mb-15px">
+                                <div class="me-10px xs-me-0">
+                                    <a href="#tab" class="section-link ls-minus-1px icon-small">
+                                        <i class="bi bi-star-fill text-golden-yellow"></i>
+                                        <i class="bi bi-star-fill text-golden-yellow"></i>
+                                        <i class="bi bi-star-fill text-golden-yellow"></i>
+                                        <i class="bi bi-star-fill text-golden-yellow"></i>
+                                        <i class="bi bi-star-fill text-golden-yellow"></i>
+                                    </a>
+                                </div>
+                                <a href="#tab" class="me-25px text-dark-gray fw-500 section-link xs-me-0">165 opiniones</a>
+                                <div><span class="text-dark-gray fw-500">CODIGO: </span>{{product.id}} </div>
+                            </div>
+                            <div class="product-price mb-10px">
+                                <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">${{product.precio}}</span>
+                            </div>
+                            <p>{{product.descripcion}}</p>
+                           
+                            <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative">
+                                
+                                <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20producto%20 -  {{product.nombre_producto}} -GirekStudio www.benitez-ec/girekstudio/producto/{{product.id}} " class="btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0 me-15px xs-me-0 order-3 order-sm-2">
+                                    <span>
+                                        <span><i class="feather icon-feather-shopping-bag"></i></span>
+                                        <span class="btn-double-text ls-0px" data-text="Comprar">Comprar</span> 
+                                    </span>
+                                </a>
+                                <a href="#" class="wishlist d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3">
+                                    <i class="feather icon-feather-heart icon-small text-dark-gray"></i>
+                                </a>
+                            </div>
+                            <div class="row mb-20px">
+                                
+                                <div class="col-auto icon-with-text-style-08">
+                                    <div class="feature-box feature-box-left-icon-middle d-inline-flex align-middle">
+                                        <div class="feature-box-icon me-10px">  
+                                            <i class="feather icon-feather-share-2 align-middle text-dark-gray"></i>
+                                        </div>
+                                        <div class="feature-box-content">
+                                            <a href="https://www.facebook.com/sharer.php?u=https://benitez-ec/girekstudio/producto/{{product.id}}"   target="_blank" class="alt-font fw-500 text-dark-gray d-block">Compartir</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-20px h-1px w-100 bg-extra-medium-gray d-block"></div>
+                            
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section -->
+        <section id="tab" class="pt-4 sm-pt-40px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 tab-style-04">
+                        <ul class="nav nav-tabs border-0 justify-content-center alt-font fs-19">
+                            <li class="nav-item"><a data-bs-toggle="tab" href="#tab_five1" class="nav-link active">Información Adicional<span class="tab-border bg-dark-gray"></span></a></li>
+                        </ul>
+                        <div class="mb-5 h-1px w-100 bg-extra-medium-gray sm-mt-10px xs-mb-8"></div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active show" id="tab_five1">
+                                <div class="row m-0">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500">Descripción:</div>
+                                            <div class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0">{{product.descripcion}}</div>
+                                        </div>
+                                        <div class="row bg-very-light-gray">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500">Característica:</div>
+                                            <div class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0">{{product.caracteristicas}}</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500">Tamaño:</div>
+                                            <div class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0">{{product.tamanos}}</div>
+                                        </div>
+                                        <div class="row bg-very-light-gray">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500">Material:</div>
+                                            <div class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0">{{product.material}}</div>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500">Envio Gratis:</div>
+                                            <div class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0">En todos los pedidos superiores a $100</div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <!-- end tab content -->
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+       
+
+{% endblock %}

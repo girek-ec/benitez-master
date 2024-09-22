@@ -10,14 +10,27 @@ class ImagenesproyectoInline(admin.StackedInline):
     model = Imagenesproyecto
     extra = 0
 
+class Lista_servicioInline(admin.StackedInline):
+    model = Lista_servicio
+    extra = 0
+
+class Plan_listInline(admin.StackedInline):
+    model = Plan_list
+    extra = 0
+
+
+class Producto_ImagenInline(admin.StackedInline):
+    model = Producto_Imagen
+    extra = 0
+
 @admin.register(Editables)
 class EditablesAdmin(admin.ModelAdmin):
-    list_display = Attr(Editables) + ["vista_previa"]
+    list_display = Attr(Editables)
     list_display_links = Attr(Editables)
 
 @admin.register(Marca)
 class MarcaAdmin(admin.ModelAdmin):
-    list_display = Attr(Marca) + ["vista_previa"]
+    list_display = Attr(Marca)
     list_display_links = Attr(Marca)
 
 @admin.register(Contacto_empresa)
@@ -25,11 +38,26 @@ class Contacto_empresaAdmin(admin.ModelAdmin):
     list_display = Attr(Contacto_empresa)
     list_display_links = Attr(Contacto_empresa)
 
+@admin.register(Equipo)
+class EquipoAdmin(admin.ModelAdmin):
+    list_display = Attr(Equipo)
+    list_display_links = Attr(Equipo)
+
+@admin.register(Sucursales)
+class SucursalesAdmin(admin.ModelAdmin):
+    list_display = Attr(Sucursales)
+    list_display_links = Attr(Sucursales)
+
 
 @admin.register(Servicio)
 class ServicioAdmin(admin.ModelAdmin):
     list_display = Attr(Servicio) + ["vista_previa"]
     list_display_links = Attr(Servicio)
+
+@admin.register(Lista_servicio)
+class Lista_servicioAdmin(admin.ModelAdmin):
+    list_display = Attr(Lista_servicio)
+    list_display_links = Attr(Lista_servicio)
 
 
 @admin.register(Imag_Video_Servicio)
@@ -73,6 +101,14 @@ class Frasedmin(admin.ModelAdmin):
 class PlanesAdmin(admin.ModelAdmin):
     list_display = Attr(Planes)
     list_display_links = Attr(Planes)
+    inlines = [Plan_listInline]
+
+@admin.register(Plan_list)
+class Plan_listAdmin(admin.ModelAdmin):
+    list_display = Attr(Plan_list)
+    list_display_links = Attr(Plan_list)
+
+
 
 
 @admin.register(Ciudad)
@@ -97,14 +133,15 @@ class ProveedorAdmin(admin.ModelAdmin):
 class ProductoAdmin(admin.ModelAdmin):
     list_display = Attr(Producto) + ["vista_previa"]
     list_display_links = Attr(Producto)
+    inlines = [Producto_ImagenInline]
 
 @admin.register(Producto_Imagen)
 class Producto_ImagenAdmin(admin.ModelAdmin):
     list_display = Attr(Producto_Imagen) + ["vista_previa"]
     list_display_links = Attr(Producto_Imagen)
+    
 
-@admin.register(Suscripcion_Email)
-class modelo(admin.ModelAdmin):
-    list_display = Attr(Suscripcion_Email)
-    list_display_links = Attr(Suscripcion_Email)
-
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    list_display = Attr(Slider)
+    list_display_links = Attr(Slider)
