@@ -1,730 +1,1233 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="es">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 
 <head>
+    <meta charset="utf-8">
+    <title>Vortice | Tienda Oficial</title>
 
-    {% block metas %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-        <meta name="author" content="Vortice Store">
-        <meta name="facebook-domain-verification" content="v7w5s5xba8nz4dq0bofm3ijfpe59w5"/>
-        <meta property="og:url" content="https://grupo-benitez.com/vortice/"/>
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Vortice Store"/>
-        <meta property="og:description" content="Marca de Ropa Ecuatoriana"/>
-        <meta property="og:image" content="https://grupo-benitez.com/vortice/media/{{ vortice.wallpaper }}"/>
-        <meta property="og:image:secure_url" content="https:grupo-benitez.com/vortice/media/{{ vortice.logo_amarillo }}"/>
-        <meta property="fb:app_id" content="926164441218858"/>
-    {% endblock %}
+    <meta name="author" content="Vortice | Tienda Oficial">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>Vortice Store</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/media/{{ vortice.favicon_negro }}">
-    <!-- Vendor CSS -->
-    <link href="/static/static_vortice/js/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/static_vortice/js/vendor/slick/slick.min.css" rel="stylesheet">
-    <link href="/static/static_vortice/js/vendor/fancybox/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="/static/static_vortice/js/vendor/animate/animate.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/static/static_vortice/css/style-tshirts_1_light.css" rel="stylesheet">
-    <!--icon font-->
-    <link href="/static/static_vortice/fonts/icomoon/icomoon.css" rel="stylesheet">
-    <!--custom font-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          rel="stylesheet">
+    <!-- font -->
+    <link rel="stylesheet" href="/static/static_vortice/fonts/fonts.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="/static/static_vortice/fonts/font-icons.css">
+    <link rel="stylesheet" href="/static/static_vortice/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/static_vortice/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="ccss/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/static_vortice/css/styles.css"/>
 
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : '926164441218858',
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v13.0'
-        });
-      };
-    </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="/media/{{ vortice.favicon }}">
+    <link rel="apple-touch-icon-precomposed" href="/media/{{ vortice.favicon }}">
 </head>
 
-<body class="home-page is-dropdn-click">
-<!-- todos los menu -->
-<div class="hdr-wrap bg-bottom bg-cover"
-     style="background-image: url(/media/{{ vortice.imagen_encabezado }} ) !important; background-color: #232323;">
-    <header class="hdr global_width hdr-style-2 hdr--dark hdr--dark-drop hdr_sticky minicart-icon-style-2 hdr-mobile-style2">
-        <!-- Mobile Menu -->
-        <div class="mobilemenu js-push-mbmenu">
-            <div class="mobilemenu-content">
-                <div class="mobilemenu-close mobilemenu-toggle">CERRAR</div>
-                <div class="mobilemenu-scroll">
-                    <div class="mobilemenu-search"></div>
-                    <div class="nav-wrapper show-menu">
-                        <div class="nav-toggle"><span class="nav-back"><i class="icon-arrow-left"></i></span> <span
-                                class="nav-title"></span></div>
+<body class="preload-wrapper">
 
-                        <ul class="nav nav-level-1">
-                            <li><a href="/vortice/">INICIO</a></li>
-
-                            <li><a href="#" title="">Clientes</a><span class="arrow"></span>
-                                <ul class="nav-level-2">
-
-                                    {% for client in seccion %}
-                                        <li><a href="/vortice/seccion/{{ client.seccion }}/" title="">
-                                            <img src="/media/{{ client.icono }}"
-                                                 style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ client.seccion }}
-                                        </a><span class="arrow"></span>
-                                            <ul class="nav-level-3">
-                                                {% for pren in prenda %}
-                                                    {% if pren.coleccion.seccion == client %}
-                                                        {% if pren.principal_visible == True %}
-                                                            <li>
-                                                                <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/"
-                                                                   title=""><img src="/media/{{ pren.tipo.imagen }}"
-                                                                                 style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ pren.tipo.tipo }}
-                                                                </a>
-                                                            </li>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            <li><a href="/vortice/contacto/">CONTACTO</a></li>
-                        </ul>
-                    </div>
-                    <div class="mobilemenu-bottom">
-                        <div class="mobilemenu-currency"></div>
-                        <div class="mobilemenu-language"></div>
-                        <div class="mobilemenu-settings"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Mobile Menu -->
-        <div class="hdr-mobile show-mobile">
-            <div class="hdr-content">
-                <div class="container">
-                    <!-- Menu Toggle -->
-                    <div class="menu-toggle"><a href="#" class="mobilemenu-toggle"><i class="icon icon-menu"></i></a>
-                    </div>
-                    <!-- /Menu Toggle -->
-                    <div class="logo-holder"><a href="/vortice/" class="logo"><img
-                            src="/media/{{ vortice.logo_horizontal }}" srcset="/media/{{ vortice.logo_horizontal }} 2x"
-                            alt=""></a></div>
-                    <div class="hdr-mobile-right">
-                        <div class="hdr-topline-right links-holder"></div>
-                        <div class="minicart-holder"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hdr-desktop hide-mobile">
-            <div class="hdr-content">
-                <div class="container">
-                    <div class="hdr-content-left">
-                    </div>
-                    <div class="logo-holder"><a href="/vortice/" class="logo"><img src="/media/{{ vortice.logo_horizontal }}"
-                                                                           srcset="/media/{{ vortice.logo_horizontal }} 2x"
-                                                                           alt=""></a>
-                    </div>
-                    <div class="hdr-content-right">
-                        <div class="links-holder">
-                            <!-- Header Account -->
-                            <div class=" only-icon">
-                                <a href="tel:{{ vortice.celular }}">
-                                    <i class="icon icon-call  " style="font-size: large; color: #e0a800"></i>
-                                </a>
+<div id="wrapper">
+    <!-- Top bar -->
+    <div class="tf-top-bar bg_white line">
+        <div class="px_15 lg-px_40">
+            <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
+                <ul class="tf-top-bar_item tf-social-icon d-flex gap-10">
+                    <li><a href="https://www.facebook.com/{{ vortice.facebook }}"
+                           class="box-icon w_28 round social-facebook bg_line"><i class="icon fs-12 icon-fb"></i></a>
+                    </li>
+                    <li><a href="https://www.x.com/{{ vortice.twiter }}"
+                           class="box-icon w_28 round social-twiter bg_line"><i class="icon fs-10 icon-Icon-x"></i></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/{{ vortice.instagram }}"
+                           class="box-icon w_28 round social-instagram bg_line"><i
+                            class="icon fs-12 icon-instagram"></i></a></li>
+                    <li><a href="https://www.tiktok.com/{{ vortice.tiktok }}"
+                           class="box-icon w_28 round social-tiktok bg_line"><i class="icon fs-12 icon-tiktok"></i></a>
+                    </li>
+                    <li><a href="https://www.pinterest.com/{{ vortice.pinterest }}"
+                           class="box-icon w_28 round social-pinterest bg_line"><i
+                            class="icon fs-12 icon-pinterest-1"></i></a></li>
+                </ul>
+                <div class="text-center overflow-hidden">
+                    <div class="swiper tf-sw-top_bar" data-preview="1" data-space="0" data-loop="true" data-speed="1000"
+                         data-delay="2000">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <p class="top-bar-text fw-5">{{ notificaciones.texto_1 }}<a href="/vortice/gift/"
+                                                                                            title="all collection"
+                                                                                            class="tf-btn btn-line">{{ notificaciones.texto_2 }}<i
+                                        class="icon icon-arrow1-top-left"></i></a></p>
                             </div>
-                            <br>
-
-                            <div class=" only-icon">
-                                <a href="https://api.whatsapp.com/send?phone=593{{ vortice.celular }}&text=Hola%20Vortice  "
-                                   target="_blank" rel="noopener">
-                                    <i class="icon icon-chat3  "
-                                       style="font-size: large; color: #e0a800 "></i>
-                                </a>
+                            <div class="swiper-slide">
+                                <p class="top-bar-text fw-5">{{ notificaciones.texto_3 }}</p>
                             </div>
-                            <!-- /Header Account -->
+                            <div class="swiper-slide">
+                                <p class="top-bar-text fw-5">{{ notificaciones.texto_4 }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="top-bar-language tf-cur justify-content-end">
+
+
+                    <div class="tf-currencies">
+                        <select class="image-select center style-default type-currencies">
+                            <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD
+                                <span>$ | United States</span></option>
+                            <option selected data-thumbnail="/static/static_vortice/images/country/ec.svg">USD <span>$ | Ecuador</span>
+                            </option>
+
+                        </select>
+                    </div>
+                    <div class="tf-languages">
+                        <select class="image-select center style-default type-languages">
+                            <option>Español</option>
+                        </select>
+                    </div>
+
+                </div>
             </div>
-            <div class="nav-holder">
-                <div class="container">
-                    <div class="hdr-nav">
-                        <!--mmenu horizontal-->
-                        <ul class="mmenu mmenu-js">
 
 
-                            {% for client in seccion %}
+        </div>
+    </div>
+    <!-- /Top bar -->
+    <!-- Header -->
+    <header id="header" class="header-default">
+        <div class="px_15 lg-px_40">
+            <div class="row wrapper-header align-items-center">
+                <div class="col-md-4 col-3 tf-lg-hidden">
+                    <a href="#mobileMenu" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" fill="none">
+                            <path d="M2.00056 2.28571H16.8577C17.1608 2.28571 17.4515 2.16531 17.6658 1.95098C17.8802 1.73665 18.0006 1.44596 18.0006 1.14286C18.0006 0.839753 17.8802 0.549063 17.6658 0.334735C17.4515 0.120408 17.1608 0 16.8577 0H2.00056C1.69745 0 1.40676 0.120408 1.19244 0.334735C0.978109 0.549063 0.857702 0.839753 0.857702 1.14286C0.857702 1.44596 0.978109 1.73665 1.19244 1.95098C1.40676 2.16531 1.69745 2.28571 2.00056 2.28571ZM0.857702 8C0.857702 7.6969 0.978109 7.40621 1.19244 7.19188C1.40676 6.97755 1.69745 6.85714 2.00056 6.85714H22.572C22.8751 6.85714 23.1658 6.97755 23.3801 7.19188C23.5944 7.40621 23.7148 7.6969 23.7148 8C23.7148 8.30311 23.5944 8.59379 23.3801 8.80812C23.1658 9.02245 22.8751 9.14286 22.572 9.14286H2.00056C1.69745 9.14286 1.40676 9.02245 1.19244 8.80812C0.978109 8.59379 0.857702 8.30311 0.857702 8ZM0.857702 14.8571C0.857702 14.554 0.978109 14.2633 1.19244 14.049C1.40676 13.8347 1.69745 13.7143 2.00056 13.7143H12.2863C12.5894 13.7143 12.8801 13.8347 13.0944 14.049C13.3087 14.2633 13.4291 14.554 13.4291 14.8571C13.4291 15.1602 13.3087 15.4509 13.0944 15.6653C12.8801 15.8796 12.5894 16 12.2863 16H2.00056C1.69745 16 1.40676 15.8796 1.19244 15.6653C0.978109 15.4509 0.857702 15.1602 0.857702 14.8571Z"
+                                  fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-md-4 col-6">
+                    <a href="/vortice/" class="logo-header">
+                        <img src="/media/{{ vortice.logo_horizontal }}" alt="logo" class="logo">
+                    </a>
+                </div>
+                <div class="col-xl-6 tf-md-hidden">
+                    <nav class="box-navigation text-center">
+                        <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
+                            <li class="menu-item">
+                                <a href="/vortice/" class="item-link">Inicio<i class="icon icon-arrow"></i></a>
+                            </li>
+                            {% for cliente in secciones %}
+                                <li class="menu-item">
+                                    <a href="/vortice/seccion/{{ cliente.cliente }}" class="item-link">{{ cliente.cliente }}<i
+                                            class="icon icon-arrow-down"></i></a>
+                                    <div class="sub-menu mega-menu">
+                                        <div class="container">
+                                            <div class="row">
 
-                                <li class="mmenu-item--mega"><a
-                                        href="/vortice/seccion/{{ client.seccion }}/">{{ client.seccion }}</a>
-                                    <div class="mmenu-submenu mmenu-submenu-with-sublevel">
-                                        <div class="mmenu-submenu-inside">
-                                            <div class="container">
-                                                <div class="mmenu-left width-20">
-
-                                                    <img src="/media/{{ client.imagen_horizontal }}"
-                                                         style=" width: 440px ; height: 250px">
-                                                </div>
-                                                <div class="mmenu-cols column-5">
-                                                    <div class="mmenu-col">
-
-
-                                                        <ul class="submenu-list">
-                                                            <h3 class="submenu-title">Vortice Store </h3>
-                                                            {% for pren in prenda %}
-                                                                {% if pren.coleccion.seccion == client %}
-                                                                    {% if pren.principal_visible == True %}
-
-
+                                                <div class="col-lg-2">
+                                                    <div class="mega-menu-item">
+                                                        <div class="menu-heading">Productos</div>
+                                                        <ul class="menu-list">
+                                                            {% for tipo_articulo in tipo_articulos_menu %}                                        
+                                                                {% if tipo_articulo.coleccion.cliente == cliente %}
+                                                                    {% if tipo_articulo.activo_menu %}
                                                                         <li>
-                                                                            <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/">- {{ pren.tipo.tipo }}</a>
+                                                                            <a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/"
+                                                                            class="menu-link-text link">- {{ tipo_articulo.nombre_articulo }}</a>
                                                                         </li>
-
                                                                     {% endif %}
                                                                 {% endif %}
                                                             {% endfor %}
-                                                        </ul>
-                                                    </div>
-                                                    <div class="mmenu-col">
-                                                        <ul class="submenu-list">
-                                                            <h3 class="submenu-title">Colecciones</h3>
-
-                                                            {% for colec in coleccion %}
-                                                                {% if colec.seccion == client %}
-                                                                    <li>
-                                                                        <a href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/">- {{ colec.tema }}</a>
-                                                                    </li>
-                                                                {% endif %}
-                                                            {% endfor %}
-
-                                                        </ul>
-
+                                                       </ul>
                                                     </div>
                                                 </div>
 
 
-                                                <div class="mmenu-bottom">
-                                                    <div class="custom-text">ENVÍO <span>GRATIS </span> EN PEDIDOS
-                                                        SUPERIORES A $ 100
+                                                <div class="col-lg-2">
+                                                    <div class="mega-menu-item">
+                                                        <div class="menu-heading">Colecciones</div>
+                                                        <ul class="menu-list">
+                                                            {% for coleccion in colecciones %}
+                                                                {% if coleccion.cliente == cliente %}
+                                                                    {% if coleccion.cliente.cliente %}
+                                                                    	<li>
+                                                                         <a href="/vortice/seccion/{{ coleccion.cliente.cliente}}/coleccion/{{ coleccion.tema_colec  }}/"
+                                                                           class="menu-link-text link">- {{ coleccion.tema_colec  }}</a>
+                                                                    </li>
+                                                                    {% endif %}                                                             
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
 
+
+                                                <div class="col-lg-3">
+                                                    <div class="collection-item hover-img">
+                                                        <div class="collection-inner">
+                                                            <a href="/vortice/seccion/{{ cliente.cliente}}/"
+                                                               class="collection-image img-style">
+                                                                <img class="lazyload"
+                                                                     data-src="/media/{{ cliente.imag_cliente_01 }}"
+                                                                     src="/media/{{ cliente.imag_cliente_01 }}"
+                                                                     alt="collection-demo-1">
+                                                            </a>
+                                                            <div class="collection-content">
+                                                                <a href="/vortice/seccion/{{ cliente.cliente}}/"
+                                                                   class="tf-btn hover-icon btn-xl collection-title fs-16"><span>{{ cliente.cliente }}</span><i
+                                                                        class="icon icon-arrow1-top-left"></i></a>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="custom-text">PRENDAS <span>100%</span> GARANTIZADAS
-                                                    </div>
-                                                    <div class="custom-text"><span>24/7</span> ATENCIÓN AL CLIENTE</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             {% endfor %}
+
+                            <li class="menu-item">
+                                <a href="/vortice/blog/" class="item-link">Moda<i class="icon icon-arrow"></i></a>
+
+                            </li>
+
+                            <li class="menu-item">
+                                <a href="/vortice/gift/" class="item-link">GiftCard<i class="icon icon-arrow"></i></a>
+
+                            </li>
+
+                            <li class="menu-item">
+                                <a href="/vortice/nosotros/" class="item-link">Sobre Nosotros<i class="icon icon-arrow"></i></a>
+
+                            </li>
+
                         </ul>
-                        <!--/mmenu-->
-                    </div>
+                    </nav>
                 </div>
-            </div>
-        </div>
-        <div class="sticky-holder compensate-for-scrollbar">
-            <div class="container">
-                <div class="row"><a href="/vortice/" class="mobilemenu-toggle show-mobile"><i class="icon icon-menu"></i></a>
-                    <div class="col-auto logo-holder-s"><a href="/vortice/" class="logo"><img
-                            src="/media/{{ vortice.logo_horizontal }}"
-                            srcset="/media/{{ vortice.logo_horizontal }} 2x" alt=""></a></div>
-                    <!--navigation-->
-                    <div class="prev-menu-scroll icon-angle-left prev-menu-js"></div>
-                    <div class="nav-holder-s"></div>
-                    <div class="next-menu-scroll icon-angle-right next-menu-js"></div>
-                    <!--//navigation-->
-                    <div class="col-auto minicart-holder-s"></div>
-                    <div class="hdr-content-right">
-                        <div class="links-holder">
-                            <!-- Header Account -->
-                            <div class=" only-icon">
-                                <a href="tel:+593 {{ vortice.celular }}">
-                                    <i class="icon icon-call  " style="font-size: large; color: #e0a800"></i>
-                                </a>
-                            </div>
-                            <br>
-
-                            <div class=" only-icon">
-                                <a href="https://api.whatsapp.com/send?phone=593{{ vortice.celular }}&text=Hola%20Vortice  "
-                                   target="_blank" rel="noopener">
-                                    <i class="icon icon-chat3  "
-                                       style="font-size: large; color: #e0a800 "></i>
-                                </a>
-                            </div>
-                            <!-- /Header Account -->
-                        </div>
-                    </div>
-
+                <div class="col-xl-3 col-md-4 col-3">
+                    <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
+                        <li class="nav-search"><a href="/vortice/" data-bs-toggle="offcanvas"
+                                                  aria-controls="offcanvasLeft" class="nav-icon-item"><i
+                                class="icon icon-search"></i></a></li>
+                        <li class="nav-account"><a href="/vortice/" data-bs-toggle="modal" class="nav-icon-item"><i
+                                class="icon icon-account"></i></a></li>
+                        <li class="nav-wishlist"><a href="/vortice/" class="nav-icon-item"><i
+                                class="icon icon-heart"></i><span class="count-box">0</span></a></li>
+                        <li class="nav-cart"><a href="/vortice/" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span class="count-box">0</span></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </header>
-</div>
-<!-- fin todos los menu -->
+    <!-- /Header -->
 
-{% block principal %}
-    <div class="page-content">
+    {% block principal %}
+        <!-- Slider -->
+        <div class="tf-slideshow slider-home-2 slider-effect-fade position-relative">
+            <div class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false"
+                 data-space="0" data-loop="true" data-auto-play="true" data-delay="2000" data-speed="1000">
+                <div class="swiper-wrapper">
+                    {% for slider in sliders %}
+                        <div class="swiper-slide" lazy="true">
 
-        <div class="header-banners" style=" margin-bottom:-0px">
-
-            <!-- banner from the editor Banner32 -->
-            {% for sli in slider %}
-                {% if sli.imagen %}
-                    <a href="#" class="bnr-wrap">
-                        <div class="bnr bnr32 bnr--style-1-6 bnr--left bnr--middle bnr-hover-scale"
-                             data-fontratio="11.4">
-                            <img src="/media/{{ sli.imagen }}" alt="">
-                            <span class="bnr-caption">
-                                    <span class="bnr-text-wrap">
-                                        <span class="btn-decor bnr-btn">{{ sli.titulo }}  <span class="btn-line"></span></span>
-                                    </span>
-                                </span>
+                            <div class="wrap-slider">
+                                <img class="lazyload" data-src="/media/{{ slider.imag_colec_02 }}"
+                                     src="/media/{{ slider.imag_colec_02 }}" alt="fashion-slideshow-01">
+                                <div class="box-content">
+                                    <div class="container">
+                                        <h1 class="fade-item fade-item-1">{{ slider.tema_colec }}</h1>
+                                        <p class="fade-item fade-item-2">{{ slider.sub_tema_colec }}</p>
+                                        <a href="/vortice/seccion/{{ slider.cliente.cliente}}/coleccion/{{ slider.tema_colec}}"
+                                           class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Ver Colección</span><i class="icon icon-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                {% else %}
-                {% endif %}
-            {% endfor %}
-            <!-- //banner from the editor Banner32 -->
-        </div>
-
-
-        <div class="holder fullboxed aside--bg-none holder-bg-carousel">
-            <div class="container">
-                <div class="title-wrap text-center">
-                    <h2 class="h1-style">Nuevas Colecciones</h2>
+                    {% endfor %}
                 </div>
+            </div>
+            <div class="wrap-pagination sw-absolute-2">
+                <div class="container">
+                    <div class="sw-dots sw-pagination-slider"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /Slider -->
+        <!-- Collection -->
 
-                <div class="prd-grid prd-text-center prd-carousel js-prd-carousel js-product-isotope-sm slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2 sm-limit-4"
-                     data-slick='{"slidesToShow": 4, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3}},{"breakpoint": 768,"settings": {"slidesToShow": 2}},{"breakpoint": 480,"settings": {"slidesToShow": 2}}]}'>
+        {% for coleccion in colecciones %}
+        {% if coleccion.principal %}
+        <section class="flat-spacing-8">
+            <div class="container-full">
+                <div class="masonry-layout">
+                    <div class="item-1 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                                <img class="lazyload" data-src="/media/{{coleccion.imag_01}}"
+                                     src="/media/{{coleccion.imag_01}}" alt="collection-img">
+                            </a>
+                            <div class="collection-content">
+                                <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}"
+                                   class="tf-btn collection-title hover-icon"><span>Mujer</span><i
+                                        class="icon icon-arrow1-top-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-2 collection-item large hover-img wow fadeInUp" data-wow-delay=".1s">
+                        <div class="collection-inner">
+                            <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                                <img class="lazyload" data-src="/media/{{coleccion.imag_02}}"
+                                     src="/media/{{coleccion.imag_02}}" alt="collection-img">
+                            </a>
+                            <div class="collection-content">
+                                <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}"
+                                   class="tf-btn collection-title hover-icon"><span>Bolsos</span><i
+                                        class="icon icon-arrow1-top-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-3 collection-item large hover-img wow fadeInUp" data-wow-delay=".2s">
+                        <div class="collection-inner">
+                            <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                                <img class="lazyload" data-src="/media/{{coleccion.imag_03}}"
+                                     src="/media/{{coleccion.imag_03}}" alt="collection-img">
+                            </a>
+                            <div class="collection-content">
+                                <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}"
+                                   class="tf-btn collection-title hover-icon"><span>Accesorios</span><i
+                                        class="icon icon-arrow1-top-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-4 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                                <img class="lazyload" data-src="/media/{{coleccion.imag_04}}"
+                                     src="/media/{{coleccion.imag_04}}" alt="collection-img">
+                            </a>
+                            <div class="collection-content">
+                                <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}"
+                                   class="tf-btn collection-title hover-icon"><span>Hombre</span><i
+                                        class="icon icon-arrow1-top-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        {% endfor %}
 
-                    {% for colec in coleccion %}
-                        {% if colec.activo %}
-                            {% if colec.nuevo %}
-                                <div class="prd prd-has-loader">
-                                    <div class="prd-inside">
-                                        <div class="prd-img-area"><a
-                                                href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}/"
-                                                class="prd-img"><img
-                                                src="/media/{{ colec.imagen }}"
-                                                data-srcset="/media/{{ colec.imagen }}" alt="Long tshirt"
-                                                class="js-prd-img lazyload"> </a>
-                                            <div class="gdw-loader"></div>
-                                        </div>
-                                        <div class="prd-info">
-                                            <h2 class="prd-title">{{ colec.seccion.seccion }}- {{ colec.tema }}</h2>
+        <!-- /Collection -->
+        <!-- Shop Collection -->
+        {% for colec in coleccion %}
+            {% if colec.principal %}
+                <section class="flat-spacing-4 pt_0">
+                    <div class="container">
+                        <div class="tf-grid-layout md-col-2 tf-img-with-text">
+                            <div class="tf-image-wrap wow fadeInUp" data-wow-delay="0s">
+                                <img class="lazyload" data-src="/media/{{ colec.imagen }}"
+                                     src="/media/{{ colec.imagen }}" alt="collection-img">
+                            </div>
+                            <div class="tf-content-wrap wow fadeInUp" data-wow-delay="0s">
+                                <span class="sub-heading text-uppercase fw-7">Nueva Colección</span>
+                                <div class="heading">{{ colec.tema }}</div>
+                                <p class="description">{{ colec.detalle }}</p>
+                                <a href="/vortice/seccion/{{ colec.id }}/{{ mes.id }}/"
+                                   class="tf-btn style-2 btn-fill radius-3 animate-hover-btn">Ver colección</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+        {% endfor %}
+        <!-- /Shop Collection -->
+
+        <!-- Mes moda -->
+        {% for mesmoda in mesmodas %}
+            {% if  mesmoda.principal %}
+                {% if  mesmoda.imagen %}
+                    <section class="tf-hero-image-liquid">
+                        <img class="lazyload" data-src="/media/{{ mesmoda.imagen }}" src="/media/{{ mesmoda.imagen }}"
+                             alt="img-banner" loading="lazy">
+                        <div class="box-content">
+                            <div class="container wow fadeInUp" data-wow-delay="0s">
+                                <h2 class="heading">{{ mesmoda.titulo }}</h2>
+                                <p>{{ mesmoda.subtitulo }}</p>
+                                <a href="/vortice/post/{{ mesmoda.id }}/" class="tf-btn btn-fill btn-md animate-hover-btn radius-3">Ver
+                                    Galería</a>
+                            </div>
+                        </div>
+                    </section>
+                {% endif %}
+                {% if  mesmoda.video %}
+                    <section class="tf-slideshow slider-effect-fade slider-video position-relative">
+                        <div class="wrap-slider">
+                            <video src="/media/{{ mesmoda.video }}" autoplay muted playsinline loop></video>
+                            <div class="box-content">
+                                <div class="container">
+                                    <p class="fade-item fade-item-1 subheading text-white fw-7">{{ mesmoda.subtitulo }}</p>
+                                    <h1 class="fade-item fade-item-2 heading text-white">{{ mesmoda.titulo }}</h1>
+                                    <a href="/vortice/post/{{ mesmoda.id }}/"
+                                       class="fade-item fade-item-3 tf-btn fill-outline-light btn-icon radius-3"><span>Ver Galería</span><i
+                                            class="icon icon-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+
+        <!-- /Mes moda -->
+        <!-- /Product -->
+        <!-- Shop Collection -->
+        <br><br>
+        {% for card in giftCards %}
+            {% if  card.principal %}
+                <section class="flat-spacing-4 pt_0">
+                    <br><br>
+                    <div class="container">
+                        <div class="tf-grid-layout md-col-2 tf-img-with-text style-2">
+                            <div class="tf-image-wrap wow fadeInUp" data-wow-delay="0s">
+                                <img class="lazyload" data-src="/media/{{ card.imagen }}" src="/media/{{ card.imagen }}"
+                                     alt="collection-img">
+                            </div>
+                            <div class="tf-content-wrap text-center w-100 wow fadeInUp" data-wow-delay="0s">
+                                <span class="sub-heading text-uppercase fw-7">{{ card.titulo }}</span>
+                                <div class="heading">Gifts Cards</div>
+                                <p class="description">{{ card.detalle }} <br class="d-none d-xl-block">
+                                    ${{ card.precio }}</p>
+                                <a href="/vortice/gift/"
+                                   class="tf-btn style-2 btn-fill radius-3 animate-hover-btn">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        {% endfor %}
+        <!-- /Shop Collection -->
+
+        <!-- Servicios Vortice -->
+        <section class="flat-spacing-14">
+            <div class="container">
+                <div class="flat-title wow fadeInUp" data-wow-delay="0s">
+                    <span class="title">Servicios Vortice - Personalización</span>
+                </div>
+                <div class="hover-sw-nav view-default hover-sw-3">
+                    <div class="swiper tf-sw-recent" data-preview="3" data-tablet="2" data-mobile="1" data-space-lg="30"
+                         data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                         data-pagination-lg="1">
+                        <div class="swiper-wrapper">
+                            {% for servicio in servicios %}
+                                <div class="swiper-slide" lazy="true">
+                                    <div class="blog-article-item wow fadeInUp" data-wow-delay="0s">
+
+                                        {% if servicio.video %}
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <video playsinline="true" autoplay preload="metadata" muted loop
+                                                           src="/media/{{ servicio.video }}"></video>
+                                                </div>
+                                            </div>
+
+                                        {% else %}
+                                            <div class="article-thumb h-460 rounded-0">
+                                               
+                                                    <img class="lazyload" data-src="/media/{{ servicio.imagen }}"
+                                                         src="/media/{{ servicio.imagen }}" alt="img-blog">
+                                                
+                                            </div>
+                                        {% endif %}
+                                        <div class="article-content">
+                                            <div class="text-1">
+                                                <p style="text-align: center">{{ servicio.servicio }} </p>
+                                            </div>
+                                            <div class="text-3">
+                                                <p style="text-align: center">{{ servicio.detalle }}</p>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <hr>
-        <br>
-        <div class="holder fullwidth full-nopad mt-0">
-            <div class="container">
-                <div class="row no-gutters bnr-grid">
-
-                    {% for client in seccion %}
-                        <div class="col-md">
-                            <div class="bnr banner-left-right bnr--style-1 bnr--center bnr--middle bnr-hover-scale has-loader">
-                                <img src="/media/{{ client.imagen_vertical }}"
-                                     data-src="/media/{{ client.imagen_vertical }}" alt="Banner" class="lazyload">
-                                <div class="gdw-loader"></div>
-                                <span class="bnr-caption">
-                                    <span class="bnr-text-wrap">
-
-                                        <a href="/vortice/seccion/{{ client.seccion }}" class="">
-                                            <span class="bnr-text3 btn-decor btn-decor--md ">{{ client.seccion }}<span
-                                                    class="btn-line"></span></span>
-                                        </a>
-                                        <span class="bnr-links">
-                                            {% for pren in prenda %}
-                                                {% if pren.coleccion.seccion == client %}
-                                                    {% if pren.principal_visible == True %}
-                                                        <a href="/vortice/seccion/{{ pren.coleccion.seccion.seccion }}/prenda/{{ pren.tipo.tipo }}/"> {{ pren.tipo.tipo }}</a>
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endfor %}
-                                            <br><br>
-                                        </span>
-                                        <br>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-
-        </div>
-        <div style="align-content: center">
-            {% for pro in promo %}
-                {% if pro.activo %}
-                    <!-- banner from the editor Banner32 -->
-                    <a href="/vortice/{{ pro.enlace }}" class="bnr-wrap">
-                        <div class="bnr bnr32 bnr--style-1-6 bnr--left bnr--middle ">
-                            <img src="/media/{{ pro.imagen }}" alt=""> <span class="bnr-caption"><span
-                                class="bnr-text-wrap"><span class="bnr-text1">{{ pro.titulo }}</span> <span
-                                class="bnr-text2">{{ pro.sub_titulo }}</span> <span style="margin-top: -10px"
-                                                                                    class="btn-decor bnr-btn">Enlace<span
-                                class="btn-line"></span></span></span></span></div>
-                    </a>
-                    <!-- //banner from the editor Banner32 -->
-                {% else %}
-                {% endif %}
-
-            {% endfor %}
-        </div>
-        <br><br><br>
-        <hr>
-        <br>
-
-        {% for mues in muestra %}
-            {% if mues.estado %}
-                <div class="title-wrap text-center">
-                    <h2 class="h1-style">Vive tu estilo Vortice</h2>
-                </div>
-
-                <div class="row bnr-grid bnr-grid-1 no-gutters">
-                    <div class="col-7">
-                        <div class="row no-gutters">
-                            <div class="col-8">
-                                <div class="col-content"><a href="#" class="bnr-wrap">
-                                    <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
-                                         data-fontratio="4.57" style="font-size: 100.438px;"><img
-                                            src="/media/{{ mues.imagen_1 }}" style="width: 100%; height: 100%"
-                                            alt=""> <span class="bnr-caption" style="padding: 9% 7%;"><span
-                                            class="bnr-text-wrap"></span></span></div>
-                                </a></div>
-                            </div>
-                            <div class="col-4">
-                                <div class="col-content"><a href="#" class="bnr-wrap">
-                                    <div class="bnr bnr31 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
-                                         data-fontratio="2.26" style="font-size: 100.442px;"><img
-                                            src="/media/{{ mues.imagen_2 }}" style="width: 100%; height: 100%"
-                                            alt=""> <span class="bnr-caption"
-                                                          style="padding: 5% 5% 19% 20%;"><span
-                                            class="bnr-text-wrap"></span></span></div>
-                                </a></div>
-                            </div>
-                            <div class="col-4">
-                                <div class="col-content"><a href="#" class="bnr-wrap">
-                                    <div class="bnr bnr31 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
-                                         data-fontratio="2.26" style="font-size: 100.442px;"><img
-                                            src="/media/{{ mues.imagen_3 }}" style="width: 100%; height: 100%"
-                                            alt=""> <span class="bnr-caption"
-                                                          style="padding: 5% 5% 19% 20%;"><span
-                                            class="bnr-text-wrap"></span></span></div>
-                                </a></div>
-                            </div>
-                            <div class="col-8">
-                                <div class="col-content"><a href="#" class="bnr-wrap">
-                                    <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
-                                         data-fontratio="4.57" style="font-size: 100.438px;"><img
-                                            src="/media/{{ mues.imagen_4 }}" style="width: 100%; height: 100%"
-                                            alt=""> <span class="bnr-caption" style="padding: 9% 7%;"><span
-                                            class="bnr-text-wrap"></span></span></div>
-                                </a></div>
-                            </div>
-
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="col-5">
-                        <div class="col-content"><a href="#" class="bnr-wrap">
-                            <div class="bnr bnr30 bnr--style-1 bnr--left bnr--bottom bnr-hover-scale fontratio-calc"
-                                 data-fontratio="4.57" style="font-size: 100.219px;"><img
-                                    src="/media/{{ mues.imagen_5 }}" alt=""> <span class="bnr-caption"
-                                                                                   style="padding: 5% 5% 7% 7%;"><span
-                                    class="bnr-text-wrap"></span></span></div>
-                        </a></div>
-
-                    </div>
+                    <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
+                            class="icon icon-arrow-left"></span></div>
+                    <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
+                            class="icon icon-arrow-right"></span></div>
+                    <div class="sw-dots style-2 sw-pagination-recent justify-content-center"></div>
                 </div>
-
-            {% endif %}
-        {% endfor %}
-
-
-        {% for colec in coleccion %}
-            {% if colec.principal %}
-
-                <div style="background-color: #{{ colec.color }} !important;  margin-top: 0px "
-                     class="holder fullwidth full-nopad bgcolor bgcolor-1">
-                    <div class="container">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-md"><a
-                                    href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}"
-                                    class="bnr bnr--style-2 bnr--center bnr--middle fontratio-calc"
-                                    data-fontratio="9.52" style="font-size: 79.8319px;"><span class="bnr-caption"><span
-                                    class="bnr-text-wrap"><span class="bnr-text1">Nueva Colección</span> <span
-                                    class="bnr-text2">{{ colec.tema }} - {{ colec.seccion }}</span></span></span></a>
-                            </div>
-                            <div class="col-md d-none d-md-block"><a
-                                    href="/vortice/seccion/{{ colec.seccion.seccion }}/coleccion/{{ colec.tema }}"
-                                    class="bnr bnr--left bnr--middle"><img src="/media/{{ colec.imagen }}"
-                                                                           data-src="/media/{{ colec.imagen }}"
-                                                                           alt="Banner" class=" lazyloaded"></a></div>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
-
-        <!-- Products Grid -->
-        <div class="container">
-            <div class="title-wrap text-center">
-                <br><br>
-                <h2 class="h1-style">Nuevos Productos</h2>
             </div>
+        </section>
+        <!-- /Servicios Vortice -->
 
-            <div class="prd-grid product-listing data-to-show-4 data-to-show-md-4 data-to-show-sm-2 js-category-grid">
-                {% for produc in products %}
-                    {% if produc.new %}
-                        <div class="prd prd-has-loader prd-new prd-popular">
-                            <div class="prd-inside">
-                                <div class="prd-img-area"><a href="/vortice/producto_detalle/{{ produc.id }}/"
-                                                             class="prd-img"><img src="/media/{{ produc.imagen }}"
-                                                                                  data-srcset="/media/{{ produc.imagen }}"
-                                                                                  alt="Glamor shoes"
-                                                                                  class="js-prd-img lazyload"></a>
-                                    {% if produc.new %}
-                                        <div class="label-new">Nuevo</div>
-                                    {% else %}
-                                    {% endif %}
-                                    {% if produc.offer %}
 
-                                        <div class="label-outstock">Promo</div>
-                                    {% else %}
-                                    {% endif %}
-                                    {% if produc.stock %}
-                                    {% else %}
-                                        <div class="label-sale">Agotado</div>
-                                    {% endif %}
-                                    <ul class="list-options color-swatch prd-hidemobile">
-                                        <li data-image="/media/{{ produc.imagen }}"><a href="#"
-                                                                                       class="js-color-toggle"><img
-                                                src="/media/{{ produc.imagen }}"
-                                                data-srcset="/media/{{ produc.imagen }}" class="lazyload"
-                                                alt="Color Name"></a>
-                                        </li>
-                                        {% if produc.imagen_2 %}
-                                            <li data-image="/media/{{ produc.imagen_2 }}"><a href="#"
-                                                                                             class="js-color-toggle"><img
-                                                    src="/media/{{ produc.imagen_2 }}"
-                                                    data-srcset="/media/{{ produc.imagen_2 }}" class="lazyload"
-                                                    alt="Color Name"></a></li>
-                                        {% else %}
-                                        {% endif %}
+    {% endblock %}
 
-                                        {% if produc.imagen_3 %}
-                                            <li data-image="/media/{{ produc.imagen_3 }}"><a href="#"
-                                                                                             class="js-color-toggle"><img
-                                                    src="/media/{{ produc.imagen_3 }}"
-                                                    data-srcset="/media/{{ produc.imagen_3 }}" class="lazyload"
-                                                    alt="Color Name"></a></li>
-                                        {% else %}
-                                        {% endif %}
-                                        {% if produc.imagen_4 %}
-                                            <li data-image="/media/{{ produc.imagen_4 }}"><a href="#"
-                                                                                             class="js-color-toggle"><img
-                                                    src="/media/{{ produc.imagen_4 }}"
-                                                    data-srcset="/media/{{ produc.imagen_4 }}" class="lazyload"
-                                                    alt="Color Name"></a></li>
-                                        {% else %}
-                                        {% endif %}
-                                    </ul>
-                                    <div class="gdw-loader"></div>
+    <!-- Footer -->
+    <footer id="footer" class="footer md-pb-70">
+        <div class="footer-wrap">
+            <div class="footer-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 col-12">
+                            <div class="footer-infor">
+                                <div class="footer-logo">
+                                    <a href="/vortice/">
+                                        <img src="/media/{{ vortice.logo_horizontal }}" alt="">
+                                    </a>
                                 </div>
-                                <div class="prd-info">
-                                    <div class="prd-tag prd-hidemobile">{{ produc.prenda.coleccion }}</div>
-                                    <h2 class="prd-title"><a
-                                            href="/vortice/producto_detalle/{{ produc.id }}/">{{ produc.titulo }}</a></h2>
-                                    <div class="prd-rating prd-hidemobile"><i class="icon-star fill"></i><i
-                                            class="icon-star fill"></i><i class="icon-star fill"></i><i
-                                            class="icon-star fill"></i><i class="icon-star fill"></i></div>
-                                    {% if produc.offer %}
-                                        <div class="prd-price" style="text-align: center">
-                                            <div class="price-old">$ {{ produc.precio }}</div>&nbsp;&nbsp;
-                                            <div class="price-new">$ {{ produc.precio_oferta }}</div>
-                                        </div>
-
-                                    {% else %}
-                                        <div class="prd-price">
-                                            <div class="price-new" style="text-align: center">
-                                                $ {{ produc.precio }}</div>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <br><br><br><br><br><br>
-        </div>
-        <div class="side-fixed">
-            <div class="left-fixed">
-                <div><img src="/media/{{ vortice.imagen_flot_iz_1 }}" alt=""></div>
-                <div><img src="/media/{{ vortice.imagen_flot_iz_2 }}" alt=""></div>
-            </div>
-            <div class="right-fixed">
-                <div><img src="/media/{{ vortice.imagen_flot_de_1 }}" alt=""></div>
-                <div><img src="/media/{{ vortice.imagen_flot_de_2 }}" alt=""></div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-<br><br><br>
-<footer class="page-footer footer-style-11 global_width bg-bottom mt-0"
-        style="background-image: url(/media/{{ vortice.pie }}); background-color: #252525;">
-    <div class="holder footer-top-negative bg-top mt-0"
-         style="background-image: url(/media/{{ vortice.imagen_suscri }})">
-        <div class="container">
-            <div class="subscribe-form subscribe-form--style1 subscribe-form--whitecolor">
-                <p style=" text-align:center;  font-family: 'Comic Sans MS', serif; font-size:14pt; font-style:italic">
-                    Vive tu estilo Vórtice</p>
-            </div>
-        </div>
-    </div>
-    <div class="footer-top container py-3 py-md-5 py-lg-9">
-        <div class="row">
-            <div class="footer-left col-lg col-xl-6">
-                <div class="row">
-                    <div class="col-md mb-2 mb-md-0">
-                        <div class="footer-logo">
-                            <a href="/vortice/">
-                                <img src="/media/{{ vortice.logo_amarillo }}" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="footer-copyright">
-                            <p class="footer-copyright-text"><span>© Copyright</span> 2022 <span>All rights reserved.</span></p>
-                            <p><a href="/">Grupo Benitez</a> </p>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="footer-block collapsed-mobile">
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md ">
-                        <div class="footer-block collapsed-mobile">
-                            <div class="title">
-                                <h4>Clientes</h4>
-                                <div class="toggle-arrow"></div>
-                            </div>
-                            <div class="collapsed-content">
                                 <ul>
-                                    {% for client in seccion %}
-                                        <li>
-                                            <a href="/vortice/seccion/{{ client.seccion }}/" title="">
-                                                <img src="/media/{{ client.icono }}"
-                                                     style="max-width:10%;width:auto;height:auto;">&nbsp;&nbsp;&nbsp;{{ client.seccion }}
-                                                <span class="mmenu-preview">
-                                                    <img src="/media/{{ client.icono }}"
-                                                         data-src="/media/{{ client.icono }}" class="lazyload"
-                                                         alt=""></span></a>
-                                        </li>
-                                    {% endfor %}
+                                    <li>
+                                        <p>{{ vortice.direccion }}</p>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <p>Email: {{ vortice.correo }}</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <p>Phone: <a href="#">{{ vortice.celular }}</a></p>
+                                    </li>
+                                </ul>
+                                <a href="/vortice/contacto/" class="tf-btn btn-line">Obtener dirección<i
+                                        class="icon icon-arrow1-top-left"></i></a>
+                                <ul class="tf-social-icon d-flex gap-10">
+                                    <li><a href="https://www.facebook.com/{{ vortice.facebook }}"
+                                           class="box-icon w_34 round social-facebook social-line"><i
+                                            class="icon fs-14 icon-fb"></i></a></li>
+                                    <li><a href="https://www.x.com/{{ vortice.x }}"
+                                           class="box-icon w_34 round social-twiter social-line"><i
+                                            class="icon fs-12 icon-Icon-x"></i></a></li>
+                                    <li><a href="https://www.instagram.com/{{ vortice.instagram }}"
+                                           class="box-icon w_34 round social-instagram social-line"><i
+                                            class="icon fs-14 icon-instagram"></i></a></li>
+                                    <li><a href="https://www.tiktok.com/@{{ vortice.tiktok }}"
+                                           class="box-icon w_34 round social-tiktok social-line"><i
+                                            class="icon fs-14 icon-tiktok"></i></a></li>
+                                    <li><a href="https://www.pinterest.com/{{ vortice.pinterest }}"
+                                           class="box-icon w_34 round social-pinterest social-line"><i
+                                            class="icon fs-14 icon-pinterest-1"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-right col-lg col-xl-5 ml-auto">
-                <div class="footer-block">
-                    <div class="row align-items-end align-items-lg-start">
-                        <div class="col-sm col-lg">
-                            <div class="h6-style ">
-                                <a href="/vortice/contacto/"><h4 style="color: #e0a800">Contáctanos</h4></a>
+                        <div class="col-xl-3 col-md-6 col-12 footer-col-block">
+                            <div class="footer-heading footer-heading-desktop">
+                                <h6>Ayuda</h6>
                             </div>
-                            <ul class="contact-list">
-                                <li><i class="icon-phone"></i><span><span class="h6-style">Celular:</span><span> <a
-                                        href="tel:+{{ vortice.celular }}"> &nbsp;{{ vortice.celular }}</a></span></span>
+                            <div class="footer-heading footer-heading-moblie">
+                                <h6> Ayuda </h6>
+                            </div>
+                            <ul class="footer-menu-list tf-collapse-content">
 
+                               
+                                <li>
+                                    <a href="/vortice/" class="footer-menu_item">Envíos</a>
+                                </li>
+                                <li>
+                                    <a href="/vortice/" class="footer-menu_item">Términos y condiciones</a>
+                                </li>
+                                <li>
+                                    <a href="/vortice/" class="footer-menu_item">Preguntas frecuentes</a>
+                                </li>
+                       
+                            </ul>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-12 footer-col-block">
+                            <div class="footer-heading footer-heading-desktop">
+                                <h6>Sobre Nosotros</h6>
+                            </div>
+                            <div class="footer-heading footer-heading-moblie">
+                                <h6>Sobre Nosotros</h6>
+                            </div>
+                            <ul class="footer-menu-list tf-collapse-content">
+
+                                <li>
+                                    <a href="/vortice/" class="footer-menu_item">Inicio</a>
+                                </li>
+                                <li>
+                                    <a href="/vortice/nosotros/" class="footer-menu_item">Nosotros</a>
+                                </li>
+                              
+                                <li>
+                                    <a href="/vortice/gift/" class="footer-menu_item">GiftCard</a>
                                 </li>
 
-                                <li><i class="icon-phone"></i><span><span class="h6-style">WhatsApp:</span><span> <a
-                                        href="https://api.whatsapp.com/send?phone=593{{ vortice.whatsapp }}&text=Hola%20Vortice"
-                                        target="_blank" rel="noopener"> &nbsp;{{ vortice.whatsapp }}</a></span></span>
-                                </li>
-
-                                <li><i class="icon-mail-envelope1"></i><span><span
-                                        class="h6-style">E-mail:</span><span><a
-                                        href="mailto:vortice.ec@gmail.com"> &nbsp; {{ vortice.correo }}</a></span></span>
-                                </li>
-                                <li><i class="icon-location1"></i><span><span
-                                        class="h6-style">Dirección:</span><span> &nbsp; {{ vortice.direccion }}</span></span>
+                                <li>
+                                    <a href="/vortice/blog/" class="footer-menu_item">Moda</a>
                                 </li>
                             </ul>
                         </div>
+                        <div class="col-xl-3 col-md-6 col-12">
+                            <div class="footer-newsletter footer-col-block">
+                                <div class="footer-heading footer-heading-desktop">
+                                    <h6>Regístrate para recibir correos electrónicos
+                                    </h6>
+                                </div>
+                                <div class="footer-heading footer-heading-moblie">
+                                    <h6>Sign Up for Email</h6>
+                                </div>
+                                <div class="tf-collapse-content">
+                                    <div class="footer-menu_item">¡Regístrate para recibir en primer lugar información sobre nuevos productos, ventas, contenido exclusivo, eventos y mucho más!
+                                    </div>
+                                    <form class="form-newsletter" id="subscribe-form" action="#" method="post"
+                                          accept-charset="utf-8" data-mailchimp="true">
+                                        <div id="subscribe-content">
+                                            <fieldset class="email">
+                                                <input type="email" name="email-form" id="subscribe-email"
+                                                       placeholder="Ingresa tu email...." tabindex="0"
+                                                       aria-required="true">
+                                            </fieldset>
+                                            <div class="button-submit">
+                                                <button id="subscribe-button"
+                                                        class="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
+                                                        type="button">Subscribir<i class="icon icon-arrow1-top-left"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="subscribe-msg"></div>
+                                    </form>
+                                    <div class="tf-cur">
+                                        <div class="tf-currencies">
+                                            <select class="image-select center style-default type-currencies">
+                                                
+                                                <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD <span>$ | United States</span>
+                                                </option>
+                                                
+                                            </select>
+                                        </div>
+                                        <div class="tf-languages">
+                                            <select class="image-select center style-default type-languages">
+                                                <option>English</option>                                                        
+                                                <option>Español</option>                               
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
+                                <a href="/" class="footer-menu_item">
+                                    <div class="footer-menu_item">© 2024 Vortice Store. Vortice es una marca de Grupo Benitez</div>
+                                </a>
+                                <div class="tf-payment">
+                                    <img src="/static/static_vortice/images/payments/visa.png" alt="">
+                                    <img src="/static/static_vortice/images/payments/img-1.png" alt="">
+                                    <img src="/static/static_vortice/images/payments/img-2.png" alt="">
+                                    <img src="/static/static_vortice/images/payments/img-3.png" alt="">
+                                    <img src="/static/static_vortice/images/payments/img-4.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+</div>
 
+<!-- gotop -->
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+              style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;"></path>
+    </svg>
+</div>
+<!-- /gotop -->
 
-                        <div class="col-sm col-lg-3 mt-2 mt-sm-0">
-                            <ul class="social-list">
-                                <li style="font-size: large; "><a style="color: #28a745 !important;"
-                                                                  href="https://api.whatsapp.com/send?phone=593{{ vortice.whatsapp }}&text=Hola%20Vortice"
-                                                                  target="_blank" rel="noopener"
-                                                                  class="icon  icon-chat3"></a>
-                                </li>
+<!-- toolbar-bottom -->
+<div class="tf-toolbar-bottom type-1150">
+    <div class="toolbar-item active">
+        <a href="/vortice/"  aria-controls="offcanvasLeft">
+            <div class="toolbar-icon">
+                <i class="icon-shop"></i>
+            </div>
+            <div class="toolbar-label">Inicio</div>
+        </a>
+    </div>
 
-                                <li><a href="https://www.facebook.com/{{ redes.facebook }}" target="_blank"
-                                       class="icon icon-facebook"></a></li>
+    {% for cliente in secciones %}
 
-                                <li><a href="https://www.instagram.com/{{ redes.instagram }}" target="_blank"
-                                       class="icon icon-instagram"></a></li>
+        <div class="toolbar-item">
+            <a href="/vortice/seccion/{{ cliente.cliente }}"  aria-controls="offcanvasLeft">
+                <div class="toolbar-icon">
+                    <i class="icon-account"></i>
+                </div>
+                <div class="toolbar-label">{{ cliente.cliente }}</div>
+            </a>
+        </div>
+    {% endfor %}
 
-                                <li><a href="https://www.youtube.com/{{ redes.youtube }}" target="_blank"
-                                       class="icon icon-youtube"></a>
-                                </li>
+    <div class="toolbar-item">
+        <a href="/vortice/blog/"  aria-controls="offcanvasLeft">
+            <div class="toolbar-icon">
+                <i class="icon-view"></i>
+            </div>
+            <div class="toolbar-label">Modelos</div>
+        </a>
+    </div>
+    <div class="toolbar-item">
+        <a href="/vortice/nosotros/" >
+            <div class="toolbar-icon">
+                <i class="icon-bag"></i>
+            </div>
+            <div class="toolbar-label">Vortice</div>
+        </a>
+    </div>
+   
+</div>
+<!-- /toolbar-bottom -->
 
+<!-- mobile menu -->
+<div class="offcanvas offcanvas-start canvas-mb" id="mobileMenu">
+    <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
+    <div class="mb-canvas-content">
+        <div class="mb-body">
+            <ul class="nav-ul-mb" id="wrapper-menu-navigation">
+                <li class="nav-mb-item">
+                    <a href="/vortice/"
+                       class="mb-menu-link">Inicio</a>
+                </li>
+
+                {% for cliente in secciones %}
+
+                    <li class="nav-mb-item">
+                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current" data-bs-toggle="collapse"
+                        aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
+                            <span>{{ cliente.cliente }}</span>
+                            <span class="btn-open-sub"></span>
+                        </a>
+                        <div id="dropdown-menu-{{ cliente.cliente }}" class="collapse">
+                            <ul class="sub-nav-menu">
+                                {% for tipo_articulo in tipo_articulos_menu %}                                        
+                                    {% if tipo_articulo.coleccion.cliente == cliente %}
+                                        {% if tipo_articulo.activo_menu %}
+                                            <li><a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/" class="sub-nav-link">{{ tipo_articulo.nombre_articulo }}</a> </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             </ul>
+                        </div>
+
+                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current" data-bs-toggle="collapse"
+                        aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
+                            <span> Colecciones </span>
+                            <span class="btn-open-sub"></span>
+                        </a>
+                        <div id="dropdown-menu-{{ cliente.cliente }}" class="collapse">
+                            <ul class="sub-nav-menu">
+                                {% for coleccion in colecciones %}
+                                    {% if coleccion.cliente == cliente %}
+                                        {% if coleccion.cliente.cliente %}
+                                            <li>
+                                                <a href="/vortice/seccion/{{ coleccion.cliente.cliente}}/coleccion/{{ coleccion.tema_colec  }}/" class="menu-link-text link">- {{ coleccion.tema_colec  }}</a>  
+                                                <br>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </li>
+                {% endfor %}
+           
+                <li class="nav-mb-item">
+                    <a href="/vortice/blog/"
+                       class="mb-menu-link">Moda
+                    </a>
+                </li>
+                <li class="nav-mb-item">
+                    <a href="/vortice/gift/"
+                       class="mb-menu-link">GiftCard
+                    </a>
+                </li>
+
+                <li class="nav-mb-item">
+                    <a href="/vortice/nosotros/"
+                       class="mb-menu-link">Sobre Nosotros
+                    </a>
+                </li>
+            </ul>
+            <br><br><br>
+            <div class="mb-other-content">
+               
+                <ul class="mb-info">
+                    <li>Dirección: Machala, <br> El Oro - Ecuador</li>
+                    <li>Email: <b>{{vortice.correo}}</b></li>
+                    <li>Celuar: <b>(593) {{vortice.celular}}</b></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-bottom">
+            <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20 " class="site-nav-icon"><i class="icon icon-account"></i>Escribenos</a>
+            <div class="bottom-bar-language">
+                <div class="tf-currencies">
+                    <select class="image-select center style-default type-currencies">
+                        <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD <span>$ | United States</span>
+                        </option>
+                    </select>
+                </div>
+                <div class="tf-languages">
+                    <select class="image-select center style-default type-languages">
+                        <option>English</option>
+                        <option>Español</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /mobile menu -->
+
+<!-- Filter -->
+<div class="offcanvas offcanvas-start canvas-filter" id="filterShop">
+    <div class="canvas-wrapper">
+        <header class="canvas-header">
+            <div class="filter-icon">
+                <span class="icon icon-filter"></span>
+                <span>Filter</span>
+            </div>
+            <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
+        </header>
+        <div class="canvas-body">
+            <div class="widget-facet wd-categories">
+                <div class="facet-title" data-bs-target="#categories" data-bs-toggle="collapse" aria-expanded="true"
+                     aria-controls="categories">
+                    <span>Product categories</span>
+                    <span class="icon icon-arrow-up"></span>
+                </div>
+                <div id="categories" class="collapse show">
+                    <ul class="list-categoris current-scrollbar mb_36">
+                        <li class="cate-item current"><a href="shop-default.html"><span>Fashion</span></a></li>
+                        <li class="cate-item"><a href="shop-default.html"><span>Men</span></a></li>
+                        <li class="cate-item"><a href="shop-default.html"><span>Women</span></a></li>
+                        <li class="cate-item"><a href="shop-default.html"><span>Denim</span></a></li>
+                        <li class="cate-item"><a href="shop-default.html"><span>Dress</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <form action="#" id="facet-filter-form" class="facet-filter-form">
+                <div class="widget-facet">
+                    <div class="facet-title" data-bs-target="#availability" data-bs-toggle="collapse"
+                         aria-expanded="true" aria-controls="availability">
+                        <span>Availability</span>
+                        <span class="icon icon-arrow-up"></span>
+                    </div>
+                    <div id="availability" class="collapse show">
+                        <ul class="tf-filter-group current-scrollbar mb_36">
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="availability" class="tf-check" id="availability-1">
+                                <label for="availability-1"
+                                       class="label"><span>In stock</span>&nbsp;<span>(14)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="availability" class="tf-check" id="availability-2">
+                                <label for="availability-2"
+                                       class="label"><span>Out of stock</span>&nbsp;<span>(2)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-facet">
+                    <div class="facet-title" data-bs-target="#price" data-bs-toggle="collapse" aria-expanded="true"
+                         aria-controls="price">
+                        <span>Price</span>
+                        <span class="icon icon-arrow-up"></span>
+                    </div>
+                    <div id="price" class="collapse show">
+                        <div class="widget-price">
+                            <div id="slider-range"></div>
+                            <div class="box-title-price">
+                                <span class="title-price">Price :</span>
+                                <div class="caption-price">
+                                    <div>
+                                        <span>$</span>
+                                        <span id="slider-range-value1" class=""></span>
+                                    </div>
+                                    <span>-</span>
+                                    <div>
+                                        <span>$</span>
+                                        <span id="slider-range-value2" class=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-facet">
+                    <div class="facet-title" data-bs-target="#brand" data-bs-toggle="collapse" aria-expanded="true"
+                         aria-controls="brand">
+                        <span>Brand</span>
+                        <span class="icon icon-arrow-up"></span>
+                    </div>
+                    <div id="brand" class="collapse show">
+                        <ul class="tf-filter-group current-scrollbar mb_36">
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="brand" class="tf-check" id="brand-1">
+                                <label for="brand-1" class="label"><span>Ecomus</span>&nbsp;<span>(8)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="brand" class="tf-check" id="brand-2">
+                                <label for="brand-2" class="label"><span>M&H</span>&nbsp;<span>(8)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-facet">
+                    <div class="facet-title" data-bs-target="#color" data-bs-toggle="collapse" aria-expanded="true"
+                         aria-controls="color">
+                        <span>Color</span>
+                        <span class="icon icon-arrow-up"></span>
+                    </div>
+                    <div id="color" class="collapse show">
+                        <ul class="tf-filter-group filter-color current-scrollbar mb_36">
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_beige" id="beige">
+                                <label for="beige" class="label"><span>Beige</span>&nbsp;<span>(3)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_dark" id="black">
+                                <label for="black" class="label"><span>Black</span>&nbsp;<span>(18)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_blue-2" id="blue">
+                                <label for="blue" class="label"><span>Blue</span>&nbsp;<span>(3)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_brown" id="brown">
+                                <label for="brown" class="label"><span>Brown</span>&nbsp;<span>(3)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_cream" id="cream">
+                                <label for="cream" class="label"><span>Cream</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_dark-beige" id="dark-beige">
+                                <label for="dark-beige"
+                                       class="label"><span>Dark Beige</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_dark-blue" id="dark-blue">
+                                <label for="dark-blue"
+                                       class="label"><span>Dark Blue</span>&nbsp;<span>(3)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_dark-green" id="dark-green">
+                                <label for="dark-green"
+                                       class="label"><span>Dark Green</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_dark-grey" id="dark-grey">
+                                <label for="dark-grey"
+                                       class="label"><span>Dark Grey</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_grey" id="grey">
+                                <label for="grey" class="label"><span>Grey</span>&nbsp;<span>(2)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_light-blue" id="light-blue">
+                                <label for="light-blue"
+                                       class="label"><span>Light Blue</span>&nbsp;<span>(5)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_light-green" id="light-green">
+                                <label for="light-green"
+                                       class="label"><span>Light Green</span>&nbsp;<span>(3)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_light-grey" id="light-grey">
+                                <label for="light-grey"
+                                       class="label"><span>Light Grey</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_light-pink" id="light-pink">
+                                <label for="light-pink"
+                                       class="label"><span>Light Pink</span>&nbsp;<span>(2)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_purple" id="light-purple">
+                                <label for="light-purple" class="label"><span>Light Purple</span>&nbsp;<span>(2)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_light-yellow"
+                                       id="light-yellow">
+                                <label for="light-yellow" class="label"><span>Light Yellow</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_orange" id="orange">
+                                <label for="orange" class="label"><span>Orange</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_pink" id="pink">
+                                <label for="pink" class="label"><span>Pink</span>&nbsp;<span>(2)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_taupe" id="taupe">
+                                <label for="taupe" class="label"><span>Taupe</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_white" id="white">
+                                <label for="white" class="label"><span>White</span>&nbsp;<span>(14)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="color" class="tf-check-color bg_yellow" id="yellow">
+                                <label for="yellow" class="label"><span>Yellow</span>&nbsp;<span>(1)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-facet">
+                    <div class="facet-title" data-bs-target="#size" data-bs-toggle="collapse" aria-expanded="true"
+                         aria-controls="size">
+                        <span>Size</span>
+                        <span class="icon icon-arrow-up"></span>
+                    </div>
+                    <div id="size" class="collapse show">
+                        <ul class="tf-filter-group current-scrollbar">
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="size" class="tf-check" id="s">
+                                <label for="s" class="label"><span>S</span>&nbsp;<span>(7)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="size" class="tf-check" id="m">
+                                <label for="m" class="label"><span>M</span>&nbsp;<span>(8)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="size" class="tf-check" id="l">
+                                <label for="l" class="label"><span>L</span>&nbsp;<span>(8)</span></label>
+                            </li>
+                            <li class="list-item d-flex gap-12 align-items-center">
+                                <input type="radio" name="size" class="tf-check" id="xl">
+                                <label for="xl" class="label"><span>XL</span>&nbsp;<span>(6)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- End Filter -->
+
+<!-- canvasSearch -->
+<div class="offcanvas offcanvas-end canvas-search" id="canvasSearch">
+    <div class="canvas-wrapper">
+        <header class="tf-search-head">
+            <div class="title fw-5">
+                Search our site
+                <div class="close">
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
+                </div>
+            </div>
+            <div class="tf-search-sticky">
+                <form class="tf-mini-search-frm">
+                    <fieldset class="text">
+                        <input type="text" placeholder="Search" class="" name="text" tabindex="0" value=""
+                               aria-required="true" required="">
+                    </fieldset>
+                    <button class="" type="submit"><i class="icon-search"></i></button>
+                </form>
+            </div>
+        </header>
+        <div class="canvas-body p-0">
+            <div class="tf-search-content">
+                <div class="tf-cart-hide-has-results">
+                    <div class="tf-col-quicklink">
+                        <div class="tf-search-content-title fw-5">Quick link</div>
+                        <ul class="tf-quicklink-list">
+                            <li class="tf-quicklink-item">
+                                <a href="shop-default.html" class="">Fashion</a>
+                            </li>
+                            <li class="tf-quicklink-item">
+                                <a href="shop-default.html" class="">Men</a>
+                            </li>
+                            <li class="tf-quicklink-item">
+                                <a href="shop-default.html" class="">Women</a>
+                            </li>
+                            <li class="tf-quicklink-item">
+                                <a href="shop-default.html" class="">Accessories</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tf-col-content">
+                        <div class="tf-search-content-title fw-5">Need some inspiration?</div>
+                        <div class="tf-search-hidden-inner">
+                            <div class="tf-loop-item">
+                                <div class="image">
+                                    <a href="product-detail.html">
+                                        <img src="images/products/white-3.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="product-detail.html">Cotton jersey top</a>
+                                    <div class="tf-product-info-price">
+                                        <div class="compare-at-price">$10.00</div>
+                                        <div class="price-on-sale fw-6">$8.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tf-loop-item">
+                                <div class="image">
+                                    <a href="product-detail.html">
+                                        <img src="images/products/white-2.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="product-detail.html">Mini crossbody bag</a>
+                                    <div class="tf-product-info-price">
+                                        <div class="price fw-6">$18.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tf-loop-item">
+                                <div class="image">
+                                    <a href="product-detail.html">
+                                        <img src="images/products/white-1.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="product-detail.html">Oversized Printed T-shirt</a>
+                                    <div class="tf-product-info-price">
+                                        <div class="price fw-6">$18.00</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+</div>
+<!-- /canvasSearch -->
 
 
-<script src="/static/static_vortice/js/vendor/jquery/jquery.min.js"></script>
-<script src="/static/static_vortice/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/static/static_vortice/js/vendor/slick/slick.min.js"></script>
-<script src="/static/static_vortice/js/vendor/scrollLock/jquery-scrollLock.min.js"></script>
-<script src="/static/static_vortice/js/vendor/instafeed/instafeed.min.js"></script>
-<script src="/static/static_vortice/js/vendor/countdown/jquery.countdown.min.js"></script>
-<script src="/static/static_vortice/js/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="/static/static_vortice/js/vendor/ez-plus/jquery.ez-plus.min.js"></script>
-<script src="/static/static_vortice/js/vendor/tocca/tocca.min.js"></script>
-<script src="/static/static_vortice/js/vendor/bootstrap-tabcollapse/bootstrap-tabcollapse.min.js"></script>
-<script src="/static/static_vortice/js/vendor/isotope/jquery.isotope.min.js"></script>
-<script src="/static/static_vortice/js/vendor/fancybox/jquery.fancybox.min.js"></script>
-<script src="/static/static_vortice/js/vendor/cookie/jquery.cookie.min.js"></script>
-<script src="/static/static_vortice/js/vendor/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="/static/static_vortice/js/vendor/lazysizes/lazysizes.min.js"></script>
-<script src="/static/static_vortice/js/vendor/lazysizes/ls.bgset.min.js"></script>
-<script src="/static/static_vortice/js/vendor/form/jquery.form.min.js"></script>
-<script src="/static/static_vortice/js/vendor/form/validator.min.js"></script>
-<script src="/static/static_vortice/js/vendor/slider/slider.js"></script>
-<script src="/static/static_vortice/js/app.js"></script>
 
+
+
+
+
+
+
+<!-- modal find_size -->
+<div class="modal fade modalDemo tf-product-modal" id="find_size">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="header">
+                <div class="demo-title">Size chart</div>
+                <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+            </div>
+            <div class="tf-rte">
+                <div class="tf-table-res-df">
+                    <h6>Size guide</h6>
+                    <table class="tf-sizeguide-table">
+                        <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>US</th>
+                            <th>Bust</th>
+                            <th>Waist</th>
+                            <th>Low Hip</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>XS</td>
+                            <td>2</td>
+                            <td>32</td>
+                            <td>24 - 25</td>
+                            <td>33 - 34</td>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>4</td>
+                            <td>34 - 35</td>
+                            <td>26 - 27</td>
+                            <td>35 - 26</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>6</td>
+                            <td>36 - 37</td>
+                            <td>28 - 29</td>
+                            <td>38 - 40</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>8</td>
+                            <td>38 - 29</td>
+                            <td>30 - 31</td>
+                            <td>42 - 44</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>10</td>
+                            <td>40 - 41</td>
+                            <td>32 - 33</td>
+                            <td>45 - 47</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
+                            <td>12</td>
+                            <td>42 - 43</td>
+                            <td>34 - 35</td>
+                            <td>48 - 50</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tf-page-size-chart-content">
+                    <div>
+                        <h6>Measuring Tips</h6>
+                        <div class="title">Bust</div>
+                        <p>Measure around the fullest part of your bust.</p>
+                        <div class="title">Waist</div>
+                        <p>Measure around the narrowest part of your torso.</p>
+                        <div class="title">Low Hip</div>
+                        <p class="mb-0">With your feet together measure around the fullest part of your hips/rear.
+                        </p>
+                    </div>
+                    <div>
+                        <img class="sizechart lazyload" data-src="/static/static_vortice/images/shop/products/size_chart2.jpg"
+                             src="/static/static_vortice/images/shop/products/size_chart2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /modal find_size -->
+
+<!-- Javascript -->
+<script type="text/javascript" src="/static/static_vortice/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/carousel.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/lazysize.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/count-down.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/rangle-slider.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/wow.min.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/multiple-modal.js"></script>
+<script type="text/javascript" src="/static/static_vortice/js/main.js"></script>
 </body>
 
 </html>
-

@@ -1,0 +1,148 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block principal %}
+
+    <!-- Mes moda -->
+
+    {% if  mesmoda.video %}
+        <section class="tf-slideshow slider-effect-fade slider-video position-relative">
+            <div class="wrap-slider">
+                <video src="/media/{{ mesmoda.video }}" autoplay muted playsinline loop></video>
+                <div class="box-content">
+                    <div class="container">
+                        <h1 class="fade-item fade-item-2 heading text-white">{{ mesmoda.titulo }}</h1>
+                        <p class="fade-item fade-item-1 subheading text-white fw-7">{{ mesmoda.subtitulo }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if  mesmoda.imagen %}
+        <section class="tf-hero-image-liquid">
+            <img class="lazyload" data-src="/media/{{ mesmoda.imagen }}" src="/media/{{ mesmoda.imagen }}"
+                 alt="img-banner" loading="lazy">
+            <div class="box-content">
+                <div class="container wow fadeInUp" data-wow-delay="0s">
+                    <h2 class="heading">{{ mesmoda.titulo }}</h2>
+                    <p>{{ mesmoda.subtitulo }}</p>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+    <!-- /Mes moda -->
+
+    <!-- Collection -->
+    <!-- Collection -->
+    <section class="flat-spacing-18">
+        <div class="container-full">
+            {% for mod in moda %}
+                <div class="masonry-layout-v2" style="gap: 0px !important">
+                    <div class="item-1 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_1 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_1 }}"
+                                     src="/media/{{ mod.imagen_1 }}" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-2 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_2 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_2 }}"
+                                     src="/media/{{ mod.imagen_2 }}" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-3 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_3 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_3 }}"
+                                     src="/media/{{ mod.imagen_3 }}" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-4 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_4 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_4 }}"
+                                     src="/media/{{ mod.imagen_4 }}/" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-5 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_5 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_5 }}"
+                                     src="/media/{{ mod.imagen_5 }}" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item-6 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                        <div class="collection-inner">
+                            <a href="/media/{{ mod.imagen_6 }}" target="_blank" class="collection-image img-style"
+                               data-pswp-width="770px" data-pswp-height="1075px">
+                                <img class="lazyload" data-src="/media/{{ mod.imagen_6 }}"
+                                     src="/media/{{ mod.imagen_6 }}" alt="collection-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- /Collection -->
+
+
+    <!-- Related Articles -->
+    <section class="mb_30">
+        <div class="container-full">
+            <div class="flat-title">
+                <h5 class="">Modelo del Mes </h5>
+            </div>
+            <div class="hover-sw-nav view-default hover-sw-5">
+                <div class="swiper tf-sw-recent" data-preview="3" data-tablet="2" data-mobile="1" data-space-lg="30"
+                     data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+                     data-pagination-lg="1">
+                    <div class="swiper-wrapper">
+                        {% for mes in meses %}
+                            <div class="swiper-slide" lazy="true">
+                                <div class="blog-article-item">
+                                    <div class="article-thumb radius-10">
+                                        <a href="/vortice/post/{{ mes.id}}/">
+                                            <img class=" ls-is-cached lazyloaded" data-src="/media/{{ mes.imagen }}"
+                                                 src="/media/{{ mes.imagen }}" alt="img-blog">
+                                        </a>
+                                        <div class="article-label">
+                                            <a href="/vortice/post/{{ mes.id}}/"
+                                               class="tf-btn style-2 btn-fill radius-3 animate-hover-btn">{{ mes.mes}} - {{ mes.titulo}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+                <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
+                        class="icon icon-arrow-left"></span></div>
+                <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
+                        class="icon icon-arrow-right"></span></div>
+                <div class="sw-dots d-flex style-2 sw-pagination-recent justify-content-center"></div>
+            </div>
+        </div>
+    </section>
+    <!-- /Related Articles -->
+
+
+
+
+
+{% endblock %}    

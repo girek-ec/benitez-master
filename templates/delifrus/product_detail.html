@@ -11,199 +11,141 @@
         <br><br><br>
 
         <div class="container">
+            <div class="col-lg-12">
 
-            <div class="row">
-                <div class="col-lg-2">
-                    <aside class="sidebar">
-                        <h5 class="font-weight-semi-bold pt-3">Categorias</h5>
-                        <ul class="nav nav-list flex-column">
-                            {% for catego in categorias %}
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="#">{{ catego.clasificacion_producto }}</a></li>
-                            {% endfor %}
+                <div class="row">
+                    <div class="col-lg-6" >
 
-
-                        </ul>
-                        <div class="row mb-5">
-                            <div class="col">
-                                <h5 class="font-weight-semi-bold pt-5">Destacado</h5>
-
-                                <div class="product row row-gutter-sm align-items-center mb-4">
-
-                                    <div class="col-12 col-lg-12">
-                                        <div class="product-thumb-info border-0">
-                                            <a href="shop-product-sidebar-left.html">
-                                                <div class="product-thumb-info-image">
-                                                    <img alt="" class="img-fluid"
-                                                         src="/static/img/demos/photography/team/team-1.jpg">
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-
+                        <div class="thumb-gallery-wrapper">
+                            <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3"
+                                    style="text-align: center;align-content: center">
+                                <div>
+                                    <img alt="" class="img-fluid" src="/media/{{ product.imagen }} "
+                                            style="text-align: center;align-content: center">
                                 </div>
                             </div>
+                            
                         </div>
-                    </aside>
-                </div>
-                <div class="col-lg-10">
 
-                    <div class="row">
-                        <div class="col-lg-5">
+                    </div>
+                    
 
-                            <div class="thumb-gallery-wrapper">
-                                <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3"
-                                     style="text-align: center;align-content: center">
-                                    <div>
-                                        <img alt="" class="img-fluid" src="/media/{{ product.imagen }} "
-                                             style="text-align: center;align-content: center"
-                                             data-zoom-image="img/products/product-grey-7.jpg">
-                                    </div>
+                    <div class="col-lg-6">
+
+                        <div class="summary entry-summary position-relative">
+
+                            <h1 class="mb-0 font-weight-bold text-7">{{ product.nombre_producto }}</h1>
+
+                            <div class="pb-0 clearfix d-flex align-items-center">
+                                <div title="Rated 3 out of 5" class="float-left">
+                                    <input type="text" class="d-none" value="3" title="" data-plugin-star-rating
+                                            data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
                                 </div>
-                                <div class="thumb-gallery-thumbs owl-carousel owl-theme manual thumb-gallery-thumbs">
-                                    <div class="cur-pointer">
-                                        <img alt="" class="img-fluid" src="/static/img/products/product-grey-7.jpg">
-                                    </div>
 
+                                <div class="review-num">
+                                    <a href="/delifrus/productos/"
+                                        class="text-decoration-none text-color-default text-color-hover-primary"
+                                        data-hash data-hash-offset="75" data-hash-trigger-click=".nav-link-reviews"
+                                        data-hash-trigger-click-delay="1000">
+                                        <span class="count text-color-inherit"
+                                                itemprop="ratingCount">{{ product.clasif.clasificacion_producto }}</span>
+
+                                    </a>
                                 </div>
                             </div>
+                            <br>
+                            <p class="text-3-5 mb-3">{{ product.descripcion }}</p>
+                            <div class="row align-items-center">
+                                <p>
+                                    <a type="button" class="btn btn-rounded btn-primary " target="_blank"
+                                       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbenitez-ec.com%20delifrus%20producto%20{{ product.id }}%2F&amp;src=sdkpreparse">Compartir
+                                        por Facebook</a>
+                                </p>
 
-                        </div>
+                                <p>
+                                    <a type="button" class="btn btn-rounded btn-success" title="Click para chatear"
+                                       href="https://api.whatsapp.com/send?phone=593{{marca.celular}}&text=Hola%20Me%20interesa%20un%20producto%20 https://www.benitez-ec.com/delifrus/producto/{{ product.id }}/  "
+                                       target="_blank" rel="noopener">Envíanos un mensaje por WhatsApp</a>
+                                </p>
+                            </div>
+                        
+                            <div class="d-flex align-items-center" style="text-align: center">
+                                <ul class="social-icons social-icons-medium social-icons-clean-with-border social-icons-clean-with-border-border-grey social-icons-clean-with-border-icon-dark mr-3 mb-0">
+                                    <div class="d-flex align-items-center" style="text-align: center">
+                                        
 
-                        <div class="col-lg-7">
 
-                            <div class="summary entry-summary position-relative">
 
-                                <h1 class="mb-0 font-weight-bold text-7">{{ product.nombre_producto }}</h1>
+                                    <li>
+                                        <div id="description"
+                                                class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
+                                            <ul class="nav nav-tabs justify-content-start">
 
-                                <div class="pb-0 clearfix d-flex align-items-center">
-                                    <div title="Rated 3 out of 5" class="float-left">
-                                        <input type="text" class="d-none" value="3" title="" data-plugin-star-rating
-                                               data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                                    </div>
+                                                <li class="nav-item active"><a
+                                                        class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3"
+                                                        href="#productInfo" data-toggle="tab">INFORMACIÓN</a></li>
 
-                                    <div class="review-num">
-                                        <a href="/delifrus/productos/"
-                                           class="text-decoration-none text-color-default text-color-hover-primary"
-                                           data-hash data-hash-offset="75" data-hash-trigger-click=".nav-link-reviews"
-                                           data-hash-trigger-click-delay="1000">
-                                            <span class="count text-color-inherit"
-                                                  itemprop="ratingCount">{{ product.clasif.clasificacion_producto }}</span>
+                                            </ul>
+                                            <div class="tab-content p-0">
 
-                                        </a>
-                                    </div>
-                                </div>
-                                <br>
-                                <p class="text-3-5 mb-3">{{ product.descripcion }}</p>
-{#                                <p class="price mb-3">#}
-{#                                    <span class="amount">${{ product.precio }}</span>#}
-{#                                </p>#}
-
-                                <div class="d-flex align-items-center" style="text-align: center">
-                                    <ul class="social-icons social-icons-medium social-icons-clean-with-border social-icons-clean-with-border-border-grey social-icons-clean-with-border-icon-dark mr-3 mb-0">
-                                        <!-- Facebook -->
-                                        <li class="social-icons-facebook">
-                                            <a href="http://www.facebook.com/sharer.php?u=https://www.okler.net"
-                                               target="_blank" data-toggle="tooltip" data-placement="top"
-                                               title="Share On Facebook">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <!-- Google+ -->
-                                        <li class="social-icons-googleplus">
-                                            <a href="https://plus.google.com/share?url=https://www.okler.net"
-                                               target="_blank" data-toggle="tooltip" data-placement="top"
-                                               title="Share On Google+">
-                                                <i class="fab fa-google-plus-g"></i>
-                                            </a>
-                                        </li>
-                                        <!-- Twitter -->
-                                        <li class="social-icons-twitter">
-                                            <a href="https://twitter.com/share?url=https://www.okler.net&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons"
-                                               target="_blank" data-toggle="tooltip" data-placement="top"
-                                               title="Share On Twitter">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <!-- Email -->
-                                        <li class="social-icons-email">
-                                            <a href="mailto:?Subject=Share This Page&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://www.okler.net"
-                                               data-toggle="tooltip" data-placement="top" title="Share By Email">
-                                                <i class="far fa-envelope"></i>
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <div id="description"
-                                                 class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
-                                                <ul class="nav nav-tabs justify-content-start">
-
-                                                    <li class="nav-item active"><a
-                                                            class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3"
-                                                            href="#productInfo" data-toggle="tab">INFORMACIÓN</a></li>
-
-                                                </ul>
-                                                <div class="tab-content p-0">
-
-                                                    <div class="tab-pane px-0 py-3 active" id="productInfo">
-                                                        <table class="table table-striped m-0">
-                                                            <tbody>
-                                                            <tr>
-                                                                <th class="border-top-0">
-                                                                    Embalaje:
-                                                                </th>
-                                                                <td class="border-top-0">
-                                                                    {{ product.embalaje }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Empaque:
-                                                                </th>
-                                                                <td>
-                                                                    {{ product.empaque }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Sabores:
-                                                                </th>
-                                                                <td>
-                                                                    {{ product.sabores }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Duracion:
-                                                                </th>
-                                                                <td>
-                                                                    {{ product.duracion }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Presentaciones:
-                                                                </th>
-                                                                <td>
-                                                                    {{ product.presentaciones }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Ingredientes:
-                                                                </th>
-                                                                <td>
-                                                                    {{ product.ingredientes }}
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                <div class="tab-pane px-0 py-3 active" id="productInfo">
+                                                    <table class="table table-striped m-0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th class="border-top-0">
+                                                                Embalaje:
+                                                            </th>
+                                                            <td class="border-top-0">
+                                                                {{ product.embalaje }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Empaque:
+                                                            </th>
+                                                            <td>
+                                                                {{ product.empaque }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Sabores:
+                                                            </th>
+                                                            <td>
+                                                                {{ product.sabores }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Duracion:
+                                                            </th>
+                                                            <td>
+                                                                {{ product.duracion }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Presentaciones:
+                                                            </th>
+                                                            <td>
+                                                                {{ product.presentaciones }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                Ingredientes:
+                                                            </th>
+                                                            <td>
+                                                                {{ product.ingredientes }}
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

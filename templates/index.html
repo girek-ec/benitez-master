@@ -130,18 +130,22 @@
                             <div class="owl-stage">
 
                                 {% for empresa in empresas %}
-                                    <!-- Carousel Slide 1 -->
-                                    <div class="owl-item position-relative  " style="background-image: url(/media/{{ empresa.slider }}); background-size: cover; background-position: center;">
-                                        <div class="container position-relative z-index-3 h-100">
-                                            <div class="row justify-content-center align-items-center h-100">
-                                                <div class="col-lg-7 text-center">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                                                        </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Fin Carousel Slide 1 -->
+
+									{% if empresa.activo %}
+										<!-- Carousel Slide 1 -->
+										<div class="owl-item position-relative  " style=" background-image: url(/media/{{ empresa.slider }}); background-size: cover; background-position: center">
+											<div class="container position-relative z-index-3 h-100">
+												<div class="row justify-content-center align-items-center h-100">
+													<div class="col-lg-7 text-center">
+														<div class="d-flex flex-column align-items-center justify-content-center h-100" style="text-align: center !important;">
+															</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fin Carousel Slide 1 -->
+									{% endif %}
+                                    
                                 {% endfor %}
                             </div>
                         </div>
@@ -159,23 +163,14 @@
                                     <div class="col-6 col-sm-6 col-md-69 col-lg-6 col-xl-6  col-lg-1-5 isotope-item ">
                                         <div class="portfolio-item">
                                             {% if empresa.activo %}
-                                                <a href="https://{{ empresa.link_exterior }}/">
-                                                    <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
-                                                        <span class="thumb-info-action border-radius-0">
-                                                            <img src="/media/{{ empresa.logo }}" class="img-fluid border-radius-0" alt="">
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                                {% else %}
                                                 <a href="/{{ empresa.link }}/">
                                                     <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
-                                                        <span class="thumb-info-action border-radius-0">
+                                                        <span class="thumb-info-action border-radius-0" style="text-align: center !important;">
                                                             <img src="/media/{{ empresa.logo }}" class="img-fluid border-radius-0" alt="">
                                                         </span>
                                                     </span>
                                                 </a>
                                             {% endif %}
-
                                         </div>
                                     </div>
                                 {% endfor %}

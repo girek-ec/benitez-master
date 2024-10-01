@@ -1,51 +1,107 @@
-
+from ckeditor.fields import RichTextField
+from django.contrib.admin import BooleanFieldListFilter
 from django.db import models
 
 # Create your models here.
 from django.utils.safestring import mark_safe
 
-class Seccion_Cliente(models.Model):
-    seccion=models.CharField(max_length=30, null=True, blank=True)
-    icono=models.FileField(upload_to='vortice/' , null=True, blank=True, help_text='cuadrada')
-    imagen_vertical = models.FileField(upload_to='vortice/', null=True, blank=True, help_text='vertical')
-    imagen_horizontal =models.FileField(upload_to='vortice/', null=True, blank=True,  help_text='horizontal')
 
-    def __str__(self):
-        return '%s '% (self.seccion)
+# Create your models here.
 
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.icono)
+class Notificaciones(models.Model):
+    texto_1= models.CharField(max_length=100, null=True, blank=True)
+    texto_2 = models.CharField(max_length=100, null=True, blank=True)
+    texto_3 = models.CharField(max_length=100, null=True, blank=True)
+    texto_4 = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "1. Clientes "
+        verbose_name_plural = "6. Notificaciones"
+
+class Vortice(models.Model):
+    favicon=models.ImageField(upload_to='vortice',null=True,  blank=True, help_text='imagenes 20*20')
+    logo_horizontal= models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 20*20')
+    logo_amarillo= models.ImageField(upload_to='vortice', blank=True, null=True, help_text='imagenes 20*20')
+    whatsapp= models.CharField(max_length=11, null=True, blank=True)
+    celular= models.CharField(max_length=11, null=True, blank=True)
+    correo= models.EmailField(null=True, blank=True)
+    direccion= models.CharField(max_length=100, null=True, blank=True)
+    facebook= models.CharField(max_length=100, null=True, blank=True)
+    instagram= models.CharField(max_length=100, null=True, blank=True)
+    tiktok= models.CharField(max_length=100, null=True, blank=True)
+    x= models.CharField(max_length=100, null=True, blank=True)
+    pinterest= models.CharField(max_length=100, null=True, blank=True)
+    youtube = models.CharField(max_length=100, null=True, blank=True)
+    s1_titulo = models.CharField(max_length=100, null=True, blank=True)
+    s2_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='sobre nosotros imagen principal imagenes 2000 × 1262 px')
+    about_titulo_01 = models.CharField(max_length=100, null=True, blank=True)
+    about_subtitulo_01 = models.CharField(max_length=100, null=True, blank=True)
+    about_titulo_02 = models.CharField(max_length=100, null=True, blank=True)
+    about_subtitulo_02 = models.CharField(max_length=100, null=True, blank=True)
+    about_03_imagen_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    about_titulo_03 = models.CharField(max_length=100, null=True, blank=True)
+    about_subtitulo_03 = models.CharField(max_length=100, null=True, blank=True)
+    about_03_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    about_03_imagen_2 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    about_titulo_04 = models.CharField(max_length=100, null=True, blank=True)
+    about_subtitulo_04 = models.CharField(max_length=100, null=True, blank=True)
+    about_04_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
 
 
-talla_chosse=(
-    ('','') ,('S','S'),('M','M'),('L','L'),('XL','XL'),('30','30'),('31','31'),('32','32'),('33','33'),('34','34'),('35','35'),('36','36'),('37','37'),('38','38'),('39','39'),('40','40'),('41','41'),('42','42'),('43','43')
-)
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.logo_horizontal)
+
+
+    class Meta:
+        verbose_name_plural = "1. Vortice"
+
+
+class Seccion_Cliente(models.Model):
+    cliente=models.CharField(max_length=30, null=True, blank=True)
+    imag_cliente_01 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imag_cliente_02 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+
+    def __str__(self):
+        return '%s '% (self.cliente)
+
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imag_cliente_01)
+
+    class Meta:
+        verbose_name_plural = "1. Seccion Cliente "
+
 
 
 class Coleccion(models.Model):
-    principal = models.BooleanField(default=False)
     nuevo=models.BooleanField(default=False)
     activo = models.BooleanField(default=False)
-    seccion=models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE )
-    tema=models.CharField(max_length=30, null=True, blank=True)
-    imagen=models.FileField(upload_to='vortice/', null=True, blank=True, help_text='100x100')
-    color=models.CharField(max_length=30, null=True, blank=True)
+    cliente = models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE, null=True, blank=True)
+    imag_colec_01 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imag_colec_02 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+    tema_colec =models.CharField(max_length=50, null=True, blank=True)
+    sub_tema_colec = models.CharField(max_length=250, null=True, blank=True)
+    detalle = models.TextField(max_length=500, null=True, blank=True)
+    principal = models.BooleanField(default=False)
+    imag_01 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='principal Mujer vertical')
+    tema_img_02 =models.CharField(max_length=50, null=True, blank=True, help_text='principal Mujer articulo nombre')
+    imag_02 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='principal Mujer articulo  horizontal')
+    tema_img_03 =models.CharField(max_length=50, null=True, blank=True, help_text='principal Hombre articulo nombre')
+    imag_03 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='principal Hombre articulo  horizontal')
+    imag_04 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='principal Hombre vertical')
 
     def __str__(self):
-        return '%s %s'% (self.seccion,self.tema)
+        return '%s %s'% (self.cliente , self.tema_colec )
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen)
+        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imag_colec_01)
 
     class Meta:
         verbose_name_plural = "2. Coleccion "
 
+
+
 class Imag_prenda_articulo(models.Model):
     tipo = models.CharField(max_length=30, null=True, blank=True)
-    imagen = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='100x100')
+    imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')
 
     def __str__(self):
         return '%s ' % (self.tipo)
@@ -56,300 +112,220 @@ class Imag_prenda_articulo(models.Model):
     class Meta:
         verbose_name_plural = "3. Imag_prenda_articulo "
 
-class Articulo(models.Model):
-    seccion = models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE, null=True, blank=True)
-    tipo=models.ForeignKey(Imag_prenda_articulo, on_delete=models.CASCADE, null=True, blank=True)
 
-
-
-
-    def __str__(self):
-        return '%s %s' % ( self.seccion,  self.tipo)
-
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.tipo.imagen)
-
-
-
-    class Meta:
-        verbose_name_plural = "4. Articulo "
-
-
-
-class Prenda(models.Model):
-    principal_visible = models.BooleanField(default=False)
-    articulo= models.ForeignKey(Articulo, on_delete=models.CASCADE, null=True, blank=True)
+class Tipo_articulo(models.Model):
+    activo_menu = models.BooleanField(default=False)
     coleccion = models.ForeignKey(Coleccion, on_delete=models.CASCADE, null=True, blank=True)
-    tipo=models.ForeignKey(Imag_prenda_articulo, on_delete=models.CASCADE, null=True, blank=True)
+    nombre_articulo = models.CharField(max_length=10,null=True, blank=True)
+    imagen_articulo = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')
 
+    def __str__(self):
+        return '%s %s' % ( self.coleccion,  self.nombre_articulo)
+    
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen_articulo)
+
+    class Meta:
+        verbose_name_plural = "4. Tipo de Articulo "
+
+
+
+
+
+class Prod_prenda(models.Model):
+    tipo_produc = models.ForeignKey(Tipo_articulo, on_delete=models.CASCADE, null=True, blank=True)
+    nombre_produc = models.CharField(max_length=100, null=True, blank=True)
+    imagen_produc_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imagen_produc_02 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+    video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
+    descripcion_produc = models.TextField(max_length=500, null=True, blank=True)
+    material_produc = models.TextField(max_length=500, null=True, blank=True)
+    precio = models.DecimalField(max_digits=999, decimal_places=2)
+    activa_descuento = models.BooleanField (default=False, null=True, blank=True)
+    precio_descuent = models.DecimalField(max_digits=999, decimal_places=2, null=True, blank=True)
 
 
 
     def __str__(self):
-        return '%s %s' % ( self.coleccion,  self.tipo)
+        return '%s %s' % ( self.tipo_produc,  self.nombre_produc)
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.tipo.imagen)
+        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen_produc_01)
+    
+    class Meta:
+        verbose_name_plural = "5. Producto "
 
+   
+
+class Colores(models.Model):
+    color = models.CharField(max_length=10,null=True, blank=True)
+    codigo = models.CharField(max_length=10,null=True, blank=True)
+
+    def __str__(self):
+        return '%s %s' % ( self.color,  self.codigo)
 
 
     class Meta:
-        verbose_name_plural = "5. Prenda "
+        verbose_name_plural = "6. Colores"
 
 
-
-
-
-
-
-
-
-class Slider(models.Model):
-    orden=models.IntegerField()
-    imagen=models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*900')
-
+class Produc_Color(models.Model):
+    produc_prenda = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
+    color = models.ForeignKey(Colores, on_delete=models.CASCADE, null=True, blank=True)
+    imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')
+    def __str__(self):
+        return '%s %s' % ( self.produc_prenda,  self.color)
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 200px'>"%self.imagen)
-
-
+        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen)
     class Meta:
-        verbose_name_plural = "2. Slider"
+        verbose_name_plural = "7.Color de Productos"
 
 
-class Muestra_productos(models.Model):
-    estado = models.BooleanField(default=False)
-    titulo = models.CharField(max_length=100, null=True, blank=True)
-    imagen_1 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 504*250')
-    titulo_1 = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo_1 = models.CharField(max_length=100, null=True, blank=True)
-    link_1 = models.CharField(max_length=100, null=True, blank=True)
-    imagen_2 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 250*250')
-    titulo_2 = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo_2 = models.CharField(max_length=100, null=True, blank=True)
-    link_2 = models.CharField(max_length=100, null=True, blank=True)
-    imagen_3 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 250*250')
-    titulo_3 = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo_3 = models.CharField(max_length=100, null=True, blank=True)
-    link_3 = models.CharField(max_length=100, null=True, blank=True)
-    imagen_4 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 504*250')
-    titulo_4 = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo_4 = models.CharField(max_length=100, null=True, blank=True)
-    link_4 = models.CharField(max_length=100, null=True, blank=True)
-    imagen_5 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 504*500')
-    titulo_5 = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo_5= models.CharField(max_length=100, null=True, blank=True)
-    link_5 = models.CharField(max_length=100, null=True, blank=True)
-
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 200px'>"%self.imagen_1)
-
-
+class Nu_Talla_Cami(models.Model):
+    n_talla_camisetas = models.CharField(max_length=10,null=True, blank=True)
+    
+    def __str__(self):
+        return '%s' % (self.n_talla_camisetas)
     class Meta:
-        verbose_name_plural = "3. Galeria productos Imagenes"
+        verbose_name_plural = "8. Numero  Tallas Camisetas  "
 
+class Nu_Talla_Zapa(models.Model):
+    n_talla_zapatos = models.CharField(max_length=10,null=True, blank=True)
+    
+    def __str__(self):
+        return '%s' % ( self.n_talla_zapatos)
+    class Meta:
+        verbose_name_plural = "8.1 Numero Tallas Zapatos "
 
-class Vortice(models.Model):
-    favicon_amarillo=models.ImageField(upload_to='vortice/', help_text='imagenes 20*20', null=True, blank=True)
-    favicon_negro = models.ImageField(upload_to='vortice/', help_text='imagenes 20*20', null=True, blank=True)
-    logo_horizontal = models.ImageField(upload_to='vortice/',null=True, blank=True, help_text='imagenes 20*20')
-    logo_amarillo = models.ImageField(upload_to='vortice/', help_text='imagenes 20*20', null=True, blank=True)
-    logo_negro = models.ImageField(upload_to='vortice/', help_text='imagenes 20*20', null=True, blank=True)
-    representante = models.CharField(max_length=100, null=True, blank=True)
-    whatsapp = models.CharField(max_length=11, null=True, blank=True)
-    celular = models.CharField(max_length=11, null=True, blank=True)
-    celular2 = models.CharField(max_length=100, null=True, blank=True)
-    correo = models.EmailField(null=True, blank=True)
-    direccion = models.CharField(max_length=100, null=True, blank=True)
-    titulo = models.CharField(max_length=100, null=True, blank=True)
-    nosotros=models.TextField(max_length=500, null=True, blank=True)
-    imagen = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 20*20')
-    imagen_encabezado = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*400')
-    imagen_fondo = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 20*20')
-    imagen_suscri = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 20*20')
-    imagen_pie = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 20*20')
-    imagen_flot_iz_1 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
-    imagen_flot_iz_2 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
-    imagen_flot_de_1 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
-    imagen_flot_de_2 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
-    wallpaper = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*400')
+class Nu_Talla_Produ(models.Model):
+    n_talla_producto = models.CharField(max_length=10,null=True, blank=True)
+    
+    def __str__(self):
+        return '%s' % (self.n_talla_producto)
+    class Meta:
+        verbose_name_plural = "8.2 Numero Tallas Producto "  
 
+class Talla_Camiseta(models.Model):
+    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
+    talla_camisetas = models.ForeignKey(Nu_Talla_Cami, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return '%s %s' % ( self.produc, self.talla_camisetas)
+    class Meta:
+        verbose_name_plural = "8.3 Eleccion de Tallas Camisetas  "
+
+class Talla_Zapato(models.Model):
+    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
+    talla_zapatos = models.ForeignKey(Nu_Talla_Zapa, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return '%s %s' % ( self.produc, self.talla_zapatos)
+    class Meta:
+        verbose_name_plural = "8.4 Eleccion Tallas Zapatos "
+
+class Talla_Producto(models.Model):
+    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
+    talla_producto = models.ForeignKey(Nu_Talla_Produ, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return '%s %s' % ( self.produc, self.talla_producto)
+    class Meta:
+        verbose_name_plural = "8.5 Eleccion Tallas Producto "
+
+class Servicios(models.Model):
+    video=models.FileField(upload_to='vortice',null=True, blank=True, help_text='video 200*200')
+    imagen=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 200*200')
+    servicio= models.CharField(max_length=100, null=True, blank=True)
+    detalle= models.TextField(max_length=500, null=True, blank=True)
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.logo_horizontal)
 
 
     class Meta:
-        verbose_name_plural = "1. Vortice"
+        verbose_name_plural = "10. Servicios"
 
-class Vorti_Promo(models.Model):
+
+class SliderCard(models.Model):
     activo = models.BooleanField(default=False)
-    titulo = models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo = models.CharField(max_length=100, null=True, blank=True)
-    imagen = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 50*50')
-    enlace= models.CharField(max_length=100, null=True, blank=True)
+    titulo= models.CharField(max_length=100, null=True, blank=True)
+    sub_titulo= models.CharField(max_length=100, null=True, blank=True)
+    detalle= models.TextField(max_length=500, null=True, blank=True)
+    imagen=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 200*200')
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen)
 
 
     class Meta:
-        verbose_name_plural = "9. Promo Vortice"
+        verbose_name_plural = "11. SliderCard"
 
 
-
-class Contacto_redes(models.Model):
-    facebook = models.CharField(max_length=100, null=True, blank=True)
-    instagram = models.CharField(max_length=100, null=True, blank=True)
-    twitter = models.CharField(max_length=100, null=True, blank=True)
-    linkedin = models.CharField(max_length=100, null=True, blank=True)
-    youtube = models.CharField(max_length=100, null=True, blank=True)
-    ticktock = models.CharField(max_length=100, null=True, blank=True)
-    behance = models.CharField(max_length=100, null=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "8. Contácto Redes Sociales"
-
-
-
-
-
-
-
-
-
-
-
-
-class Camiseta_Imagen_detalle(models.Model):
-    imagen_cuello_o = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
-    detalle_cuello_o = models.CharField(max_length=100, null=True, blank=True)
-    imagen_cuello_v_hombre = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
-    detalle_cuello_v_hombre = models.CharField(max_length=100, null=True, blank=True)
-    imagen_cuello_v_mujer = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='500x500')
-    detalle_cuello_v_mujer = models.CharField(max_length=100, null=True, blank=True)
-
-
+class GiftCard(models.Model):
+    principal = models.BooleanField(default=False)
+    activo = models.BooleanField(default=False)
+    video=models.FileField(upload_to='vortice',null=True, blank=True, help_text='video 200*200')
+    imagen=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 200*200')
+    titulo= models.CharField(max_length=100, null=True, blank=True)
+    detalle= models.TextField(max_length=500, null=True, blank=True)
+    precio = models.DecimalField(max_digits=999, decimal_places=2)
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen_cuello_o)
+        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen)
 
 
     class Meta:
-        verbose_name_plural = "3. Camiseta_Imagen_detalle "
+        verbose_name_plural = "11. GifCard"
 
-
-
-
-class Camiseta_cuello(models.Model):
-    cliente = models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE, null=True, blank=True)
-    tipo = models.CharField(max_length=100, null=True, blank=True)
+class Anio(models.Model):
+    anio= models.CharField(max_length=10, null=True, blank=True)
     def __str__(self):
-        return '%s %s' % (self.cliente,self.tipo)
-
-
-    class Meta:
-        verbose_name_plural = "6. Camiseta Cuello"
-
-
-class Camiseta_talla_Hombre(models.Model):
-    cuello_redondo = models.BooleanField(default=False)
-    cuello_v = models.BooleanField(default=False)
-    talla = models.CharField(max_length=2, null=True, blank=True)
-    espalda = models.CharField(max_length=2, null=True, blank=True)
-    ancho = models.CharField(max_length=2, null=True, blank=True)
-    alto = models.CharField(max_length=2, null=True, blank=True)
+        return '%s' % (self.anio)
 
     class Meta:
-        verbose_name_plural = "6. Camiseta_talla_Hombre "
+        verbose_name_plural = "12. Años"
 
-class Camiseta_talla_Mujer(models.Model):
-    cuello_redondo = models.BooleanField(default=False)
-    cuello_v = models.BooleanField(default=False)
-    talla = models.CharField(max_length=2, null=True, blank=True)
-    espalda = models.CharField(max_length=2, null=True, blank=True)
-    ancho = models.CharField(max_length=2, null=True, blank=True)
-    alto = models.CharField(max_length=2, null=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "6. Camiseta_talla_Mujer "
-
-
-class Camiseta_talla_Nene(models.Model):
-    cuello_redondo = models.BooleanField(default=False)
-    cuello_v = models.BooleanField(default=False)
-    talla = models.CharField(max_length=2, null=True, blank=True)
-    espalda = models.CharField(max_length=2, null=True, blank=True)
-    ancho = models.CharField(max_length=2, null=True, blank=True)
-    alto = models.CharField(max_length=2, null=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "6. Camiseta talla Nene "
-
-class Camiseta_talla_Nena(models.Model):
-    cuello_redondo = models.BooleanField(default=False)
-    cuello_v = models.BooleanField(default=False)
-    talla = models.CharField(max_length=2, null=True, blank=True)
-    espalda = models.CharField(max_length=2, null=True, blank=True)
-    ancho = models.CharField(max_length=2, null=True, blank=True)
-    alto = models.CharField(max_length=2, null=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "6. Camiseta talla Nena "
-
-
-
-class Product(models.Model):
-    orden = models.IntegerField(default=0)
-    offer = models.BooleanField(default=False)
-    new = models.BooleanField(default=False)
-    stock = models.BooleanField(default=True)
-    activar_camisetas = models.BooleanField(default=False)
-    camiseta_cuello_o = models.BooleanField(default=False)
-    camiseta_cuello_v_hombre_nene = models.BooleanField(default=False)
-    camiseta_cuello_v_mujer_nena = models.BooleanField(default=False)
-    camiseta_talla_hombre = models.BooleanField(default=False)
-    camiseta_talla_mujer = models.BooleanField(default=False)
-    camiseta_talla_nene= models.BooleanField(default=False)
-    camiseta_talla_nena = models.BooleanField(default=False)
-    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, null=True, blank=True )
-    prenda= models.ForeignKey(Prenda, on_delete=models.CASCADE, null=True, blank=True )
-    titulo= models.CharField(max_length=50, null=True, blank=True)
-    imagen= models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    imagen_2= models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    imagen_3 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    imagen_4 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    youtube = models.FileField(upload_to='vortice/', null=True, blank=True, )
-    T_unica = models.BooleanField(default=False)
-    T_24 = models.BooleanField(default=False)
-    T_26 = models.BooleanField(default=False)
-    T_28 = models.BooleanField(default=False)
-    T_30 = models.BooleanField(default=False)
-    T_32 = models.BooleanField(default=False)
-    T_34 = models.BooleanField(default=False)
-    T_36 = models.BooleanField(default=False)
-    T_38 = models.BooleanField(default=False)
-    T_40 = models.BooleanField(default=False)
-    precio= models.DecimalField(max_digits=999, decimal_places=2)
-    precio_oferta= models.DecimalField(max_digits=999, decimal_places=2, null=True, blank=True)
-    descripcion= models.TextField(max_length=500, null=True, blank=True)
-    wallpapers = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='imagenes 500*400')
-    galeria_producto_1 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    galeria_producto_2 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    galeria_producto_3 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    galeria_producto_4 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    galeria_producto_5 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    galeria_producto_6 = models.ImageField(upload_to='vortice/', null=True, blank=True, help_text='360x360')
-    create_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+class Meses(models.Model):
+    anio = models.ForeignKey(Anio, on_delete=models.CASCADE, null=True, blank=True)
+    nombre_mes= models.CharField(max_length=10, null=True, blank=True)
     def __str__(self):
-        return '%s %s' % (self.titulo,self.prenda)
+        return '%s  %s' % (self.anio , self.nombre_mes)
+
+    class Meta:
+        verbose_name_plural = "13. Meses"
+
+class MesModa(models.Model):
+    principal = models.BooleanField(default=False)
+    activo = models.BooleanField(default=False)
+    izquierda = models.BooleanField(default=False)
+    derecha = models.BooleanField(default=False)
+    mes = models.ForeignKey(Meses, on_delete=models.CASCADE, null=True, blank=True)
+    video=models.FileField(upload_to='vortice',null=True, blank=True, help_text='video 200*200')
+    imagen=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 200*200')
+    coleccion = models.ForeignKey(Coleccion, on_delete=models.CASCADE, null=True, blank=True)
+    titulo= models.CharField(max_length=100, null=True, blank=True)
+    subtitulo= models.CharField(max_length=100, null=True, blank=True)
+    detalle= models.TextField(max_length=500, null=True, blank=True)
+    def __str__(self):
+        return '%s %s' % (self.mes , self.titulo)
+    def miniatura(self):
+        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen)
+    class Meta:
+        verbose_name_plural = "14. Mes Moda"
+
+
+class MesModa_galeria(models.Model):
+    mesmoda = models.ForeignKey(MesModa, on_delete=models.CASCADE, null=True, blank=True)
+    imagen_1=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='horizontal')
+    imagen_2 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imagen_3 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imagen_4 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+    imagen_5 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    imagen_6 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
+    def __str__(self):
+        return '%s ' % (self.mesmoda )
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen)
-
-
-
+        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen_1)
     class Meta:
-        verbose_name_plural = "1. Producto "
-
-
-
+        verbose_name_plural = "15. Mes Moda Galeria Fotos"

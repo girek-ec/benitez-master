@@ -219,8 +219,9 @@ class Product(models.Model):
     rojo = models.BooleanField(default=False)
     plomo = models.BooleanField(default=False)
     gris = models.BooleanField(default=False)
+    blanco = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
-    ficha_tec= models.FileField(upload_to='products/', null=True, blank=True, help_text='pdf')
+    ficha_tec= models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='pdf')
     slug = models.SlugField(null=False, blank=True, unique=True)
 
     def __str__(self):

@@ -4,8 +4,46 @@ from django.contrib import admin
 from Vortice.models import *
 from Vortice.snippers import Attr
 
+
+class Produc_ColorInline(admin.StackedInline):
+    model = Produc_Color
+    extra = 0
+
+class Tallas_CamisetaInline(admin.StackedInline):
+    model = Talla_Camiseta
+    extra = 0
+
+class Talla_ZapatoInline(admin.StackedInline):
+    model = Talla_Zapato
+    extra = 0
+
+class Talla_ProductoInline(admin.StackedInline):
+    model = Talla_Producto
+    extra = 0
+
+
+class MesModa_galeriaInline(admin.StackedInline):
+    model = MesModa_galeria
+    extra = 0
+
+class VorticeAdmin(admin.ModelAdmin):
+    list_display = Attr(Vortice)+["miniatura"]
+    list_display_links = Attr(Vortice)
+admin.site.register(Vortice, VorticeAdmin)
+
+class NotificacionesAdmin(admin.ModelAdmin):
+    list_display = Attr(Notificaciones)
+    list_display_links = Attr(Notificaciones)
+admin.site.register(Notificaciones, NotificacionesAdmin)
+
+class SliderCardAdmin(admin.ModelAdmin):
+    list_display = Attr(SliderCard)+["miniatura"]
+    list_display_links = Attr(SliderCard)
+admin.site.register(SliderCard, SliderCardAdmin)
+
+
 class Seccion_ClienteAdmin(admin.ModelAdmin):
-    list_display = Attr(Seccion_Cliente)+["miniatura"]
+    list_display = Attr(Seccion_Cliente)
     list_display_links = Attr(Seccion_Cliente)
 admin.site.register(Seccion_Cliente, Seccion_ClienteAdmin)
 
@@ -14,82 +52,89 @@ class ColeccionAdmin(admin.ModelAdmin):
     list_display_links = Attr(Coleccion)
 admin.site.register(Coleccion, ColeccionAdmin)
 
-
-
-class ArticuloAdmin(admin.ModelAdmin):
-    list_display = Attr(Articulo)+["miniatura"]
-    list_display_links = Attr(Articulo)
-admin.site.register(Articulo, ArticuloAdmin)
-
 class Imag_prenda_articuloAdmin(admin.ModelAdmin):
-    list_display = Attr(Imag_prenda_articulo)+["miniatura"]
+    list_display = Attr(Imag_prenda_articulo)
     list_display_links = Attr(Imag_prenda_articulo)
 admin.site.register(Imag_prenda_articulo, Imag_prenda_articuloAdmin)
 
-class PrendaAdmin(admin.ModelAdmin):
-    list_display = Attr(Prenda)+["miniatura"]
-    list_display_links = Attr(Prenda)
-admin.site.register(Prenda, PrendaAdmin)
+class Tipo_articuloAdmin(admin.ModelAdmin):
+    list_display = Attr(Tipo_articulo)+["miniatura"]
+    list_display_links = Attr(Tipo_articulo)
+admin.site.register(Tipo_articulo, Tipo_articuloAdmin)
 
+class ColoresAdmin(admin.ModelAdmin):
+    list_display = Attr(Colores)
+    list_display_links = Attr(Colores)
+admin.site.register(Colores, ColoresAdmin)
 
-class SliderAdmin(admin.ModelAdmin):
-    list_display = Attr(Slider)+["miniatura"]
-    list_display_links = Attr(Slider)
-admin.site.register(Slider, SliderAdmin)
+class Produc_ColorAdmin(admin.ModelAdmin):
+    list_display = Attr(Produc_Color)
+    list_display_links = Attr(Produc_Color)
+admin.site.register(Produc_Color, Produc_ColorAdmin)
 
-class VorticeAdmin(admin.ModelAdmin):
-    list_display = Attr(Vortice)+["miniatura"]
-    list_display_links = Attr(Vortice)
-admin.site.register(Vortice, VorticeAdmin)
+class Nu_Talla_CamiAdmin(admin.ModelAdmin):
+    list_display = Attr(Nu_Talla_Cami)
+    list_display_links = Attr(Nu_Talla_Cami)
+admin.site.register(Nu_Talla_Cami, Nu_Talla_CamiAdmin)
 
-class Vorti_PromoAdmin(admin.ModelAdmin):
-    list_display = Attr(Vorti_Promo)+["miniatura"]
-    list_display_links = Attr(Vorti_Promo)
-admin.site.register(Vorti_Promo, Vorti_PromoAdmin)
+class Nu_Talla_ZapaAdmin(admin.ModelAdmin):
+    list_display = Attr(Nu_Talla_Zapa)
+    list_display_links = Attr(Nu_Talla_Zapa)
+admin.site.register(Nu_Talla_Zapa, Nu_Talla_ZapaAdmin)
 
-class Muestra_productosAdmin(admin.ModelAdmin):
-    list_display = Attr(Muestra_productos)+["miniatura"]
-    list_display_links = Attr(Muestra_productos)
-admin.site.register(Muestra_productos, Muestra_productosAdmin)
+class Nu_Talla_ProduAdmin(admin.ModelAdmin):
+    list_display = Attr(Nu_Talla_Produ)
+    list_display_links = Attr(Nu_Talla_Produ)
+admin.site.register(Nu_Talla_Produ, Nu_Talla_ProduAdmin)
 
-class Contacto_redesAdmin(admin.ModelAdmin):
-    list_display = Attr(Contacto_redes)
-    list_display_links = Attr(Contacto_redes)
-admin.site.register(Contacto_redes, Contacto_redesAdmin)
+class Talla_CamisetaAdmin(admin.ModelAdmin):
+    list_display = Attr(Talla_Camiseta)
+    list_display_links = Attr(Talla_Camiseta)
+admin.site.register(Talla_Camiseta, Talla_CamisetaAdmin)
 
+class Talla_ZapatoAdmin(admin.ModelAdmin):
+    list_display = Attr(Talla_Zapato)
+    list_display_links = Attr(Talla_Zapato)
+admin.site.register(Talla_Zapato, Talla_ZapatoAdmin)
 
+class Talla_ProductoAdmin(admin.ModelAdmin):
+    list_display = Attr(Talla_Producto)
+    list_display_links = Attr(Talla_Producto)
+admin.site.register(Talla_Producto, Talla_ProductoAdmin)
 
-@admin.register(Camiseta_talla_Hombre)
-class Camiseta_talla_HombreAdmin(admin.ModelAdmin):
-    list_display = Attr(Camiseta_talla_Hombre)
-    list_display_links = Attr(Camiseta_talla_Hombre)
+class Prod_prendaAdmin(admin.ModelAdmin):
+    list_display = Attr(Prod_prenda)+["miniatura"]
+    list_display_links = Attr(Prod_prenda)
+    inlines = [Produc_ColorInline, Tallas_CamisetaInline, Talla_ZapatoInline, Talla_ProductoInline ]
+admin.site.register(Prod_prenda, Prod_prendaAdmin)
 
-@admin.register(Camiseta_talla_Mujer)
-class Camiseta_talla_MujerAdmin(admin.ModelAdmin):
-    list_display = Attr(Camiseta_talla_Mujer)
-    list_display_links = Attr(Camiseta_talla_Mujer)
+class ServiciosAdmin(admin.ModelAdmin):
+    list_display = Attr(Servicios)
+    list_display_links = Attr(Servicios)
+admin.site.register(Servicios, ServiciosAdmin)
 
-@admin.register(Camiseta_talla_Nene)
-class Camiseta_talla_NeneAdmin(admin.ModelAdmin):
-    list_display = Attr(Camiseta_talla_Nene)
-    list_display_links = Attr(Camiseta_talla_Nene)
+class GiftCardAdmin(admin.ModelAdmin):
+    list_display = Attr(GiftCard)+["miniatura"]
+    list_display_links = Attr(GiftCard)
+admin.site.register(GiftCard, GiftCardAdmin)
 
-@admin.register(Camiseta_talla_Nena)
-class Camiseta_talla_NenaAdmin(admin.ModelAdmin):
-    list_display = Attr(Camiseta_talla_Nena)
-    list_display_links = Attr(Camiseta_talla_Nena)
+class Anioadmin(admin.ModelAdmin):
+    list_display = Attr(Anio)
+    list_display_links = Attr(Anio)
+admin.site.register(Anio, Anioadmin)
 
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ["miniatura"]+ Attr(Product)
-    list_display_links = Attr(Product)
+class MesesAdmin(admin.ModelAdmin):
+    list_display = Attr(Meses)
+    list_display_links = Attr(Meses)
+admin.site.register(Meses, MesesAdmin)
 
-@admin.register(Camiseta_Imagen_detalle)
-class Camiseta_Imagen_detalleAdmin(admin.ModelAdmin):
-    list_display = Attr(Camiseta_Imagen_detalle)
-    list_display_links = Attr(Camiseta_Imagen_detalle)
+class MesModaAdmin(admin.ModelAdmin):
+    list_display = Attr(MesModa)+["miniatura"]
+    list_display_links = Attr(MesModa)
+    inlines = [MesModa_galeriaInline]
+admin.site.register(MesModa, MesModaAdmin)
 
-
-
-
-
+class MesModa_galeriaAdmin(admin.ModelAdmin):
+    list_display = Attr(MesModa_galeria)+["miniatura"]
+    list_display_links = Attr(MesModa_galeria)
+admin.site.register(MesModa_galeria, MesModa_galeriaAdmin)

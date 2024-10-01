@@ -1,0 +1,75 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block principal %}
+
+    <!-- page-title -->
+        <div class="tf-page-title style-2">
+            <div class="container-full">
+                <div class="heading text-center">Modelo del Mes</div>
+            </div>
+        </div>
+        <!-- /page-title -->
+
+        <!-- Store locations -->
+        <section class="flat-spacing-12">
+            <div class="container">
+                <div class="tf-timeline-wrap position-relative">
+                    <div class="tf-timeline-line"></div>
+                    {% for mes in mesmoda %}
+                        {% if mes.derecha %}
+                            <!-- derecha -->
+                            <div class="tf-timeline-item z-2 position-relative">
+                                <div class="tf-timeline-inner d-flex align-items-center justify-content-between tf-timeline-content-end">
+                                    <span class="tf-timeline-time">{{ mes.mes.nombre_mes }}</span>
+                                    <div class="tf-timeline-content">
+                                        <div class="tf-timeline-label fw-7">{{ mes.mes }}</div>
+                                        <a href="/vortice/post/{{ mes.id}}/" class="tf-timeline-title">
+                                            <h4 class="tf-timeline-title">{{ mes.titulo}}</h4>
+                                        <div class="tf-timeline-description">{{ mes.subtitulo }}</div>
+                                            <div class="tf-timeline-description">{{ mes.detalle }}</div>
+                                        </a>
+                                    </div>
+                                    <div class="tf-timeline-image">
+                                        <a href="/vortice/post/{{ mes.id}}/" class="tf-timeline-title">
+                                        <img class="lazyload" data-src="/media/{{ mes.imagen }}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /derecha -->
+                        {% endif %} 
+                        
+                        {% if mes.izquierda %}
+                         <!-- izquierda -->
+                        <div class="tf-timeline-item z-2 position-relative">
+                            <div class="tf-timeline-inner d-flex align-items-center justify-content-between">
+                                <span class="tf-timeline-time">{{ mes.mes.nombre_mes }}</span>
+                                    <div class="tf-timeline-content">
+                                        <div class="tf-timeline-label fw-7">{{ mes.mes }}</div>
+                                        <a href="/vortice/post/{{ mes.id}}/" class="tf-timeline-title">
+                                            <h4 class="tf-timeline-title">{{ mes.titulo}}</h4>
+                                        <div class="tf-timeline-description">{{ mes.subtitulo }}</div>
+                                            <div class="tf-timeline-description">{{ mes.detalle }}</div>
+                                        </a>
+                                    </div>
+                                    <div class="tf-timeline-image">
+                                        <a href="/vortice/post/{{ mes.id}}/" class="tf-timeline-title">
+                                        <img class="lazyload" data-src="/media/{{ mes.imagen }}" alt="">
+                                        </a>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- /izquierda -->
+                        {% endif %}
+                    {% endfor %}
+                    
+                    
+                    
+                   
+                  
+                </div>
+            </div>
+        </section>
+        <!-- /Store locations -->
+    
+    
+{% endblock %} 

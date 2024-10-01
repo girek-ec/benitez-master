@@ -60,12 +60,16 @@ urlpatterns = [
 
     # web vortice/
     path('vortice/', index_vortice),
-    path('vortice/seccion/<slug:secc>/',seccion_filtro_vortice),
-    path('vortice/seccion/<slug:seccion>/prenda/<slug:tipo>/',tipo_filtro_vortice),
-    path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/',coleccion_filtro_vortice),
-    path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/prenda/<slug:tipo>/',coleccion_filtro_prenda_vortice),
-    path('vortice/producto_detalle/<int:id>/',producto_detalle_vortice),
-    path('vortice/contacto/', contacto_vortice),
+    path('vortice/seccion/<slug:secc>/', seccion_filtro),
+    path('vortice/seccion/<slug:seccion>/prenda/<slug:tipo>/', tipo_filtro),
+    path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/', coleccion_filtro),
+    path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/prenda/<slug:tipo>/',coleccion_filtro_prenda),
+    path('vortice/producto_detalle/<int:id>/', producto_detalle),
+    path('vortice/blog/', blog),
+    path('vortice/gift/', giftcard),
+    path('vortice/gift/<int:id>', card),
+    path('vortice/post/<int:id>/', post),
+    path('vortice/nosotros/', nosotros),
     # web vortice/
 
     # web delifrus/

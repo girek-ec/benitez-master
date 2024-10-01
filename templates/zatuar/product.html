@@ -164,45 +164,59 @@
                      
                         
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mb-6 mb-lg-6">
+                            <h1 style="text-align: center"
+                                class="mb-0 font-weight-bold text-7">{{ product.title }} </h1>
 
-                            <div class="summary entry-summary">
-
-                                <h1 style="text-align: center"
-                                    class="mb-0 font-weight-bold text-7">{{ product.title }} </h1>
-
-                                <div class="pb-0 clearfix">
-                                    <div title="Rated 3 out of 5" class="float-left">
-                                        <input type="text" class="d-none" value="3" title="" data-plugin-star-rating
-                                               data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
-                                    </div>
-                                </div>
-
-
-                                <p class="mb-5">{{ product.descripcion }} </p>
-
-                                <p class="price">
-                                    <span class="amount">$ {{ product.precio }} <span
-                                            style="font-size: xx-small">+ iva</span></span>
-                                </p>
-                                <div class="row align-items-center">
-                                    <p>
-                                        <a type="button" class="btn btn-rounded btn-primary " target="_blank"
-                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgrupo-benitez.com%2Fzatuar%2Fproducto%2F{{ product.id }}%2F&amp;src=sdkpreparse">Compartir
-                                            por Facebook</a>
-                                        <a href="whatsapp://send?text=https:/grupo-benitez.com/zatuar/producto/{{ product.id }}/"
-                                           class="btn btn-rounded btn-success" style="color: #ffffff">Compartir por
-                                            WhatsApp</a>
-                                    </p>
-
-                                    <p>
-                                        <a type="button" class="btn btn-rounded btn-success" title="Click para chatear"
-                                           href="https://api.whatsapp.com/send?phone=593993239290&text=Hola%20Me%20interesa%20un%20producto%20www.grupo-benitez.com/zatuar/producto/{{ product.id }}/  "
-                                           target="_blank" rel="noopener">Envíanos un mensaje por WhatsApp</a>
-                                    </p>
+                            <div class="pb-0 clearfix">
+                                <div title="Rated 3 out of 5" class="float-left">
+                                    <input type="text" class="d-none" value="3" title="" data-plugin-star-rating
+                                            data-plugin-options="{'displayOnly': true, 'color': 'primary', 'size':'xs'}">
                                 </div>
                             </div>
+
+
+                            <p class="mb-5">{{ product.descripcion }} </p>
+                            
+                            <div class="row align-items-center">
+                                <div class="col-sm-5">
+                                        <div class="pr-3 pr-sm-5 pb-3 pb-sm-0 border-right-light">
+                                        <h2 class="price ">
+                                            <span class="amount">$ {{ product.precio }} <span
+                                                    style="font-size: small">+ iva</span></span>
+                                            </h2>
+                                    </div>
+                                    </div>
+                                <div class="col-sm-7">
+                                    <a  title="Click para chatear"
+                                        href="https://api.whatsapp.com/send?phone=593993239290&text=Hola%20Me%20interesa%20un%20producto%20 https://www.benitez-ec.com/zatuar/producto/{{ product.id }}/  "
+                                        target="_blank" rel="noopener"> 
+                                        <button type="button" class="btn btn-primary mb-2">Comprar</button>
+                                        </a>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="card p-3 mb-6">
+                                <div class="card-body p-4 my-4">
+                                    <h1 style="text-align: center !important;">Zatuar </h1>
+                                    <p>Descargar ficha técnica de este producto en archivo en .pdf </p>
+                                    <a class="text-decoration-none lightbox" href="/media/{{product.ficha_tec}}" data-plugin-options="{'type':'iframe'}">
+                                        <div class="feature-box align-items-center">
+                                            <div class="feature-box-icon pulseAnim pulseAnimAnimated">
+                                                <i class="icon-docs icons text-1"></i>
+                                            </div>
+                                            <div class="feature-box-info">
+                                                <h4 class="line-height-3 text-3 mb-0">Clic para descargar</h4>
+                                                <p class="text-2 mb-0 line-height-5">Ficha técnica</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div> 
+                            </div>
                         </div>
+                                
+
+                    
                     </div>
 
                     <div class="row">
@@ -348,6 +362,14 @@
                                                                         </svg>
                                                                     {% else %}
                                                                     {% endif %}
+                                                                    {% if product.blanco == True %}
+                                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                         width="50" height="50" viewBox="0 0 120 120"> 
+                                                                        <circle cx="60" cy="60" r="50" fill="white"/>
+                                                                        </circle>
+                                                                    </svg>
+                                                                {% else %}
+                                                                {% endif %}
                                                                 </td>
                                                             </tr>
                                                         </tbody>

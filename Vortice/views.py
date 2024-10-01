@@ -3,138 +3,279 @@ from django.shortcuts import render
 
 # Create your views here.
 
-
+from benitez import settings
 from Vortice.models import *
-
 
 def index_vortice(request):
     contexto ={
         'vortice':Vortice.objects.all().first(),
-        'promo': Vorti_Promo.objects.all(),
-        'slider':Slider.objects.all(),
-        'muestra': Muestra_productos.objects.all(),
-        'coleccion':Coleccion.objects.all(),
-        'prenda':Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'products': Product.objects.all().order_by('-create_at'),
-        'redes': Contacto_redes.objects.all().first(),
-
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'products': Prod_prenda.objects.all(),
+        'colores' : Colores.objects.all(),
+        'produc_color' : Produc_Color.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
     }
     return render(request, 'vortice/index_vortice.html', contexto)
 
 
-def seccion_filtro_vortice(request,secc):
-
+def seccion_filtro(request,secc):
     contexto ={
-        'prendas': Prenda.objects.filter(coleccion__seccion__seccion=secc),
-        'articu': Articulo.objects.filter(seccion__seccion=secc),
         'vortice':Vortice.objects.all().first(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'sec': Seccion_Cliente.objects.get(seccion=secc),
-        'prenda': Prenda.objects.all(),
-        'coleccion': Coleccion.objects.all(),
-        'colecciones':Coleccion.objects.filter(seccion__seccion=secc),
-        'productss': Product.objects.filter(prenda__coleccion__seccion__seccion=secc).order_by('-create_at'),
-        'redes': Contacto_redes.objects.all().first(),
-    }
-    return render(request, 'vortice/categories.html', contexto)
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'seccion_id': Seccion_Cliente.objects.get(cliente=secc),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=secc),
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=secc),
+        'colores' : Colores.objects.all(),
+        'n_camisetas' : Nu_Talla_Cami.objects.all(),
+        'n_zapatos' : Nu_Talla_Zapa.objects.all(),
+        'n_productos' : Nu_Talla_Produ.objects.all(),
+        't_camisetas' : Talla_Camiseta.objects.all(),
+        't_zapatos' : Talla_Zapato.objects.all(),
+        't_productos' : Talla_Producto.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+    } 
+    return render(request,'vortice/vortice-shop.html', contexto)
 
-
-def tipo_filtro_vortice(request,seccion,tipo):
+def tipo_filtro(request,seccion,tipo):
     contexto ={
-        'articu': Articulo.objects.filter(seccion__seccion=seccion),
-        'prenda': Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'sec': Seccion_Cliente.objects.get(seccion=seccion),
         'vortice':Vortice.objects.all().first(),
-        'prendas': Prenda.objects.filter(coleccion__seccion__seccion=seccion),
-        'coleccion': Coleccion.objects.all(),
-        'colecciones': Coleccion.objects.filter(seccion__seccion=seccion),
-        'redes': Contacto_redes.objects.all().first(),
-        'product': Product.objects.filter(articulo__seccion__seccion=seccion, articulo__tipo__tipo=tipo).order_by('-create_at'),
-        'products': Product.objects.filter(prenda__coleccion__seccion__seccion=seccion, prenda__tipo__tipo=tipo).order_by('-create_at'),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'seccion_id': Seccion_Cliente.objects.get(cliente=seccion),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion),
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=seccion, tipo_produc__nombre_articulo=tipo),
+        'colores' : Colores.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
     }
-    return render(request, 'vortice/categories.html', contexto)
+    return render(request, 'vortice/prendas.html', contexto)
 
-def coleccion_filtro_vortice(request,seccion,coleccion):
+def coleccion_filtro(request,seccion,coleccion):
     contexto ={
-        'articu': Articulo.objects.filter(seccion__seccion=seccion),
-        'prenda': Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'sec': Seccion_Cliente.objects.get(seccion=seccion),
         'vortice':Vortice.objects.all().first(),
-        'prendas': Prenda.objects.filter(coleccion__seccion__seccion=seccion, coleccion__tema=coleccion),
-        'coleccion': Coleccion.objects.all(),
-        'colecciones': Coleccion.objects.filter(seccion__seccion=seccion),
-        'colec': Coleccion.objects.filter(seccion__seccion=seccion, tema=coleccion).first(),
-        'redes': Contacto_redes.objects.all(),
-        'prod': Product.objects.filter(prenda__coleccion__seccion__seccion=seccion,prenda__coleccion__tema=coleccion).order_by('-create_at'),
-        'productss': Product.objects.filter(prenda__coleccion__tema=coleccion ).order_by('-create_at'),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'seccion_id': Seccion_Cliente.objects.get(cliente=seccion),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
+        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion ), 
+        'colores' : Colores.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+        
     }
-    return render(request, 'vortice/coleccion.html', contexto)
 
-def coleccion_filtro_prenda_vortice(request,seccion,coleccion,tipo):
+    return render(request, 'vortice/shop-collection-sub.html', contexto)
+
+def coleccion_filtro_prenda(request,seccion,coleccion,tipo):
     contexto ={
-        # 'articu': Articulo.objects.filter(seccion__seccion=seccion),
-        'prenda': Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'secc': Seccion_Cliente.objects.filter(seccion=seccion),
         'vortice':Vortice.objects.all().first(),
-        'prendaa': Prenda.objects.filter(coleccion__seccion__seccion=seccion, coleccion__tema=coleccion),
-        'coleccion': Coleccion.objects.all(),
-        'colecciones': Coleccion.objects.filter(seccion__seccion=seccion),
-        'colec': Coleccion.objects.filter(seccion__seccion=seccion,tema=coleccion).first(),
-        'redes': Contacto_redes.objects.all(),
-        'product': Product.objects.filter(articulo__seccion__seccion=seccion, articulo__tipo__tipo=tipo).order_by('-create_at'),
-        'products': Product.objects.filter(prenda__coleccion__seccion__seccion=seccion, prenda__coleccion__tema=coleccion, prenda__tipo__tipo=tipo).order_by('-create_at'),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'seccion_id': Seccion_Cliente.objects.get(cliente=seccion),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
+        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion, tipo_produc__nombre_articulo=tipo ), 
+        'colores' : Colores.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+        
+        
     }
-    return render(request, 'vortice/coleccion.html', contexto)
+    return render(request, 'vortice/shop-collection-sub.html', contexto)
 
 
-def producto_detalle_vortice(request,id):
+def producto_detalle(request,id):
     contexto = {
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=id),
+        'products': Prod_prenda.objects.get(id=id),
+        'colores' : Colores.objects.all(),
+        'produc_color' : Produc_Color.objects.filter(produc_prenda=id),
+        'n_camisetas' : Nu_Talla_Cami.objects.all(),
+        'n_zapatos' : Nu_Talla_Zapa.objects.all(),
+        'n_productos' : Nu_Talla_Produ.objects.all(),
+        't_camisetas' : Talla_Camiseta.objects.filter(produc=id),
+        't_zapatos' : Talla_Zapato.objects.filter(produc=id),
+        't_productos' : Talla_Producto.objects.filter(produc=id),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+       
+    }
+    return render(request,'vortice/product-description-vertical.html', contexto)
+
+def tienda(request):
+    contexto ={
+       
+    }
+    return render(request,'vortice/product-style-05.html', contexto)
+
+def blog(request):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.all(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'vortice': Vortice.objects.all().first(),
+        'anios': Anio.objects.all(),
+        'mes': Meses.objects.all(),
+        'mesmoda' : MesModa.objects.all().order_by('-mes'),
+    }
+    return render(request,'vortice/blog-moda.html', contexto)
+
+def post(request,id):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.all(),
+        'notificaciones': Notificaciones.objects.all().first(),
         'vortice': Vortice.objects.all().first(),
         'coleccion': Coleccion.objects.all(),
-        'prenda': Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'camiseta_cuello': Camiseta_cuello.objects.all(),
-        'camiseta_talla_hombre': Camiseta_talla_Hombre.objects.all(),
-        'camiseta_talla_mujer': Camiseta_talla_Mujer.objects.all(),
-        'camiseta_talla_nene': Camiseta_talla_Nene.objects.all(),
-        'camiseta_talla_nena': Camiseta_talla_Nena.objects.all(),
-        'products': Product.objects.get(id=id),
-        'produc': Product.objects.all().order_by('-create_at'),
-        'camiseta_imagen_deta':Camiseta_Imagen_detalle.objects.all().first(),
-        'redes': Contacto_redes.objects.all(),
+        'anios': Anio.objects.all(),
+        'mesmoda' : MesModa.objects.get(id=id),
+        'moda': MesModa_galeria.objects.filter(mesmoda__id=id),
+        'meses': MesModa.objects.all(),
     }
-    return render(request, 'vortice/product-details.html', contexto)
+    return render(request,'vortice/moda-mes.html', contexto)
 
-
-
-
-def contacto_vortice(request):
-    contexto = {
-        'vortice': Vortice.objects.all().first(),
-        'coleccion': Coleccion.objects.all(),
-        'prenda': Prenda.objects.all(),
-        'seccion': Seccion_Cliente.objects.all(),
-        'products': Product.objects.all(),
-        'redes': Contacto_redes.objects.all().first(),
+def nosotros(request,):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'products': Prod_prenda.objects.all(),
+        'colores' : Colores.objects.all(),
+        'produc_color' : Produc_Color.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
     }
-    if request.POST:
-        enviar_email(request,request.POST['subject'],request.POST['email'],"vortice.ec@gmail.com",request.POST['message'],request.POST['name'])
-    return render(request, 'vortice/contact.html', contexto)
+    return render(request,'vortice/about-us.html', contexto)
 
 
+def giftcard(request,):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'products': Prod_prenda.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'slidercard' : SliderCard.objects.all(),
+  
+   
+        
+    }
+    return render(request,'vortice/giftcard.html', contexto)
 
-def enviar_email(request,asunto,from_email,to,mensaje,nombre):
-    asunto = asunto
-    from_email = from_email
-    to = to
-    text_content = 'Este mnsaje es importante.'
-    html_content = '<p>This is an <strong>important</strong> message.</p>' \
-                   '<img src="http://vortice.ec/static/imagenes/vortice.png"><br>' + mensaje
-    msg = EmailMultiAlternatives(asunto, text_content, from_email, [to])
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
-    # print from_email
+
+def card(request,id):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'products': Prod_prenda.objects.all(),
+        'giftCards' : GiftCard.objects.get(id=id),
+  
+   
+        
+    }
+    return render(request,'vortice/card.html', contexto)
+
+
+def nosotros(request,):
+    contexto ={
+        'vortice':Vortice.objects.all().first(),
+        'notificaciones': Notificaciones.objects.all().first(),
+        'sliders':Coleccion.objects.all(),
+        'secciones': Seccion_Cliente.objects.all(),
+        'colecciones':Coleccion.objects.all(),
+        'imag_prenda_articulos':Imag_prenda_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'products': Prod_prenda.objects.all(),
+        'colores' : Colores.objects.all(),
+        'produc_color' : Produc_Color.objects.all(),
+        'servicios' : Servicios.objects.all(),
+        'giftCards' : GiftCard.objects.all(),
+        'anios' :  Anio.objects.all(),
+        'meses' :  Meses.objects.all(),
+        'mesmodas' : MesModa.objects.all(),
+        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+    }
+    return render(request,'vortice/about-us.html', contexto)
