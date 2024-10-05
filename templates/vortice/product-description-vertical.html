@@ -226,7 +226,7 @@
                                                 <span class="icon icon-check"></span>
                                             </a> -->
                                             <div class="w-100">
-                                                <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20Me%20interesa%20este%20producto%20 - {{ products.nombre_produc}} -  https://www.benitez-ec/vortice/producto_detalle/{{ products.id}} " class="btns-full">Adquirir  <!--<img src="/static/static_vortice/images/payments/paypal.png" alt="">--></a>
+                                                <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20Me%20interesa%20este%20producto%20 - {{ products.nombre_produc}} -  https://www.benitez-ec/vortice/producto/{{ products.id}} " class="btns-full">Adquirir  <!--<img src="/static/static_vortice/images/payments/paypal.png" alt="">--></a>
                                                 <!--
                                                 <a href="#" class="payment-more-option">More payment options</a> 
                                                 -->
@@ -461,7 +461,7 @@
                             	<div class="swiper-slide" lazy="true">
                                 <div class="card-product">
                                     <div class="card-product-wrapper">
-                                        <a href="/producto_detalle/{{ produc.id }}/" class="product-img">
+                                        <a href="/producto/{{ produc.id }}/" class="product-img">
                                             <img class="lazyload img-product" data-src="/media/{{ produc.imagen }}" src="/media/{{ produc.imagen }}" alt="image-product">
                                             <img class="lazyload img-hover" data-src="/media/{{ produc.imagen }}" src="/media/{{ produc.imagen }}" alt="image-product">
                                         </a>
@@ -493,7 +493,7 @@
                                         </div>
                                     </div>
                                     <div class="card-product-info">
-                                        <a href="product-detail.html" class="title link">{{ produc.nombre}}</a>
+                                        <a href="/vortice/producto/" class="title link">{{ produc.nombre}}</a>
                                         <span class="price">${{ produc.precio}}</span>
                                         <ul class="list-color-product">
                                             

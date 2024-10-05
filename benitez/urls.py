@@ -64,7 +64,7 @@ urlpatterns = [
     path('vortice/seccion/<slug:seccion>/prenda/<slug:tipo>/', tipo_filtro),
     path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/', coleccion_filtro),
     path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/prenda/<slug:tipo>/',coleccion_filtro_prenda),
-    path('vortice/producto_detalle/<int:id>/', producto_detalle),
+    path('vortice/producto/<int:id>/', producto_detalle),
     path('vortice/blog/', blog),
     path('vortice/gift/', giftcard),
     path('vortice/gift/<int:id>', card),
