@@ -21,7 +21,7 @@ from Home.views import *
 from Girekstudio.views import *
 from Vortice.views import *
 from Zatuar.views import *
-from Delifrus.views import *
+from Niska.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -72,14 +72,14 @@ urlpatterns = [
     path('vortice/nosotros/', nosotros),
     # web vortice/
 
-    # web delifrus/
-    path('delifrus/', index_delifrus),
-    path('delifrus/empresa/', nosotros_delifrus ),
-    path('delifrus/productos/', productos_delifrus),
-    # path('delifrus/productos/<int:id>/', producto_cate_zatuar),
-    path('delifrus/producto/<int:n>/', producto_id_delifrus),
-    path('delifrus/contacto/', contacto_delifrus),
-    # web delifrus/
+    # web niska/
+    path('niska/', index_niska),
+    path('niska/empresa/', nosotros_niska ),
+    path('niska/productos/', productos_niska),
+    # path('niska/productos/<int:id>/', producto_cate_niska),
+    path('niska/producto/<int:n>/', producto_id_niska),
+    path('niska/contacto/', contacto_niska),
+    # web niska/
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

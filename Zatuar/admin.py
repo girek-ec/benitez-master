@@ -6,6 +6,18 @@ from Zatuar.models import *
 from Zatuar.snippers import Attr
 
 
+class Color_ProductInline(admin.StackedInline):
+    model = Color_Product
+    extra = 0
+
+class Tallas_ProductInline(admin.StackedInline):
+    model = Tallas_Product
+    extra = 0
+
+class Producto_ImagenInline(admin.StackedInline):
+    model = Producto_Imagen
+    extra = 0
+
 class SliderAdmin(admin.ModelAdmin):
     list_display = Attr(Slider)
     list_display_links = Attr(Slider)
@@ -62,16 +74,54 @@ class DetallesAdmin(admin.ModelAdmin):
     list_display_links = Attr(Detalles)
 admin.site.register(Detalles,DetallesAdmin)
 
+class Ficha_ProductAdminn(admin.ModelAdmin):
+    list_display = Attr(Ficha_Product)
+    list_display_links = Attr(Ficha_Product)
+admin.site.register(Ficha_Product,Ficha_ProductAdminn)
+
+
+
+class ColoresAdminn(admin.ModelAdmin):
+    list_display = Attr(Colores)
+    list_display_links = Attr(Colores)
+admin.site.register(Colores,ColoresAdminn)
+
+class Color_ProductAdminn(admin.ModelAdmin):
+    list_display = Attr(Color_Product)
+    list_display_links = Attr(Color_Product)
+admin.site.register(Color_Product,Color_ProductAdminn)
+
+class MaterialesAdminn(admin.ModelAdmin):
+    list_display = Attr(Materiales)
+    list_display_links = Attr(Materiales)
+admin.site.register(Materiales,MaterialesAdminn)
+
+class TallasAdminn(admin.ModelAdmin):
+    list_display = Attr(Tallas)
+    list_display_links = Attr(Tallas)
+admin.site.register(Tallas,TallasAdminn)
+
+class TextursAdminn(admin.ModelAdmin):
+    list_display = Attr(Texturs)
+    list_display_links = Attr(Texturs)
+admin.site.register(Texturs,TextursAdminn)
+
+class Tallas_ProductAdminn(admin.ModelAdmin):
+    list_display = Attr(Tallas_Product)
+    list_display_links = Attr(Tallas_Product)
+admin.site.register(Tallas_Product,Tallas_ProductAdminn)
+
+
 class ProductAdminn(admin.ModelAdmin):
     list_display = Attr(Product)+["miniatura"]
     list_display_links = Attr(Product)
+    inlines = [Color_ProductInline, Tallas_ProductInline, Producto_ImagenInline]
 admin.site.register(Product,ProductAdminn)
 
 class Linea_ProductAdminn(admin.ModelAdmin):
     list_display = Attr(Linea_Product)+["miniatura"]
     list_display_links = Attr(Linea_Product)
 admin.site.register(Linea_Product, Linea_ProductAdminn)
-
 
 class Clasif_productoAdmin(admin.ModelAdmin):
     list_display = Attr(Clasif_producto)
@@ -88,23 +138,7 @@ class Producto_PersonalizacionAdmin(admin.ModelAdmin):
     list_display_links = Attr(Producto_Personalizacion)
 admin.site.register(Producto_Personalizacion,Producto_PersonalizacionAdmin)
 
-class Producto_clienteAdmin(admin.ModelAdmin):
-    list_display = Attr(Producto_cliente)
-    list_display_links = Attr(Producto_cliente)
-admin.site.register(Producto_cliente, Producto_clienteAdmin)
-
-
-class GaleriaInline(admin.StackedInline):
-    model = Galeria_Cliente
-    extra = 2
-
 class ClienteAdmin(admin.ModelAdmin):
     list_display = Attr(Cliente)
     list_display_links = Attr(Cliente)
-    inlines =[GaleriaInline]
 admin.site.register(Cliente,ClienteAdmin)
-
-class Galeria_ClienteAdmin(admin.ModelAdmin):
-    list_display = Attr(Galeria_Cliente)
-    list_display_links = Attr(Galeria_Cliente)
-admin.site.register(Galeria_Cliente,Galeria_ClienteAdmin)

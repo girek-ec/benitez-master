@@ -170,7 +170,7 @@ class Descarga(models.Model):
 class Linea_Product(models.Model):
     orden = models.IntegerField(default=0)
     linea = models.CharField(max_length=50, null=True, blank=True)
-    imagen = models.FileField(upload_to='products/', null=True, blank=True, help_text='100x100')
+    imagen = models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='100x100')
 
     def __str__(self):
         return ' %s ' % (self.linea)
@@ -190,38 +190,75 @@ class Clasif_producto(models.Model):
     class Meta:
         verbose_name_plural = "9.4. Clasificaciòn de Producto"
 
+class Ficha_Product(models.Model):
+    producto = models.CharField(max_length=50, null=True, blank=True)
+    ficha = models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='pdf')
+
+
+    def __str__(self):
+        return ' %s ' % (self.producto)
+
+
+    class Meta:
+        verbose_name_plural = "9.5. Producto Ficha Tecnica"
+
+class Colores(models.Model):
+    nombre_color = models.CharField(max_length=30, null=True, blank=True)
+    codigo_color = models.CharField(max_length=8, null=True, blank=True)
+
+
+    def __str__(self):
+        return ' %s ' % (self.nombre_color)
+
+    class Meta:
+        verbose_name_plural = "9.5. Color"
+
+
+class Tallas(models.Model):
+    talla = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return ' %s ' % (self.talla)
+
+    class Meta:
+        verbose_name_plural = "9.5. Tallas"
+
+
+class Materiales(models.Model):
+    material = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return ' %s ' % (self.material)
+
+    class Meta:
+        verbose_name_plural = "9.5. Materiales"
+
+class Texturs(models.Model):
+    textura = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return ' %s ' % (self.textura)
+
+    class Meta:
+        verbose_name_plural = "9.5. Texturas"
+
 
 class Product(models.Model):
-    orden = models.IntegerField(default=0, null=True, blank=True)
     clasif = models.ForeignKey(Clasif_producto, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=True, blank=True)
+    ficha_tecnica= models.ForeignKey(Ficha_Product,  on_delete=models.CASCADE, blank=True, null=True)
     image_a = models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='100x100')
     image_b = models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='100x100')
     foto_slider = models.FileField(upload_to='zatuar/', null=True, blank=True)
     descripcion = models.TextField(max_length=500, null=True, blank=True)
-    caracteristicas = models.TextField(max_length=500, null=True, blank=True)
     tamanio = models.CharField(max_length=30, null=True, blank=True)
-    tala_s = models.BooleanField(default=False)
-    tala_m = models.BooleanField(default=False)
-    tala_l = models.BooleanField(default=False)
-    tala_xl = models.BooleanField(default=False)
-    material = models.CharField(max_length=500, null=True, blank=True)
-    textura = models.CharField(max_length=30, null=True, blank=True)
+    material = models.ForeignKey(Materiales,  on_delete=models.CASCADE, blank=True, null=True)
+    textura = models.ForeignKey(Texturs,  on_delete=models.CASCADE, blank=True, null=True)
     gramaje = models.CharField(max_length=30, null=True, blank=True)
     nuevo = models.BooleanField(default=False)
-    cantidad = models.IntegerField(null=True, blank=True)
     precio = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-    disponivilidad = models.BooleanField(default=True)
-    azul = models.BooleanField(default=False)
-    amarillo = models.BooleanField(default=False)
-    verde = models.BooleanField(default=False)
-    naranja = models.BooleanField(default=False)
-    rojo = models.BooleanField(default=False)
-    plomo = models.BooleanField(default=False)
-    gris = models.BooleanField(default=False)
-    blanco = models.BooleanField(default=False)
+    disponibilidad = models.BooleanField(default=True)
     create_at = models.DateTimeField(auto_now_add=True)
-    ficha_tec= models.FileField(upload_to='zatuar/', null=True, blank=True, help_text='pdf')
     slug = models.SlugField(null=False, blank=True, unique=True)
 
     def __str__(self):
@@ -232,6 +269,31 @@ class Product(models.Model):
 
     class Meta:
         verbose_name_plural = "9.5. Producto"
+
+
+
+class Tallas_Product(models.Model):
+    producto= models.ForeignKey(Product,  on_delete=models.CASCADE, blank=True, null=True)
+    talla = models.ForeignKey(Tallas, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return ' %s %s ' % (self.producto , self.talla)
+
+    class Meta:
+        verbose_name_plural = "9.5. Talla Producto"
+
+
+class Color_Product(models.Model):
+    producto= models.ForeignKey(Product,  on_delete=models.CASCADE, blank=True, null=True)
+    color = models.ForeignKey(Colores, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return ' %s %s ' % (self.producto , self.color)
+
+    class Meta:
+        verbose_name_plural = "9.5. Color Producto"
+
+
 
 def set_slug(sender, instance, *args, **kwargs):  # callback
     if instance.title and not instance.slug:
@@ -246,11 +308,7 @@ pre_save.connect(set_slug, sender=Product)
 
 
 
-
-
-
 class Producto_Imagen(models.Model):
-    orden = models.IntegerField(default=0)
     producto = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     galeria_articulo = models.FileField(upload_to='zatuar/', help_text='imagen producto 800x800', null=True, blank=True)
 
@@ -262,8 +320,6 @@ class Producto_Imagen(models.Model):
 
     class Meta:
         verbose_name_plural = '9.6. Producto Imagenes'
-
-
 
 class Producto_Personalizacion(models.Model):
     producto = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
@@ -285,35 +341,9 @@ class Producto_Personalizacion(models.Model):
         verbose_name_plural = "9.7. Producto Personalizacion"
 
 
-
-class Producto_Slider(models.Model):
-    orden = models.IntegerField()
-    producto = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
-    slider = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='1884x529')
-
-    def vista_previa(self):
-        if self.slider:
-            return """<a href="/media/%s"><img width="300" height="150" border="0" alt="Miniatura" src="/media/%s"/></a>""" % (
-            self.slider, self.slider)
-        else:
-            return 'No hay imagen'
-
-    vista_previa.short_description = "vista_previa"
-    vista_previa.allow_tags = True
-
-    class Meta:
-        verbose_name_plural = "9.8. Slider"
-
-
 class Cliente(models.Model):
     nombre_export = models.CharField(max_length=100, blank=True, null=True)
     client_logo = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='200x200')
-    detalle = models.TextField(max_length=500, blank=True, null=True)
-    foto = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='1280x500')
-    pagweb = models.CharField(max_length=100, null=True, blank=True)
-    facebook = models.CharField(max_length=100, null=True, blank=True)
-    instagram = models.CharField(max_length=100, null=True, blank=True)
-    twitter = models.CharField(max_length=100, null=True, blank=True)
     def __str__(self):
         return "%s" % self.nombre_export
 
@@ -323,40 +353,3 @@ class Cliente(models.Model):
     class Meta:
         verbose_name_plural = "01.0 Clientes"
 
-
-
-
-class Galeria_Cliente(models.Model):
-    cliente=models.ForeignKey(Cliente,  on_delete=models.CASCADE,null=True,blank=True)
-    galeria=models.FileField(upload_to='zatuar/',blank=True, null=True, help_text='500x500')
-
-    def vista_previa(self):
-       if self.galeria:
-            return """<a href="/media/%s"><img width="250" height="150" border="0" alt="Miniatura" src="/media/%s"/></a>""" % (self.galeria,self.galeria)
-       else:
-           return 'No hay imagen'
-
-    vista_previa.short_description="vista_previa"
-    vista_previa.allow_tags=True
-
-    class Meta:
-        verbose_name_plural="01.1 Clientes-Galeria"
-
-
-class Producto_cliente(models.Model):
-    client = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
-    imagen_producto = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='500x500')
-    portada = models.FileField(upload_to='zatuar/', blank=True, null=True, help_text='600x400')
-
-    def vista_previa(self):
-        if self.imagen_producto:
-            return """<a href="/media/%s"><img width="250" height="150" border="0" alt="Miniatura" src="/media/%s"/></a>""" % (
-            self.imagen_producto, self.imagen_producto)
-        else:
-            return 'No hay imagen'
-
-    vista_previa.short_description = "vista_previa"
-    vista_previa.allow_tags = True
-
-    class Meta:
-        verbose_name_plural = "9.9.1 Mandil Cliente"

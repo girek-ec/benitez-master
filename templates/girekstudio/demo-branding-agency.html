@@ -79,7 +79,7 @@
             <div class="col-auto text-end d-none d-sm-flex">
                 <div class="header-icon">
                     <div class="header-button">
-                        <a href="mailto:{{ Contacto_empresa.correo }}" class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
+                        <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20GirekStudio%20 " class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
                             <span>
                                 <span><i class="fa-regular fa-envelope"></i></span>
                                 <span class="btn-double-text" data-text="Whatsapp"> Escribir </span>
@@ -463,9 +463,9 @@
                         <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Llama a nuestra oficina</span>
                         <a href="tel:{{ contacto_empresa.celular}}">{{ contacto_empresa.celular}}</a>
                     </div>
-                    <div class="col-lg-5 col-6">
+                    <div class="col-lg-5 col-6"> <a class="alt-font fs-14" href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20GirekStudio%20 ">
                         <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Enviar un mensaje</span>
-                        <a class="alt-font fs-14" href="mailto:{{ contacto_empresa.correo}}">{{ contacto_empresa.correo}}</a>
+                       Escribir</a>
                     </div>
                     
                 </div>

@@ -195,7 +195,7 @@ class Contacto_empresa(models.Model):
     twitter = models.CharField(max_length=100, null=True, blank=True)
     linkedin = models.CharField(max_length=100, null=True, blank=True)
     youtube = models.CharField(max_length=100, null=True, blank=True)
-    behance = models.CharField(max_length=100, null=True, blank=True)
+    #behance = models.CharField(max_length=100, null=True, blank=True)
     correo = models.EmailField(null=True, blank=True)
     whatsapp = models.CharField(max_length=15, null=True, blank=True)
     telefono = models.CharField(max_length=15, null=True, blank=True)

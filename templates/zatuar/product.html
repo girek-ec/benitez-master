@@ -245,7 +245,8 @@
                                                                     Material
                                                                 </th>
                                                                 <td>
-                                                                    {{ product.material }}
+
+                                                                    	{{ materiales.material }}
                                                                 </td>
                                                             </tr>
 
@@ -254,7 +255,9 @@
                                                                     Textura:
                                                                 </th>
                                                                 <td>
-                                                                    {{ product.textura }}
+
+                                                                    	{{ texturas.textura }}
+
                                                                 </td>
                                                             </tr>
 
@@ -269,22 +272,12 @@
                                                                     {% else %}
                                                                     {% endif %}
 
-                                                                    {% if product.tala_s == True %}
-                                                                         S
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.tala_m == True %}
-                                                                        - M
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.tala_l == True %}
-                                                                        - L
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.tala_xl == True %}
-                                                                        -XL
-                                                                    {% else %}
-                                                                    {% endif %}
+                                                                    {% for tallas_producto in tallas_productos %}
+                                                                    	{{ tallas_producto.talla }} ,
+                                                                    {% endfor %}
+
+
+
                                                                 </td>
                                                             </tr>
 
@@ -294,7 +287,7 @@
                                                                     Disponibilidad:
                                                                 </th>
                                                                 <td>
-                                                                    {% if product.disponivilidad == True %}
+                                                                    {% if product.disponibilidad == True %}
                                                                         <i class="fa fa-check fa-2x" style="color:#2bca6e"></i>
                                                                     {% else %}
                                                                         <i class="fa fa-times fa-2x" style="color:#d41212"></i>
@@ -306,70 +299,14 @@
                                                                     Colores:
                                                                 </th>
                                                                 <td>
-                                                                    {% if product.azul == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50"
-                                                                                    fill="RoyalBlue"></circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.verde == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="green"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.amarillo == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="gold"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.naranja == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="orange"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.rojo == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="red"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.gris == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="silver"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.plomo == True %}
-                                                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                                             width="50" height="50" viewBox="0 0 120 120">
-                                                                            <circle cx="60" cy="60" r="50" fill="gray"/>
-                                                                            </circle>
-                                                                        </svg>
-                                                                    {% else %}
-                                                                    {% endif %}
-                                                                    {% if product.blanco == True %}
+                                                                    {% for colores_producto in colores_productos %}
                                                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                                          width="50" height="50" viewBox="0 0 120 120"> 
-                                                                        <circle cx="60" cy="60" r="50" fill="white"/>
+                                                                        <circle cx="60" cy="60" r="50" fill="{{ colores_producto.color.codigo_color }}"/>
                                                                         </circle>
                                                                     </svg>
-                                                                {% else %}
-                                                                {% endif %}
+                                                                    {% endfor %}
+
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -384,6 +321,26 @@
 
                         </div>
                     </div>
+
+                    <div class="row">
+						<div class="col">
+							<div class="row">
+								<div class="col">
+									<div class="row">
+                                        {% for imagenes_producto in imagenes_productos %}
+                                            <div class="col-lg-6 " style="padding: 0px !important;">
+                                                <a class="lightbox" href="/media/{{ imagenes_producto.galeria_articulo }}" data-plugin-options="{'type':'image'}">
+                                                    <img class="img-fluid" src="/media/{{ imagenes_producto.galeria_articulo }}" alt="Project Image">
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <hr class="solid my-5">
 
