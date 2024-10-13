@@ -8,7 +8,7 @@
 <meta property="og:title" content="GirekStudio - Agencia de Diseño - {{ servicio.titulo }}"  />
 <meta property="og:description" content="{{ servicio.descripcion }}" />
 <meta property="og:url" content="https://benitez-ec/girekstudio/servicio/{{servicio.id}}" />
-<meta property="og:image" content="/media/{{ servicio.imag_serv_princi }}" />
+<meta property="og:image" content="http://www.grupo/benitez.com/media/{{ servicio.imag_serv_princi }}" />
 <meta property="og:type" content="website" />
 {% endblock %}
  {% block principal %}
@@ -94,7 +94,7 @@
                                     <ul class="p-0 mt-20px mb-30px list-style-01 text-start lh-normal">
                                         {% for planes_lista in planes_listas %}
                                             {% if planes_lista.plan_serv == plan %}
-                                            <li class="border-color-extra-medium-gray pt-20px pb-20px text-dark-gray fw-500 d-flex"><i class="feather icon-feather-check fs-20 text-green me-10px"></i>{{ planes_lista.info_1 }}</li>
+                                            <li class="border-color-extra-medium-gray pt-20px pb-20px text-dark-gray fw-500 d-flex"><i class="feather icon-feather-check fs-20 text-green me-10px"></i>{{ planes_lista.info_1 }} hola</li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>

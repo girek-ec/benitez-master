@@ -4,11 +4,9 @@
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ product.title }}"/>
     <meta property="og:description" content="{{ product.descripcion }}"/>
-    <meta property="og:image" content="https://www.grupo-benitez.com/media/zatuar/{{ product.image_a }}"/>
+    <meta property="og:image" content="https://www.grupo-benitez.com/media/{{ product.image_a }}"/>
     <meta property="og:image:width" content="600"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="fb:app_id" content="293058731812356"/>
-
 {% endblock %}
 
 
@@ -200,7 +198,7 @@
                                 <div class="card-body p-4 my-4">
                                     <h1 style="text-align: center !important;">Zatuar </h1>
                                     <p>Descargar ficha técnica de este producto en archivo en .pdf </p>
-                                    <a class="text-decoration-none lightbox" href="/media/{{product.ficha_tec}}" data-plugin-options="{'type':'iframe'}">
+                                    <a class="text-decoration-none lightbox" href="/media/{{product.ficha_tecnica}}" data-plugin-options="{'type':'iframe'}">
                                         <div class="feature-box align-items-center">
                                             <div class="feature-box-icon pulseAnim pulseAnimAnimated">
                                                 <i class="icon-docs icons text-1"></i>

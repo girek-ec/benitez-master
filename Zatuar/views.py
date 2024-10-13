@@ -130,8 +130,8 @@ def clientes_id_zatuar(request,id):
                       })
 
 
-def error404_zatuar(request):
-    return render(request, "zatuar/page-404.html")
+def error404_zatuar(request, exception):
+    return render(request, "zatuar/page-404.html", status=404)
 
 def contacto_zatuar(request):
     contexto = {

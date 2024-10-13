@@ -52,6 +52,8 @@ class Contacto_empresa(models.Model):
     correo=models.EmailField()
     horario=models.CharField(max_length=100, default=1, null=True, blank=True)
     horariosb=models.CharField(max_length=100, default=1, null=True, blank=True)
+    horarioc = models.CharField(max_length=100, default=1, null=True, blank=True)
+    horariosd = models.CharField(max_length=100, default=1, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "3. Contacto Empresa"

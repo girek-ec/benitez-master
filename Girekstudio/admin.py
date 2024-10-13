@@ -14,6 +14,14 @@ class Lista_servicioInline(admin.StackedInline):
     model = Lista_servicio
     extra = 0
 
+class Imag_Video_ServicioInline(admin.StackedInline):
+    model = Imag_Video_Servicio
+    extra = 0
+
+class PlanesInline(admin.StackedInline):
+    model = Planes
+    extra = 0
+
 class Plan_listInline(admin.StackedInline):
     model = Plan_list
     extra = 0
@@ -53,6 +61,7 @@ class SucursalesAdmin(admin.ModelAdmin):
 class ServicioAdmin(admin.ModelAdmin):
     list_display = Attr(Servicio) + ["vista_previa"]
     list_display_links = Attr(Servicio)
+    inlines = [Lista_servicioInline,Imag_Video_ServicioInline,PlanesInline]
 
 @admin.register(Lista_servicio)
 class Lista_servicioAdmin(admin.ModelAdmin):

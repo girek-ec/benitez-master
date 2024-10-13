@@ -83,7 +83,6 @@ def contacto_girekstudio(request):
         'editable': Editables.objects.all().first(),
         'servicios': Servicio.objects.all().order_by("orden"),
         'clientes': Cliente.objects.all(),
-        'contacto_empresa': Contacto_empresa.objects.all(),
         'sucursales' : Sucursales.objects.all(),
         'contacto_empresa': Contacto_empresa.objects.all().first(),
 
@@ -129,7 +128,7 @@ def tienda_girekstudio(request):
         'servicios': Servicio.objects.all().order_by("orden"),
         'categorias': Clasif_producto.objects.all(),
         'productos': Producto.objects.all().order_by('-id'),
-        'contacto_empresa': Contacto_empresa.objects.all(),
+        'contacto_empresa': Contacto_empresa.objects.all().first(),
 
     }
 
@@ -144,7 +143,7 @@ def producto_cate_girekstudio(request, id):
         'servicios': Servicio.objects.all().order_by("orden"),
         'productos': Producto.objects.filter(clasif_id=id),
         'producto_imagen' : Producto_Imagen.objects.filter(producto=product),
-        'contacto_empresa': Contacto_empresa.objects.all(),
+        'contacto_empresa': Contacto_empresa.objects.all().first(),
     }
 
     return render(request, 'girekstudio/demo-branding-agency-store.html', contexto)
@@ -158,7 +157,7 @@ def producto_id_girekstudio(request, n):
         'servicios': Servicio.objects.all().order_by("orden"),
         'product': Producto.objects.get(id=n),
         'producto_imagen' : Producto_Imagen.objects.filter(producto=product),
-        'contacto_empresa': Contacto_empresa.objects.all(),
+        'contacto_empresa': Contacto_empresa.objects.all().first(),
     }
 
     return render(request, 'girekstudio/demo-branding-agency-product.html', contexto)

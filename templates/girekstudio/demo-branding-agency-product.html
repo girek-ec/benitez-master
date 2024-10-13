@@ -8,7 +8,7 @@
 <meta property="og:title" content="GirekStudio - Agencia de Diseño - {{product.nombre_producto }}" />
 <meta property="og:description" content="{{product.descripcion }}" />
 <meta property="og:url" content="https://benitez-ec/girekstudio/producto/{{product.id}}" />
-<meta property="og:image" content="/media/{{product.imagen }}" />
+<meta property="og:image" content="http://www.grupo/benitez.com/media/{{product.imagen }}" />
 <meta property="og:type" content="website" />
 {% endblock %}
   {% block principal %}
@@ -98,7 +98,7 @@
                            
                             <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative">
                                 
-                                <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20producto%20 -  {{product.nombre_producto}} -GirekStudio https://www.benitez-ec/girekstudio/producto/{{product.id}} " class="btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0 me-15px xs-me-0 order-3 order-sm-2">
+                                <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20producto%20 -  {{product.nombre_producto}} -GirekStudio {{ request.build_absolute_uri }} " class="btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0 me-15px xs-me-0 order-3 order-sm-2">
                                     <span>
                                         <span><i class="feather icon-feather-shopping-bag"></i></span>
                                         <span class="btn-double-text ls-0px" data-text="Comprar">Comprar</span> 
@@ -116,7 +116,7 @@
                                             <i class="feather icon-feather-share-2 align-middle text-dark-gray"></i>
                                         </div>
                                         <div class="feature-box-content">
-                                            <a href="https://www.facebook.com/sharer.php?u=https://benitez-ec/girekstudio/producto/{{product.id}}"   target="_blank" class="alt-font fw-500 text-dark-gray d-block">Compartir</a> 
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/"   target="_blank" class="alt-font fw-500 text-dark-gray d-block">Compartir</a>
                                         </div>
                                     </div>
                                 </div>
