@@ -63,8 +63,6 @@ class Marca(models.Model):
     class Meta:
         verbose_name_plural = "2. Niska"
 
-
-
 class Clasif_producto(models.Model):
     clasificacion_producto=models.CharField(max_length=90, null=True, blank=True)
 

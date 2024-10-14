@@ -75,8 +75,6 @@ def serviciosdescripcion_girekstudio(request, n,):
     return render(request, 'girekstudio/demo-branding-agency-services-detail.html', contexto)
 
 
-
-
 def contacto_girekstudio(request):
     contexto = {
         'marca': Marca.objects.all().first(),

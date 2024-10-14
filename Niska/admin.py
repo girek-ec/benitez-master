@@ -15,12 +15,10 @@ class MarcaAdmin(admin.ModelAdmin):
     list_display = Attr(Marca)
     list_display_links = Attr(Marca)
 
-
 @admin.register(Clasif_producto)
 class Clasif_productoAdmin(admin.ModelAdmin):
     list_display = Attr(Clasif_producto)
     list_display_links = Attr(Clasif_producto)
-
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):

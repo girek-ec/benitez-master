@@ -36,8 +36,6 @@ class Marca_benitez(models.Model):
 
 
 
-
-
 class Empresas(models.Model):
     logo = models.ImageField(upload_to='empresas', null=True, blank=True)
     activo=models.BooleanField(default=False)

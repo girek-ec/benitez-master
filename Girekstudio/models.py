@@ -268,7 +268,6 @@ class Imag_Video_Servicio(models.Model):
     class Meta:
         verbose_name_plural = "SERV- 02 Imagenes / Video Servicios "
 
-
 class Planes(models.Model):
     inicio_activo = models.BooleanField(default=False)
     activo = models.BooleanField(default=False)
@@ -326,7 +325,6 @@ class Portafolio(models.Model):
 
     class Meta:
         verbose_name_plural = "PROY- 02 Tema Protafolio"
-
 
 class Proyecto(models.Model):
     orden = models.IntegerField(default=0)

@@ -56,6 +56,5 @@ def contacto_niska(request):
         'editable': Editable.objects.all().first(),
         'marca': Marca.objects.all().first(),
 
-
     }
     return render(request, 'niska/contact.html', contexto)

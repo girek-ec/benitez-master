@@ -117,26 +117,20 @@ class Plan_listAdmin(admin.ModelAdmin):
     list_display = Attr(Plan_list)
     list_display_links = Attr(Plan_list)
 
-
-
-
 @admin.register(Ciudad)
 class CiudadAdmin(admin.ModelAdmin):
     list_display = Attr(Ciudad)
     list_display_links = Attr(Ciudad)
-
 
 @admin.register(Clasif_producto)
 class Clasif_productoAdmin(admin.ModelAdmin):
     list_display = Attr(Clasif_producto)
     list_display_links = Attr(Clasif_producto)
 
-
 @admin.register(Proveedor)
 class ProveedorAdmin(admin.ModelAdmin):
     list_display = Attr(Proveedor)
     list_display_links = Attr(Proveedor)
-
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
@@ -148,7 +142,6 @@ class ProductoAdmin(admin.ModelAdmin):
 class Producto_ImagenAdmin(admin.ModelAdmin):
     list_display = Attr(Producto_Imagen) + ["vista_previa"]
     list_display_links = Attr(Producto_Imagen)
-    
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
