@@ -27,6 +27,8 @@ class Marca_benitez(models.Model):
     correo = models.EmailField()
     horario = models.CharField(max_length=100, default=1, null=True, blank=True)
     horariosb = models.CharField(max_length=100, default=1, null=True, blank=True)
+    horarioc = models.CharField(max_length=100, default=1, null=True, blank=True)
+    horariod = models.CharField(max_length=100, default=1, null=True, blank=True)
 
     def vista_previa(self):
         return mark_safe('<image width="300" height="150"  src="/media/%s">' % self.logo)

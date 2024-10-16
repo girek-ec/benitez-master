@@ -50,10 +50,10 @@ class Contacto_empresa(models.Model):
     celular2=models.CharField(max_length=100,null=True,blank=True)
     telefono=models.CharField(max_length=15,null=True,blank=True)
     correo=models.EmailField()
-    horario=models.CharField(max_length=100, default=1, null=True, blank=True)
-    horariosb=models.CharField(max_length=100, default=1, null=True, blank=True)
-    horarioc = models.CharField(max_length=100, default=1, null=True, blank=True)
-    horariosd = models.CharField(max_length=100, default=1, null=True, blank=True)
+    horario1=models.CharField(max_length=100, default=1, null=True, blank=True)
+    horario2=models.CharField(max_length=100, default=1, null=True, blank=True)
+    horario3 = models.CharField(max_length=100, default=1, null=True, blank=True)
+    horario4 = models.CharField(max_length=100, default=1, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "3. Contacto Empresa"

@@ -221,14 +221,12 @@ class Servicio(models.Model):
     img_direc = models.BooleanField(default=False, help_text="Sec Agencia img activar si numero orden es  impar ")
     white = models.BooleanField(default=False, help_text="Activar en numeros impar - tono claro en fondo")
     line = models.BooleanField(default=False, help_text="Activar en numeros par - tono gris en fondo")
-    imagen = models.ImageField(upload_to='girekstudio/', null=True, blank=True)
     imagen_rota = models.FileField(upload_to='girekstudio/', null=True, blank=True, help_text="servicios texto rotativo")
     imag_rota_ico= models.FileField(upload_to='girekstudio/', null=True, blank=True, help_text="Agencia texto rotativo")
     titulo = models.CharField(max_length=100, null=True, blank=True)
     palabra = models.CharField(max_length=20, null=True, blank=True)
     sub_titulo = models.CharField(max_length=200, null=True, blank=True)
     descripcion = models.TextField(default="", null=True, blank=True)
-    imag_serv_princi = models.ImageField(upload_to='girekstudio/', null=True, blank=True, help_text="Imagen principal Inicio")
     imag_serv_1 = models.ImageField(upload_to='girekstudio/', null=True, blank=True, help_text="Imagen horizontal")
     imag_serv_2 = models.ImageField(upload_to='girekstudio/', null=True, blank=True, help_text="Imagen cuadrada")
     video_link = models.CharField(max_length=500, null=True, blank=True, help_text="Pegar link video de youtube")
@@ -237,7 +235,7 @@ class Servicio(models.Model):
         return '%s' % (self.titulo)
 
     def vista_previa(self):
-        return mark_safe('<image width="150" height="150"  src="/media/%s">' % self.imagen)
+        return mark_safe('<image width="150" height="150"  src="/media/%s">' % self.imag_serv_1)
 
     class Meta:
         verbose_name_plural = "SERV- 01 Servicios"

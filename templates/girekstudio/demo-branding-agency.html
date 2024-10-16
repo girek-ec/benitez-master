@@ -245,17 +245,16 @@
 </section>
 <!-- end section -->
 
-
 <!-- start section -->
 <section class="stack-box py-0 z-index-99">
     <div class="stack-box-contain">
         {% for servicio in servicios %}
             <!-- start stack item -->
-            <div class="stack-item stack-item-0{{ servicio.orden }} {% if servicio.white %} bg-white {% else %} bg-linen{% endif %}  lg-pt-8 lg-pb-8 md-pb-0">
+            <div class="stack-item stack-item-{{ servicio.orden }} {% if servicio.white %} bg-white {% else %} bg-linen{% endif %}  lg-pt-8 lg-pb-8 md-pb-0">
                 <div class="stack-item-wrapper">
                     <div class="container-fluid">
                         <div class="row align-items-center full-screen md-h-auto">
-                            <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imagen }}')">
+                            <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imag_serv_1 }}')">
                                 <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
                                 <div class="position-absolute right-0px bottom-minus-1px">
                                     <div class="vertical-title-center">
@@ -285,10 +284,11 @@
             </div>
             <!-- end stack item -->
         {% endfor %}
-
     </div>
 </section>
-<!-- end section -->
+<!-- end section --> -->
+
+
 <!-- start section -->
 <section class="pb-0">
     <div class="container">
@@ -369,7 +369,7 @@
      <!-- start section -->
         <section>
             <div class="container">
-                <div class="row row-cols-1 row-cols-lg-3 row-cols-sm-2" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateX":[30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateX":[30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     {% for equipo in equipos %}
                     	<!-- start team member item -->
                             <div class="col team-style-10 md-mb-30px">
