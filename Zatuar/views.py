@@ -98,6 +98,7 @@ def producto_id_zatuar(request, id):
         'imagenes_productos' : Producto_Imagen.objects.filter(producto_id=id),
         'tallas_productos': Tallas_Product.objects.filter(producto_id=id),
         'colores_productos': Color_Product.objects.filter(producto_id=id),
+        'fichapdf': Ficha_Product.objects.all(),
         'materiales': Materiales.objects.get(product=id),
         'texturas': Texturs.objects.get(product=id),
         'zatuar': Zatuar_marca.objects.all().first(),
