@@ -62,6 +62,12 @@ class Tipo_articuloAdmin(admin.ModelAdmin):
     list_display_links = Attr(Tipo_articulo)
 admin.site.register(Tipo_articulo, Tipo_articuloAdmin)
 
+class Material_productoAdmin(admin.ModelAdmin):
+    list_display = Attr(Material_producto)
+    list_display_links = Attr(Material_producto)
+admin.site.register(Material_producto, Material_productoAdmin)
+
+
 class ColoresAdmin(admin.ModelAdmin):
     list_display = Attr(Colores)
     list_display_links = Attr(Colores)

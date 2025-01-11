@@ -1,4 +1,8 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+
+
+
+
 {% block principal %}
         <!-- start banner -->
         <section class="pb-0 top-space-margin position-relative overflow-hidden">
@@ -11,6 +15,9 @@
             </div>
         </section>
         <!-- end banner -->
+
+
+
         <!-- start section --> 
         <section class="pt-3 pb-0 lg-pb-50px">
             <div class="container">
@@ -28,86 +35,128 @@
             </div>
         </section>
         <!-- end section -->
+
+
+
         <!-- start section -->
         <section class="position-relative pt-0">
             <div class="container">
                 <div class="row">
                     {% for proyecto in proyectos %}
-                        {% if proyecto.img_izq %} 
+                        {% if proyecto.img_izq %}
+                            <div class="col-xl-4 col-md-5 filter-content">
+                                <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                                    <li class="grid-sizer"></li>
+                                    <!-- start portfolio item -->
+                                    <li class="grid-item grid-item-single transition-inner-all">
+                                        <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                            {% if proyecto.imagen  %}
+                                                <div class="portfolio-image bg-extra-medium-gray">
+                                                    <a href="/girekstudio/portafolio/{{proyecto.id}}">
+                                                        <img src="/media/{{proyecto.imagen}}" alt="" />
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                            {% if proyecto.tipo_video  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
 
-                        <div class="col-xl-4 col-md-5 filter-content">
-                            <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                                <li class="grid-sizer"></li>
-                                <!-- start portfolio item -->
-                                <li class="grid-item grid-item-single transition-inner-all">
-                                    <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                        <div class="portfolio-image bg-extra-medium-gray">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}">
-                                                <img src="/media/{{proyecto.imagen}}" alt="" /> 
-                                            </a>
+                                            {% if proyecto.tipo_video_vertical  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                                <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
+                                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                                <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
+                                            </div>
                                         </div>
-                                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
-                                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                            <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
-                                        </div>
-                                        <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                            <a href="https://www.youtube.com/watch?v={{ servicio.video_link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
-                                        </div>
-                                    </div>
-                                </li>  
-                                <!-- end portfolio item -->
-                            </ul>
-                        </div>
+                                    </li>
+                                    <!-- end portfolio item -->
+                                </ul>
+                            </div>
                         {% endif %}
+
                         {% if proyecto.img_dere %}
-                        <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
+                            <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
                             <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
                                 <li class="grid-sizer"></li>
                                 <!-- start portfolio item -->
                                 <li class="grid-item grid-item-single transition-inner-all">
                                     <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-                                        <div class="portfolio-image bg-extra-medium-gray">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}">
-                                                <img src="/media/{{proyecto.imagen}}" alt="" /> 
-                                            </a>
-                                        </div>
-                                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
-                                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                            <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
-                                        </div>
+                                        {% if proyecto.imagen  %}
+                                                <div class="portfolio-image bg-extra-medium-gray">
+                                                    <a href="/girekstudio/portafolio/{{proyecto.id}}">
+                                                        <img src="/media/{{proyecto.imagen}}" alt="" />
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                            {% if proyecto.tipo_video  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if proyecto.tipo_video_vertical  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                                <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
+                                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                                <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
+                                            </div>
                                     </div>
-                                </li>  
-                                <!-- end portfolio item -->
-                            </ul>
-                        </div>    
-                        {% endif %} 
-                                
-                        {% if proyecto.img_central %}
-                        <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                            <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                                <li class="grid-sizer"></li>
-                                <!-- start portfolio item -->
-                                <li class="grid-item grid-item-single transition-inner-all">
-                                    <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);">
-                                        <div class="portfolio-image bg-extra-medium-gray">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}">
-                                                <img src="/media/{{proyecto.imagen}}" alt="" /> 
-                                            </a>
-                                        </div>
-                                        <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                            <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
-                                            <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                            <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
-                                        </div>
-                                    </div>
-                                </li>  
+                                </li>
                                 <!-- end portfolio item -->
                             </ul>
                         </div>
+
                         {% endif %}
 
+                        {% if proyecto.img_central %}
+                            <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
+                                <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                                    <li class="grid-sizer"></li>
+                                    <!-- start portfolio item -->
+                                    <li class="grid-item grid-item-single transition-inner-all">
+                                        <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);">
+                                            {% if proyecto.imagen  %}
+                                                <div class="portfolio-image bg-extra-medium-gray">
+                                                    <a href="/girekstudio/portafolio/{{proyecto.id}}">
+                                                        <img src="/media/{{proyecto.imagen}}" alt="" />
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                            {% if proyecto.tipo_video  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if proyecto.tipo_video_vertical  %}
+                                                <div class="absolute-middle-center text-white-space-nowrap z-index-9">
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                                <a href="/girekstudio/portafolio/{{proyecto.id}}" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">{{proyecto.nombreproyecto}}</a>
+                                                <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                                <div class="d-inline-block">{{ proyecto.portafolio.portafolio }}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- end portfolio item -->
+                                </ul>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

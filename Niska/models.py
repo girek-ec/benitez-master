@@ -42,7 +42,10 @@ class Editable(models.Model):
 
 class Marca(models.Model):
     favicon = models.ImageField(upload_to='niska/', help_text='imagenes 20*20', null=True, blank=True)
-    logo_horizontal = models.ImageField(upload_to='niska/',null=True, blank=True, help_text='imagenes 20*20')
+    logo_horizontal_color = models.ImageField(upload_to='niska/',null=True, blank=True, help_text='imagenes 20*20')
+    logo_horizontal_color_variante = models.ImageField(upload_to='niska/', null=True, blank=True, help_text='imagenes 20*20')
+    logo_horizontal_blanco = models.ImageField(upload_to='niska/', null=True, blank=True, help_text='imagenes 20*20')
+    logo_color = models.ImageField(upload_to='niska/', help_text='imagenes 20*20', null=True, blank=True)
     logo_blanco = models.ImageField(upload_to='niska/', help_text='imagenes 20*20', null=True, blank=True)
     whatsapp = models.CharField(max_length=11, null=True, blank=True)
     celular = models.CharField(max_length=11, null=True, blank=True)

@@ -12,7 +12,7 @@
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Vortice - Tienda Oficial "/>
         <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana"/>
-        <meta property="og:image" content="/media/{{ vortice.logo_horizontal }}"/>
+        <meta property="og:image" content="http://www.benitez-ec.com/media/{{ vortice.logo_horizontal }}"/>
         <meta property="og:image:width" content="600"/>
         <meta property="og:image:height" content="600"/>
     {% endblock %}
@@ -273,12 +273,12 @@
                 <div class="masonry-layout">
                     <div class="item-1 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
                         <div class="collection-inner">
-                            <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                            <a href="/vortice/seccion/Mujer/" class="collection-image img-style rounded-0">
                                 <img class="lazyload" data-src="/media/{{coleccion.imag_01}}"
                                      src="/media/{{coleccion.imag_01}}" alt="collection-img">
                             </a>
                             <div class="collection-content">
-                                <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}"
+                                <a href="/vortice/seccion/Mujer/"
                                    class="tf-btn collection-title hover-icon"><span>Mujer</span><i
                                         class="icon icon-arrow1-top-left"></i></a>
                             </div>
@@ -286,12 +286,12 @@
                     </div>
                     <div class="item-2 collection-item large hover-img wow fadeInUp" data-wow-delay=".1s">
                         <div class="collection-inner">
-                            <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                            <a href="/vortice/seccion/Mujer/" class="collection-image img-style rounded-0">
                                 <img class="lazyload" data-src="/media/{{coleccion.imag_02}}"
                                      src="/media/{{coleccion.imag_02}}" alt="collection-img">
                             </a>
                             <div class="collection-content">
-                                <a href="/vortice/seccion/Mujer/coleccion/{{coleccion.tema_colec}}"
+                                <a href="/vortice/seccion/Mujer/"
                                    class="tf-btn collection-title hover-icon"><span>Bolsos</span><i
                                         class="icon icon-arrow1-top-left"></i></a>
                             </div>
@@ -299,12 +299,12 @@
                     </div>
                     <div class="item-3 collection-item large hover-img wow fadeInUp" data-wow-delay=".2s">
                         <div class="collection-inner">
-                            <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                            <a href="/vortice/seccion/Mujer/" class="collection-image img-style rounded-0">
                                 <img class="lazyload" data-src="/media/{{coleccion.imag_03}}"
                                      src="/media/{{coleccion.imag_03}}" alt="collection-img">
                             </a>
                             <div class="collection-content">
-                                <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}"
+                                <a href="/vortice/seccion/Hombre/"
                                    class="tf-btn collection-title hover-icon"><span>Accesorios</span><i
                                         class="icon icon-arrow1-top-left"></i></a>
                             </div>
@@ -312,12 +312,12 @@
                     </div>
                     <div class="item-4 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
                         <div class="collection-inner">
-                            <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}" class="collection-image img-style rounded-0">
+                            <a href="/vortice/seccion/Hombre/" class="collection-image img-style rounded-0">
                                 <img class="lazyload" data-src="/media/{{coleccion.imag_04}}"
                                      src="/media/{{coleccion.imag_04}}" alt="collection-img">
                             </a>
                             <div class="collection-content">
-                                <a href="/vortice/seccion/Hombre/coleccion/{{coleccion.tema_colec}}"
+                                <a href="/vortice/seccion/Hombre/"
                                    class="tf-btn collection-title hover-icon"><span>Hombre</span><i
                                         class="icon icon-arrow1-top-left"></i></a>
                             </div>
@@ -497,16 +497,18 @@
                                         <p>{{ vortice.direccion }}</p>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="mailto:{{ vortice.correo }}">
                                             <p>Email: {{ vortice.correo }}</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <p>Phone: <a href="#">{{ vortice.celular }}</a></p>
+                                        <p>Celular: <a href="tel:{{ vortice.celular }}">{{ vortice.celular }}</a></p>
+                                    </li>
+                                    <li>
+                                        <p>Dirección: {{ vortice.direccion }}</p>
                                     </li>
                                 </ul>
-                                <a href="/vortice/contacto/" class="tf-btn btn-line">Obtener dirección<i
-                                        class="icon icon-arrow1-top-left"></i></a>
+
                                 <ul class="tf-social-icon d-flex gap-10">
                                     <li><a href="https://www.facebook.com/{{ vortice.facebook }}"
                                            class="box-icon w_34 round social-facebook social-line"><i
@@ -537,13 +539,15 @@
 
                                
                                 <li>
-                                    <a href="/vortice/" class="footer-menu_item">Envíos</a>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item" >Envíos</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Términos y condiciones</a>
                                 </li>
                                 <li>
-                                    <a href="/vortice/" class="footer-menu_item">Términos y condiciones</a>
-                                </li>
-                                <li>
-                                    <a href="/vortice/" class="footer-menu_item">Preguntas frecuentes</a>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Preguntas frecuentes</a>
                                 </li>
                        
                             </ul>
@@ -563,6 +567,12 @@
                                 <li>
                                     <a href="/vortice/nosotros/" class="footer-menu_item">Nosotros</a>
                                 </li>
+                                {% for cliente in secciones %}
+                                    <li>
+
+                                        <a href="/vortice/seccion/{{ cliente.cliente }}" class="footer-menu_item">{{ cliente.cliente }}</a>
+                                    </li>
+                                {% endfor %}
                               
                                 <li>
                                     <a href="/vortice/gift/" class="footer-menu_item">GiftCard</a>
@@ -579,32 +589,18 @@
                                     <h6>Regístrate para recibir correos electrónicos
                                     </h6>
                                 </div>
-                                <div class="footer-heading footer-heading-moblie">
-                                    <h6>Sign Up for Email</h6>
+                                <div class="tf-pagination-wrap view-more-button text-center" style="padding-top: 5px !important;">
+                                    <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20Deseo%20suscribirme " >
+                                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text"> <i class="icon icon-account"></i> Escribenos</span></button>
+                                        <br><br>
+                                    </a>
                                 </div>
+
                                 <div class="tf-collapse-content">
-                                    <div class="footer-menu_item">¡Regístrate para recibir en primer lugar información sobre nuevos productos, ventas, contenido exclusivo, eventos y mucho más!
-                                    </div>
-                                    <form class="form-newsletter" id="subscribe-form" action="#" method="post"
-                                          accept-charset="utf-8" data-mailchimp="true">
-                                        <div id="subscribe-content">
-                                            <fieldset class="email">
-                                                <input type="email" name="email-form" id="subscribe-email"
-                                                       placeholder="Ingresa tu email...." tabindex="0"
-                                                       aria-required="true">
-                                            </fieldset>
-                                            <div class="button-submit">
-                                                <button id="subscribe-button"
-                                                        class="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
-                                                        type="button">Subscribir<i class="icon icon-arrow1-top-left"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div id="subscribe-msg"></div>
-                                    </form>
                                     <div class="tf-cur">
                                         <div class="tf-currencies">
                                             <select class="image-select center style-default type-currencies">
+
                                                 
                                                 <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD <span>$ | United States</span>
                                                 </option>
@@ -803,320 +799,86 @@
 </div>
 <!-- /mobile menu -->
 
-<!-- Filter -->
-<div class="offcanvas offcanvas-start canvas-filter" id="filterShop">
-    <div class="canvas-wrapper">
-        <header class="canvas-header">
-            <div class="filter-icon">
-                <span class="icon icon-filter"></span>
-                <span>Filter</span>
-            </div>
-            <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
-        </header>
-        <div class="canvas-body">
-            <div class="widget-facet wd-categories">
-                <div class="facet-title" data-bs-target="#categories" data-bs-toggle="collapse" aria-expanded="true"
-                     aria-controls="categories">
-                    <span>Product categories</span>
-                    <span class="icon icon-arrow-up"></span>
+
+
+
+ <!-- modal quick_view -->
+    <div class="modal fade modalDemo" id="quick_view">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
                 </div>
-                <div id="categories" class="collapse show">
-                    <ul class="list-categoris current-scrollbar mb_36">
-                        <li class="cate-item current"><a href="shop-default.html"><span>Fashion</span></a></li>
-                        <li class="cate-item"><a href="shop-default.html"><span>Men</span></a></li>
-                        <li class="cate-item"><a href="shop-default.html"><span>Women</span></a></li>
-                        <li class="cate-item"><a href="shop-default.html"><span>Denim</span></a></li>
-                        <li class="cate-item"><a href="shop-default.html"><span>Dress</span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <form action="#" id="facet-filter-form" class="facet-filter-form">
-                <div class="widget-facet">
-                    <div class="facet-title" data-bs-target="#availability" data-bs-toggle="collapse"
-                         aria-expanded="true" aria-controls="availability">
-                        <span>Availability</span>
-                        <span class="icon icon-arrow-up"></span>
-                    </div>
-                    <div id="availability" class="collapse show">
-                        <ul class="tf-filter-group current-scrollbar mb_36">
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="availability" class="tf-check" id="availability-1">
-                                <label for="availability-1"
-                                       class="label"><span>In stock</span>&nbsp;<span>(14)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="availability" class="tf-check" id="availability-2">
-                                <label for="availability-2"
-                                       class="label"><span>Out of stock</span>&nbsp;<span>(2)</span></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-facet">
-                    <div class="facet-title" data-bs-target="#price" data-bs-toggle="collapse" aria-expanded="true"
-                         aria-controls="price">
-                        <span>Price</span>
-                        <span class="icon icon-arrow-up"></span>
-                    </div>
-                    <div id="price" class="collapse show">
-                        <div class="widget-price">
-                            <div id="slider-range"></div>
-                            <div class="box-title-price">
-                                <span class="title-price">Price :</span>
-                                <div class="caption-price">
-                                    <div>
-                                        <span>$</span>
-                                        <span id="slider-range-value1" class=""></span>
-                                    </div>
-                                    <span>-</span>
-                                    <div>
-                                        <span>$</span>
-                                        <span id="slider-range-value2" class=""></span>
+                <div class="wrap">
+                    <div class="tf-product-media-wrap">
+                        <div class="swiper tf-single-slide">
+                            <div class="swiper-wrapper" >
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <img src="/static/static_vortice/images/products/orange-1.jpg" alt="">
                                     </div>
                                 </div>
+
                             </div>
+                            <div class="swiper-button-next button-style-arrow single-slide-prev"></div>
+                            <div class="swiper-button-prev button-style-arrow single-slide-next"></div>
                         </div>
                     </div>
-                </div>
-                <div class="widget-facet">
-                    <div class="facet-title" data-bs-target="#brand" data-bs-toggle="collapse" aria-expanded="true"
-                         aria-controls="brand">
-                        <span>Brand</span>
-                        <span class="icon icon-arrow-up"></span>
-                    </div>
-                    <div id="brand" class="collapse show">
-                        <ul class="tf-filter-group current-scrollbar mb_36">
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="brand" class="tf-check" id="brand-1">
-                                <label for="brand-1" class="label"><span>Ecomus</span>&nbsp;<span>(8)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="brand" class="tf-check" id="brand-2">
-                                <label for="brand-2" class="label"><span>M&H</span>&nbsp;<span>(8)</span></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-facet">
-                    <div class="facet-title" data-bs-target="#color" data-bs-toggle="collapse" aria-expanded="true"
-                         aria-controls="color">
-                        <span>Color</span>
-                        <span class="icon icon-arrow-up"></span>
-                    </div>
-                    <div id="color" class="collapse show">
-                        <ul class="tf-filter-group filter-color current-scrollbar mb_36">
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_beige" id="beige">
-                                <label for="beige" class="label"><span>Beige</span>&nbsp;<span>(3)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_dark" id="black">
-                                <label for="black" class="label"><span>Black</span>&nbsp;<span>(18)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_blue-2" id="blue">
-                                <label for="blue" class="label"><span>Blue</span>&nbsp;<span>(3)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_brown" id="brown">
-                                <label for="brown" class="label"><span>Brown</span>&nbsp;<span>(3)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_cream" id="cream">
-                                <label for="cream" class="label"><span>Cream</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_dark-beige" id="dark-beige">
-                                <label for="dark-beige"
-                                       class="label"><span>Dark Beige</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_dark-blue" id="dark-blue">
-                                <label for="dark-blue"
-                                       class="label"><span>Dark Blue</span>&nbsp;<span>(3)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_dark-green" id="dark-green">
-                                <label for="dark-green"
-                                       class="label"><span>Dark Green</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_dark-grey" id="dark-grey">
-                                <label for="dark-grey"
-                                       class="label"><span>Dark Grey</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_grey" id="grey">
-                                <label for="grey" class="label"><span>Grey</span>&nbsp;<span>(2)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_light-blue" id="light-blue">
-                                <label for="light-blue"
-                                       class="label"><span>Light Blue</span>&nbsp;<span>(5)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_light-green" id="light-green">
-                                <label for="light-green"
-                                       class="label"><span>Light Green</span>&nbsp;<span>(3)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_light-grey" id="light-grey">
-                                <label for="light-grey"
-                                       class="label"><span>Light Grey</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_light-pink" id="light-pink">
-                                <label for="light-pink"
-                                       class="label"><span>Light Pink</span>&nbsp;<span>(2)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_purple" id="light-purple">
-                                <label for="light-purple" class="label"><span>Light Purple</span>&nbsp;<span>(2)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_light-yellow"
-                                       id="light-yellow">
-                                <label for="light-yellow" class="label"><span>Light Yellow</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_orange" id="orange">
-                                <label for="orange" class="label"><span>Orange</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_pink" id="pink">
-                                <label for="pink" class="label"><span>Pink</span>&nbsp;<span>(2)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_taupe" id="taupe">
-                                <label for="taupe" class="label"><span>Taupe</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_white" id="white">
-                                <label for="white" class="label"><span>White</span>&nbsp;<span>(14)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="color" class="tf-check-color bg_yellow" id="yellow">
-                                <label for="yellow" class="label"><span>Yellow</span>&nbsp;<span>(1)</span></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-facet">
-                    <div class="facet-title" data-bs-target="#size" data-bs-toggle="collapse" aria-expanded="true"
-                         aria-controls="size">
-                        <span>Size</span>
-                        <span class="icon icon-arrow-up"></span>
-                    </div>
-                    <div id="size" class="collapse show">
-                        <ul class="tf-filter-group current-scrollbar">
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="size" class="tf-check" id="s">
-                                <label for="s" class="label"><span>S</span>&nbsp;<span>(7)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="size" class="tf-check" id="m">
-                                <label for="m" class="label"><span>M</span>&nbsp;<span>(8)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="size" class="tf-check" id="l">
-                                <label for="l" class="label"><span>L</span>&nbsp;<span>(8)</span></label>
-                            </li>
-                            <li class="list-item d-flex gap-12 align-items-center">
-                                <input type="radio" name="size" class="tf-check" id="xl">
-                                <label for="xl" class="label"><span>XL</span>&nbsp;<span>(6)</span></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
-<!-- End Filter -->
-
-<!-- canvasSearch -->
-<div class="offcanvas offcanvas-end canvas-search" id="canvasSearch">
-    <div class="canvas-wrapper">
-        <header class="tf-search-head">
-            <div class="title fw-5">
-                Search our site
-                <div class="close">
-                    <span class="icon-close icon-close-popup" data-bs-dismiss="offcanvas" aria-label="Close"></span>
-                </div>
-            </div>
-            <div class="tf-search-sticky">
-                <form class="tf-mini-search-frm">
-                    <fieldset class="text">
-                        <input type="text" placeholder="Search" class="" name="text" tabindex="0" value=""
-                               aria-required="true" required="">
-                    </fieldset>
-                    <button class="" type="submit"><i class="icon-search"></i></button>
-                </form>
-            </div>
-        </header>
-        <div class="canvas-body p-0">
-            <div class="tf-search-content">
-                <div class="tf-cart-hide-has-results">
-                    <div class="tf-col-quicklink">
-                        <div class="tf-search-content-title fw-5">Quick link</div>
-                        <ul class="tf-quicklink-list">
-                            <li class="tf-quicklink-item">
-                                <a href="shop-default.html" class="">Fashion</a>
-                            </li>
-                            <li class="tf-quicklink-item">
-                                <a href="shop-default.html" class="">Men</a>
-                            </li>
-                            <li class="tf-quicklink-item">
-                                <a href="shop-default.html" class="">Women</a>
-                            </li>
-                            <li class="tf-quicklink-item">
-                                <a href="shop-default.html" class="">Accessories</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tf-col-content">
-                        <div class="tf-search-content-title fw-5">Need some inspiration?</div>
-                        <div class="tf-search-hidden-inner">
-                            <div class="tf-loop-item">
-                                <div class="image">
-                                    <a href="product-detail.html">
-                                        <img src="images/products/white-3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-detail.html">Cotton jersey top</a>
-                                    <div class="tf-product-info-price">
-                                        <div class="compare-at-price">$10.00</div>
-                                        <div class="price-on-sale fw-6">$8.00</div>
-                                    </div>
-                                </div>
+                    <div class="tf-product-info-wrap position-relative">
+                        <div class="tf-product-info-list">
+                            <div class="tf-product-info-title">
+                                <h5>Política de Envíos:</h5>
                             </div>
-                            <div class="tf-loop-item">
-                                <div class="image">
-                                    <a href="product-detail.html">
-                                        <img src="images/products/white-2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-detail.html">Mini crossbody bag</a>
-                                    <div class="tf-product-info-price">
-                                        <div class="price fw-6">$18.00</div>
-                                    </div>
-                                </div>
+                            <div class="text">
+                               <strong>Cobertura:</strong>
+                                <p style="margin: 0px !important;">Realizamos envíos a todo Ecuador y al extranjero.</p>
+                                <br>
+                                <strong>Tiempos de entrega:</strong>
+                                <p style="margin: 0px !important;">Ecuador: Entre 3 y 7 días hábiles </p>
+                                <p style="margin: 0px !important;"> Internacional: Entre 10 y 15 días hábiles.</p>
+                                <br>
+                                <strong>Costo de envío:</strong>
+                                <p style="margin: 0px !important;">Envíos nacionales:El Costo de envio es de $5 y Gratis en pedidos mayores a $50.</p>
+                                <p style="margin: 0px !important;">Internacionales: Calculado según el destino y peso del paquete.</p>
+                                <br>
                             </div>
-                            <div class="tf-loop-item">
-                                <div class="image">
-                                    <a href="product-detail.html">
-                                        <img src="images/products/white-1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <a href="product-detail.html">Oversized Printed T-shirt</a>
-                                    <div class="tf-product-info-price">
-                                        <div class="price fw-6">$18.00</div>
-                                    </div>
-                                </div>
+
+
+                            <div class="tf-product-info-title">
+                                <h5>Términos y Condiciones:</h5>
+                            </div>
+                            <div class="text">
+                                <strong>Política de devoluciones:</strong>
+                                <p style="margin: 0px !important;">Por razones de exclusividad, no aceptamos devoluciones de prendas adquiridas en Vórtice. Recomendamos verificar cuidadosamente la talla, el diseño y las especificaciones antes de completar tu compra.</p>
+                                <br>
+                                <strong>Métodos de pago:</strong>
+                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras.</p>
+                                <br>
+                            </div>
+
+                            <div class="tf-product-info-title">
+                                <h5>Preguntas Frecuentes (FAQ):</h5>
+                            </div>
+                            <div class="text">
+                               <strong>¿Cuánto tiempo tarda en llegar mi pedido?:</strong>
+                                <p style="margin: 0px !important;">Los envíos dentro de Ecuador toman entre 3 y 7 días hábiles. Los internacionales pueden tardar entre 10 y 15 días hábiles.</p>
+                                <br>
+                                <strong>¿Aceptan pedidos personalizados?</strong>
+                                <p style="margin: 0px !important;">¡Sí! Contamos con opciones de personalización. Contáctanos para más detalles.</p>
+                                <br>
+                                <strong>¿Qué hago si mi producto llegó dañado o no es el que pedí?</strong>
+                                <p style="margin: 0px !important;">Escríbenos a nuestro servicio al cliente dentro de las primeras 48 horas tras recibir el pedido. Resolveremos el inconveniente lo antes posible.</p>
+                                <br>
+                                <strong>¿Dónde están ubicados? </strong>
+                                <p style="margin: 0px !important;">Operamos desde Ecuador, pero ofrecemos envíos a nivel nacional e internacional.</p>
+                                <br>
+                                <strong>¿Tienen tiendas físicas?</strong>
+                                <p style="margin: 0px !important;">Actualmente, somos una tienda exclusivamente online.</p>
+                                <br>
+                                <strong>¿Cuáles son los métodos de pago disponibles?</strong>
+                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras como PayPhone.</p>
+                                <br>
+
                             </div>
                         </div>
                     </div>
@@ -1124,104 +886,81 @@
             </div>
         </div>
     </div>
-</div>
-<!-- /canvasSearch -->
-
-
-
-
-
-
+    <!-- /modal quick_view -->
 
 
 
 <!-- modal find_size -->
-<div class="modal fade modalDemo tf-product-modal" id="find_size">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="header">
-                <div class="demo-title">Size chart</div>
-                <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
-            </div>
-            <div class="tf-rte">
-                <div class="tf-table-res-df">
-                    <h6>Size guide</h6>
-                    <table class="tf-sizeguide-table">
-                        <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>US</th>
-                            <th>Bust</th>
-                            <th>Waist</th>
-                            <th>Low Hip</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>XS</td>
-                            <td>2</td>
-                            <td>32</td>
-                            <td>24 - 25</td>
-                            <td>33 - 34</td>
-                        </tr>
-                        <tr>
-                            <td>S</td>
-                            <td>4</td>
-                            <td>34 - 35</td>
-                            <td>26 - 27</td>
-                            <td>35 - 26</td>
-                        </tr>
-                        <tr>
-                            <td>M</td>
-                            <td>6</td>
-                            <td>36 - 37</td>
-                            <td>28 - 29</td>
-                            <td>38 - 40</td>
-                        </tr>
-                        <tr>
-                            <td>L</td>
-                            <td>8</td>
-                            <td>38 - 29</td>
-                            <td>30 - 31</td>
-                            <td>42 - 44</td>
-                        </tr>
-                        <tr>
-                            <td>XL</td>
-                            <td>10</td>
-                            <td>40 - 41</td>
-                            <td>32 - 33</td>
-                            <td>45 - 47</td>
-                        </tr>
-                        <tr>
-                            <td>XXL</td>
-                            <td>12</td>
-                            <td>42 - 43</td>
-                            <td>34 - 35</td>
-                            <td>48 - 50</td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="modal fade modalDemo tf-product-modal" id="find_size">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title">Tabla de tallas</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
                 </div>
-                <div class="tf-page-size-chart-content">
-                    <div>
-                        <h6>Measuring Tips</h6>
-                        <div class="title">Bust</div>
-                        <p>Measure around the fullest part of your bust.</p>
-                        <div class="title">Waist</div>
-                        <p>Measure around the narrowest part of your torso.</p>
-                        <div class="title">Low Hip</div>
-                        <p class="mb-0">With your feet together measure around the fullest part of your hips/rear.
-                        </p>
-                    </div>
-                    <div>
-                        <img class="sizechart lazyload" data-src="/static/static_vortice/images/shop/products/size_chart2.jpg"
-                             src="/static/static_vortice/images/shop/products/size_chart2.jpg" alt="">
+                <div class="tf-rte">
+                    <div class="tf-table-res-df">
+                        <h6>Guía de tallas</h6>
+                        <table class="tf-sizeguide-table">
+                            <thead>
+                                <tr>
+                                    <th>Tamaño</th>
+                                    <th>Pecho</th>
+                                    <th>Alto</th>
+                                    <th>Manga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>XS</td>
+                                    <td>2</td>
+                                    <td>32</td>
+                                    <td>24 - 25</td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td>4</td>
+                                    <td>34 - 35</td>
+                                    <td>26 - 27</td>
+                                </tr>
+                                <tr>
+                                    <td>M</td>
+                                    <td>6</td>
+                                    <td>36 - 37</td>
+                                    <td>28 - 29</td>
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>8</td>
+                                    <td>38 - 29</td>
+                                    <td>30 - 31</td>
+                                </tr>
+                                <tr>
+                                    <td>XL</td>
+                                    <td>10</td>
+                                    <td>40 - 41</td>
+                                    <td>32 - 33</td>
+                                </tr>
+                                <tr>
+                                    <td>XXL</td>
+                                    <td>12</td>
+                                    <td>42 - 43</td>
+                                    <td>34 - 35</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- /modal find_size -->
+
+
+
+
+
+
 <!-- /modal find_size -->
 
 <!-- Javascript -->
@@ -1234,9 +973,9 @@
 <script type="text/javascript" src="/static/static_vortice/js/count-down.js"></script>
 <script type="text/javascript" src="/static/static_vortice/js/wow.min.js"></script>
 <script type="text/javascript" src="/static/static_vortice/js/rangle-slider.js"></script>
-<script type="text/javascript" src="/static/static_vortice/js/wow.min.js"></script>
 <script type="text/javascript" src="/static/static_vortice/js/multiple-modal.js"></script>
 <script type="text/javascript" src="/static/static_vortice/js/main.js"></script>
+
 </body>
 
 </html>

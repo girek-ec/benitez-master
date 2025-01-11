@@ -45,6 +45,12 @@ class Vortice(models.Model):
     about_titulo_04 = models.CharField(max_length=100, null=True, blank=True)
     about_subtitulo_04 = models.CharField(max_length=100, null=True, blank=True)
     about_04_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    envios_detalle=models.CharField(max_length=600, null=True, blank=True)
+    envios_img = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
+    terminos_detalle = models.CharField(max_length=600, null=True, blank=True)
+    terminos_img= models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
+    preguntas_detalle = models.CharField(max_length=600, null=True, blank=True)
+    preguntas_img = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
 
 
     def miniatura(self):
@@ -129,6 +135,15 @@ class Tipo_articulo(models.Model):
         verbose_name_plural = "4. Tipo de Articulo "
 
 
+class Material_producto(models.Model):
+    material = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return '%s' % (self.material)
+
+    class Meta:
+        verbose_name_plural = "4. Material de producto"
+
 
 
 
@@ -140,6 +155,7 @@ class Prod_prenda(models.Model):
     video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
     descripcion_produc = models.TextField(max_length=500, null=True, blank=True)
     material_produc = models.TextField(max_length=500, null=True, blank=True)
+    tipo_material = models.ForeignKey(Material_producto, on_delete=models.CASCADE, null=True, blank=True)
     precio = models.DecimalField(max_digits=999, decimal_places=2)
     activa_descuento = models.BooleanField (default=False, null=True, blank=True)
     precio_descuent = models.DecimalField(max_digits=999, decimal_places=2, null=True, blank=True)

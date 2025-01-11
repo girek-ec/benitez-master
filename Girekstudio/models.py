@@ -335,8 +335,12 @@ class Proyecto(models.Model):
     nombreproyecto = models.CharField(max_length=120, null=True, blank=True, help_text="Texto de maximo 120 caracteres")
     detalle = models.TextField(null=True, blank=True)
     tipo_archivo = models.CharField(max_length=20, default='imagen', choices=(("imagen", "imagen"), ("video_vertical", "video_vertical"), ("video", "video")))
+    tipo_imagen= models.BooleanField(default=False, help_text="Activar si es una imagen cuadrada ")
     imagen = models.FileField(upload_to='girekstudio/', help_text='imagen proyecto 851x315', null=True, blank=True)
+    tipo_imagen_rectang = models.BooleanField(default=False, help_text="Activar si es una imagen rectangular ")
     imagen_rectang = models.FileField(upload_to='girekstudio/', help_text='imagen proyecto rectangular 851x315', null=True, blank=True)
+    tipo_video = models.BooleanField(default=False, help_text="Activar si es un video de Youtube ")
+    tipo_video_vertical = models.BooleanField(default=False, help_text="Activar si es un video Vertical de Youtube ")
     link = models.CharField(max_length=250, null=True, blank=True)
     detalle_2 = models.TextField(null=True, blank=True)
 
