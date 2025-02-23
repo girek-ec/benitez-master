@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Girekstudio',
     'Vortice',
     'Zatuar',
+    'Colexin',
 ]
 
 MIDDLEWARE = [

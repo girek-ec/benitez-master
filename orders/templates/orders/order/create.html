@@ -1,0 +1,107 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block metas %}
+        <meta property="og:url" content="http://www.grupo/benitez.com/vortice/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ products.nombre_produc}}"/>
+        <meta property="og:description" content="{{ products.descripcion_produc}}"/>
+        <meta property="og:image" content="http://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+{% endblock %}
+{% block principal %}
+
+    <!-- page-title -->
+    <div class="tf-page-title">
+        <div class="container-full">
+            <div class="heading text-center">Check Out</div>
+        </div>
+    </div>
+    <!-- /page-title -->
+
+
+     <!-- page-cart -->
+        <section class="flat-spacing-11">
+            <div class="container">
+                <div class="tf-page-cart-wrap layout-2">
+                    <div class="tf-page-cart-item">
+                        <h5 class="fw-5 mb_20">Datos de facturación</h5>
+                        <form  method="post" class="order-form">
+                            {{ form.as_p }}
+                            <br>
+                            <div class="d-flex justify-content-center">
+                               <input class="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center w-100"   type="submit" value="Realizar Pedido">
+                            </div>
+
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="tf-page-cart-footer">
+                        <div class="tf-cart-footer-inner">
+                            <h5 class="fw-5 mb_20">Su pedido</h5>
+                            <form class="tf-page-cart-checkout widget-wrap-checkout">
+                                <ul class="wrap-checkout-product">
+
+                                    {% for item in cart %}
+
+                                        <li class="checkout-product-item">
+                                           <span class="quantity">{{ item.quantity }}</span>
+                                            <div class="content">
+                                                <div class="info">
+                                                    <p class="name">{{ item.product.nombre_produc }}</p>
+                                                    <span class="variant">{{ item.product.tipo_produc }}</span>
+                                                    <br>
+                                                    <span class="variant">Talla: {{ item.size }}</span>
+                                                </div>
+                                                <span class="price">${{ item.total_price }}</span>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
+                                    <div class="d-flex justify-content-between line pb_15">
+
+                                    </div>
+
+                                    {% if cart.coupon %}
+
+                                        <li class="checkout-product-item">
+                                           <span class="quantity">{{ item.quantity }}
+                                               <svg class="d-inline-block" xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="rgb(219 18 21)">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0899 24C11.3119 22.1928 11.4245 20.2409 10.4277 18.1443C10.1505 19.2691 9.64344 19.9518 8.90645 20.1924C9.59084 18.2379 9.01896 16.1263 7.19079 13.8576C7.15133 16.2007 6.58824 17.9076 5.50148 18.9782C4.00436 20.4517 4.02197 22.1146 5.55428 23.9669C-0.806588 20.5819 -1.70399 16.0418 2.86196 10.347C3.14516 11.7228 3.83141 12.5674 4.92082 12.8809C3.73335 7.84186 4.98274 3.54821 8.66895 0C8.6916 7.87426 11.1062 8.57414 14.1592 12.089C17.4554 16.3071 15.5184 21.1748 10.0899 24Z"></path>
+                                               </svg>
+                                           </span>
+
+                                            <div class="content">
+                                                <div class="info">
+                                                    <p class="name">Cupón Descuento</p>
+                                                    <span class="variant" style="color: #9a1929"> {{ cart.coupon.code }} - ({{ cart.coupon.discount }}% off) </span>
+                                                </div>
+                                                <span class="price" style="color: #9a1929">-${{ cart.get_discount|floatformat:2 }}</span>
+                                            </div>
+
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <!-- Mostrar Sub total -->
+                                <div class="d-flex justify-content-between line pb_15">
+                                    <h7 class="fw-5">Sub Total</h7>
+                                    <h7 class="fw-5"> ${{ cart.get_total_price_after_discount|floatformat:2 }}</h7>
+                                </div>
+                                <!-- Mostrar el costo de envío -->
+                                <div class="d-flex justify-content-between line pb_15">
+                                    <h7 class="fw-5">Costo de envío</h7>
+                                    <h7 class="fw-5">${{ cart.get_shipping_cost|floatformat:2 }}</h7>
+                                </div>
+
+                                <div class="d-flex justify-content-between line pb_20">
+                                    <h7 class="fw-5"> Total</h7>
+                                    <h7 class="total fw-5" > $ {{ cart.get_total_price_with_shipping|floatformat:2 }} </h7>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- page-cart -->
+
+{% endblock %}

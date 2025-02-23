@@ -1,12 +1,22 @@
 {% extends 'vortice/index_vortice.html' %}
 {% block metas %}
-    <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
+    <meta property="og:url" content="https://www.benitez-ec.com/vortice/post/{{ mesmoda.id }}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Vortice - Tienda Oficial "/>
-    <meta property="og:description" content="{{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}"/>
-    <meta property="og:image" content="http://benitez-ec/media/{{ mesmoda.imagen }}"/>
+    <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}"/>
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}"/>
     <meta property="og:image:width" content="600"/>
     <meta property="og:image:height" content="600"/>
+
+    <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vortice - Tienda Oficial">
+    <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}">
+    <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
+    <meta name="twitter:image:width" content="1200">
+    <meta name="twitter:image:height" content="628">
+
 {% endblock %}
 {% block principal %}
 
@@ -48,60 +58,77 @@
         <div class="container-full">
             {% for mod in moda %}
                 <div class="masonry-layout-v2" style="gap: 0px !important">
-                    <div class="item-1 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_1 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_1 }}"
-                                     src="/media/{{ mod.imagen_1 }}" alt="collection-img">
-                            </a>
+                    {% if mod.imagen_1 %}
+                        <div class="item-1 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_1 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_1 }}"
+                                         src="/media/{{ mod.imagen_1 }}" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-2 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_2 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_2 }}"
-                                     src="/media/{{ mod.imagen_2 }}" alt="collection-img">
-                            </a>
+                    {% endif %}
+
+                    {% if mod.imagen_2 %}
+                        <div class="item-2 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_2 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_2 }}"
+                                         src="/media/{{ mod.imagen_2 }}" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-3 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_3 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_3 }}"
-                                     src="/media/{{ mod.imagen_3 }}" alt="collection-img">
-                            </a>
+                    {% endif %}
+
+                    {% if mod.imagen_3 %}
+                        <div class="item-3 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_3 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_3 }}"
+                                         src="/media/{{ mod.imagen_3 }}" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-4 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_4 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_4 }}"
-                                     src="/media/{{ mod.imagen_4 }}/" alt="collection-img">
-                            </a>
+                    {% endif %}
+
+                    {% if mod.imagen_4 %}
+                        <div class="item-4 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_4 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_4 }}"
+                                         src="/media/{{ mod.imagen_4 }}/" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-5 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_5 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_5 }}"
-                                     src="/media/{{ mod.imagen_5 }}" alt="collection-img">
-                            </a>
+                    {% endif %}
+
+                    {% if mod.imagen_5 %}
+                        <div class="item-5 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_5 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_5 }}"
+                                         src="/media/{{ mod.imagen_5 }}" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item-6 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/media/{{ mod.imagen_6 }}" target="_blank" class="collection-image img-style"
-                               data-pswp-width="770px" data-pswp-height="1075px">
-                                <img class="lazyload" data-src="/media/{{ mod.imagen_6 }}"
-                                     src="/media/{{ mod.imagen_6 }}" alt="collection-img">
-                            </a>
+                    {% endif %}
+
+                    {% if mod.imagen_6 %}
+                        <div class="item-6 collection-item-v5 hover-img wow fadeInUp" data-wow-delay="0s">
+                            <div class="collection-inner">
+                                <a href="/media/{{ mod.imagen_6 }}" target="_blank" class="collection-image img-style"
+                                   data-pswp-width="770px" data-pswp-height="1075px">
+                                    <img class="lazyload" data-src="/media/{{ mod.imagen_6 }}"
+                                         src="/media/{{ mod.imagen_6 }}" alt="collection-img">
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

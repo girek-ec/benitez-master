@@ -1,7 +1,26 @@
 {% extends 'vortice/index_vortice.html' %}
+    {% block metas %}
+        <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Vortice - Tienda Oficial "/>
+        <meta property="og:description" content="{{ colecciones_id.cliente.cliente }}  - Coleccion -  {{ colecciones_id.tema_colec }}"/>
+        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.imag_colec_01 }}"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+
+        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Vortice - Tienda Oficial">
+        <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ colecciones_id.cliente.cliente }}  - Coleccion -  {{ colecciones_id.tema_colec }}">
+        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ colecciones_id.imag_colec_01 }}">
+        <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
+        <meta name="twitter:image:width" content="1200">
+        <meta name="twitter:image:height" content="628">
+    {% endblock %}
+
 {% block principal %}
     <!-- page-title -->
-    <div class="tf-page-title">
+    <div class="tf-page-title" style="padding-top: 25px !important; padding-bottom: 25px !important;">
         <div class="container-full">
             <div class="heading text-center">Coleccion -  {{ colecciones_id.tema_colec }} </div>
             <h4 style="text-align: center !important;">{{ colecciones_id.cliente.cliente }} </h4>
@@ -44,6 +63,84 @@
         </div>
     </section>
     <!-- /Collection -->
+
+
+    <section class="flat-spacing-1">
+        <div class="container-full">
+            <div class="tf-shop-control grid-3 align-items-center" style="text-align: center;">
+
+                <ul class="tf-control-layout d-flex justify-content-center " >
+                    <li class="tf-view-layout-switch sw-layout-2" data-value-grid="grid-2">
+                        <div class="item"><span class="icon icon-grid-2"></span></div>
+                    </li>
+                    <li class="tf-view-layout-switch sw-layout-3" data-value-grid="grid-3">
+                        <div class="item"><span class="icon icon-grid-3"></span></div>
+                    </li>
+                    <li class="tf-view-layout-switch sw-layout-4 active" data-value-grid="grid-4">
+                        <div class="item"><span class="icon icon-grid-4"></span></div>
+                    </li>
+                    <li class="tf-view-layout-switch sw-layout-5" data-value-grid="grid-5">
+                        <div class="item"><span class="icon icon-grid-5"></span></div>
+                    </li>
+                    <li class="tf-view-layout-switch sw-layout-6" data-value-grid="grid-6">
+                        <div class="item"><span class="icon icon-grid-6"></span></div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="grid-layout wrapper-shop" data-grid="grid-4">
+
+                {% for product in products %}
+                    <!-- card product -->
+                    <div class="card-product">
+                        <div class="card-product-wrapper">
+                            <a href="/vortice/producto/{{ product.id }}" class="product-img">
+                                <img class="lazyload img-product" data-src="/media/{{ product.imagen_produc_01 }}"
+                                     src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
+
+                                {% if product.imagen_produc_02 %}
+                                <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_02 }}"
+                                src="/media/{{ product.imagen_produc_02 }}" alt="image-product">
+                                {% else %}
+                                <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
+                                     src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
+                                {% endif %}
+
+
+                            </a>
+
+
+                        </div>
+                        <div class="card-product-info">
+                            <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }}</a>
+                            <span class="price"> ${{ product.price }}</span>
+                        </div>
+                    </div>
+                    <!-- card product  -->
+                {% endfor %}
+            </div>
+            <!-- pagination -->
+            <ul class="tf-pagination-wrap tf-pagination-list">
+                <li class="active">
+                    <a href="#" class="pagination-link">1</a>
+                </li>
+                <li>
+                    <a href="#" class="pagination-link animate-hover-btn">2</a>
+                </li>
+                <li>
+                    <a href="#" class="pagination-link animate-hover-btn">3</a>
+                </li>
+                <li>
+                    <a href="#" class="pagination-link animate-hover-btn">4</a>
+                </li>
+                <li>
+                    <a href="#" class="pagination-link animate-hover-btn">
+                        <span class="icon icon-arrow-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
 
 
 {% endblock %}

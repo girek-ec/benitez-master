@@ -66,9 +66,9 @@ class Producto(models.Model):
     stock = models.CharField(max_length=20, default='stock', choices=(("stock", "stock"), ("no_stock", "no_stock")))
     imagen = models.ImageField(upload_to='girekstudio/', null=True, blank=True)
     descripcion = models.TextField(max_length=500, null=True, blank=True)
-    caracteristicas = models.TextField(max_length=500, null=True, blank=True)
-    tamanos = models.TextField(max_length=500, null=True, blank=True)
-    material = models.TextField(max_length=500, null=True, blank=True)
+    caracteristicas = models.CharField(max_length=500, null=True, blank=True)
+    tamanos =  models.CharField(max_length=100, null=True, blank=True)
+    material = models.CharField(max_length=100, null=True, blank=True)
     precio = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
@@ -255,13 +255,11 @@ class Lista_servicio(models.Model):
 
 
 class Imag_Video_Servicio(models.Model):
-    activo = models.BooleanField(default=False)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE)
-    tipo_archivo = models.CharField(max_length=20, default='imagen', choices=(("imagen", "imagen"), ("video", "video")))
-    archivo = models.FileField(upload_to='girekstudio/', null=True, blank=True, )
+    imagen = models.ImageField(upload_to='girekstudio/', null=True, blank=True, help_text="Imagen de Servicio")
 
     def vista_previa(self):
-        return mark_safe('<image width="150" height="150"  src="/media/%s">' % self.archivo)
+        return mark_safe('<image width="150" height="150"  src="/media/%s">' % self.imagen)
 
     class Meta:
         verbose_name_plural = "SERV- 02 Imagenes / Video Servicios "
@@ -294,8 +292,8 @@ class Plan_list(models.Model):
         verbose_name_plural = "SERV- 03.5 Plan Lista "
 
 
-
 class Cliente(models.Model):
+    principal = models.BooleanField(default=False, help_text="Activar para que salga en la pagina principal")
     nombre = models.CharField(max_length=90, null=True, blank=True)
     sitio = models.CharField(max_length=90, null=True, blank=True)
     logo = models.FileField(upload_to='girekstudio', null=True, blank=True)
@@ -334,6 +332,7 @@ class Proyecto(models.Model):
     fecha = models.DateField()
     nombreproyecto = models.CharField(max_length=120, null=True, blank=True, help_text="Texto de maximo 120 caracteres")
     detalle = models.TextField(null=True, blank=True)
+    linkweb = models.CharField(max_length=250, null=True, blank=True)
     tipo_archivo = models.CharField(max_length=20, default='imagen', choices=(("imagen", "imagen"), ("video_vertical", "video_vertical"), ("video", "video")))
     tipo_imagen= models.BooleanField(default=False, help_text="Activar si es una imagen cuadrada ")
     imagen = models.FileField(upload_to='girekstudio/', help_text='imagen proyecto 851x315', null=True, blank=True)

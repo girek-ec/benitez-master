@@ -22,7 +22,7 @@ def index_girekstudio(request):
         'editable': Editables.objects.all().first(),
         'planes': Planes.objects.all(),
         'proyecto': Proyecto.objects.all().order_by('orden'),
-        'servicios': Servicio.objects.all().order_by('-orden'),
+        'servicios': Servicio.objects.all().order_by('orden'),
         'equipos': Equipo.objects.all(),
         'frases': Frase.objects.all(),
         'clientes': Cliente.objects.all(),
@@ -66,7 +66,7 @@ def serviciosdescripcion_girekstudio(request, n,):
         'editable': Editables.objects.all().first(),
         'servicio' : Servicio.objects.get(id=n),
         'servicios': Servicio.objects.all().order_by("orden"),
-        'imag_video_serv' : Imag_Video_Servicio.objects.filter(servicio__titulo=servicios_girekstudio),
+        'imag_video_serv' : Imag_Video_Servicio.objects.filter(servicio=n),
         'listservicios': Lista_servicio.objects.all(),
         'planes' : Planes.objects.filter(categoria_id=n),
         'planes_listas': Plan_list.objects.filter(plan_serv=n),
@@ -140,7 +140,7 @@ def producto_cate_girekstudio(request, id):
         'categorias': Clasif_producto.objects.all(),
         'servicios': Servicio.objects.all().order_by("orden"),
         'productos': Producto.objects.filter(clasif_id=id),
-        'producto_imagen' : Producto_Imagen.objects.filter(producto=product),
+        'producto_imagen' : Producto_Imagen.objects.all(),
         'contacto_empresa': Contacto_empresa.objects.all().first(),
     }
 

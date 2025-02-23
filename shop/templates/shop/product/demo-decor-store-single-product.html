@@ -1,0 +1,150 @@
+{% extends 'colexin/demo-decor-store.html' %}
+{% block metas %}
+<!-- metas pagweb -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="author" content="GirekStudio">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta property="og:title" content="GirekStudio - Agencia de Diseño - {{product.nombre_producto }}" />
+<meta property="og:description" content="{{product.descripcion }}" />
+<meta property="og:url" content="https://benitez-ec/girekstudio/producto/{{product.id}}" />
+<meta property="og:image" content="http://benitez-ec/media/{{product.imagen }}" />
+<meta property="og:type" content="website" />
+{% endblock %}
+{% block principal %}
+        <!-- start breadcrumb -->
+        <section style="margin-top: 50px !important;" class="border-top border-color-extra-medium-gray pt-20px pb-20px ps-45px pe-45px lg-ps-35px lg-pe-35px md-ps-15px md-pe-15px sm-ps-0 sm-pe-0">
+            <div class="container-fluid">
+                <div class="row align-items-center"> 
+                    <div class="col-12 breadcrumb breadcrumb-style-01 fs-14 alt-font">
+                        <ul>
+                            <li><a href="/colexin/">Inicio</a></li>
+                            <li><a href="/colexin/tienda/">Tienda</a></li>
+                            <li>{{product.category.name}} - {{product.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end breadcrumb --> 
+        <!-- start section -->
+        <section class="pt-40px pb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 md-mb-40px" data-anime='{ "translate": [0, 0], "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <div class="row overflow-hidden position-relative">
+                            <div class="col-12 position-relative product-image">
+                                <div class="swiper product-image-slider" data-slider-options='{ "spaceBetween": 0, "watchOverflow": true, "navigation": { "nextEl": ".slider-product-next", "prevEl": ".slider-product-prev" }, "thumbs": { "swiper": { "el": ".product-image-thumb", "slidesPerView": "5", "spaceBetween": 15 } } }' data-swiper-thumb-click="1">
+                                    <div class="swiper-wrapper">
+                                        <!-- start slider item -->
+                                        <div class="swiper-slide gallery-box">
+                                            <a href="/media/{{product.image_1}} " data-group="lightbox-gallery" title="{{product.category.name }} - {{product.name }} ">
+                                                <img class="w-100" src="/media/{{product.image_1}}" alt="">
+                                            </a>
+                                        </div>
+                                        <!-- end slider item -->
+                                        <div class="swiper-slide gallery-box">
+                                            <a href="/media/{{product.image_2}}" data-group="lightbox-gallery" title="{{product.category.name }} - {{product.name }}">
+                                                <img class="w-100" src="/media/{{product.image_2}}" alt="">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="slider-product-next swiper-button-next border-radius-100 border border-1 border-color-extra-medium-gray"><i class="fa fa-chevron-right text-dark-gray icon-very-small"></i></div>
+                                <div class="slider-product-prev swiper-button-prev border-radius-100 border border-1 border-color-extra-medium-gray"><i class="fa fa-chevron-left text-dark-gray icon-very-small"></i></div>
+                            </div>
+                            <div class="col-12 position-relative">
+                                <div class="swiper-container product-image-thumb">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide"><img class="w-100" src="/media/{{product.image_1}}" alt=""></div>
+                                        <div class="swiper-slide"><img class="w-100" src="/media/{{product.image_2}}" alt=""></div>
+
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1 product-info" data-anime='{ "translate": [0, 0], "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <span class="fw-500 text-dark-gray d-block">{{product.category.name}}</span>
+                        <h5 class="alt-font text-dark-gray fw-700 mb-10px">{{product.name}}</h5>
+                        <div class="d-block d-sm-flex align-items-center mb-20px">
+                            <div class="me-10px xs-me-0">
+                                <a href="#tab" class="section-link ls-minus-1px icon-small">
+                                    <i class="bi bi-star-fill text-golden-yellow"></i>
+                                    <i class="bi bi-star-fill text-golden-yellow"></i>
+                                    <i class="bi bi-star-fill text-golden-yellow"></i>
+                                    <i class="bi bi-star-fill text-golden-yellow"></i>
+                                    <i class="bi bi-star-fill text-golden-yellow"></i>
+                                </a>
+                            </div>
+                            <a href="#tab" class="me-25px text-dark-gray fw-500 section-link xs-me-0">165 Opiniones</a>
+                            <div><span class="text-dark-gray fw-500">CÓDIGO: </span>00{{product.id}}</div>
+                        </div>
+                        <div class="product-price mb-10px">
+                            <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">${{product.price}}</span>
+                        </div>
+
+                        <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative">
+
+
+                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" value="Add to cart">
+
+                            </form>
+
+
+
+
+                            <a href="#" class="wishlist d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3">
+                                <i class="feather icon-feather-heart icon-small text-base-color"></i>
+                            </a>
+                        </div>
+
+                        <div class="mb-20px h-1px w-100 bg-extra-medium-gray d-block"></div>
+                        <div class="row mb-15px">
+                            <div class="col-12 icon-with-text-style-08">
+                                <div class="feature-box feature-box-left-icon d-inline-flex align-middle">
+                                    <div class="feature-box-icon me-10px">  
+                                        <i class="feather icon-feather-truck top-8px position-relative align-middle text-dark-gray"></i>
+                                    </div>
+                                    <div class="feature-box-content">
+                                        <span><span class="alt-font text-dark-gray fw-500">Entrega estimada:</span> 2 a 3 días laborables</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 icon-with-text-style-08 mb-10px">
+                                <div class="feature-box feature-box-left-icon d-inline-flex align-middle">
+                                    <div class="feature-box-icon me-10px">  
+                                        <i class="feather icon-feather-archive top-8px position-relative align-middle text-dark-gray"></i>
+                                    </div>
+                                    <div class="feature-box-content">
+                                        <span><span class="alt-font text-dark-gray fw-500">Envío y devoluciones gratis:</span> No se aceptan devoluciones</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-very-light-gray ps-30px pe-30px pt-25px pb-25px mb-20px xs-p-25px border-radius-4px">
+                            <span class="alt-font fs-15 fw-500 text-dark-gray mb-15px d-block lh-initial">Garantizamos un pago seguro y protegido</span>
+                            <div>
+                                <a href="#"><img src="/static/static_girekstudio/images/visa.svg" class="h-30px me-5px mb-5px" alt=""></a>
+                                <a href="#"><img src="/static/static_girekstudio/images/mastercard.svg" class="h-30px me-5px mb-5px" alt=""></a>
+                                <a href="#"><img src="/static/static_girekstudio/images/american-express.svg" class="h-30px me-5px mb-5px" alt=""></a>
+                                <a href="#"><img src="/static/static_girekstudio/images/discover.svg" class="h-30px me-5px mb-5px" alt=""></a>
+                                <a href="#"><img src="/static/static_girekstudio/images/diners-club.svg" class="h-30px me-5px mb-5px" alt=""></a>
+                                <a href="#"><img src="/static/static_girekstudio/images/union-pay.svg" class="h-30px" alt=""></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="w-100 d-block"><span class="text-dark-gray alt-font fw-500">Categoria:</span> {{product.tipo_producto.tipo}} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+        </section>
+        <!-- end section -->
+
+ {% endblock %}

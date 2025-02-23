@@ -1,9 +1,11 @@
 from ckeditor.fields import RichTextField
 from django.contrib.admin import BooleanFieldListFilter
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 from django.utils.safestring import mark_safe
+
 
 
 # Create your models here.
@@ -40,18 +42,20 @@ class Vortice(models.Model):
     about_03_imagen_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
     about_titulo_03 = models.CharField(max_length=100, null=True, blank=True)
     about_subtitulo_03 = models.CharField(max_length=100, null=True, blank=True)
-    about_03_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
     about_03_imagen_2 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    about_03_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes logo')
     about_titulo_04 = models.CharField(max_length=100, null=True, blank=True)
     about_subtitulo_04 = models.CharField(max_length=100, null=True, blank=True)
     about_04_imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
-    envios_detalle=models.CharField(max_length=600, null=True, blank=True)
-    envios_img = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
-    terminos_detalle = models.CharField(max_length=600, null=True, blank=True)
-    terminos_img= models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
-    preguntas_detalle = models.CharField(max_length=600, null=True, blank=True)
-    preguntas_img = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 200*200')
-
+    about_04_imagen_2 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    img_termi_condi = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 2000 × 1262 px')
+    qr_img = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 20*20')
+    meta_inicio = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
+    meta_about = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
+    meta_hombre = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
+    meta_mujer= models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
+    meta_moda = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
+    meta_gifcard = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='imagenes 1200x630 px')
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.logo_horizontal)
@@ -82,7 +86,7 @@ class Coleccion(models.Model):
     activo = models.BooleanField(default=False)
     cliente = models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE, null=True, blank=True)
     imag_colec_01 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
-    imag_colec_02 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+    imag_colec_02 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='slider inicio horizontal')
     tema_colec =models.CharField(max_length=50, null=True, blank=True)
     sub_tema_colec = models.CharField(max_length=250, null=True, blank=True)
     detalle = models.TextField(max_length=500, null=True, blank=True)
@@ -154,11 +158,9 @@ class Prod_prenda(models.Model):
     imagen_produc_02 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
     video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
     descripcion_produc = models.TextField(max_length=500, null=True, blank=True)
-    material_produc = models.TextField(max_length=500, null=True, blank=True)
     tipo_material = models.ForeignKey(Material_producto, on_delete=models.CASCADE, null=True, blank=True)
-    precio = models.DecimalField(max_digits=999, decimal_places=2)
-    activa_descuento = models.BooleanField (default=False, null=True, blank=True)
-    precio_descuent = models.DecimalField(max_digits=999, decimal_places=2, null=True, blank=True)
+    price = models.DecimalField(max_digits=999, decimal_places=2)
+    has_sizes = models.BooleanField(default=True)  # ✅ Indica si el producto tiene tallas
 
 
 
@@ -167,86 +169,14 @@ class Prod_prenda(models.Model):
 
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen_produc_01)
-    
+
+    def get_absolute_url(self):
+        return reverse('Vortice.views.producto_detalle',
+                       args=[self.id])
+
     class Meta:
         verbose_name_plural = "5. Producto "
 
-   
-
-class Colores(models.Model):
-    color = models.CharField(max_length=10,null=True, blank=True)
-    codigo = models.CharField(max_length=10,null=True, blank=True)
-
-    def __str__(self):
-        return '%s %s' % ( self.color,  self.codigo)
-
-
-    class Meta:
-        verbose_name_plural = "6. Colores"
-
-
-class Produc_Color(models.Model):
-    produc_prenda = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
-    color = models.ForeignKey(Colores, on_delete=models.CASCADE, null=True, blank=True)
-    imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')
-    def __str__(self):
-        return '%s %s' % ( self.produc_prenda,  self.color)
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen)
-    class Meta:
-        verbose_name_plural = "7.Color de Productos"
-
-
-class Nu_Talla_Cami(models.Model):
-    n_talla_camisetas = models.CharField(max_length=10,null=True, blank=True)
-    
-    def __str__(self):
-        return '%s' % (self.n_talla_camisetas)
-    class Meta:
-        verbose_name_plural = "8. Numero  Tallas Camisetas  "
-
-class Nu_Talla_Zapa(models.Model):
-    n_talla_zapatos = models.CharField(max_length=10,null=True, blank=True)
-    
-    def __str__(self):
-        return '%s' % ( self.n_talla_zapatos)
-    class Meta:
-        verbose_name_plural = "8.1 Numero Tallas Zapatos "
-
-class Nu_Talla_Produ(models.Model):
-    n_talla_producto = models.CharField(max_length=10,null=True, blank=True)
-    
-    def __str__(self):
-        return '%s' % (self.n_talla_producto)
-    class Meta:
-        verbose_name_plural = "8.2 Numero Tallas Producto "  
-
-class Talla_Camiseta(models.Model):
-    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
-    talla_camisetas = models.ForeignKey(Nu_Talla_Cami, on_delete=models.CASCADE, null=True, blank=True)
-    
-    def __str__(self):
-        return '%s %s' % ( self.produc, self.talla_camisetas)
-    class Meta:
-        verbose_name_plural = "8.3 Eleccion de Tallas Camisetas  "
-
-class Talla_Zapato(models.Model):
-    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
-    talla_zapatos = models.ForeignKey(Nu_Talla_Zapa, on_delete=models.CASCADE, null=True, blank=True)
-    
-    def __str__(self):
-        return '%s %s' % ( self.produc, self.talla_zapatos)
-    class Meta:
-        verbose_name_plural = "8.4 Eleccion Tallas Zapatos "
-
-class Talla_Producto(models.Model):
-    produc = models.ForeignKey(Prod_prenda, on_delete=models.CASCADE, null=True, blank=True)
-    talla_producto = models.ForeignKey(Nu_Talla_Produ, on_delete=models.CASCADE, null=True, blank=True)
-    
-    def __str__(self):
-        return '%s %s' % ( self.produc, self.talla_producto)
-    class Meta:
-        verbose_name_plural = "8.5 Eleccion Tallas Producto "
 
 class Servicios(models.Model):
     video=models.FileField(upload_to='vortice',null=True, blank=True, help_text='video 200*200')
@@ -255,26 +185,13 @@ class Servicios(models.Model):
     detalle= models.TextField(max_length=500, null=True, blank=True)
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.logo_horizontal)
+        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen)
 
 
     class Meta:
         verbose_name_plural = "10. Servicios"
 
 
-class SliderCard(models.Model):
-    activo = models.BooleanField(default=False)
-    titulo= models.CharField(max_length=100, null=True, blank=True)
-    sub_titulo= models.CharField(max_length=100, null=True, blank=True)
-    detalle= models.TextField(max_length=500, null=True, blank=True)
-    imagen=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='imagenes 200*200')
-
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen)
-
-
-    class Meta:
-        verbose_name_plural = "11. SliderCard"
 
 
 class GiftCard(models.Model):
@@ -332,7 +249,7 @@ class MesModa(models.Model):
 
 class MesModa_galeria(models.Model):
     mesmoda = models.ForeignKey(MesModa, on_delete=models.CASCADE, null=True, blank=True)
-    imagen_1=models.ImageField(upload_to='vortice',null=True, blank=True, help_text='horizontal')
+    imagen_1 = models.ImageField(upload_to='vortice',null=True, blank=True, help_text='horizontal')
     imagen_2 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imagen_3 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imagen_4 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')

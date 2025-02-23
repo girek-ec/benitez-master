@@ -2747,7 +2747,7 @@ input:focus, select:focus, textarea:focus, .form-control:focus {
 .stack-box {
   position: relative;
   z-index: 1;
-  height: 300vh;
+  height: 500vh;
 }
 .stack-box .stack-box-contain {
   height: 100vh;
@@ -2770,6 +2770,64 @@ input:focus, select:focus, textarea:focus, .form-control:focus {
 .stack-box .stack-item.stack-item-03 {
   z-index: 9;
 }
+
+.stack-box .stack-item.stack-item-04 {
+  z-index: 8;
+}
+
+.stack-box .stack-item.stack-item-05 {
+  z-index: 7;
+}
+
+.stack-box .stack-item.stack-item-06 {
+  z-index: 6;
+}
+
+.stack-box .stack-item.stack-item-07 {
+  z-index: 5;
+}
+
+.stack-box .stack-item.stack-item-08 {
+  z-index: 4;
+}
+
+.stack-box .stack-item.stack-item-09 {
+  z-index: 3;
+}
+
+.stack-box .stack-item.stack-item-10 {
+  z-index: 2;
+}
+
+.stack-box .stack-item.stack-item-11 {
+  z-index: 1;
+}
+
+.stack-box .stack-item.stack-item-12 {
+  z-index: -1;
+}
+
+.stack-box .stack-item.stack-item-13 {
+  z-index: -2;
+}
+
+.stack-box .stack-item.stack-item-14 {
+  z-index: -3;
+}
+
+.stack-box .stack-item.stack-item-15 {
+  z-index: -4;
+}
+
+.stack-box .stack-item.stack-item-16 {
+  z-index: -5;
+}
+
+
+
+
+
+
 .stack-box .stack-item .stack-item-wrapper {
   position: absolute;
   top: 0;

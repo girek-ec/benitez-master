@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura - Vortice Store</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #fff;
+            font-size: 10px; /* Tamaño de fuente reducido */
+        }
+
+        /* Contenedor principal */
+        .invoice-container {
+            width: 210mm; /* Ancho de una hoja A4 en vertical */
+            height: 297mm; /* Alto de una hoja A4 en vertical */
+            margin: 0 auto;
+            padding: 10mm; /* Padding reducido */
+            background-color: #fff;
+            box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+        }
+
+        /* Encabezado */
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 16px; /* Tamaño de fuente reducido */
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 10px;
+            font-size: 12px; /* Tamaño de fuente reducido */
+        }
+
+        /* Tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 10px; /* Tamaño de fuente reducido */
+        }
+
+        th, td {
+            padding: 6px; /* Padding reducido */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .num {
+            text-align: right !important;
+        }
+
+        .total {
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+
+        .paid {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .secondary {
+            color: #7f8c8d;
+            font-size: 0.8em; /* Tamaño de fuente reducido */
+        }
+
+        .subtotal {
+            background-color: #f8f9fa;
+        }
+
+        .neg {
+            color: #e74c3c;
+        }
+
+        /* Pie de página */
+        footer {
+            margin-top: 15px;
+            text-align: right;
+            font-size: 10px; /* Tamaño de fuente reducido */
+        }
+
+        /* Encabezado de la factura */
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .invoice-header img {
+            max-width: 80px; /* Tamaño del logo reducido */
+            margin-bottom: 5px;
+        }
+
+        .invoice-header h1 {
+            margin: 0;
+            font-size: 18px; /* Tamaño de fuente reducido */
+            color: #2c3e50;
+        }
+
+        /* Detalles de la factura */
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .invoice-details div {
+            flex: 1;
+        }
+
+        .invoice-details div:first-child {
+            margin-right: 5px;
+        }
+
+        .invoice-details div:last-child {
+            text-align: right;
+        }
+
+        /* Estilos específicos para impresión */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .invoice-container {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .invoice-header img {
+                max-width: 70px; /* Tamaño del logo reducido para impresión */
+            }
+
+            table {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <header class="invoice-header">
+            <img  src="/media/{{ vortice.logo_horizontal }}" alt="Logo Vortice Store" style="max-width: 150px; display: block; margin: 0 auto;"> <!-- Cambia la URL por tu logo -->
+            <h4 style="text-align: center !important;">Vive tu Estilo</h4>
+        </header>
+
+        <div class="invoice-details">
+            <div>
+                <h3>Cobrar a:</h3>
+                <h3 style="color:#0e152f !important; ">
+                    <strong>{{ order.first_name }} {{ order.last_name }}</strong><br>
+                    {{ order.email }}<br>
+                    {{ order.address }}<br>
+                    {{ order.postal_code }}, {{ order.city }}
+                </h3>
+            </div>
+            <div>
+                <p>
+                    <strong>Pedido No.</strong> {{ order.id }}<br>
+                    <span class="secondary">
+                        <strong>Fecha:</strong> {{ order.created|date:"M d, Y" }}
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <section>
+            <h3>Artículos comprados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Productos</th>
+                        <th class="num">Precio</th>
+                        <th class="num">Cantidad</th>
+                        <th class="num">Costo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                    <tr class="row{% cycle '1' '2' %}">
+                        <td>{{ item.product.nombre_produc }} - Talla: {{ item.size }}</td>
+                        <td class="num">${{ item.price }}</td>
+                        <td class="num">{{ item.quantity }}</td>
+                        <td  class="num">${{ item.get_cost }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    {% if order.coupon %}
+                    <tr class="subtotal">
+                        <td colspan="3">Subtotal</td>
+                        <td class="num">${{ order.get_total_cost_before_discount|floatformat:2 }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            "{{ order.coupon.code }}" Cupón: ({{ order.discount }}% Descuento)
+                        </td>
+                        <td style="background-color: #2c3e50 !important;" class="num neg">- ${{ order.get_discount|floatformat:2 }}</td>
+                    </tr>
+                    {% endif %}
+
+                    <tr>
+                        <td  colspan="3">Costo de envío:</td>
+                        <td  style="background-color: #2c3e50 !important;" class="num">${{ order.shipping_cost|floatformat:2 }}</td>
+                    </tr>
+
+                    <tr class="total">
+                        <td style="color: #0a0a10" colspan="3">Total</td>
+                        <td  style="background-color: #2c3e50 !important;"  class="num">${{ order.get_total_cost|floatformat:2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p class="{% if order.paid %}paid{% else %}pending{% endif %}">
+                {% if order.paid %}Pagado{% else %}Pendiente de pago{% endif %}
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

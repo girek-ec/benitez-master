@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+#from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,8 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'Girekstudio',
     'Vortice',
     'Zatuar',
+    'shop.apps.ShopConfig',
+    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
 
 
 
@@ -71,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -86,6 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+
     }
 }
 
@@ -125,6 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
 # STATIC_ROOT='/var/www/benitez-master//static/'
 STATICFILES_DIRS=[
    'static',
@@ -135,7 +145,50 @@ MEDIA_URL="/media/"
 MEDIA_ROOT='media'
 #MEDIA_ROOT="/var/www/benitez-master/media/"
 
+CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+
+# Crispy forms
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_ALLOWED_TEMPLATE_PACKS= "uni_form", "bootstrap3", "bootstrap4"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51QmeMJP7tA8xDTNIZUC0MUwqSJ8PCqSnbelrdXzjJ8Sz0HKYKCGJQvXL3YGmM1gqmT6FYj6TVEHcptth82Gbb6VV00NfEbjFi3' # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51QmeMJP7tA8xDTNI2CQ4StWtsl8BXUAQ9hvp0UqW4ImL0kGQfKmce7nRAc8uPjBAfkPDygghZ1NyvoE0A1uHWza000LfejNdS9'      # Secret key
+STRIPE_API_VERSION = '2022-08-01'
+STRIPE_WEBHOOK_SECRET = ''
+
+PAYPHONE_API_KEY = os.getenv("oVJ0zDE740mTPJrGMWcxNQ", "uDi3q4KHKdVhxrmkyZwUvwdMlDNs5K4SZUFjpbDUD-tOzx8jbYk8lIxTqtqr29f9tS13PkyNXnJE63WfiOAsVO1V7SK2ae2W4aM9bS-bfZBF1LcmKh7qXTRZYkbTWWK5vDn422_0O2RK22WEViHrFX7M8bfbP4gmVUm4uOYwzXqpYB0EMmIq6tnVHcWRsIwUuvgg_0TPwDVeiq_cfHJScMjj8fK4Z4LoJ6DCufrE3fvIpjfCipBnfFmSo5-3Ai_z5LwKQdFk8f_Nu9eUJ0BOQ0yd-uCorw6Qpt869YjH1GyiaKlKSxPyi0o48vZgG4fU8SlEELZLQLl3QLCnDhKZob7D2X8")
+SITE_URL = os.getenv("SITE_URL", "http://localhost:8000")
+
+
+# Redis settings
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vortice.ec@gmail.com'  # Tu correo electrónico
+EMAIL_HOST_PASSWORD = 'wcdb ujft mlzc rssk'   # Tu contraseña de correo electrónico
+
+# API DE WHATSAPP
+#WHATSAPP_TOKEN = os.environ["WHATSAPP_TOKEN"]
+#WHATSAPP_CALLBACK_TOKEN = os.environ["WHATSAPP_CALLBACK_TOKEN"]
+#WHATSAPP_NUMBER_ID = os.environ["WHATSAPP_NUMBER_ID"]
+#WHATSAPP_RECEIVER = os.environ["WHATSAPP_RECEIVER"]

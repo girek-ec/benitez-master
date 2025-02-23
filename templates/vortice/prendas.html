@@ -1,7 +1,7 @@
 {% extends 'vortice/index_vortice.html' %}
 {% block principal %}
     <!-- page-title -->
-    <div class="tf-page-title">
+    <div class="tf-page-title" style="padding-top: 25px !important; padding-bottom: 25px !important;">
         <div class="container-full">
             <div class="heading text-center">{{ seccion_id.cliente }}</div>
             <p class="text-center text-2 text_black-2 mt_5">Compre nuestra última selección de ropa para {{ seccion_id.cliente }}.
@@ -90,7 +90,7 @@
                         </div>
                         <div class="card-product-info">
                             <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }}</a>
-                            <span class="price"> ${{ product.precio }}</span>
+                            <span class="price"> ${{ product.price }}</span>
                         </div>
                     </div>
                     <!-- card product  -->

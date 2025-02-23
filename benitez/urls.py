@@ -14,14 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf import settings
+from django.urls import *
+from django.urls import path, include
+
+
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
+
 from Home.views import *
 from Girekstudio.views import *
 from Vortice.views import *
 from Zatuar.views import *
 from Niska.views import *
+from cart.views import *
+from orders.views import *
+
+from django.conf import settings
+
+from payment.views import orden_pedido
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +40,8 @@ urlpatterns = [
     path('empresa/', empresa),
     path('trabajo/', trabaja),
     path('contacto/', contacto),
+
+    path('compra', cart_detail, name='cart_detail'),
 
     # web girekstudio/
     path('girekstudio/', index_girekstudio),
@@ -64,7 +77,7 @@ urlpatterns = [
     path('vortice/seccion/<slug:seccion>/prenda/<slug:tipo>/', tipo_filtro),
     path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/', coleccion_filtro),
     path('vortice/seccion/<slug:seccion>/coleccion/<slug:coleccion>/prenda/<slug:tipo>/',coleccion_filtro_prenda),
-    path('vortice/producto/<int:id>/', producto_detalle),
+    path('vortice/producto/<int:id>/', producto_detalle, name='product_detail'),
     path('vortice/blog/', blog),
     path('vortice/gift/', giftcard),
     path('vortice/gift/<int:id>', card),
@@ -82,5 +95,16 @@ urlpatterns = [
     # web niska/
 
 
+
+    #path('admin/', admin.site.urls),
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('coupons/', include('coupons.urls', namespace='coupons')),
+    path('', include('shop.urls', namespace='shop')),
+
+    path('preparar/', include('payment.urls', namespace='payment')),
+    path('payment/', include('payment.urls')),  # Incluye las URLs de la aplicación payment
+    path('orden_pedido/', orden_pedido, name='orden pedido'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

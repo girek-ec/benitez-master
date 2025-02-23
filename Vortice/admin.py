@@ -5,23 +5,6 @@ from Vortice.models import *
 from Vortice.snippers import Attr
 
 
-class Produc_ColorInline(admin.StackedInline):
-    model = Produc_Color
-    extra = 0
-
-class Tallas_CamisetaInline(admin.StackedInline):
-    model = Talla_Camiseta
-    extra = 0
-
-class Talla_ZapatoInline(admin.StackedInline):
-    model = Talla_Zapato
-    extra = 0
-
-class Talla_ProductoInline(admin.StackedInline):
-    model = Talla_Producto
-    extra = 0
-
-
 class MesModa_galeriaInline(admin.StackedInline):
     model = MesModa_galeria
     extra = 0
@@ -35,12 +18,6 @@ class NotificacionesAdmin(admin.ModelAdmin):
     list_display = Attr(Notificaciones)
     list_display_links = Attr(Notificaciones)
 admin.site.register(Notificaciones, NotificacionesAdmin)
-
-class SliderCardAdmin(admin.ModelAdmin):
-    list_display = Attr(SliderCard)+["miniatura"]
-    list_display_links = Attr(SliderCard)
-admin.site.register(SliderCard, SliderCardAdmin)
-
 
 class Seccion_ClienteAdmin(admin.ModelAdmin):
     list_display = Attr(Seccion_Cliente)
@@ -67,51 +44,9 @@ class Material_productoAdmin(admin.ModelAdmin):
     list_display_links = Attr(Material_producto)
 admin.site.register(Material_producto, Material_productoAdmin)
 
-
-class ColoresAdmin(admin.ModelAdmin):
-    list_display = Attr(Colores)
-    list_display_links = Attr(Colores)
-admin.site.register(Colores, ColoresAdmin)
-
-class Produc_ColorAdmin(admin.ModelAdmin):
-    list_display = Attr(Produc_Color)
-    list_display_links = Attr(Produc_Color)
-admin.site.register(Produc_Color, Produc_ColorAdmin)
-
-class Nu_Talla_CamiAdmin(admin.ModelAdmin):
-    list_display = Attr(Nu_Talla_Cami)
-    list_display_links = Attr(Nu_Talla_Cami)
-admin.site.register(Nu_Talla_Cami, Nu_Talla_CamiAdmin)
-
-class Nu_Talla_ZapaAdmin(admin.ModelAdmin):
-    list_display = Attr(Nu_Talla_Zapa)
-    list_display_links = Attr(Nu_Talla_Zapa)
-admin.site.register(Nu_Talla_Zapa, Nu_Talla_ZapaAdmin)
-
-class Nu_Talla_ProduAdmin(admin.ModelAdmin):
-    list_display = Attr(Nu_Talla_Produ)
-    list_display_links = Attr(Nu_Talla_Produ)
-admin.site.register(Nu_Talla_Produ, Nu_Talla_ProduAdmin)
-
-class Talla_CamisetaAdmin(admin.ModelAdmin):
-    list_display = Attr(Talla_Camiseta)
-    list_display_links = Attr(Talla_Camiseta)
-admin.site.register(Talla_Camiseta, Talla_CamisetaAdmin)
-
-class Talla_ZapatoAdmin(admin.ModelAdmin):
-    list_display = Attr(Talla_Zapato)
-    list_display_links = Attr(Talla_Zapato)
-admin.site.register(Talla_Zapato, Talla_ZapatoAdmin)
-
-class Talla_ProductoAdmin(admin.ModelAdmin):
-    list_display = Attr(Talla_Producto)
-    list_display_links = Attr(Talla_Producto)
-admin.site.register(Talla_Producto, Talla_ProductoAdmin)
-
 class Prod_prendaAdmin(admin.ModelAdmin):
     list_display = Attr(Prod_prenda)+["miniatura"]
     list_display_links = Attr(Prod_prenda)
-    inlines = [Produc_ColorInline, Tallas_CamisetaInline, Talla_ZapatoInline, Talla_ProductoInline ]
 admin.site.register(Prod_prenda, Prod_prendaAdmin)
 
 class ServiciosAdmin(admin.ModelAdmin):

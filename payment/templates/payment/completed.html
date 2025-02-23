@@ -1,0 +1,31 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block metas %}
+        <meta property="og:url" content="http://www.grupo/benitez.com/vortice/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ products.nombre_produc}}"/>
+        <meta property="og:description" content="{{ products.descripcion_produc}}"/>
+        <meta property="og:image" content="http://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+{% endblock %}
+
+
+{% block title %}Payment successful{% endblock %}
+
+{% block principal %}
+
+    <!-- start page title -->
+        <section class="page-title-center-alignment cover-background top-space-padding" style="background-image: url(/static_girekstudio/images/demo-decor-store-title-bg.jpg)">
+            <div class="container">
+                <br><br>
+                <div class="row" style="text-align: center !important;">
+                    <br><br><br>
+                    <h3>Su pago fue exitoso</h3>
+                    <p>Su pago ha sido procesado exitosamente.</p>
+                    <br><br><br><br><br><br>
+                </div>
+            </div>
+        </section>
+    <!-- fin page title -->
+
+{% endblock %}

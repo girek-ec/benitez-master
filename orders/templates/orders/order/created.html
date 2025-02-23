@@ -1,0 +1,23 @@
+{% extends 'vortice/index_vortice.html' %}
+{% block metas %}
+        <meta property="og:url" content="http://www.grupo/benitez.com/vortice/"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ products.nombre_produc}}"/>
+        <meta property="og:description" content="{{ products.descripcion_produc}}"/>
+        <meta property="og:image" content="http://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+{% endblock %}
+{% block principal %}
+<section  style="margin-top: 50px !important;margin-bottom: 100px !important;" class="p-0">
+
+
+
+    {% block content %}
+        <br><br><br><br>
+      <h1 style="text-align: center !important;">Muchas Gracias</h1>
+      <p style="text-align: center !important;">Su pedido se ha completado con éxito. Su número de pedido es
+      <strong>N:  00{{ order.id }}</strong>.</p>
+    {% endblock %}
+</section>
+{% endblock %}

@@ -2049,6 +2049,46 @@ input:focus, select:focus, textarea:focus, .form-control:focus {
         &.stack-item-03 {
             z-index: 9;
         }
+        &.stack-item-04 {
+            z-index: 8;
+        }
+        &.stack-item-05 {
+            z-index: 7;
+        }
+        &.stack-item-06 {
+            z-index: 6;
+        }
+        &.stack-item-07 {
+            z-index: 5;
+        }
+        &.stack-item-08 {
+            z-index: 4;
+        }
+        &.stack-item-09 {
+            z-index: 3;
+        }
+        &.stack-item-10 {
+            z-index: 2;
+        }
+        &.stack-item-11 {
+            z-index: 1;
+        }
+        &.stack-item-12 {
+            z-index: -1;
+        }
+        &.stack-item-13 {
+            z-index: -2;
+        }
+        &.stack-item-14 {
+            z-index: -3;
+        }
+        &.stack-item-15 {
+            z-index: -4;
+        }
+        &.stack-item-16 {
+            z-index: -5;
+        }
+
         .stack-item-wrapper {
             position: absolute;
             top: 0;

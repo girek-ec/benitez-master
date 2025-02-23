@@ -1,0 +1,265 @@
+{% extends 'vortice/index_vortice.html' %}
+
+{% block metas %}
+    <meta property="og:url" content="http://www.grupo/benitez.com/vortice/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ order.id }} - Pedido Realizado"/>
+    <meta property="og:description" content="Detalles del pedido {{ order.id }}"/>
+    <meta property="og:image" content="http://www.benitez-ec.com/media/{{ order.items.first.product.imagen_produc_01 }}"/>
+    <meta property="og:image:width" content="600"/>
+    <meta property="og:image:height" content="600"/>
+{% endblock %}
+
+{% block title %}Pedido Realizado Exitosamente{% endblock %}
+
+{% block principal %}
+    <!-- Start Page Title Section -->
+    <section id="resumen-pedido"  class="pdf-content page-title-center-alignment cover-background" style="background-image: url(/static_girekstudio/images/demo-decor-store-title-bg.jpg)">
+        <div class="container ">
+            <div class="row text-center">
+                <div class="col">
+                    <h2 style="font-size: 36px; font-weight: bold; color: #4CAF50;">¡Pedido Realizado Exitosamente!</h2>
+                    <div class="alert alert-success mt-4" role="alert" style="font-size: 16px; color: #155724; background-color: #d4edda;">
+                        <strong>¡Gracias por su compra!</strong><br>
+                        Su número de orden es: <strong>{{ order.id }}</strong><br>
+                        En breve, recibirá un correo y un mensaje por WhatsApp con todos los detalles de su transacción y el estado de su pedido.
+                    </div>
+                    <br><br>
+                    <h4 style="font-size: 24px; color: #333; font-weight: bold;">Detalles del Pedido:</h4>
+
+                    <!-- Detalles del Cliente -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Datos del Cliente</h5>
+                            <p class="card-text">
+                                <strong>Nombre:</strong> {{ order.first_name }} {{ order.last_name }}<br>
+                                <strong>Email:</strong> {{ order.email }}<br>
+                                <strong>Dirección:</strong> {{ order.address }}, {{ order.city }}<br>
+                                <strong>Código Postal:</strong> {{ order.postal_code }}<br>
+                                <strong>Detalle de domicilio:</strong> {{ order.detail }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Detalles de los Productos -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Productos</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Talla</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items.all %}
+                                        <tr>
+                                            <td>{{ item.product.nombre_produc }}</td>
+                                            <td>{{ item.size }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>${{ item.price }}</td>
+                                            <td>${{ item.get_cost }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del Pedido -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Resumen del Pedido</h5>
+                            <p class="card-text">
+                                <strong>Subtotal:</strong> ${{ subtotal }}<br>
+                                {% if order.coupon %}
+                                    <strong>Descuento ({{ order.coupon.code }}):</strong> -${{ discount_amount }}<br>
+                                {% endif %}
+                                <strong>Costo de Envío:</strong> ${{ shipping_cost }}<br>
+                                <strong>Total:</strong> ${{ total_final }}
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <h4 style="font-size: 24px; color: #333; font-weight: bold;">Para completar tu compra, realiza tu pago mediante transferencia o depósito a cualquiera de nuestras cuentas:</h4>
+                    <!-- Start Tables Section -->
+                    <div class="row" style="padding-top: 50px!important;">
+                        <div class="col-md-6">
+                            <table class="table table-bordered" style="font-size: 16px; color: #333;">
+                                <thead>
+                                    <tr style="background-color: #f2f2f2;">
+                                        <th colspan="2" class="text-center"><strong>💳 Cuentas Bancarias</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align: left !important;">
+                                    <tr>
+                                        <td>🏦 Banco Pichincha – Ahorros</td>
+                                        <td><strong>5563347100</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>🏦 Banco Pacífico – Ahorros</td>
+                                        <td><strong>1050185397</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>🏦 Banco Guayaquil – Ahorros</td>
+                                        <td><strong>0018946917</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>🏦 Cooperativa JEP – Ahorros</td>
+                                        <td><strong>406069935300</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>🏦 Cooperativa Santa Rosa Ltda. – Ahorros</td>
+                                        <td><strong>010202028654</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-bordered" style="font-size: 16px; color: #333;">
+                                <thead>
+                                    <tr style="background-color: #f2f2f2;">
+                                        <th colspan="2" class="text-center"><strong>👤 Información del Titular</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody  style="text-align: left !important;">
+                                    <tr>
+                                        <td><strong>👤 Titular:</strong></td>
+                                        <td>MANUEL ANDRÉS BENÍTEZ GÓMEZ</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>📌 Cédula/RUC:</strong></td>
+                                        <td>0703820076 / 0703820076001</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>📩 Confirma tu pago a:</strong></td>
+                                        <td>
+                                            📧 <a href="mailto:vortice.ec@gmail.com">vortice.ec@gmail.com</a><br>
+                                            📲 <a href="https://wa.me/593993239290" target="_blank">0993239290</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>🌐</strong></td>
+                                        <td><a href="https://www.benitez-ec.com/vortice" target="_blank">Web Vortice - Ecuador</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- End Tables Section -->
+
+                    <!-- Botón para descargar el PDF -->
+                    <div class="text-center mt-4">
+                        <button id="downloadPdfButton" class="btn btn-danger btn-lg">
+                            Descargar Resumen del Pedido (PDF)
+                        </button>
+                    </div>
+                    <br><br>
+                    <div class="alert alert-info mt-4" role="alert" style="font-size: 16px; background-color: #e9ecef; color: #0056b3;">
+                        <strong>🔹 ¡Tu compra está casi lista!</strong> Envíanos tu comprobante y procesaremos tu pedido de inmediato. �
+                    </div>
+                    <br><br>
+                    <a href="https://wa.me/593993239290?text=Hola,%20mi%20número%20de%20pedido%20es:%20{{ order.id }}" class="btn btn-primary btn-lg" style="font-size: 18px; padding: 10px 20px; border-radius: 5px;" target="_blank">Enviar tu comprobante🚀</a>
+                    <br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title Section -->
+
+
+
+    <!-- Incluir html2pdf.js desde un CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Script para descargar el PDF -->
+    <script>
+        function waitForImages(element, callback) {
+            const images = element.querySelectorAll('img');
+            let imagesLoaded = 0;
+
+            images.forEach((img) => {
+                if (img.complete) {
+                    imagesLoaded++;
+                } else {
+                    img.addEventListener('load', () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === images.length) {
+                            callback();
+                        }
+                    });
+                }
+            });
+
+            if (imagesLoaded === images.length) {
+                callback();
+            }
+        }
+
+        function downloadPdf() {
+            const element = document.getElementById('resumen-pedido');
+
+            waitForImages(element, () => {
+                const options = {
+                    margin: [10, 10, 10, 10],
+                    filename: `resumen_pedido_${new Date().toISOString().slice(0, 10)}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        logging: true,
+                        allowTaint: true,
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait'
+                    }
+                };
+
+                // Generar el PDF
+                html2pdf().set(options).from(element).save();
+            });
+        }
+
+        document.getElementById('downloadPdfButton').addEventListener('click', downloadPdf);
+    </script>
+
+    <!-- Estilos específicos para el PDF -->
+    <style>
+        .pdf-content {
+            background-image: none !important;
+            padding: 20px !important;
+            margin: 0 !important;
+        }
+
+        .pdf-content h2,
+        .pdf-content h4,
+        .pdf-content h5 {
+            color: #000 !important;
+            margin: 10px 0 !important;
+        }
+
+        .pdf-content .card {
+            box-shadow: none !important;
+            border: 1px solid #ddd !important;
+        }
+
+        .pdf-content .table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+        }
+
+        .pdf-content .table th,
+        .pdf-content .table td {
+            border: 1px solid #000 !important;
+            padding: 8px !important;
+        }
+    </style>
+{% endblock %}

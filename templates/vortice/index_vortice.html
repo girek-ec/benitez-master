@@ -7,14 +7,30 @@
 <head>
     <meta charset="utf-8">
     <title>Vortice | Tienda Oficial</title>
+    {% block head %}
+    {% endblock %}
+
     {% block metas %}
+        <!-- Meta etiquetas Open Graph (para Facebook, WhatsApp, LinkedIn, etc.) -->
         <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Vortice - Tienda Oficial "/>
         <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana"/>
-        <meta property="og:image" content="http://www.benitez-ec.com/media/{{ vortice.logo_horizontal }}"/>
-        <meta property="og:image:width" content="600"/>
-        <meta property="og:image:height" content="600"/>
+        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}"/>
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
+        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Vortice - Tienda Oficial">
+        <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana">
+        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
+        <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
+        <meta name="twitter:image:width" content="1200">
+        <meta name="twitter:image:height" content="628">
+
+
+
     {% endblock %}
 
     <meta name="author" content="Vortice | Tienda Oficial">
@@ -63,7 +79,7 @@
                          data-delay="2000">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <p class="top-bar-text fw-5">{{ notificaciones.texto_1 }}<a href="/vortice/gift/"
+                                <p class="top-bar-text fw-5">{{ notificaciones.texto_1 }}<a href="/vortice/"
                                                                                             title="all collection"
                                                                                             class="tf-btn btn-line">{{ notificaciones.texto_2 }}<i
                                         class="icon icon-arrow1-top-left"></i></a></p>
@@ -79,12 +95,8 @@
                 </div>
 
                 <div class="top-bar-language tf-cur justify-content-end">
-
-
                     <div class="tf-currencies">
                         <select class="image-select center style-default type-currencies">
-                            <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD
-                                <span>$ | United States</span></option>
                             <option selected data-thumbnail="/static/static_vortice/images/country/ec.svg">USD <span>$ | Ecuador</span>
                             </option>
 
@@ -138,7 +150,7 @@
                                                     <div class="mega-menu-item">
                                                         <div class="menu-heading">Productos</div>
                                                         <ul class="menu-list">
-                                                            {% for tipo_articulo in tipo_articulos_menu %}                                        
+                                                            {% for tipo_articulo in tipo_articulos_menu %}
                                                                 {% if tipo_articulo.coleccion.cliente == cliente %}
                                                                     {% if tipo_articulo.activo_menu %}
                                                                         <li>
@@ -164,7 +176,7 @@
                                                                          <a href="/vortice/seccion/{{ coleccion.cliente.cliente}}/coleccion/{{ coleccion.tema_colec  }}/"
                                                                            class="menu-link-text link">- {{ coleccion.tema_colec  }}</a>
                                                                     </li>
-                                                                    {% endif %}                                                             
+                                                                    {% endif %}
                                                                 {% endif %}
                                                             {% endfor %}
                                                         </ul>
@@ -217,14 +229,31 @@
                 </div>
                 <div class="col-xl-3 col-md-4 col-3">
                     <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
-                        <li class="nav-search"><a href="/vortice/" data-bs-toggle="offcanvas"
-                                                  aria-controls="offcanvasLeft" class="nav-icon-item"><i
-                                class="icon icon-search"></i></a></li>
-                        <li class="nav-account"><a href="/vortice/" data-bs-toggle="modal" class="nav-icon-item"><i
-                                class="icon icon-account"></i></a></li>
-                        <li class="nav-wishlist"><a href="/vortice/" class="nav-icon-item"><i
-                                class="icon icon-heart"></i><span class="count-box">0</span></a></li>
-                        <li class="nav-cart"><a href="/vortice/" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span class="count-box">0</span></a></li>
+
+                        <li class="nav-cart">
+                            <a href="/cart/"  class="nav-icon-item">
+                                <i class="icon icon-bag"></i>
+                                {% with total_items=cart|length %}
+                                   {% if total_items > 0 %}
+                                       <span class="count-box"> {{ total_items }}
+                                            <a href="{% url "cart:cart_detail" %}">
+                                            Total:
+                                                {{ cart.get_total_price_with_shipping|floatformat:2 }}
+                                            </a>
+                                       </span>
+                                   {% elif not order %}
+                                       <span class="count-box"> 0
+                                            <a href="{% url "cart:cart_detail" %}">
+                                            Vacio
+                                            </a>
+                                       </span>
+
+                                   {% endif %}
+
+                                   {% endwith %}
+
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -421,7 +450,6 @@
         {% endfor %}
         <!-- /Shop Collection -->
 
-        <!-- Servicios Vortice -->
         <section class="flat-spacing-14">
             <div class="container">
                 <div class="flat-title wow fadeInUp" data-wow-delay="0s">
@@ -443,38 +471,47 @@
                                                            src="/media/{{ servicio.video }}"></video>
                                                 </div>
                                             </div>
-
                                         {% else %}
                                             <div class="article-thumb h-460 rounded-0">
-                                               
-                                                    <img class="lazyload" data-src="/media/{{ servicio.imagen }}"
-                                                         src="/media/{{ servicio.imagen }}" alt="img-blog">
-                                                
+                                                <img class="lazyload" data-src="/media/{{ servicio.imagen }}"
+                                                     src="/media/{{ servicio.imagen }}" alt="img-blog">
                                             </div>
                                         {% endif %}
+
                                         <div class="article-content">
                                             <div class="text-1">
-                                                <p style="text-align: center">{{ servicio.servicio }} </p>
+                                                <p style="text-align: center">{{ servicio.servicio }}</p>
                                             </div>
                                             <div class="text-3">
                                                 <p style="text-align: center">{{ servicio.detalle }}</p>
                                             </div>
-                                            
+
+                                            <!-- Botón de WhatsApp -->
+                                            <div style="text-align: center; margin-top: 10px;">
+                                                <a href="https://wa.me/593{{ vortice.whatsapp }}?text=Deseo%20más%20información%20sobre%20el%20servicio%20de%20:%20{{ servicio.servicio }}"
+                                                   target="_blank"
+                                                   class="btn btn-primary">
+                                                    Más información
+                                                </a>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round"><span
-                            class="icon icon-arrow-left"></span></div>
-                    <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round"><span
-                            class="icon icon-arrow-right"></span></div>
+                    <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round">
+                        <span class="icon icon-arrow-left"></span>
+                    </div>
+                    <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round">
+                        <span class="icon icon-arrow-right"></span>
+                    </div>
                     <div class="sw-dots style-2 sw-pagination-recent justify-content-center"></div>
                 </div>
             </div>
         </section>
-        <!-- /Servicios Vortice -->
+
 
 
     {% endblock %}
@@ -789,7 +826,6 @@
                 </div>
                 <div class="tf-languages">
                     <select class="image-select center style-default type-languages">
-                        <option>English</option>
                         <option>Español</option>
                     </select>
                 </div>
@@ -815,7 +851,7 @@
                             <div class="swiper-wrapper" >
                                 <div class="swiper-slide">
                                     <div class="item">
-                                        <img src="/static/static_vortice/images/products/orange-1.jpg" alt="">
+                                        <img src="/media/{{ vortice.img_termi_condi  }}" alt="">
                                     </div>
                                 </div>
 
@@ -876,7 +912,7 @@
                                 <p style="margin: 0px !important;">Actualmente, somos una tienda exclusivamente online.</p>
                                 <br>
                                 <strong>¿Cuáles son los métodos de pago disponibles?</strong>
-                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras como PayPhone.</p>
+                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras.</p>
                                 <br>
 
                             </div>
@@ -888,6 +924,34 @@
     </div>
     <!-- /modal quick_view -->
 
+
+
+<!-- modal find_size -->
+    <div class="modal fade modalDemo tf-product-modal" id="info_compra">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title"> Instrucciones de Pago</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                </div>
+                <div class="tf-rte">
+                     <h4></h4>
+                    <h6>1. "Depósito o Transferencia Bancaria".</h6>
+                    <p>✅ El cliente realiza el pago mediante depósito o transferencia bancaria.</p>
+                    <p>✅ Debe enviar el comprobante de pago por:</p>
+                    <p>✅ WhatsApp o Correo electrónico.</p>
+                    <p>✅ El equipo de ventas verifica la transacción en la cuenta bancaria.</p>
+                    <h6>2. Confirmación del Pedido</h6>
+                    <p>✅ Una vez validado el pago, Se procede a la preparación del producto y datos de entrega para el envio por transporte</p>
+                    <h6>3. Entrega y Cierre del Pedido</h6>
+                    <p>✅ El cliente recibe su pedido. y Se solicita confirmación de recepción o firma de entrega.</p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /modal find_size -->
 
 
 <!-- modal find_size -->
