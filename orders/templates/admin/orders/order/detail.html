@@ -1,111 +1,139 @@
 {% extends 'vortice/index_vortice.html' %}
 
 {% block title %}
-  Order {{ order.id }} {{ block.super }}
+  Order {{ order.id }} - {{ block.super }}
 {% endblock %}
 
 {% block breadcrumbs %}
   <div class="breadcrumbs">
-    <a href="{% url "admin:index" %}">Home</a> &rsaquo;
-    <a href="{% url "admin:orders_order_changelist" %}">Orders</a>
-    &rsaquo;
-    <a href="{% url "admin:orders_order_change" order.id %}">Order {{ order.id }}</a>
-    &rsaquo; Detail
+    <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+    <a href="{% url 'admin:orders_order_changelist' %}">Orders</a> &rsaquo;
+    <a href="{% url 'admin:orders_order_change' order.id %}">Order {{ order.id }}</a> &rsaquo; Detail
   </div>
 {% endblock %}
 
-{% block content %}
-<div class="module">
-  <h1>Order {{ order.id }}</h1>
-  <ul class="object-tools">
-    <li>
-      <a href="#" onclick="window.print();">
-        Print order
-      </a>
-    </li>
-  </ul>
-  <table>
-    <tr>
-      <th>Created</th>
-      <td>{{ order.created }}</td>
-    </tr>
-    <tr>
-      <th>Customer</th>
-      <td>{{ order.first_name }} {{ order.last_name }}</td>
-    </tr>
-    <tr>
-      <th>E-mail</th>
-      <td><a href="mailto:{{ order.email }}">{{ order.email }}</a></td>
-    </tr>
-    <tr>
-      <th>Address</th>
-    <td>
-      {{ order.address }},
-      {{ order.postal_code }} {{ order.city }}
-    </td>
-    </tr>
-    <tr>
-      <th>Total amount</th>
-      <td>${{ order.get_total_cost }}</td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
-    </tr>
-    <tr>
-      <th>Stripe payment</th>
-      <td>
-        {% if order.stripe_id %}
-          <a href="{{ order.get_stripe_url }}" target="_blank">
-            {{ order.stripe_id }}
-          </a>
-        {% endif %}
-      </td>
-    </tr>
-  </table>
+{% block principal %}
+<div class="container my-4">
+    <section id="resumen-pedido" class="pdf-content" style="margin-top: 0 !important; padding-top: 0 !important;">
+        <div class="module">
+            <div class="row">
+                <!-- Columna 1: Logo -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="item" style="text-align: center !important;">
+                        <img class="lazyload" data-src="/media/{{ vortice.logo_horizontal }}" src="/media/{{ vortice.logo_horizontal }}" alt="logo vortice" style="width: 100%; max-width: 300px; height: auto;">
+                    </div>
+                </div>
+
+                <!-- Columna 2: Estado del Pedido -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h6 style="text-align: center">Order {{ order.id }}</h6>
+                    <h6 style="margin: 10px!important; text-align: center" class="{% if order.paid %}paid{% else %}pending{% endif %}">
+                        {% if order.paid %}
+                            <span style="font-weight: bold; font-size: 30px; color: #21a117!important;">PAGADO</span>
+                        {% else %}
+                            <span style="font-weight: bold; font-size: 30px; color: #9a1929!important;">PENDIENTE</span>
+                        {% endif %}
+                    </h6>
+                </div>
+
+                <!-- Detalles de los Productos -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center!important;">Productos</h5>
+                            <table class="table table-bordered" style="text-align: center !important;">
+                                <thead>
+                                    <tr>
+                                        <th style="border: 1px solid #ACACAC;">Imagen</th>
+                                        <th style="border: 1px solid #ACACAC;">Producto</th>
+                                        <th style="border: 1px solid #ACACAC;">Talla</th>
+                                        <th style="border: 1px solid #ACACAC;">Cantidad</th>
+                                        <th style="border: 1px solid #ACACAC;">Precio Unitario</th>
+                                        <th style="border: 1px solid #ACACAC;">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items.all %}
+                                        <tr>
+                                            <td style="border: 1px solid #ACACAC;">
+                                                <img class="lazyload" src="/media/{{ item.product.imagen_produc_01 }}" style="width: 50%; max-width: 100px; height: auto;">
+                                            </td>
+                                            <td style="border: 1px solid #ACACAC;">{{ item.product.nombre_produc }}</td>
+                                            <td style="border: 1px solid #ACACAC;">{{ item.size }}</td>
+                                            <td style="border: 1px solid #ACACAC;">{{ item.quantity }}</td>
+                                            <td style="border: 1px solid #ACACAC;">${{ item.price }}</td>
+                                            <td style="border: 1px solid #ACACAC;">${{ item.get_cost }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles del Cliente -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Datos del Cliente</h5>
+                            <p class="card-text">
+                                <strong>Nombre:</strong> {{ order.first_name }} {{ order.last_name }}<br>
+                                <strong>Email:</strong> {{ order.email }}<br>
+                                <strong>Dirección:</strong> {{ order.address }}, {{ order.city }}<br>
+                                <strong>Código Postal:</strong> {{ order.postal_code }}<br>
+                                <strong>Detalle de domicilio:</strong> {{ order.detail }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen del Pedido -->
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Resumen del Pedido</h5>
+                            <p>Fecha de pedido: {{ order.created }} </p>
+                            <p class="card-text">
+                                <strong>Subtotal:</strong> $ {{ order.get_total_cost_before_discount|floatformat:2 }} <br>
+                                {% if order.coupon %}
+                                    <strong>Descuento ({{ order.coupon.code }}):</strong> - ${{ order.get_discount|floatformat:2 }} <br>
+                                {% endif %}
+                                <strong>Costo de Envío:</strong>${{ order.shipping_cost|floatformat:2 }} <br>
+                                <strong>Total:</strong>$ {{ order.get_total_cost|floatformat:2 }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón para imprimir solo la sección -->
+    <div class="text-center mt-4">
+        <button onclick="printSection('resumen-pedido')" class="btn btn-info btn-lg">
+            Imprimir Resumen del Pedido
+        </button>
+    </div>
 </div>
-<div class="module">
-  <h2>Items bought</h2>
-  <table style="width:100%">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in order.items.all %}
-        <tr class="row{% cycle "1" "2" %}">
-          <td>{{ item.product.name }}</td>
-          <td class="num">${{ item.price }}</td>
-          <td class="num">{{ item.quantity }}</td>
-          <td class="num">${{ item.get_cost }}</td>
-        </tr>
-      {% endfor %}
-      {% if order.coupon %}
-        <tr class="subtotal">
-          <td colspan="3">Subtotal</td>
-          <td class="num">
-            ${{ order.get_total_cost_before_discount|floatformat:2 }}
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            "{{ order.coupon.code }}" coupon
-            ({{ order.discount }}% off)
-          </td>
-          <td class="num neg">
-            - ${{ order.get_discount|floatformat:2 }}
-          </td>
-        </tr>
-      {% endif %}
-      <tr class="total">
-        <td colspan="3">Total</td>
-        <td class="num">${{ order.get_total_cost|floatformat:2  }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<!-- Script para imprimir solo la sección -->
+<script>
+    function printSection(sectionId) {
+        const section = document.getElementById(sectionId).innerHTML; // Obtiene el contenido de la sección
+        const originalContent = document.body.innerHTML; // Guarda el contenido original de la página
+
+        // Reemplaza el contenido del body con la sección que deseas imprimir
+        document.body.innerHTML = section;
+
+        // Llama a la función de impresión
+        window.print();
+
+        // Restaura el contenido original de la página
+        document.body.innerHTML = originalContent;
+
+        // Vuelve a cargar los eventos y scripts si es necesario
+        window.location.reload();
+    }
+</script>
+
 {% endblock %}

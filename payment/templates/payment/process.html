@@ -1,7 +1,8 @@
 {% extends 'vortice/index_vortice.html' %}
 {% block head %}
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+<!-- Agrega el script de Google reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 {% endblock %}
 {% block metas %}
@@ -140,53 +141,54 @@
                     <div class="tf-page-cart-footer">
 
                         <div class="tf-page-cart-checkout">
+                            <h6 style="text-align: center !important;">Completar Pedido</h6>
 
+                               <!-- Botón de WhatsApp con reCAPTCHA -->
+                                <div class="button-container" style="text-align: center; margin-top: 20px;">
+                                    <form id="whatsappForm" action="{% url 'payment:send_whatsapp_email' %}" method="get" target="_blank" onsubmit="return verifyRecaptcha(event)">
 
+                                        <!-- PARA WEB BENITEZ -->
+                                        <!-- <div class="g-recaptcha" data-sitekey="6LdjleUqAAAAAMgPqyj2LMsG5izrhTO3MShPNkLp" data-callback="enableButton"></div> -->
 
+                                        <!-- PARA LOCAL HOOST -->
+                                        <div class="g-recaptcha" data-sitekey="6Letk-UqAAAAAHdQaaEqLi0uJO0LZaRecQMmdk-x" data-callback="enableButton"></div>
 
-
-                                <div class="tf-product-info-buy-button">
-                                    <form action="{% url "payment:process" %}" method="post">
-                                        <div class="w-100">
-                                             <input type="submit" class="btns-full" value="Pagar ahora">
-                                                {% csrf_token %}
-                                        </div>
+                                        <!-- PARA LOCAL -->
+                                         <!--  div class="g-recaptcha" data-sitekey="6LeaSOgqAAAAAMicA-ZLnm6fWj8bFLQgXyw6HIbr" data-callback="enableButton"></div>-->
+                                        <br>
+                                        <button id="whatsappButton" type="submit" class="btn btn-success" disabled style="
+                                            background-color: #FFC107;
+                                            color: black;
+                                            font-size: 16px;
+                                            font-weight: bold;
+                                            padding: 12px 24px;
+                                            border-radius: 8px;
+                                            border: none;
+                                            cursor: pointer;
+                                            transition: background-color 0.3s ease-in-out;">
+                                            Realizar Compra
+                                        </button>
                                     </form>
-                                    {{ form.render }}
                                 </div>
 
-                                <!-- Botón de WhatsApp -->
-                                    <div class="button-container">
-                                        <a href="{% url 'payment:send_whatsapp_email' %}" target="_blank" class="btn btn-success" onclick="sendMessageAndRedirect(event)">
-                                            Enviar pedido por WhatsApp y correo
-                                        </a>
-                                    </div>
+                                <script>
+                                    function enableButton() {
+                                        document.getElementById("whatsappButton").disabled = false;
+                                    }
 
-                                    {{ form.render }}
-
-                                    <script>
-                                        function sendMessageAndRedirect(event) {
-                                            // Obtiene la URL del enlace
-                                            var whatsappUrl = event.target.href;
-
-                                            // Abre WhatsApp en una nueva pestaña
-                                            window.open(whatsappUrl, '_blank');
-
-                                            // Redirige a la página de inicio después de 3 segundos
-                                            setTimeout(function() {
-                                                window.location.href = "/orden_pedido/"; // Redirige a la página de inicio
-                                            }, 3000); // 3 segundos después de hacer clic
+                                    function verifyRecaptcha(event) {
+                                        if (grecaptcha.getResponse() === "") {
+                                            alert("Por favor, verifica que no eres un robot.");
+                                            event.preventDefault();
+                                            return false;
                                         }
-                                    </script>
-
-
-                                <!-- Botón de WhatsApp -->
-                                    <div class="button-container">
-                                    <a href="https://wa.me/593{{ vortice.whatsapp }}?text={{ whatsapp_message }}" class="whatsapp-button" target="_blank">
-                                        Pedir por WhatsApp
-                                    </a>
-                                    </div>
-                                    {{ form.render }}
+                                        // Redirige a la página de inicio después de 3 segundos
+                                        setTimeout(function() {
+                                            window.location.href = "/orden_pedido/";
+                                        }, 3000);
+                                        return true;
+                                    }
+                                </script>
 
 
 

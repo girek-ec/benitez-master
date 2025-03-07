@@ -241,6 +241,17 @@
 </section>
 <!-- end section -->
 
+<section class="">
+    <div class="">
+        {% for servicio in servicios %}
+            <div class="stack-item stack-item-{{ servicio.orden }}">
+                {{ servicio.orden }}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
 <!-- start section -->
 <section class="stack-box py-0 z-index-99">
     <div class="stack-box-contain">

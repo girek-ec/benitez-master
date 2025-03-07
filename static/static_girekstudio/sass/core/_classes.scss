@@ -2043,51 +2043,28 @@ input:focus, select:focus, textarea:focus, .form-control:focus {
         z-index: 999;
         display: flex;
         align-items: center;
-        &.stack-item-02 {
-            z-index: 99;
-        }
-        &.stack-item-03 {
-            z-index: 9;
-        }
-        &.stack-item-04 {
-            z-index: 8;
-        }
-        &.stack-item-05 {
-            z-index: 7;
-        }
-        &.stack-item-06 {
-            z-index: 6;
-        }
-        &.stack-item-07 {
-            z-index: 5;
-        }
-        &.stack-item-08 {
-            z-index: 4;
-        }
-        &.stack-item-09 {
-            z-index: 3;
-        }
-        &.stack-item-10 {
-            z-index: 2;
-        }
-        &.stack-item-11 {
-            z-index: 1;
-        }
-        &.stack-item-12 {
-            z-index: -1;
-        }
-        &.stack-item-13 {
-            z-index: -2;
-        }
-        &.stack-item-14 {
-            z-index: -3;
-        }
-        &.stack-item-15 {
-            z-index: -4;
-        }
-        &.stack-item-16 {
-            z-index: -5;
-        }
+
+        &.stack-item-01 { z-index: 99; }
+        &.stack-item-02 { z-index: 98; }
+        &.stack-item-03 { z-index: 97; }
+        &.stack-item-04 { z-index: 96; }
+        &.stack-item-05 { z-index: 95; }
+        &.stack-item-06 { z-index: 94; }
+        &.stack-item-07 { z-index: 93; }
+        &.stack-item-08 { z-index: 92; }
+        &.stack-item-09 { z-index: 91; }
+        &.stack-item-010 { z-index: 90; }
+        &.stack-item-011 { z-index: 89; }
+        &.stack-item-012 { z-index: 88; }
+        &.stack-item-013 { z-index: 87; }
+        &.stack-item-014 { z-index: 86; }
+        &.stack-item-015 { z-index: 85; }
+        &.stack-item-016 { z-index: 84; }
+        &.stack-item-017 { z-index: 83; }
+        &.stack-item-018 { z-index: 82; }
+        &.stack-item-019 { z-index: 81; }
+        &.stack-item-020 { z-index: 80; }
+
 
         .stack-item-wrapper {
             position: absolute;

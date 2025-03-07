@@ -3,20 +3,20 @@
 <!-- metas pagweb -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="author" content="GirekStudio">
+<meta name="author" content="Colexin">
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta property="og:title" content="GirekStudio - Agencia de Diseño - {{product.nombre_producto }}" />
-<meta property="og:description" content="{{product.descripcion }}" />
-<meta property="og:url" content="https://benitez-ec/girekstudio/producto/{{product.id}}" />
-<meta property="og:image" content="http://benitez-ec/media/{{product.imagen }}" />
+<meta property="og:title" content="Colexin - Compra y Venta Coleccionismo - {{product.name }}" />
+<meta property="og:description" content="{{ product.description }}" />
+<meta property="og:image" content="https://benitez-ec/media/{{ product.image_1 }}" />
+<meta property="og:url" content="https://benitez-ec/colexin/producto/{{ product.id }}" />
 <meta property="og:type" content="website" />
 {% endblock %}
 {% block principal %}
         <!-- start breadcrumb -->
-        <section style="margin-top: 50px !important;" class="border-top border-color-extra-medium-gray pt-20px pb-20px ps-45px pe-45px lg-ps-35px lg-pe-35px md-ps-15px md-pe-15px sm-ps-0 sm-pe-0">
+        <section style="margin-top: 80px !important;" class="border-top border-color-extra-medium-gray pt-20px pb-20px ps-45px pe-45px lg-ps-35px lg-pe-35px md-ps-15px md-pe-15px sm-ps-0 sm-pe-0">
             <div class="container-fluid">
                 <div class="row align-items-center"> 
-                    <div class="col-12 breadcrumb breadcrumb-style-01 fs-14 alt-font">
+                    <div class="col-12 breadcrumb breadcrumb-style-01 fs-14 alt-font" >
                         <ul>
                             <li><a href="/colexin/">Inicio</a></li>
                             <li><a href="/colexin/tienda/">Tienda</a></li>
@@ -66,41 +66,43 @@
                         </div>
                     </div>
                     <div class="col-lg-6 offset-lg-1 product-info" data-anime='{ "translate": [0, 0], "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <span class="fw-500 text-dark-gray d-block">{{product.category.name}}</span>
-                        <h5 class="alt-font text-dark-gray fw-700 mb-10px">{{product.name}}</h5>
+
                         <div class="d-block d-sm-flex align-items-center mb-20px">
                             <div class="me-10px xs-me-0">
-                                <a href="#tab" class="section-link ls-minus-1px icon-small">
+                                <div class="section-link ls-minus-1px icon-small">
                                     <i class="bi bi-star-fill text-golden-yellow"></i>
                                     <i class="bi bi-star-fill text-golden-yellow"></i>
                                     <i class="bi bi-star-fill text-golden-yellow"></i>
                                     <i class="bi bi-star-fill text-golden-yellow"></i>
                                     <i class="bi bi-star-fill text-golden-yellow"></i>
-                                </a>
+                                </div>
                             </div>
-                            <a href="#tab" class="me-25px text-dark-gray fw-500 section-link xs-me-0">165 Opiniones</a>
+
                             <div><span class="text-dark-gray fw-500">CÓDIGO: </span>00{{product.id}}</div>
                         </div>
+                         <div>
+                            <div class="w-100 d-block"><span class="text-dark-gray alt-font fw-500">Categoria:</span>{{product.category.name}} </div>
+                        </div>
+                        <h5 class="alt-font text-dark-gray fw-700 mb-10px">{{product.name}}</h5>
+                        <p>{{ product.description }}</p>
                         <div class="product-price mb-10px">
                             <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">${{product.price}}</span>
                         </div>
 
-                        <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative">
-
-
-                            <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                {{ cart_product_form }}
-                                {% csrf_token %}
-                                <input type="submit" value="Add to cart">
-
-                            </form>
-
-
-
-
-                            <a href="#" class="wishlist d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3">
-                                <i class="feather icon-feather-heart icon-small text-base-color"></i>
-                            </a>
+                        <div style="text-align: center!important;">
+                            <p> ¡Consigue esta pieza única ahora!</p>
+                            <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative justify-content-center">
+                                <div class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative">
+                                    <a href="https://wa.me/593993239290?text=🪙%20*Deseo%20comprar%20este%20artículo%20coleccionable*%20🪙%0A%0A🔖%20*Nombre:*%20{{ product.name }}%20CODIGO:%20{{ product.id }}%0A%0A📜%20*Descripción:*%20{{ product.description }}%0A%0A💰%20*Precio:*%20${{ product.price }}%0A%0A🖼️%20*Imagen:*%20https://benitez-ec/media/{{ product.image_1 }}%0A%0A🔗%20*Ver%20producto:*%20https://benitez-ec/colexin/producto/{{ product.id }}%0A%0A🌐%20*Enlace%20web:*%20https://benitez-ec/colexin/producto/{{ product.id }}"
+                                       class="btn btn-cart btn-extra-large btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon border-radius-5px me-15px xs-me-0 order-3 order-sm-2"
+                                       target="_blank">
+                                        <span>
+                                            <span><i class="fas fa-coins"></i></span> <!-- Ícono de monedas -->
+                                            <span class="btn-double-text" data-text="Comprar">&nbsp;&nbsp; Adquirir ahora</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-20px h-1px w-100 bg-extra-medium-gray d-block"></div>
@@ -111,7 +113,7 @@
                                         <i class="feather icon-feather-truck top-8px position-relative align-middle text-dark-gray"></i>
                                     </div>
                                     <div class="feature-box-content">
-                                        <span><span class="alt-font text-dark-gray fw-500">Entrega estimada:</span> 2 a 3 días laborables</span>
+                                        <span><span class="alt-font text-dark-gray fw-500">Entrega estimada:</span> 3 a 5 días laborables</span>
                                     </div>
                                 </div>
                             </div>
@@ -137,9 +139,7 @@
                                 <a href="#"><img src="/static/static_girekstudio/images/union-pay.svg" class="h-30px" alt=""></a>
                             </div>
                         </div>
-                        <div>
-                            <div class="w-100 d-block"><span class="text-dark-gray alt-font fw-500">Categoria:</span> {{product.tipo_producto.tipo}} </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

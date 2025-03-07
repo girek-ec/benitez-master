@@ -22,7 +22,7 @@ def index_girekstudio(request):
         'editable': Editables.objects.all().first(),
         'planes': Planes.objects.all(),
         'proyecto': Proyecto.objects.all().order_by('orden'),
-        'servicios': Servicio.objects.all().order_by('orden'),
+        'servicios': Servicio.objects.all(),
         'equipos': Equipo.objects.all(),
         'frases': Frase.objects.all(),
         'clientes': Cliente.objects.all(),

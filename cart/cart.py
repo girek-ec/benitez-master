@@ -94,14 +94,14 @@ class Cart:
         Calcula el costo de envío basado en el precio total sin descuento.
         """
         total = self.get_total_price()
-        return Decimal(0) if total > Decimal('50.00') else Decimal('5.00')
+        return Decimal(0) if total > Decimal('100.00') else Decimal('5.00')
 
     def get_shipping_cost_after_discount(self):
         """
         Calcula el costo de envío basado en el subtotal después del descuento.
         """
         subtotal = self.get_total_price_after_discount()
-        return Decimal(0) if subtotal > Decimal('50.00') else Decimal('5.00')
+        return Decimal(0) if subtotal > Decimal('100.00') else Decimal('5.00')
 
     @property
     def coupon(self):

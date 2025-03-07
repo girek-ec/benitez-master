@@ -29,10 +29,14 @@ from Zatuar.views import *
 from Niska.views import *
 from cart.views import *
 from orders.views import *
+from shop import views
+from shop.views import *
+
 
 from django.conf import settings
 
 from payment.views import orden_pedido
+app_name = 'shop'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -94,17 +98,18 @@ urlpatterns = [
     path('niska/contacto/', contacto_niska),
     # web niska/
 
-
+    # web colexin/
+    path('colexin/', index_colexin),
+    path('colexin/tienda/', productos_colexin),
+    path('colexin/tienda/<str:cate>/', productos_cate_colexin, name='productos_cate_colexin'),
+    path('colexin/producto/<int:n>/', producto_id_colexin),
+    # web colexin/
 
     #path('admin/', admin.site.urls),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('payment/', include('payment.urls', namespace='payment')),
     path('coupons/', include('coupons.urls', namespace='coupons')),
-    path('', include('shop.urls', namespace='shop')),
-
-    path('preparar/', include('payment.urls', namespace='payment')),
-    path('payment/', include('payment.urls')),  # Incluye las URLs de la aplicación payment
     path('orden_pedido/', orden_pedido, name='orden pedido'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

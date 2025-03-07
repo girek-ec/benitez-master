@@ -7,7 +7,6 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 
-
 # Create your models here.
 
 class Notificaciones(models.Model):
@@ -108,21 +107,6 @@ class Coleccion(models.Model):
         verbose_name_plural = "2. Coleccion "
 
 
-
-class Imag_prenda_articulo(models.Model):
-    tipo = models.CharField(max_length=30, null=True, blank=True)
-    imagen = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')
-
-    def __str__(self):
-        return '%s ' % (self.tipo)
-
-    def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen)
-
-    class Meta:
-        verbose_name_plural = "3. Imag_prenda_articulo "
-
-
 class Tipo_articulo(models.Model):
     activo_menu = models.BooleanField(default=False)
     coleccion = models.ForeignKey(Coleccion, on_delete=models.CASCADE, null=True, blank=True)
@@ -154,13 +138,13 @@ class Material_producto(models.Model):
 class Prod_prenda(models.Model):
     tipo_produc = models.ForeignKey(Tipo_articulo, on_delete=models.CASCADE, null=True, blank=True)
     nombre_produc = models.CharField(max_length=100, null=True, blank=True)
+    descripcion_produc = models.TextField(max_length=400, null=True, blank=True)
+    tipo_material = models.ForeignKey(Material_producto, null=True, blank=True, on_delete=models.SET_NULL)
+    price = models.DecimalField(max_digits=999, decimal_places=2)
+    has_sizes = models.BooleanField(default=True)  # ✅ Indica si el producto tiene tallas
     imagen_produc_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imagen_produc_02 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
     video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
-    descripcion_produc = models.TextField(max_length=500, null=True, blank=True)
-    tipo_material = models.ForeignKey(Material_producto, on_delete=models.CASCADE, null=True, blank=True)
-    price = models.DecimalField(max_digits=999, decimal_places=2)
-    has_sizes = models.BooleanField(default=True)  # ✅ Indica si el producto tiene tallas
 
 
 
@@ -168,7 +152,11 @@ class Prod_prenda(models.Model):
         return '%s %s' % ( self.tipo_produc,  self.nombre_produc)
 
     def miniatura(self):
-        return mark_safe("<img src='/media/%s' style='width: 100px'>" % self.imagen_produc_01)
+        if self.imagen_produc_01:
+            return mark_safe('<img src="{}" width="50" height="50" />'.format(self.imagen_produc_01.url))
+        return "Sin imagen"
+
+
 
     def get_absolute_url(self):
         return reverse('Vortice.views.producto_detalle',
