@@ -1,13 +1,14 @@
+
 {% extends 'vortice/index_vortice.html' %}
 {% block metas %}
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="{{ products.nombre_produc }}"/>
-    <meta property="og:description" content="{{ products.descripcion_produc }}"/>
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
-    <meta property="og:image:width" content="600"/>
-    <meta property="og:image:height" content="600"/>
+	<meta property="og:url" content="https://www.benitez-ec.com/vortice/producto/{{ products.id }}"/>
+	<mmeta property="og:type" content="website"/>
+        <meta property="og:title" content="{{ products.nombre_produc}}"/>
+        <meta property="og:description" content="{{ products.descripcion_produc}}"/>
+        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
+        <meta property="og:image:width" content="600"/>
+        <meta property="og:image:height" content="600"/>
+	<meta property="fb:app_id" content="926164441218858">
 
     <!-- Meta etiquetas para Twitter (Twitter Cards) -->
     <meta name="twitter:card" content="summary_large_image">
