@@ -1,488 +1,616 @@
 {% extends 'vortice/index_vortice.html' %}
 {% block metas %}
-        <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="{{ products.nombre_produc}}"/>
-        <meta property="og:description" content="{{ products.descripcion_produc}}"/>
-        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
-        <meta property="og:image:width" content="600"/>
-        <meta property="og:image:height" content="600"/>
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ products.nombre_produc }}"/>
+    <meta property="og:description" content="{{ products.descripcion_produc }}"/>
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}"/>
+    <meta property="og:image:width" content="600"/>
+    <meta property="og:image:height" content="600"/>
 
     <!-- Meta etiquetas para Twitter (Twitter Cards) -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content=" Vortice - {{ products.nombre_produc}}">
-        <meta name="twitter:description" content="{{ products.descripcion_produc}}">
-        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
-        <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
-        <meta name="twitter:image:width" content="1200">
-        <meta name="twitter:image:height" content="628">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content=" Vortice - {{ products.nombre_produc }}">
+    <meta name="twitter:description" content="{{ products.descripcion_produc }}">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+    <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
+    <meta name="twitter:image:width" content="1200">
+    <meta name="twitter:image:height" content="628">
 
 {% endblock %}
 {% block principal %}
     <!-- Header -->
-        <!-- breadcrumb -->
-        <div class="tf-breadcrumb">
-            <div class="container">
-                <div class="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
-                    <div class="tf-breadcrumb-list">
-                        <a href="/" class="text">Inicio</a>
+    <!-- breadcrumb -->
+    <div class="tf-breadcrumb">
+        <div class="container">
+            <div class="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
+                <div class="tf-breadcrumb-list">
+                    <a href="/" class="text">Inicio</a>
+                    <i class="icon icon-arrow-right"></i>
+                    <a href="/vortice/seccion/{{ products.tipo_produc.coleccion.cliente.cliente }}"
+                       class="text">{{ products.tipo_produc.coleccion.cliente.cliente }}</a>
+                    <i class="icon icon-arrow-right"></i>
+                    <span class="text">{{ products.nombre_produc }}</span>
+                </div>
+                <div class="tf-breadcrumb-prev-next">
+                    <a href="#" class="tf-breadcrumb-prev hover-tooltip center">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+                    <a href="#" class="tf-breadcrumb-back hover-tooltip center">
+                        <i class="icon icon-shop"></i>
+                    </a>
+                    <a href="#" class="tf-breadcrumb-next hover-tooltip center">
                         <i class="icon icon-arrow-right"></i>
-                        <a href="/vortice/seccion/{{products.tipo_produc.coleccion.cliente.cliente}}" class="text">{{ products.tipo_produc.coleccion.cliente.cliente}}</a>
-                        <i class="icon icon-arrow-right"></i>
-                        <span class="text">{{ products.nombre_produc}}</span>
-                    </div>
-                    <div class="tf-breadcrumb-prev-next">
-                        <a href="#" class="tf-breadcrumb-prev hover-tooltip center">
-                            <i class="icon icon-arrow-left"></i>
-                        </a>
-                        <a href="#" class="tf-breadcrumb-back hover-tooltip center">
-                            <i class="icon icon-shop"></i>
-                        </a>
-                        <a href="#" class="tf-breadcrumb-next hover-tooltip center">
-                            <i class="icon icon-arrow-right"></i>
-                        </a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
-        <!-- /breadcrumb -->
-        <!-- default -->
-        <section class="flat-spacing-4 pt_0">
-            <div class="tf-main-product section-image-zoom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="tf-product-media-wrap sticky-top">
-                                <div class="thumbs-slider">
-                                    <div class="swiper tf-product-media-thumbs other-image-zoom" data-direction="vertical">
-                                        <div class="swiper-wrapper">
-                                            {% if products.video_produc %}
-                                                <div class="swiper-slide">
-                                                    <div class="item position-relative">
-                                                        <div class="wrap-btn-viewer style-video">
-                                                            <div class="icon">
-                                                                <i class="icon-play"></i>
-                                                            </div>
+    </div>
+    <!-- /breadcrumb -->
+    <!-- default -->
+    <section class="flat-spacing-4 pt_0">
+        <div class="tf-main-product section-image-zoom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tf-product-media-wrap sticky-top">
+                            <div class="thumbs-slider">
+                                <div class="swiper tf-product-media-thumbs other-image-zoom" data-direction="vertical">
+                                    <div class="swiper-wrapper">
+                                        {% if products.video_produc %}
+                                            <div class="swiper-slide">
+                                                <div class="item position-relative">
+                                                    <div class="wrap-btn-viewer style-video">
+                                                        <div class="icon">
+                                                            <i class="icon-play"></i>
                                                         </div>
-                                                        <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}" src="/media/{{ products.imagen_produc_01 }}" alt="">
                                                     </div>
-                                                </div>                                    
-                                            {% endif %}
-                                            
+                                                    <img class="lazyload"
+                                                         data-src="/media/{{ products.imagen_produc_01 }}"
+                                                         src="/media/{{ products.imagen_produc_01 }}" alt="">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="swiper-slide">
+                                            <div class="item">
+                                                <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}"
+                                                     src="/media/{{ products.imagen_produc_01 }}"
+                                                     alt="imagen producto vortice">
+                                            </div>
+                                        </div>
+                                        {% if products.video_produc %}
                                             <div class="swiper-slide">
                                                 <div class="item">
-                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}" src="/media/{{ products.imagen_produc_01 }}" alt="imagen producto vortice">
+                                                    <img class="lazyload"
+                                                         data-src="/media/{{ products.imagen_produc_02 }}"
+                                                         src="/media/{{ products.imagen_produc_02 }}"
+                                                         alt="imagen producto vortice">
                                                 </div>
                                             </div>
-                                            {% if products.video_produc %}
-                                                <div class="swiper-slide">
-                                                    <div class="item">
-                                                        <img class="lazyload" data-src="/media/{{ products.imagen_produc_02 }}" src="/media/{{ products.imagen_produc_02 }}" alt="imagen producto vortice">
-                                                    </div>
-                                                </div>
-                                            {% endif %}
-                                        
-                                        </div>
-                                    </div>
-                                    <div class="swiper tf-product-media-main" id="gallery-swiper-started">
-                                        <div class="swiper-wrapper">
-                                            {% if products.video_produc %}
-                                                <div class="swiper-slide">
-                                                    <div class="item">
-                                                        <video playsinline="true" autoplay preload="metadata" muted controls loop src="/media/{{ products.video_produc }}"></video>
-                                                    </div>
-                                                </div>
-                                            {% endif%}
-                                            <div class="swiper-slide">
-                                                <a href="/media/{{ products.imagen_produc_01 }}" target="_blank" class="item"
-                                                    data-pswp-width="770px" data-pswp-height="1075px">
-                                                    <img class="tf-image-zoom lazyload"
-                                                        data-zoom="/media/{{ products.imagen_produc_01 }}"
-                                                        data-src="/media/{{ products.imagen_produc_01 }}" src="/media/{{ products.imagen_produc_01 }}" alt="">
-                                                </a>
-                                            </div>
-                                            {% if products.imagen_produc_02 %}
-                                                <div class="swiper-slide">
-                                                    <a href="/media/{{ products.imagen_produc_02 }}" target="_blank" class="item"
-                                                        data-pswp-width="770px" data-pswp-height="1075px">
-                                                        <img class="tf-image-zoom lazyload"
-                                                            data-zoom="/media/{{ products.imagen_produc_02 }}"
-                                                            data-src="/media/{{ products.imagen_produc_02 }}" src="/media/{{ products.imagen_produc_02 }}" alt="">
-                                                    </a>
-                                                </div>
-                                            {% endif%}
+                                        {% endif %}
 
-                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="swiper tf-product-media-main" id="gallery-swiper-started">
+                                    <div class="swiper-wrapper">
+                                        {% if products.video_produc %}
+                                            <div class="swiper-slide">
+                                                <div class="item">
+                                                    <video playsinline="true" autoplay preload="metadata" muted controls
+                                                           loop src="/media/{{ products.video_produc }}"></video>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <div class="swiper-slide">
+                                            <div class="item"
+                                                 onclick="openPopup('/media/{{ products.imagen_produc_01 }}')">
+                                                <img class="tf-image-zoom lazyload"
+                                                     data-zoom="/media/{{ products.imagen_produc_01 }}"
+                                                     data-src="/media/{{ products.imagen_produc_01 }}"
+                                                     src="/media/{{ products.imagen_produc_01 }}" alt="">
+                                            </div>
+                                        </div>
+                                        {% if products.imagen_produc_02 %}
+                                            <div class="swiper-slide">
+                                                <div class="item"
+                                                     onclick="openPopup('/media/{{ products.imagen_produc_02 }}')">
+                                                    <img class="tf-image-zoom lazyload"
+                                                         data-zoom="/media/{{ products.imagen_produc_02 }}"
+                                                         data-src="/media/{{ products.imagen_produc_02 }}"
+                                                         src="/media/{{ products.imagen_produc_02 }}" alt="">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- Popup para mostrar la imagen -->
+                                <div id="imagePopup" class="popup">
+                                    <span class="close" onclick="closePopup()">&times;</span>
+                                    <div class="popup-content">
+                                        <img id="popupImage" src="" alt="">
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="tf-product-info-wrap position-relative">
-                                <div class="tf-zoom-main"></div>
-                                <div class="tf-product-info-list other-image-zoom">
-                                    <div class="tf-product-info-title">
-                                        <h5>{{ products.nombre_produc}}</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tf-product-info-wrap position-relative">
+                            <div class="tf-zoom-main"></div>
+                            <div class="tf-product-info-list other-image-zoom">
+                                <div class="tf-product-info-title">
+                                    <h5>{{ products.nombre_produc }}</h5>
+                                </div>
+                                <div class="tf-product-info-badges">
+                                    <div class="product-status-content">
+                                        <p class="fw-6">{{ products.descripcion_produc }}</p>
                                     </div>
-                                    <div class="tf-product-info-badges">
-                                        <div class="product-status-content">
-                                            <p class="fw-6">{{ products.descripcion_produc}}</p>
-                                        </div>
-                                    </div>
+                                </div>
 
+                                <div class="tf-product-info-variant-picker">
                                     <div class="tf-product-info-variant-picker">
-                                        <div class="tf-product-info-variant-picker">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <br>
-                                                    <div class="tf-product-info-badges">
-                                                        <div class="product-status-content">
-                                                            <i class="icon-lightning"></i>
-                                                            <div class="tf-product-info-price">
-                                                                <div class="price-on-sale">${{ products.price}}</div>
-                                                            </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <br>
+                                                <div class="tf-product-info-badges">
+                                                    <div class="product-status-content">
+                                                        <i class="icon-lightning"></i>
+                                                        <div class="tf-product-info-price">
+                                                            <div class="price-on-sale">${{ products.price }}</div>
                                                         </div>
                                                     </div>
-                                                    <div class="tf-product-info-buy-button">
+                                                </div>
+                                                <div class="tf-product-info-buy-button">
                                                     <br>
-                                                        <form action="{% url 'cart:cart_add' products.id %}" method="post">
-                                                            <div class="w-100">
-                                                                <div class="tf-product-info-buy-button">
-                                                                    {% csrf_token %}
+                                                    <form action="{% url 'cart:cart_add' products.id %}" method="post">
+                                                        <div class="w-100">
+                                                            <div class="tf-product-info-buy-button">
+                                                                {% csrf_token %}
 
-                                                                    <!-- Renderiza el formulario -->
-                                                                    <label for="{{ cart_product_form.quantity.id_for_label }}">Cantidad:</label>
-                                                                    {{ cart_product_form.quantity }}
+                                                                <!-- Renderiza el formulario -->
+                                                                <label for="{{ cart_product_form.quantity.id_for_label }}">Cantidad:</label>
+                                                                {{ cart_product_form.quantity }}
 
-                                                                    <!-- Mostrar tallas solo si el producto tiene opciones de talla -->
-                                                                    {% if products.has_sizes %}
-                                                                        <label for="{{ cart_product_form.size.id_for_label }}">Talla:</label>
-                                                                        {{ cart_product_form.size }}
-                                                                    {% else %}
-                                                                        <label for="{{ cart_product_form.size.id_for_label }}">Talla Única:</label>
-                                                                        {{ cart_product_form.size }}
-                                                                    {% endif %}
+                                                                <!-- Mostrar tallas solo si el producto tiene opciones de talla -->
+                                                                {% if products.has_sizes %}
+                                                                    <label for="{{ cart_product_form.size.id_for_label }}">Talla:</label>
+                                                                    {{ cart_product_form.size }}
+                                                                {% else %}
+                                                                    <label for="{{ cart_product_form.size.id_for_label }}">Talla
+                                                                        Única:</label>
+                                                                    {{ cart_product_form.size }}
+                                                                {% endif %}
 
-                                                                    <!-- Campo oculto para override -->
-                                                                    {{ cart_product_form.override }}
-                                                                </div>
-                                                                <br>
-
-                                                                <input type="submit" value="Agregar" class="btns-full" style="border: #e6c13d !important;">
+                                                                <!-- Campo oculto para override -->
+                                                                {{ cart_product_form.override }}
                                                             </div>
-                                                        </form>
-                                                    </div>
+                                                            <br>
 
+                                                            <input type="submit" value="Agregar" class="btns-full"
+                                                                   style="border: #e6c13d !important;">
+                                                        </div>
+                                                    </form>
                                                 </div>
 
+                                            </div>
 
-                                                <div class="col-md-4">
-                                                    <div class="tf-product-info-extra-link" style="padding-top: 20px!important;">
 
-                                                        <a href="#info_compra" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                            <div class="tf-product-info-delivery-return" style="margin-top: 25px !important; margin-bottom: 25px !important; ">
-                                                                <div class="row">
-                                                                    <div class="col-xl-12 col-12">
-                                                                        <div class="tf-product-delivery">
-                                                                            <div class="icon">
-                                                                                <i class="icon-bag"></i>
-                                                                            </div>
-                                                                            <p>Instrucciones de Pago</p>
+                                            <div class="col-md-4">
+                                                <div class="tf-product-info-extra-link"
+                                                     style="padding-top: 20px!important;">
+
+                                                    <a href="#info_compra" data-bs-toggle="modal"
+                                                       class="tf-product-extra-icon">
+                                                        <div class="tf-product-info-delivery-return"
+                                                             style="margin-top: 25px !important; margin-bottom: 25px !important; ">
+                                                            <div class="row">
+                                                                <div class="col-xl-12 col-12">
+                                                                    <div class="tf-product-delivery">
+                                                                        <div class="icon">
+                                                                            <i class="icon-bag"></i>
                                                                         </div>
+                                                                        <p>Instrucciones de Pago</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </a>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="tf-product-info-trust-seal">
-                                                    <div class="tf-product-trust-mess">
-                                                        <i class="icon-safe"></i>
-                                                        <p class="fw-6">Garantizamos un  <br> pago seguro</p>
-                                                    </div>
-                                                    <div class="tf-payment">
-                                                        <img src="/static/static_vortice/images/payments/visa.png" alt="">
-                                                        <img src="/static/static_vortice/images/payments/img-1.png" alt="">
-                                                        <img src="/static/static_vortice/images/payments/img-2.png" alt="">
-                                                        <img src="/static/static_vortice/images/payments/img-3.png" alt="">
-                                                        <img src="/static/static_vortice/images/payments/img-4.png" alt="">
-                                                    </div>
-                                                    <div class="tf-product-info-extra-link" style="padding-top: 20px!important;">
-
-                                                        <a href="#find_size" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                            <div class="icon">
-                                                                <i class="icon-check"></i>
-                                                            </div>
-                                                            <div class="text fw-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra tu talla</font></font></div>
-                                                        </a>
-                                                        <a href="#quick_view" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                            <div class="icon">
-                                                                <svg class="d-inline-block" xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18" fill="currentColor"><path d="M21.7872 10.4724C21.7872 9.73685 21.5432 9.00864 21.1002 8.4217L18.7221 5.27043C18.2421 4.63481 17.4804 4.25532 16.684 4.25532H14.9787V2.54885C14.9787 1.14111 13.8334 0 12.4255 0H9.95745V1.69779H12.4255C12.8948 1.69779 13.2766 2.07962 13.2766 2.54885V14.5957H8.15145C7.80021 13.6052 6.85421 12.8936 5.74468 12.8936C4.63515 12.8936 3.68915 13.6052 3.33792 14.5957H2.55319C2.08396 14.5957 1.70213 14.2139 1.70213 13.7447V2.54885C1.70213 2.07962 2.08396 1.69779 2.55319 1.69779H9.95745V0H2.55319C1.14528 0 0 1.14111 0 2.54885V13.7447C0 15.1526 1.14528 16.2979 2.55319 16.2979H3.33792C3.68915 17.2884 4.63515 18 5.74468 18C6.85421 18 7.80021 17.2884 8.15145 16.2979H13.423C13.7742 17.2884 14.7202 18 15.8297 18C16.9393 18 17.8853 17.2884 18.2365 16.2979H21.7872V10.4724ZM16.684 5.95745C16.9494 5.95745 17.2034 6.08396 17.3634 6.29574L19.5166 9.14894H14.9787V5.95745H16.684ZM5.74468 16.2979C5.27545 16.2979 4.89362 15.916 4.89362 15.4468C4.89362 14.9776 5.27545 14.5957 5.74468 14.5957C6.21392 14.5957 6.59575 14.9776 6.59575 15.4468C6.59575 15.916 6.21392 16.2979 5.74468 16.2979ZM15.8298 16.2979C15.3606 16.2979 14.9787 15.916 14.9787 15.4468C14.9787 14.9776 15.3606 14.5957 15.8298 14.5957C16.299 14.5957 16.6809 14.9776 16.6809 15.4468C16.6809 15.916 16.299 16.2979 15.8298 16.2979ZM18.2366 14.5957C17.8853 13.6052 16.9393 12.8936 15.8298 12.8936C15.5398 12.8935 15.252 12.943 14.9787 13.04V10.8511H20.0851V14.5957H18.2366Z"></path></svg>
-                                                            </div>
-                                                            <div class="text fw-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entrega y devolución</font></font></div>
-                                                        </a>
-                                                        <a href="#share_social" data-bs-toggle="modal" class="tf-product-extra-icon">
-                                                            <div class="icon">
-                                                                <i class="icon-share"></i>
-                                                            </div>
-                                                            <div class="text fw-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Compartir</font></font></div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tf-product-info-delivery-return" style="padding-top: 20px!important;">
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="tf-product-delivery">
-                                                                <div class="icon">
-                                                                    <i class="icon-delivery-time"></i>
-                                                                </div>
-                                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tiempos de entrega estimados: </font></font><span class="fw-7"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3-7 días</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> (Nacional), </font></font><span class="fw-7"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10-20 días</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> (Internacional).</font></font></p>
-                                                            </div>
                                                         </div>
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="tf-product-delivery mb-0">
-                                                                <div class="icon">
-                                                                    <i class="icon-return-order"></i>
-                                                                </div>
-                                                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>Cada prenda de Vórtice es única y artesanal, por ello, no aceptamos devoluciones. ✨</font></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
-
 
                                             </div>
+
+                                            <div class="tf-product-info-trust-seal">
+                                                <div class="tf-product-trust-mess">
+                                                    <i class="icon-safe"></i>
+                                                    <p class="fw-6">Garantizamos un <br> pago seguro</p>
+                                                </div>
+                                                <div class="tf-payment">
+                                                    <img src="/static/static_vortice/images/payments/visa.png" alt="">
+                                                    <img src="/static/static_vortice/images/payments/img-1.png" alt="">
+                                                    <img src="/static/static_vortice/images/payments/img-2.png" alt="">
+                                                    <img src="/static/static_vortice/images/payments/img-3.png" alt="">
+                                                    <img src="/static/static_vortice/images/payments/img-4.png" alt="">
+                                                </div>
+                                                <div class="tf-product-info-extra-link"
+                                                     style="padding-top: 20px!important;">
+
+                                                    <!--<a href="#find_size" data-bs-toggle="modal"
+                                                       class="tf-product-extra-icon">
+                                                        <div class="icon">
+                                                            <i class="icon-check"></i>
+                                                        </div>
+                                                        <div class="text fw-6"><font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">Encuentra tu
+                                                            talla</font></font></div>
+                                                    </a> !-->
+                                                    <a href="#quick_view" data-bs-toggle="modal"
+                                                       class="tf-product-extra-icon">
+                                                        <div class="icon">
+                                                            <svg class="d-inline-block"
+                                                                 xmlns="http://www.w3.org/2000/svg" width="22"
+                                                                 height="18" viewBox="0 0 22 18" fill="currentColor">
+                                                                <path d="M21.7872 10.4724C21.7872 9.73685 21.5432 9.00864 21.1002 8.4217L18.7221 5.27043C18.2421 4.63481 17.4804 4.25532 16.684 4.25532H14.9787V2.54885C14.9787 1.14111 13.8334 0 12.4255 0H9.95745V1.69779H12.4255C12.8948 1.69779 13.2766 2.07962 13.2766 2.54885V14.5957H8.15145C7.80021 13.6052 6.85421 12.8936 5.74468 12.8936C4.63515 12.8936 3.68915 13.6052 3.33792 14.5957H2.55319C2.08396 14.5957 1.70213 14.2139 1.70213 13.7447V2.54885C1.70213 2.07962 2.08396 1.69779 2.55319 1.69779H9.95745V0H2.55319C1.14528 0 0 1.14111 0 2.54885V13.7447C0 15.1526 1.14528 16.2979 2.55319 16.2979H3.33792C3.68915 17.2884 4.63515 18 5.74468 18C6.85421 18 7.80021 17.2884 8.15145 16.2979H13.423C13.7742 17.2884 14.7202 18 15.8297 18C16.9393 18 17.8853 17.2884 18.2365 16.2979H21.7872V10.4724ZM16.684 5.95745C16.9494 5.95745 17.2034 6.08396 17.3634 6.29574L19.5166 9.14894H14.9787V5.95745H16.684ZM5.74468 16.2979C5.27545 16.2979 4.89362 15.916 4.89362 15.4468C4.89362 14.9776 5.27545 14.5957 5.74468 14.5957C6.21392 14.5957 6.59575 14.9776 6.59575 15.4468C6.59575 15.916 6.21392 16.2979 5.74468 16.2979ZM15.8298 16.2979C15.3606 16.2979 14.9787 15.916 14.9787 15.4468C14.9787 14.9776 15.3606 14.5957 15.8298 14.5957C16.299 14.5957 16.6809 14.9776 16.6809 15.4468C16.6809 15.916 16.299 16.2979 15.8298 16.2979ZM18.2366 14.5957C17.8853 13.6052 16.9393 12.8936 15.8298 12.8936C15.5398 12.8935 15.252 12.943 14.9787 13.04V10.8511H20.0851V14.5957H18.2366Z"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="text fw-6"><font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">Entrega y
+                                                            devolución</font></font></div>
+                                                    </a>
+                                                    <a href="#share_social" data-bs-toggle="modal"
+                                                       class="tf-product-extra-icon">
+                                                        <div class="icon">
+                                                            <i class="icon-share"></i>
+                                                        </div>
+                                                        <div class="text fw-6"><font
+                                                                style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">Compartir</font></font>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="tf-product-info-delivery-return"
+                                                 style="padding-top: 20px!important;">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-12">
+                                                        <div class="tf-product-delivery">
+                                                            <div class="icon">
+                                                                <i class="icon-delivery-time"></i>
+                                                            </div>
+                                                            <p><font style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;">Tiempos de entrega
+                                                                estimados: </font></font><span class="fw-7"><font
+                                                                    style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;">3-7 días</font></font></span><font
+                                                                    style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;">
+                                                                (Nacional), </font></font><span class="fw-7"><font
+                                                                    style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;">10-20 días</font></font></span><font
+                                                                    style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;">
+                                                                (Internacional).</font></font></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-12">
+                                                        <div class="tf-product-delivery mb-0">
+                                                            <div class="icon">
+                                                                <i class="icon-return-order"></i>
+                                                            </div>
+                                                            <p><font style="vertical-align: inherit;"><font
+                                                                    style="vertical-align: inherit;"></font>Cada prenda
+                                                                de Vórtice es única y artesanal, por ello, no aceptamos
+                                                                devoluciones. ✨</font></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /default -->
-
-        <!-- tabs -->
-        <section class="flat-spacing-17 pt_0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="widget-tabs style-has-border">
-                            <ul class="widget-menu-tab">
-                                <li class="item-title active">
-                                    <span class="inner">Descripción</span>
-                                </li>
-
-                                <li class="item-title">
-                                    <span class="inner">Envío</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner">Política de Devoluciones</span>
-                                </li>
-                            </ul>
-                            <div class="widget-content-tab">
-                                <div class="widget-content-inner active">
-                                    <div class="">
-                                        <div class="tf-product-des-demo">
-                                            <div class="right">
-                                                <h3 class="fs-16 fw-5">Características</h3>
-                                                <ul>
-                                                  <li>Alta calidad</li>
-                                                  <li>Prenda Nacional</li>
-                                                  <li>Ideal para tu estilo</li>
-                                                </ul>
-                                            </div>
-                                            <div class="left">
-                                                <h3 class="fs-16 fw-5">Cuidado de los materiales</h3>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-arrow-right"></i>
-                                                    </div>
-                                                  <span>Lavar a mano..</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-iron"></i>
-                                                    </div>
-                                                    <span>Planchar máximo 110ºC.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-bleach"></i>
-                                                    </div>
-                                                    <span>No usar blanqueador.</span>
-                                                </div>
-                                                <div class="d-flex gap-10 mb_15 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-dry-clean"></i>
-                                                    </div>
-                                                    <span>No lavar en seco</span>
-                                                </div>
-                                                <div class="d-flex gap-10 align-items-center">
-                                                    <div class="icon">
-                                                        <i class="icon-tumble-dry"></i>
-                                                    </div>
-                                                    <span>Secar en secadora a temperatura media.</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="widget-content-inner">
-                                    <div class="tf-page-privacy-policy">
-                                        <div class="title">Detalles de envío del Producto</div>
-                                        <p>Este producto de alta calidad está cuidadosamente elaborado con los mejores materiales, asegurando durabilidad y estilo. Disfrute de la entrega rápida, con tiempos estimados de llegada entre 3 y 7 días hábiles.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="widget-content-inner">
-                                    <div class="tf-page-privacy-policy">
-                                        <div class="title"> Términos y Condiciones</div>
-                                        <p>Por políticas de la tienda, este artículo es de venta final y no admite cambios ni devoluciones. Asegúrese de revisar la información del producto y las imágenes detalladamente antes de realizar su compra.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /tabs -->
-        <!-- product -->
-        <section class="flat-spacing-1 pt_0">
-            <div class="container">
-                <div class="flat-title">
-                    <span class="title">La gente también compró</span>
-                </div>
-                <div class="hover-sw-nav hover-sw-2">
-                    <div class="swiper tf-sw-product-sell wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2"  data-space-lg="30" data-space-md="15" data-pagination="2" data-pagination-md="3" data-pagination-lg="3"  data-autoplay="3000">
-                        <div class="swiper-wrapper">
-                            {% for produc in productos %}
-                            	<div class="swiper-slide" lazy="true">
-                                <div class="card-product">
-                                    <div class="card-product-wrapper">
-                                        <a href="/vortice/producto/{{ produc.id}}/" class="product-img">
-                                            <img class="lazyload img-product" data-src="/media/{{ produc.imagen_produc_01 }}" src="/media/{{ produc.imagen_produc_01 }}" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="/media/{{ produc.imagen_produc_01 }}" src="/media/{{ produc.imagen_produc_01 }}" alt="image-product">
-                                        </a>
-
-
-
-                                    </div>
-                                    <div class="card-product-info">
-                                        <a href="/vortice/producto/{{ produc.id}}" class="title link">{{ produc.nombre_produc}}</a>
-                                        <span class="price">${{ produc.price}}</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="nav-sw nav-next-slider nav-next-product box-icon w_46 round"><span class="icon icon-arrow-left"></span></div>
-                    <div class="nav-sw nav-prev-slider nav-prev-product box-icon w_46 round"><span class="icon icon-arrow-right"></span></div>
-                    <div class="sw-dots style-2 sw-pagination-product justify-content-center"></div>
-                </div>
-            </div>
-        </section>
-        <!-- /product -->
-
-
-        <div class="modal fade modalDemo tf-product-modal" id="find_size" style="z-index: 1060; display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="header">
-                        <div class="demo-title">Tabla de tallas</div>
-                        <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
-                    </div>
-                    <div class="tf-rte">
-                        <div class="tf-table-res-df">
-                            <h6>Guía de tallas</h6>
-                            <table class="tf-sizeguide-table">
-                                <thead>
-                                    <tr>
-                                        <th>Tamaño</th>
-                                        <th>Pecho</th>
-                                        <th>Alto</th>
-                                        <th>Manga</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>XS</td>
-                                        <td>2</td>
-                                        <td>32</td>
-                                        <td>24 - 25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>S</td>
-                                        <td>4</td>
-                                        <td>34 - 35</td>
-                                        <td>26 - 27</td>
-                                    </tr>
-                                    <tr>
-                                        <td>M</td>
-                                        <td>6</td>
-                                        <td>36 - 37</td>
-                                        <td>28 - 29</td>
-                                    </tr>
-                                    <tr>
-                                        <td>L</td>
-                                        <td>8</td>
-                                        <td>38 - 29</td>
-                                        <td>30 - 31</td>
-                                    </tr>
-                                    <tr>
-                                        <td>XL</td>
-                                        <td>10</td>
-                                        <td>40 - 41</td>
-                                        <td>32 - 33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>XXL</td>
-                                        <td>12</td>
-                                        <td>42 - 43</td>
-                                        <td>34 - 35</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var swiper = new Swiper(".tf-sw-product-sell", {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 3000, // 3 segundos
-                disableOnInteraction: false, // Sigue moviéndose después de interacción
-            },
-            navigation: {
-                nextEl: ".nav-next-product",
-                prevEl: ".nav-prev-product",
-            },
-            pagination: {
-                el: ".sw-pagination-product",
-                clickable: true,
-            },
-            breakpoints: {
-                768: { slidesPerView: 3, spaceBetween: 15 },
-                480: { slidesPerView: 2, spaceBetween: 10 },
-            }
+    </section>
+    <!-- /default -->
+
+    <!-- tabs -->
+    <section class="flat-spacing-17 pt_0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="widget-tabs style-has-border">
+                        <ul class="widget-menu-tab">
+                            <li class="item-title active">
+                                <span class="inner">Descripción</span>
+                            </li>
+
+                            <li class="item-title">
+                                <span class="inner">Envío</span>
+                            </li>
+                            <li class="item-title">
+                                <span class="inner">Política de Devoluciones</span>
+                            </li>
+                        </ul>
+                        <div class="widget-content-tab">
+                            <div class="widget-content-inner active">
+                                <div class="">
+                                    <div class="tf-product-des-demo">
+                                        <div class="right">
+                                            <h3 class="fs-16 fw-5">Características</h3>
+                                            <ul>
+                                                <li>Alta calidad</li>
+                                                <li>Prenda Nacional</li>
+                                                <li>Ideal para tu estilo</li>
+                                            </ul>
+                                        </div>
+                                        <div class="left">
+                                            <h3 class="fs-16 fw-5">Cuidado de los materiales</h3>
+                                            <div class="d-flex gap-10 mb_15 align-items-center">
+                                                <div class="icon">
+                                                    <i class="icon-arrow-right"></i>
+                                                </div>
+                                                <span>Lavar a mano..</span>
+                                            </div>
+                                            <div class="d-flex gap-10 mb_15 align-items-center">
+                                                <div class="icon">
+                                                    <i class="icon-iron"></i>
+                                                </div>
+                                                <span>Planchar máximo 110ºC.</span>
+                                            </div>
+                                            <div class="d-flex gap-10 mb_15 align-items-center">
+                                                <div class="icon">
+                                                    <i class="icon-bleach"></i>
+                                                </div>
+                                                <span>No usar blanqueador.</span>
+                                            </div>
+                                            <div class="d-flex gap-10 mb_15 align-items-center">
+                                                <div class="icon">
+                                                    <i class="icon-dry-clean"></i>
+                                                </div>
+                                                <span>No lavar en seco</span>
+                                            </div>
+                                            <div class="d-flex gap-10 align-items-center">
+                                                <div class="icon">
+                                                    <i class="icon-tumble-dry"></i>
+                                                </div>
+                                                <span>Secar en secadora a temperatura media.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="widget-content-inner">
+                                <div class="tf-page-privacy-policy">
+                                    <div class="title">Detalles de envío del Producto</div>
+                                    <p>Este producto de alta calidad está cuidadosamente elaborado con los mejores
+                                        materiales, asegurando durabilidad y estilo. Disfrute de la entrega rápida, con
+                                        tiempos estimados de llegada entre 3 y 7 días hábiles.</p>
+                                </div>
+                            </div>
+
+                            <div class="widget-content-inner">
+                                <div class="tf-page-privacy-policy">
+                                    <div class="title"> Términos y Condiciones</div>
+                                    <p>Por políticas de la tienda, este artículo es de venta final y no admite cambios
+                                        ni devoluciones. Asegúrese de revisar la información del producto y las imágenes
+                                        detalladamente antes de realizar su compra.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /tabs -->
+
+
+
+    <div class="modal fade modalDemo tf-product-modal" id="find_size" style="z-index: 1060; display: none;"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="header">
+                    <div class="demo-title">Tabla de tallas</div>
+                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+                </div>
+                <div class="tf-rte">
+                    <div class="tf-table-res-df">
+                        <h6>Guía de tallas</h6>
+                        <table class="tf-sizeguide-table">
+                            <thead>
+                            <tr>
+                                <th>Tamaño</th>
+                                <th>Pecho</th>
+                                <th>Alto</th>
+                                <th>Manga</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>XS</td>
+                                <td>2</td>
+                                <td>32</td>
+                                <td>24 - 25</td>
+                            </tr>
+                            <tr>
+                                <td>S</td>
+                                <td>4</td>
+                                <td>34 - 35</td>
+                                <td>26 - 27</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>6</td>
+                                <td>36 - 37</td>
+                                <td>28 - 29</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>8</td>
+                                <td>38 - 29</td>
+                                <td>30 - 31</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>10</td>
+                                <td>40 - 41</td>
+                                <td>32 - 33</td>
+                            </tr>
+                            <tr>
+                                <td>XXL</td>
+                                <td>12</td>
+                                <td>42 - 43</td>
+                                <td>34 - 35</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper(".tf-sw-product-sell", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 3000, // 3 segundos
+                    disableOnInteraction: false, // Sigue moviéndose después de interacción
+                },
+                navigation: {
+                    nextEl: ".nav-next-product",
+                    prevEl: ".nav-prev-product",
+                },
+                pagination: {
+                    el: ".sw-pagination-product",
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {slidesPerView: 3, spaceBetween: 15},
+                    480: {slidesPerView: 2, spaceBetween: 10},
+                }
+            });
         });
-    });
-</script>
+    </script>
+
+
+    <script>
+        // Función para abrir el popup con la imagen seleccionada
+        function openPopup(imageUrl) {
+            const popup = document.getElementById("imagePopup");
+            const popupImage = document.getElementById("popupImage");
+            popup.style.display = "flex"; // Muestra el popup
+            popupImage.src = imageUrl; // Establece la imagen en el popup
+        }
+
+        // Cierra el popup
+        function closePopup() {
+            const popup = document.getElementById("imagePopup");
+            popup.style.display = "none"; // Oculta el popup
+        }
+
+        // Función para manejar la tecla ESC
+        function handleKeyDown(event) {
+            if (event.key === 'Escape' || event.key === 'Esc') { // "Esc" para compatibilidad con navegadores antiguos
+                closePopup();
+            }
+        }
+
+        // Cerrar el popup si se hace clic fuera del contenido
+        window.onclick = function (event) {
+            const popup = document.getElementById('imagePopup');
+            if (event.target === popup) {
+                closePopup();
+            }
+        }
+    </script>
+
+
+
+
+    <style>
+
+        body {
+            overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+            width: 100%; /* Asegura que el body ocupe el 100% del ancho */
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Ajusta este valor según tu diseño */
+            margin: 0 auto; /* Centra el contenido */
+            padding: 0 15px; /* Agrega un padding para evitar que el contenido toque los bordes */
+            box-sizing: border-box; /* Incluye el padding en el ancho */
+        }
+
+        .popup-content {
+            width: 90%; /* Ajusta el ancho del popup */
+            max-width: 800px; /* Limita el ancho máximo */
+            margin: 0 auto; /* Centra el popup */
+            padding: 20px;
+            box-sizing: border-box; /* Incluye el padding en el ancho */
+        }
+
+
+    </style>
+
+    <style>
+
+        /* Estilos para el popup */
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed; /* Para que se quede fijo en la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            z-index: 9999; /* Asegura que el popup esté por encima de todo */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 10000; /* Asegura que el botón de cerrar esté encima de todo */
+        }
+    </style>
 
 {% endblock %}
 
 
-       

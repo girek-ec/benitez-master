@@ -160,10 +160,38 @@
                         </div>
                         <div class="tf-page-cart-checkout">
                             <div class="cart-checkout-btn">
-                                <a href="/vortice/" class="tf-btn w-100 btn-fill animate-hover-btn radius-3 justify-content-center">
+                                <a href="javascript:void(0);" onclick="volverASeccion();" class="tf-btn w-100 btn-fill animate-hover-btn radius-3 justify-content-center">
                                     Seguir Comprando
                                 </a>
                             </div>
+
+                            <script>
+                                // Guardar la última sección visitada cuando el usuario accede a 'Mujer' o 'Hombre'
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    let referrer = document.referrer;
+                                    if (referrer.includes("/vortice/seccion/Mujer/")) {
+                                        sessionStorage.setItem("ultimaSeccion", "/vortice/seccion/Mujer/");
+                                    } else if (referrer.includes("/vortice/seccion/Hombre/")) {
+                                        sessionStorage.setItem("ultimaSeccion", "/vortice/seccion/Hombre/");
+                                    }
+                                });
+
+                                function volverASeccion() {
+                                    let ultimaSeccion = sessionStorage.getItem("ultimaSeccion");
+
+                                    if (ultimaSeccion) {
+                                        window.location.href = ultimaSeccion;
+                                    } else {
+                                        window.history.go(-2); // Si no hay registro, vuelve 2 páginas atrás
+                                    }
+                                }
+                            </script>
+
+
+
+
+
+
                             <div class="tf-product-info-buy-button">
                                 <form class="">
                                     <div class="w-100">
