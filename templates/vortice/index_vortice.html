@@ -12,6 +12,7 @@
 
     {% block metas %}
         <!-- Meta etiquetas Open Graph (para Facebook, WhatsApp, LinkedIn, etc.) -->
+        <meta property="fb:app_id" content="926164441218858">
         <meta property="og:url" content="https://www.benitez-ec.com/vortice/"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Vortice - Tienda Oficial "/>
@@ -28,10 +29,8 @@
         <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
         <meta name="twitter:image:width" content="1200">
         <meta name="twitter:image:height" content="628">
-
-
-
     {% endblock %}
+
 
     <meta name="author" content="Vortice | Tienda Oficial">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -48,9 +47,18 @@
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="/media/{{ vortice.favicon }}">
     <link rel="apple-touch-icon-precomposed" href="/media/{{ vortice.favicon }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
 </head>
 
 <body class="preload-wrapper">
+
+
+
+
 
 <div id="wrapper">
     <!-- Top bar -->
