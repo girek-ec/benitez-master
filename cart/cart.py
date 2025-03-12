@@ -3,7 +3,6 @@ from django.conf import settings
 from Vortice.models import Prod_prenda
 from coupons.models import Coupon
 
-
 class Cart:
     def __init__(self, request):
         """

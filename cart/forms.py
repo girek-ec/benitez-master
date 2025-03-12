@@ -16,7 +16,6 @@ PRODUCT_SIZE_UNICA = [
     ('U', 'Única'),
 ]
 
-
 class CartAddProductForm(forms.Form):
     quantity = forms.TypedChoiceField(
         choices=PRODUCT_QUANTITY_CHOICES,

@@ -19,6 +19,30 @@
     <meta name="twitter:image:height" content="628">
 
 {% endblock %}
+
+    {% block metas %}
+        <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
+        <meta property="fb:app_id" content="926164441218858">
+        <meta property="og:site_name" content="Vortice">
+        <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Vortice - {{ products.nombre_produc }}">
+        <meta property="og:description" content="{{ products.descripcion_produc }}">
+        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
+
+        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
+        <meta name="twitter:title" content="Vortice - {{ products.nombre_produc }}">
+        <meta name="twitter:description" content="{{ products.descripcion_produc }}">
+        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+        <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
+    {% endblock %}
+
 {% block principal %}
     <!-- Header -->
     <!-- breadcrumb -->

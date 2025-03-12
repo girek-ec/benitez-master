@@ -83,7 +83,6 @@ def cart_detail(request):
         'shipping_cost': shipping_cost,
         'total_with_shipping': total_with_shipping,
 
-
     }
 
 
