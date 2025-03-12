@@ -6,7 +6,6 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from .models import Order, OrderItem
 
-
 def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     content_disposition = f'attachment; filename={opts.verbose_name}.csv'

@@ -1,24 +1,28 @@
 {% extends 'vortice/index_vortice.html' %}
-{% block metas %}
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:url" content="https://www.benitez-ec.com/vortice/post/{{ mesmoda.id }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Vortice - Tienda Oficial "/>
-    <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}"/>
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}"/>
-    <meta property="og:image:width" content="600"/>
-    <meta property="og:image:height" content="600"/>
 
-    <!-- Meta etiquetas para Twitter (Twitter Cards) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vortice - Tienda Oficial">
-    <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}">
-    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}">
-    <meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
-    <meta name="twitter:image:width" content="1200">
-    <meta name="twitter:image:height" content="628">
+    {% block metas %}
+        <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
+        <meta property="fb:app_id" content="926164441218858">
+        <meta property="og:site_name" content="Vortice">
+        <meta property="og:url" content="https://www.benitez-ec.com/vortice/post/{{ mesmoda.id }}">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Vortice - Modelo del Mes">
+        <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}">
+        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}">
+        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
 
-{% endblock %}
+        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
+        <meta name="twitter:title" content="Vortice -  - Modelo del Mes">
+        <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana - {{ mesmoda.titulo }} - {{ mesmoda.subtitulo }}">
+        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ mesmoda.imagen }}">
+        <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
+    {% endblock %}
+
 {% block principal %}
 
     <!-- Mes moda -->

@@ -10,3 +10,4 @@ urlpatterns = [
                                      name='cart_remove'),
     # path('compra', views.cart_detail, name='cart_detail'),
 ]
+
