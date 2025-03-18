@@ -211,3 +211,9 @@ class MesModaAdmin(BaseAdmin):
 @admin.register(MesModa_galeria)
 class MesModa_galeriaAdmin(BaseAdmin):
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
+
+
+# Admin para Bancos
+@admin.register(Banco)
+class BancoAdmin(BaseAdmin):
+    list_display = list(BaseAdmin.list_display)

@@ -305,5 +305,6 @@ def orden_pedido(request):
         #'imag_prenda_articulos': Imag_prenda_articulo.objects.all(),
         'tipo_articulos_menu': Tipo_articulo.objects.all(),
         'notificaciones': Notificaciones.objects.all().first(),
+        'bancos' :  Banco.objects.all(),
     }
     return render(request, 'payment/orden_pedido.html', context)

@@ -517,36 +517,66 @@
     </script>
 
 
-    <script>
-        // Función para abrir el popup con la imagen seleccionada
-        function openPopup(imageUrl) {
-            const popup = document.getElementById("imagePopup");
-            const popupImage = document.getElementById("popupImage");
-            popup.style.display = "flex"; // Muestra el popup
-            popupImage.src = imageUrl; // Establece la imagen en el popup
-        }
+    <style>
+    /* Estilos para el popup */
+    #imagePopup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
 
-        // Cierra el popup
-        function closePopup() {
-            const popup = document.getElementById("imagePopup");
-            popup.style.display = "none"; // Oculta el popup
-        }
+    /* Imagen en pantalla completa */
+    #popupImage {
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+</style>
 
-        // Función para manejar la tecla ESC
-        function handleKeyDown(event) {
-            if (event.key === 'Escape' || event.key === 'Esc') { // "Esc" para compatibilidad con navegadores antiguos
-                closePopup();
-            }
-        }
+<!-- Contenedor del popup -->
+<div id="imagePopup" onclick="closePopup()">
+    <img id="popupImage" src="" alt="Imagen ampliada">
+</div>
 
-        // Cerrar el popup si se hace clic fuera del contenido
-        window.onclick = function (event) {
-            const popup = document.getElementById('imagePopup');
-            if (event.target === popup) {
-                closePopup();
-            }
+<script>
+    // Función para abrir el popup con la imagen seleccionada
+    function openPopup(imageUrl) {
+        const popup = document.getElementById("imagePopup");
+        const popupImage = document.getElementById("popupImage");
+        popup.style.display = "flex"; // Muestra el popup
+        popupImage.src = imageUrl; // Establece la imagen en el popup
+    }
+
+    // Cierra el popup
+    function closePopup() {
+        document.getElementById("imagePopup").style.display = "none";
+    }
+
+    // Cerrar con tecla ESC
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closePopup();
         }
-    </script>
+    });
+
+    // Cerrar si se hace clic fuera de la imagen
+    window.onclick = function (event) {
+        const popup = document.getElementById("imagePopup");
+        if (event.target === popup) {
+            closePopup();
+        }
+    };
+</script>
+
 
 
 
