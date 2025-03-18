@@ -14,6 +14,7 @@ from django.shortcuts import redirect
 
 from urllib.parse import quote_plus
 import urllib.parse
+import requests
 
 
 
@@ -23,7 +24,15 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
 
 
+import requests
 
+def verify_recaptcha(recaptcha_response):
+    secret_key = settings.RECAPTCHA_SECRET_KEY  # Guarda tu clave secreta en settings.py
+    url = "https://www.google.com/recaptcha/api/siteverify"
+    data = {"secret": secret_key, "response": recaptcha_response}
+    response = requests.post(url, data=data)
+    result = response.json()
+    return result.get("success", False)
 
 
 def payment_process(request):
@@ -45,14 +54,18 @@ def payment_process(request):
     # Generar mensaje de WhatsApp
     whatsapp_message = generate_whatsapp_message(order)
 
-
-
-
     if request.method == 'POST':
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+
+        if not verify_recaptcha(recaptcha_response):
+            return render(request, 'payment/process.html', {
+                'order': order,
+                'error_message': "Por favor, verifica que no eres un robot."
+            })
+
         success_url = request.build_absolute_uri(reverse('payment:completed'))
         cancel_url = request.build_absolute_uri(reverse('payment:canceled'))
 
-        # Configuración de la sesión de pago de Stripe
         session_data = {
             'mode': 'payment',
             'client_reference_id': order.id,
@@ -305,5 +318,6 @@ def orden_pedido(request):
         #'imag_prenda_articulos': Imag_prenda_articulo.objects.all(),
         'tipo_articulos_menu': Tipo_articulo.objects.all(),
         'notificaciones': Notificaciones.objects.all().first(),
+        'bancos' :  Banco.objects.all(),
     }
     return render(request, 'payment/orden_pedido.html', context)

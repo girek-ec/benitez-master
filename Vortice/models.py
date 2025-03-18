@@ -250,3 +250,17 @@ class MesModa_galeria(models.Model):
         return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.imagen_1)
     class Meta:
         verbose_name_plural = "15. Mes Moda Galeria Fotos"
+
+
+class Banco(models.Model):
+    activo = models.BooleanField(default=False)
+    nombre = models.CharField(max_length=20, null=True, blank=True)
+    ahorro = models.BooleanField(default=True)
+    corriente = models.BooleanField(default=False)
+    numero= models.CharField(max_length=20, null=True, blank=True)
+
+
+
+
+    class Meta:
+        verbose_name_plural = "12. Banco"

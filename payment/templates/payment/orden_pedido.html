@@ -119,28 +119,19 @@
                                         </tr>
                                     </thead>
                                     <tbody style="text-align: left !important;">
-                                        <tr>
-                                            <td> 🏦 Banco Pichincha – Ahorros </td>
-                                            <td> <strong> 5563347100 </strong> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 🏦 Banco Pacífico – Ahorros </td>
-                                            <td> <strong> 1050185397 </strong> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 🏦 Banco Guayaquil – Ahorros </td>
-                                            <td> <strong> 0018946917 </strong> </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 🏦 Cooperativa JEP – Ahorros </td>
-                                            <td> <strong> 406069935300 </strong> </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td> 🏦 Cooperativa Santa Rosa Ltda. – Ahorros </td>
-                                            <td> <strong> 010202028654 </strong> </td>
-                                        </tr>
-
+                                        {% for banco in bancos %}
+                                        	<tr>
+                                                <td> 🏦 {{ banco.nombre }} –
+                                                    {% if banco.ahorro %}
+                                                        AHORRO
+                                                    {% endif %}
+                                                    {% if banco.corriente %}
+                                                        CORRIENTE
+                                                    {% endif %}
+                                                </td>
+                                                <td> <strong> {{ banco.numero }} </strong> </td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

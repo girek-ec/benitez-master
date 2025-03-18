@@ -6,6 +6,9 @@
         <title>Vortice | Tienda Oficial</title>
         <meta name="author" content="Vortice | Tienda Oficial">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Agrega el script de Google reCAPTCHA -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     {% block metas %}
         <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
         <meta property="fb:app_id" content="926164441218858">
@@ -27,7 +30,6 @@
         <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana.">
         <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
         <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
-
     {% endblock %}
 
 
@@ -99,17 +101,12 @@
                 </div>
 
                 <div class="top-bar-language tf-cur justify-content-end">
-                    <div class="tf-currencies">
-                        <select class="image-select center style-default type-currencies">
-                            <option selected data-thumbnail="/static/static_vortice/images/country/ec.svg">USD <span>$ | Ecuador</span>
-                            </option>
 
-                        </select>
-                    </div>
                     <div class="tf-languages">
-                        <select class="image-select center style-default type-languages">
-                            <option>Español</option>
-                        </select>
+                        <a href="https://api.whatsapp.com/send?phone=+5930993239290&amp;text=Hola%20Vortice-Store%20Deseo%20suscribirme ">
+                                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text"> <i class="icon icon-account"></i> CHAT</span></button>
+                                        <br><br>
+                                    </a>
                     </div>
 
                 </div>
