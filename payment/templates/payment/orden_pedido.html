@@ -119,19 +119,20 @@
                                         </tr>
                                     </thead>
                                     <tbody style="text-align: left !important;">
+
                                         {% for banco in bancos %}
-                                        	<tr>
-                                                <td> 🏦 {{ banco.nombre }} –
-                                                    {% if banco.ahorro %}
-                                                        AHORRO
-                                                    {% endif %}
-                                                    {% if banco.corriente %}
-                                                        CORRIENTE
-                                                    {% endif %}
-                                                </td>
-                                                <td> <strong> {{ banco.numero }} </strong> </td>
-                                            </tr>
+                                            {% if banco.activo %}
+                                                <tr>
+                                                    <td> 🏦 Banco {{ banco.nombre }} – {% if banco.ahorro %} AHORRO {% endif %} {% if banco.corriente %} CORRIENTE {% endif %}
+
+                                                     </td>
+                                                    <td> <strong> {{ banco.numero }} </strong> </td>
+                                                </tr>
+                                            {% endif %}
                                         {% endfor %}
+
+
+
                                     </tbody>
                                 </table>
                             </div>
