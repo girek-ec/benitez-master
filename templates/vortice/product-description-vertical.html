@@ -173,27 +173,71 @@
                                                 </div>
                                                 <div class="tf-product-info-buy-button">
                                                     <br>
+                                                    {% if products.estado == 'reserv' %}
+                                                        {# 1 Producto Reservado: mostramos solo un mensaje o botón deshabilitado #}
+                                                        <div class="alert alert-warning text-center">
+                                                          <i class="icon-ban"></i>
+                                                          <strong>Reservado:</strong> Este producto está reservado.
+                                                        </div>
+                                                        <button class="btns-full" disabled style="border: #e6c13d !important; opacity: 0.6;">
+                                                          Reservado
+                                                        </button>
+                                                        {% elif products.estado == 'agot' %}
+
+                                                        {# 2. Producto agotado #}
+                                                        <div class="alert alert-danger text-center">
+                                                          <i class="icon-ban"></i>
+                                                          <strong>Agotado:</strong> Ya no está disponible.
+                                                        </div>
+                                                        <button class="btns-full" disabled style="border: #e6c13d !important; opacity: 0.6;">
+                                                          Agotado
+                                                        </button>
+
+                                                    {% else %}
+                                                        {# Producto disponible: mostramos el formulario de siempre #}
+
                                                     <form action="{% url 'cart:cart_add' products.id %}" method="post">
                                                         <div class="w-100">
                                                             <div class="tf-product-info-buy-button">
                                                                 {% csrf_token %}
 
-                                                                <!-- Renderiza el formulario -->
-                                                                <label for="{{ cart_product_form.quantity.id_for_label }}">Cantidad:</label>
-                                                                {{ cart_product_form.quantity }}
+                                                                    {# Campo oculto para override #}
+                                                                    {{ cart_product_form.override }}
 
-                                                                <!-- Mostrar tallas solo si el producto tiene opciones de talla -->
-                                                                {% if products.has_sizes %}
-                                                                    <label for="{{ cart_product_form.size.id_for_label }}">Talla:</label>
-                                                                    {{ cart_product_form.size }}
-                                                                {% else %}
-                                                                    <label for="{{ cart_product_form.size.id_for_label }}">Talla
-                                                                        Única:</label>
-                                                                    {{ cart_product_form.size }}
-                                                                {% endif %}
+                                                                    {# Manejo de productos únicos #}
+                                                                    {% if products.is_unique %}
+                                                                        <!-- Mensaje informativo para productos únicos -->
+                                                                        <div class="alert alert-info mb-3">
+                                                                            <i class="icon-info-circle"></i>
+                                                                            <strong>Producto exclusivo:</strong> Solo disponible una unidad.
+                                                                        </div>
 
-                                                                <!-- Campo oculto para override -->
-                                                                {{ cart_product_form.override }}
+                                                                        <!-- Campos ocultos para cantidad y talla -->
+                                                                        <input type="hidden" name="quantity" value="1">
+                                                                        <input type="hidden" name="size" value="U">
+
+                                                                    {% else %}
+                                                                        <!-- Manejo de productos normales -->
+                                                                        <div class="form-group mb-3">
+                                                                            <label for="{{ cart_product_form.quantity.id_for_label }}">Cantidad:</label>
+                                                                            {{ cart_product_form.quantity }}
+                                                                        </div>
+
+                                                                        <!-- Manejo de tallas -->
+                                                                        {% if products.has_sizes %}
+                                                                            <div class="form-group mb-3">
+                                                                                <label for="{{ cart_product_form.size.id_for_label }}">Talla:</label>
+                                                                                {{ cart_product_form.size }}
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <!-- Si no tiene tallas, mostramos "Única" -->
+                                                                            <div class="form-group mb-3">
+                                                                                <label>Talla:</label>
+                                                                                <p class="form-control-static">Única</p>
+                                                                                <input type="hidden" name="size" value="U">
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    {% endif %}
                                                             </div>
                                                             <br>
 
@@ -201,6 +245,7 @@
                                                                    style="border: #e6c13d !important;">
                                                         </div>
                                                     </form>
+                                                {% endif %}
                                                 </div>
 
                                             </div>

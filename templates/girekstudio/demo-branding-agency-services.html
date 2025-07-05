@@ -59,66 +59,68 @@
         </section>
         <!-- end section -->
         {% for servicio in servicios %}
-         <!-- start section -->
-        <section class="pt-0">
-            <div class="container">
-                <div class="row mb-8">
-                    <div class="col-lg-2 col-md-2 text-md-end">
-                        <span class="fs-130 xl-fs-100 md-fs-80 lh-100 md-lh-80 alt-font fw-700 text-sliding-line bg-extra-medium-gray">{{ servicio.orden }}</span>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-8 md-mt-15px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                         <a href="/girekstudio/servicios/{{ servicio.id }}" class="h-35px" alt="{{ servicio.titulo}}">
-                            <h3 class="alt-font fw-600 mb-0 text-dark-gray ls-minus-2px">{{ servicio.titulo}}</h3>
-                         </a>
-                    </div>
-                    <div class="col-lg-6 offset-xl-1 md-mt-20px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <p>{{ servicio.sub_titulo }}</p>
+            {% if servicio.activo %}
+                <!-- start section -->
+                <section class="pt-0">
+                    <div class="container">
+                        <div class="row mb-8">
+                            <div class="col-lg-2 col-md-2 text-md-end">
+                                <span class="fs-130 xl-fs-100 md-fs-80 lh-100 md-lh-80 alt-font fw-700 text-sliding-line bg-extra-medium-gray">{{ servicio.orden }}</span>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-8 md-mt-15px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                 <a href="/girekstudio/servicios/{{ servicio.id }}" class="h-35px" alt="{{ servicio.titulo}}">
+                                    <h3 class="alt-font fw-600 mb-0 text-dark-gray ls-minus-2px">{{ servicio.titulo}}</h3>
+                                 </a>
+                            </div>
+                            <div class="col-lg-6 offset-xl-1 md-mt-20px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <p>{{ servicio.sub_titulo }}</p>
+                                <div class="row">
+                                    <div class="col-xl-5 col-md-6">
+                                        <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                                            {% for listservicio in listservicios %}
+                                                {% if listservicio.servicio == servicio %}
+                                                    {% if listservicio.primera_colu %}
+                                                        <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-5 col-md-6">
+                                        <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+
+                                           {% for listservicio in listservicios %}
+                                                {% if listservicio.servicio == servicio %}
+                                                    {% if listservicio.Segunda_colu %}
+                                                        <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
+                                                    {% endif %}
+                                                    {% else %}
+                                                {% endif %}
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="row">
-                            <div class="col-xl-5 col-md-6">
-                                <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                                    {% for listservicio in listservicios %}
-                                        {% if listservicio.servicio == servicio %}
-                                            {% if listservicio.primera_colu %}
-                                                <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="col-xl-5 col-md-6">
-                                <ul class="p-0 m-0 list-style-02 text-dark-gray fw-500" data-anime='{ "el": "childs", "translateY": [30, 0], "rotateY":[100, 0], "opacity": [0,1], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-
-                                   {% for listservicio in listservicios %}
-                                        {% if listservicio.servicio == servicio %}
-                                            {% if listservicio.Segunda_colu %}
-                                                <li><i class="fa-solid fa-plus fs-12 me-10px"></i>{{ listservicio.lista_serv }}</li>
-                                            {% endif %}
-                                            {% else %}
-                                        {% endif %}
-                                    {% endfor %}
-
-                                </ul>
-                            </div>
+                                <div class=" {% if servicio.img_direc %} col-md-8  {% else %}col-md-4 {% endif %}  sm-mb-30px" data-bottom-top="transform: translate3d(0, -30px, 0px);" data-top-bottom="transform: translate3d(0, 30px, 0px);">
+                                    <div class="position-relative" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
+                                        {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_1}}" alt="" > {% else %}   <img src="/media/{{ servicio.imag_serv_2}}" alt="" >  {% endif %}
+                                    </div>
+                                </div>
+                                <div class="{% if servicio.img_direc %} col-md-4  {% else %} col-md-8  {% endif %} " data-bottom-top="transform: translate3d(0, 30px, 0px);" data-top-bottom="transform: translate3d(0, -30px, 0px);">
+                                    <div class="position-relative" data-anime='{ "effect": "slide", "direction": "rl", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
+                                        {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_2}}" alt="" > {% else %}  <img src="/media/{{ servicio.imag_serv_1}}" alt="" >   {% endif %}
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="row">
-                    	<div class=" {% if servicio.img_direc %} col-md-8  {% else %}col-md-4 {% endif %}  sm-mb-30px" data-bottom-top="transform: translate3d(0, -30px, 0px);" data-top-bottom="transform: translate3d(0, 30px, 0px);">
-                            <div class="position-relative" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
-                                {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_1}}" alt="" > {% else %}   <img src="/media/{{ servicio.imag_serv_2}}" alt="" >  {% endif %}
-                            </div>
-                        </div>
-                        <div class="{% if servicio.img_direc %} col-md-4  {% else %} col-md-8  {% endif %} " data-bottom-top="transform: translate3d(0, 30px, 0px);" data-top-bottom="transform: translate3d(0, -30px, 0px);">
-                            <div class="position-relative" data-anime='{ "effect": "slide", "direction": "rl", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
-                                {% if servicio.img_direc %} <img src="/media/{{ servicio.imag_serv_2}}" alt="" > {% else %}  <img src="/media/{{ servicio.imag_serv_1}}" alt="" >   {% endif %}
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
+                </section>
+                <!-- end section -->
+            {% endif %}
         {% endfor %}
         <!-- start section -->
 <section class="big-section position-relative">

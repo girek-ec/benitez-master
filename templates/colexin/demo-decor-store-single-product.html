@@ -67,6 +67,19 @@
                     </div>
                     <div class="col-lg-6 offset-lg-1 product-info" data-anime='{ "translate": [0, 0], "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
 
+                        <div class="shop-image" style="margin-bottom: 50px">
+                                {% if product.available %}
+                                    <span class="lable new">
+                                          Disponible
+                                    </span>
+
+                                    {% else %}
+                                    <span class="lable hot">
+                                      Vendido / Reservado
+                                    </span>
+                                {% endif %}
+                        </div>
+
                         <div class="d-block d-sm-flex align-items-center mb-20px">
                             <div class="me-10px xs-me-0">
                                 <div class="section-link ls-minus-1px icon-small">
@@ -78,9 +91,12 @@
                                 </div>
                             </div>
 
+
                             <div><span class="text-dark-gray fw-500">CÓDIGO: </span>00{{product.id}}</div>
+
                         </div>
-                         <div>
+
+                        <div>
                             <div class="w-100 d-block"><span class="text-dark-gray alt-font fw-500">Categoria:</span>{{product.category.name}} </div>
                         </div>
                         <h5 class="alt-font text-dark-gray fw-700 mb-10px">{{product.name}}</h5>
@@ -123,7 +139,7 @@
                                         <i class="feather icon-feather-archive top-8px position-relative align-middle text-dark-gray"></i>
                                     </div>
                                     <div class="feature-box-content">
-                                        <span><span class="alt-font text-dark-gray fw-500">Envío y devoluciones gratis:</span> No se aceptan devoluciones</span>
+                                        <span><span class="alt-font text-dark-gray fw-500">Envío y devoluciones :</span> No se aceptan devoluciones</span>
                                     </div>
                                 </div>
                             </div>

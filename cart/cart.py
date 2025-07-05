@@ -91,16 +91,24 @@ class Cart:
     def get_shipping_cost(self):
         """
         Calcula el costo de envío basado en el precio total sin descuento.
+        Devuelve 0 si no hay productos o si el total supera $100
         """
+        if not self.cart or len(self.cart) == 0:  # Si el carrito está vacío
+            return Decimal('0.00')
+
         total = self.get_total_price()
-        return Decimal(0) if total > Decimal('100.00') else Decimal('5.00')
+        return Decimal('0.00') if total > Decimal('100.00') else Decimal('5.00')
 
     def get_shipping_cost_after_discount(self):
         """
         Calcula el costo de envío basado en el subtotal después del descuento.
+        Devuelve 0 si no hay productos o si el subtotal supera $100
         """
+        if not self.cart or len(self.cart) == 0:  # Si el carrito está vacío
+            return Decimal('0.00')
+
         subtotal = self.get_total_price_after_discount()
-        return Decimal(0) if subtotal > Decimal('100.00') else Decimal('5.00')
+        return Decimal('0.00') if subtotal > Decimal('100.00') else Decimal('5.00')
 
     @property
     def coupon(self):
@@ -128,6 +136,9 @@ class Cart:
     def get_total_price_with_shipping(self):
         """
         Calcula el total del carrito incluyendo el costo de envío después del descuento.
+        Devuelve 0 si no hay productos
         """
-        return self.get_total_price_after_discount() + self.get_shipping_cost_after_discount()
+        if not self.cart or len(self.cart) == 0:  # Si el carrito está vacío
+            return Decimal('0.00')
 
+        return self.get_total_price_after_discount() + self.get_shipping_cost_after_discount()

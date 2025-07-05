@@ -65,6 +65,7 @@ class Vortice(models.Model):
 
 
 class Seccion_Cliente(models.Model):
+    mostrar= models.BooleanField(default=False)
     cliente=models.CharField(max_length=30, null=True, blank=True)
     imag_cliente_01 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imag_cliente_02 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
@@ -141,10 +142,25 @@ class Prod_prenda(models.Model):
     descripcion_produc = models.TextField(max_length=400, null=True, blank=True)
     tipo_material = models.ForeignKey(Material_producto, null=True, blank=True, on_delete=models.SET_NULL)
     price = models.DecimalField(max_digits=999, decimal_places=2)
+
     has_sizes = models.BooleanField(default=True)  # ✅ Indica si el producto tiene tallas
+    is_unique = models.BooleanField(default=False)  # ✅ Nuevo: Indica si es unidad única con talla única
+
     imagen_produc_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imagen_produc_02 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
     video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
+    ESTADO_CHOICES = [
+        ('disp', 'Disponible'),
+        ('agot', 'Agotado'),
+        ('reserv', 'Reservado'),
+    ]
+    estado = models.CharField(
+        max_length=6,
+        choices=ESTADO_CHOICES,
+        default='disp',
+        verbose_name="Estado del producto",
+        help_text="Selecciona si está disponible, agotado o reservado."
+    )
 
 
 

@@ -215,6 +215,7 @@ class Contacto_empresa(models.Model):
 
 
 class Servicio(models.Model):
+    activo = models.BooleanField(default=False, help_text="Activo para ser visualizado")
     orden = models.IntegerField()
     icono = models.CharField(max_length=20, null=True, blank=True)
     inicio = models.BooleanField(default=False, help_text="Para Ver en Inicio")

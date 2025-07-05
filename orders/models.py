@@ -48,9 +48,14 @@ class Order(models.Model):
         return Decimal(0)
 
     def get_total_cost(self):
+        if self.items.count() == 0:  # Si no hay productos
+            return Decimal('0.00')
+
         total_cost = self.get_total_cost_before_discount()
         total_after_discount = total_cost - self.get_discount()
-        return total_after_discount + self.shipping_cost  # Incluir el costo de envío
+
+        # Solo agregar shipping_cost si hay productos
+        return total_after_discount + self.shipping_cost
 
     def get_stripe_url(self):
         if not self.stripe_id:

@@ -14,6 +14,11 @@ class BaseAdmin(admin.ModelAdmin):
         self.list_display_links = [Attr(model)[0]]  # Usar solo el primer campo como enlace
         super().__init__(model, *args, **kwargs)
 
+    def get_list_display(self, request):
+        # Attr(self.model) devuelve la lista de campos básicos
+        campos = list(Attr(self.model))
+        return campos
+
 # Inline para MesModa_galeria
 class MesModa_galeriaInline(admin.StackedInline):
     model = MesModa_galeria
@@ -43,7 +48,24 @@ class ColeccionAdmin(BaseAdmin):
 # Admin para Tipo_articulo
 @admin.register(Tipo_articulo)
 class Tipo_articuloAdmin(BaseAdmin):
-    list_display = list(BaseAdmin.list_display) + ["miniatura"]
+    # no ponemos list_display aquí
+    def get_list_display(self, request):
+        # recupero los campos base + mi miniatura
+        return super().get_list_display(request) + ["miniatura"]
+
+    @admin.display(description="Imagen")
+    def miniatura(self, obj):
+        if obj.imagen_articulo:
+            return format_html(
+                '<img src="{}" width="100" style="object-fit: contain;" />',
+                obj.imagen_articulo.url
+            )
+        return "-"
+
+
+
+
+
 
 # Admin para Material_producto
 @admin.register(Material_producto)

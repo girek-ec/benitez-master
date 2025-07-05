@@ -10,17 +10,9 @@
         <meta property="og:image:height" content="600"/>
     {% endblock %}
 {% block principal %}
-    <!-- page-title -->
-    <div class="tf-page-title" style="padding-top: 25px !important; padding-bottom: 25px !important;">
-        <div class="container-full">
-            <div class="heading text-center">{{ seccion_id.cliente }}</div>
-            <p class="text-center text-2 text_black-2 mt_5"> Compre nuestra última selección de ropa para {{ seccion_id.cliente }}.
-            </p>
-        </div>
-    </div>
-    <!-- /page-title -->
+
     <!-- Collection -->
-        <section class="flat-spacing-3 pb_0">
+        <section class="flat-spacing pb_0">
             <div class="container">
                 <div class="hover-sw-nav">
                     <div class="swiper tf-sw-collection" data-preview="5" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="false" data-auto-play="true">
@@ -33,9 +25,9 @@
                                                 <a href="/vortice/seccion/{{tipo_articulo.coleccion.cliente.cliente}}/prenda/{{tipo_articulo.nombre_articulo}}/" class="collection-image img-style">
                                                     <img class="lazyload" data-src="/media/{{ tipo_articulo.imagen_articulo }}" src="/media/{{ tipo_articulo.imagen_articulo }}" alt="collection-img">
                                                 </a>
-                                                <div class="collection-content">
+                                               <!-- <div class="collection-content">
                                                     <a href="/vortice/seccion/{{tipo_articulo.coleccion.cliente.cliente}}/prenda/{{tipo_articulo.nombre_articulo}}/" class="tf-btn collection-title hover-icon fs-15"><span>{{ tipo_articulo.nombre_articulo }}</span><i class="icon icon-arrow1-top-left"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +44,7 @@
         </section>
         <!-- /Collection -->
 
-    <section class="flat-spacing-1">
+    <section class="flat-spacing">
         <div class="container-full">
             <div class="tf-shop-control grid-3 align-items-center" style="text-align: center;">
 
@@ -92,14 +84,10 @@
                                 <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
                                      src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
                                 {% endif %}
-
-
                             </a>
-
-
                         </div>
                         <div class="card-product-info">
-                            <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }}</a>
+                            <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }} </a>
                             <span class="price"> ${{ product.price }}</span>
                         </div>
                     </div>

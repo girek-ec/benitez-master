@@ -87,15 +87,18 @@
                                     <h7 class="fw-5">Sub Total</h7>
                                     <h7 class="fw-5"> ${{ cart.get_total_price_after_discount|floatformat:2 }}</h7>
                                 </div>
-                                <!-- Mostrar el costo de envío -->
+
+                                <!-- Mostrar el costo de envío SOLO si hay productos -->
+                                {% if cart|length > 0 %}
                                 <div class="d-flex justify-content-between line pb_15">
                                     <h7 class="fw-5">Costo de envío</h7>
                                     <h7 class="fw-5">${{ cart.get_shipping_cost|floatformat:2 }}</h7>
                                 </div>
+                                {% endif %}
 
                                 <div class="d-flex justify-content-between line pb_20">
                                     <h7 class="fw-5"> Total</h7>
-                                    <h7 class="total fw-5" > $ {{ cart.get_total_price_with_shipping|floatformat:2 }} </h7>
+                                    <h7 class="total fw-5">${{ cart.get_total_price_with_shipping|floatformat:2 }}</h7>
                                 </div>
                             </form>
                         </div>

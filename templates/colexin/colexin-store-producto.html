@@ -25,7 +25,16 @@
                                 <div class="shop-image mb-20px">
                                     <a href="/colexin/producto/{{producto.id}}">
                                         <img src="/media/{{producto.img_1}}" alt="">
-                                        <span class="lable new">New</span>
+                                        {% if product.available %}
+                                            <span class="lable new">
+                                                  Disponible
+                                            </span>
+
+                                            {% else %}
+                                            <span class="lable hot">
+                                              Vendido / Reservado
+                                            </span>
+                                        {% endif %}
                                         <div class="shop-overlay bg-gradient-gray-light-dark-transparent"></div>
                                     </a>
                                     <div class="shop-buttons-wrap">

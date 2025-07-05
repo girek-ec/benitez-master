@@ -37,6 +37,21 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        .alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+        color: #856404;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
     </style>
 
         <!-- page-cart -->
@@ -92,6 +107,7 @@
                                         </tr>
                                     {% endfor %}
 
+
                                     {% if order.coupon %}
                                         <tr class="subtotal">
                                           <td>Subtotal</td>
@@ -118,18 +134,23 @@
                                           </td>
                                         </tr>
                                     {% endif %}
+
+                                    <!-- Mostrar costo de envío solo si hay productos -->
+                                    {% if order.items.count > 0 %}
                                         <tr class="subtotal">
-                                              <td>Costo de envío</td>
-                                              <td colspan="2"></td>
-                                              <td class="cart-total">${{ order.shipping_cost|floatformat:2 }}</td>
-                                            </tr>
-                                        </tbody>
-                                        <tr class="total">
-                                              <td>Total</td>
-                                              <td colspan="2"></td>
-                                              <td class="cart-total">   {{ order.get_total_cost|floatformat:2 }} </td>
-                                            </tr>
-                                        </tbody>
+                                          <td>Costo de envío</td>
+                                          <td colspan="2"></td>
+                                          <td class="cart-total">${{ order.shipping_cost|floatformat:2 }}</td>
+                                        </tr>
+                                    {% endif %}
+
+
+                                    <tr class="total">
+                                          <td>Total</td>
+                                          <td colspan="2"></td>
+                                          <td class="cart-total">{{ order.get_total_cost|floatformat:2 }}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </form>
                     </div>
@@ -141,44 +162,53 @@
 
                                <!-- Botón de WhatsApp con reCAPTCHA -->
                                 <div class="button-container" style="text-align: center; margin-top: 20px;">
-                                    <form id="whatsappForm" action="{% url 'payment:send_whatsapp_email' %}" method="get" target="_blank" onsubmit="return verifyRecaptcha(event)">
-
-
-
-                                        <!-- PARA LOCAL HOOST -->
-                                          <!--<div class="g-recaptcha" data-sitekey="6Letk-UqAAAAAHdQaaEqLi0uJO0LZaRecQMmdk-x" data-callback="enableButton"></div>-->
-
-                                       <!-- PARA WEB BENITEZ -->
-                                       <div class="g-recaptcha" data-sitekey="6LdjleUqAAAAAMgPqyj2LMsG5izrhTO3MShPNkLp" data-callback="enableButton"></div>
-
-                                         <br>
-                                        <button id="whatsappButton" type="submit" class="btn btn-success" disabled style="
-                                            background-color: #FFC107;
-                                            color: black;
-                                            font-size: 16px;
-                                            font-weight: bold;
-                                            padding: 12px 24px;
-                                            border-radius: 8px;
-                                            border: none;
-                                            cursor: pointer;
-                                            transition: background-color 0.3s ease-in-out;">
+                                    {% if disable_payment or order.get_total_cost <= 0 %}
+                                        <div class="alert alert-warning" role="alert">
+                                            <strong>¡Carrito vacío!</strong> Agrega productos para continuar con la compra.
+                                        </div>
+                                        <button class="btn btn-secondary" disabled style="background-color: #6c757d; color: white; font-size: 16px; font-weight: bold; padding: 12px 24px; border-radius: 8px; border: none; cursor: not-allowed;">
                                             Realizar Compra
                                         </button>
-                                    </form>
+                                    {% else %}
+                                        <form id="whatsappForm" action="{% url 'payment:send_whatsapp_email' %}" method="get" target="_blank" onsubmit="return verifyRecaptcha(event)">
+                                            <div class="g-recaptcha" data-sitekey="6Letk-UqAAAAAHdQaaEqLi0uJO0LZaRecQMmdk-x" data-callback="enableButton"></div>
+                                            <br>
+                                            <button id="whatsappButton" type="submit" class="btn btn-success" style="background-color: #FFC107; color: black; font-size: 16px; font-weight: bold; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; transition: background-color 0.3s ease-in-out;">
+                                                Realizar Compra
+                                            </button>
+                                        </form>
+                                    {% endif %}
                                 </div>
 
                                 <script>
+                                    // Deshabilitar el botón al cargar si no hay productos
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        {% if disable_payment or order.get_total_cost <= 0 %}
+                                            document.getElementById("whatsappButton").disabled = true;
+                                        {% endif %}
+                                    });
+
                                     function enableButton() {
-                                        document.getElementById("whatsappButton").disabled = false;
+                                        // Solo habilitar si hay productos
+                                        {% if not disable_payment and order.get_total_cost > 0 %}
+                                            document.getElementById("whatsappButton").disabled = false;
+                                        {% endif %}
                                     }
 
                                     function verifyRecaptcha(event) {
+                                        // Verificar primero si hay productos
+                                        {% if disable_payment or order.get_total_cost <= 0 %}
+                                            alert("No hay productos para comprar. Agrega productos al carrito primero.");
+                                            event.preventDefault();
+                                            return false;
+                                        {% endif %}
+
                                         if (grecaptcha.getResponse() === "") {
                                             alert("Por favor, verifica que no eres un robot.");
                                             event.preventDefault();
                                             return false;
                                         }
-                                        // Redirige a la página de inicio después de 3 segundos
+
                                         setTimeout(function() {
                                             window.location.href = "/orden_pedido/";
                                         }, 3000);

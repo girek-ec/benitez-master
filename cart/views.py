@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
+from django.contrib import messages
 from Vortice.models import *
 from coupons.forms import CouponApplyForm
 from .cart import Cart
@@ -12,9 +13,19 @@ from .forms import CartAddProductForm
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Prod_prenda, id=product_id)
-    form = CartAddProductForm(request.POST, has_sizes=product.has_sizes)
+
+    # Bind del formulario con la información de tallas
+    form = CartAddProductForm(request.POST, has_sizes=product.has_sizes,is_unique=product.is_unique )# ← lo añadimos aquí
 
     if form.is_valid():
+        # Si es producto único y ya está en el carrito, no añadir de nuevo
+        if product.is_unique and any(item['product'].id == product.id for item in cart):
+            messages.warning(request, "Este producto exclusivo ya está en tu carrito.")
+            return redirect('cart:cart_detail')
+
+
+
+
         cd = form.cleaned_data
         size = cd['size'] if product.has_sizes else 'U'  # Si no tiene tallas, usa "Única"
 
@@ -26,6 +37,8 @@ def cart_add(request, product_id):
                  override_quantity=cd['override'])
     else:
         print("Formulario no válido")
+        messages.error(request, "No se pudo añadir el producto (formulario inválido).")
+
 
     return redirect('cart:cart_detail')
 
@@ -63,8 +76,10 @@ def cart_detail(request):
                 'quantity': item['quantity'],
                 'override': True,
                 'size': item.get('size', 'U')  # Usar "U" si no hay talla
+
             },
-            has_sizes=product.has_sizes  # Pasar si el producto tiene tallas
+            has_sizes=product.has_sizes,  # Pasar si el producto tiene tallas
+            is_unique=product.is_unique  # Añade este parámetro
         )
         print(f"Formulario para el ítem: {item['update_quantity_form'].initial}")
 
@@ -84,7 +99,5 @@ def cart_detail(request):
         'total_with_shipping': total_with_shipping,
 
     }
-
-
     return render(request, 'cart/detail.html',contexto )
 

@@ -28,7 +28,7 @@ def index_vortice(request):
     return render(request, 'vortice/index_vortice.html', contexto)
 
 
-def seccion_filtro(request,secc):
+def seccion_filtro(request,secc,tipo):
     contexto ={
         'vortice':Vortice.objects.all().first(),
         'notificaciones': Notificaciones.objects.all().first(),
@@ -38,7 +38,8 @@ def seccion_filtro(request,secc):
         'colecciones':Coleccion.objects.all(),
         'tipo_articulos_menu': Tipo_articulo.objects.all(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=secc),
-        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=secc),
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=secc).order_by('-id'),
+         'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -59,6 +60,7 @@ def tipo_filtro(request,seccion,tipo):
         'tipo_articulos_menu': Tipo_articulo.objects.all(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion),
         'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=seccion, tipo_produc__nombre_articulo=tipo),
+        'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -79,7 +81,8 @@ def coleccion_filtro(request,seccion,coleccion):
         'colecciones':Coleccion.objects.all(),
         'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
-        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion ), 
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion ),
+
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -101,7 +104,8 @@ def coleccion_filtro_prenda(request,seccion,coleccion,tipo):
         'colecciones':Coleccion.objects.all(),
         'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
-        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion, tipo_produc__nombre_articulo=tipo ), 
+        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion, tipo_produc__nombre_articulo=tipo ),
+        'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -116,7 +120,7 @@ def producto_detalle(request, id):
     product = Prod_prenda.objects.get(id=id)  # Obtener el producto específico
 
     # Determinar si el producto tiene tallas o es talla única
-    cart_product_form = CartAddProductForm(has_sizes=product.has_sizes)
+    cart_product_form = CartAddProductForm(has_sizes=product.has_sizes, is_unique=product.is_unique)
 
     contexto = {
         'vortice': Vortice.objects.all().first(),

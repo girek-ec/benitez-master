@@ -39,6 +39,22 @@ def payment_process(request):
     order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
 
+    # Validar si hay productos en la orden
+    if order.items.count() == 0:
+        return render(request, 'payment/process.html', {
+            'order': order,
+            'error_message': "No hay productos en el carrito. Agrega productos para continuar con la compra.",
+            'disable_payment': True,  # Nueva variable de contexto
+            'vortice': Vortice.objects.all().first(),
+            'secciones': Seccion_Cliente.objects.all(),
+            'colecciones': Coleccion.objects.all(),
+            'tipo_articulos_menu': Tipo_articulo.objects.all(),
+            'notificaciones': Notificaciones.objects.all().first(),
+        })
+
+    # Resto del código de la vista permanece igual...
+    # Cálculos de la orden
+
 
     # Cálculos de la orden
     subtotal = order.get_total_cost_before_discount()  # Subtotal antes del descuento
@@ -168,6 +184,10 @@ def payment_canceled(request):
 def send_whatsapp_and_email(request):
     order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
+
+    # Validar que haya productos
+    if order.items.count() == 0 or order.get_total_cost() <= 0:
+        return redirect('cart:cart_detail')
 
     # Generar mensaje de WhatsApp
     whatsapp_message = generate_whatsapp_message(order)

@@ -66,9 +66,13 @@
                             <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 {% for servicio in servicios %}
-                                    <li>
-                                        <a href="/girekstudio/servicios/{{ servicio.id }}"><i class="bi {{ servicio.icono }} text-dark-gray"></i>{{ servicio.titulo }}</a>
-                                    </li>
+                                    {% if servicio.activo %}
+                                    	<li>
+                                            <a href="/girekstudio/servicios/{{ servicio.id }}"><i class="bi {{ servicio.icono }} text-dark-gray"></i>{{ servicio.titulo }}</a>
+                                        </li>
+                                        {% else %}
+                                    {% endif %}
+
                                 {% endfor %}
                             </ul>
                         </li>
@@ -246,9 +250,11 @@
 <section class="">
     <div class="">
         {% for servicio in servicios %}
-            <div class="stack-item stack-item-{{ servicio.orden }}">
-                {{ servicio.orden }}
-            </div>
+            {% if servicio.activo %}
+                <div class="stack-item stack-item-{{ servicio.orden }}">
+                    {{ servicio.orden }}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </section>
@@ -258,40 +264,42 @@
 <section class="stack-box py-0 z-index-99">
     <div class="stack-box-contain">
         {% for servicio in servicios %}
-            <!-- start stack item -->
-            <div class="stack-item stack-item-0{{ servicio.orden }}  {% if servicio.white %} bg-white lg-pt-8 lg-pb-8 md-pb-0 {% endif %} {% if servicio.line %} bg-linen md-pt-0 md-pb-0  {% endif %}  " >
-                <div class="stack-item-wrapper">
-                    <div class="container-fluid">
-                        <div class="row align-items-center full-screen md-h-auto">
-                            <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imag_serv_1 }}')">
-                                <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
-                                <div class="position-absolute right-0px bottom-minus-1px">
-                                    <div class="vertical-title-center">
-                                        <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray {% if servicio.white %} bg-white pt-30px pb-30px ps-10px pe-10px {% else %}  bg-linen pt-30px pb-30px ps-10px pe-10px {% endif %} ">
-                                            <span class="d-inline-block">{{ servicio.titulo}}</span>
+            {% if servicio.activo %}
+                <!-- start stack item -->
+                <div class="stack-item stack-item-0{{ servicio.orden }}  {% if servicio.white %} bg-white lg-pt-8 lg-pb-8 md-pb-0 {% endif %} {% if servicio.line %} bg-linen md-pt-0 md-pb-0  {% endif %}  " >
+                    <div class="stack-item-wrapper">
+                        <div class="container-fluid">
+                            <div class="row align-items-center full-screen md-h-auto">
+                                <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imag_serv_1 }}')">
+                                    <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
+                                    <div class="position-absolute right-0px bottom-minus-1px">
+                                        <div class="vertical-title-center">
+                                            <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray {% if servicio.white %} bg-white pt-30px pb-30px ps-10px pe-10px {% else %}  bg-linen pt-30px pb-30px ps-10px pe-10px {% endif %} ">
+                                                <span class="d-inline-block">{{ servicio.titulo}}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
-                                <div class="mb-15px">
-                                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">GirekStudio </span>
+                                <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
+                                    <div class="mb-15px">
+                                        <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                                        <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">GirekStudio </span>
+                                    </div>
+                                    <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">{{ servicio.titulo}}</h1>
+                                    <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
+                                    <a href="/girekstudio/servicios/{{ servicio.id }}" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
+                                        <span>
+                                            <span class="btn-double-text" data-text="Ir">Explorar</span>
+                                            <span><i class="feather icon-feather-arrow-right"></i></span>
+                                        </span>
+                                    </a>
                                 </div>
-                                <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">{{ servicio.titulo}}</h1>
-                                <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
-                                <a href="/girekstudio/servicios/{{ servicio.id }}" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Ir">Explorar</span>
-                                        <span><i class="feather icon-feather-arrow-right"></i></span>
-                                    </span>
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end stack item -->
+                <!-- end stack item -->
+            {% endif %}
         {% endfor %}
     </div>
 </section>

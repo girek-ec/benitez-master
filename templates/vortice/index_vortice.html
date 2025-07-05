@@ -140,6 +140,7 @@
                                 <a href="/vortice/" class="item-link">Inicio<i class="icon icon-arrow"></i></a>
                             </li>
                             {% for cliente in secciones %}
+                                {% if cliente.mostrar %}
                                 <li class="menu-item">
                                     <a href="/vortice/seccion/{{ cliente.cliente }}" class="item-link">{{ cliente.cliente }}<i
                                             class="icon icon-arrow-down"></i></a>
@@ -208,6 +209,7 @@
                                         </div>
                                     </div>
                                 </li>
+                                {% endif %}
                             {% endfor %}
 
                             <li class="menu-item">
@@ -941,6 +943,10 @@
                     <p>✅ El cliente realiza el pago mediante depósito o transferencia bancaria.</p>
                     <p>✅ Debe enviar el comprobante de pago por:</p>
                     <p>✅ WhatsApp o Correo electrónico.</p>
+                    <p>• Importante: incluye tu <strong>Número de Pedido: </strong></p>
+                    <div class="text-center mt-4" style="margin-bottom: 20px!important;">
+                        <a href="https://wa.me/593993239290?text=Hola,%20mi%20número%20de%20pedido%20es:%20{{ order.id }}" class="btn btn-primary btn-lg" style="font-size: 18px; padding: 10px 20px; border-radius: 5px;" target="_blank">Enviar tu comprobante🚀</a>
+                    </div>
                     <p>✅ El equipo de ventas verifica la transacción en la cuenta bancaria.</p>
                     <h6>2. Confirmación del Pedido</h6>
                     <p>✅ Una vez validado el pago, Se procede a la preparación del producto y datos de entrega para el envio por transporte</p>
