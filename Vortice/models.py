@@ -66,7 +66,16 @@ class Vortice(models.Model):
 
 class Seccion_Cliente(models.Model):
     mostrar= models.BooleanField(default=False)
-    cliente=models.CharField(max_length=30, null=True, blank=True)
+    TIPO_CLIENTE = [
+        ('hombre', 'Hombre'),
+        ('mujer', 'Mujer'),
+        ('unisex', 'Unisex'),
+    ]
+    cliente = models.CharField(
+        max_length=10,
+        choices=TIPO_CLIENTE,
+        default='unisex',
+    )
     imag_cliente_01 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imag_cliente_02 = models.FileField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
 
@@ -110,6 +119,7 @@ class Coleccion(models.Model):
 
 class Tipo_articulo(models.Model):
     activo_menu = models.BooleanField(default=False)
+    activo_menu_colec = models.BooleanField(default=False)
     coleccion = models.ForeignKey(Coleccion, on_delete=models.CASCADE, null=True, blank=True)
     nombre_articulo = models.CharField(max_length=10,null=True, blank=True)
     imagen_articulo = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='100x100')

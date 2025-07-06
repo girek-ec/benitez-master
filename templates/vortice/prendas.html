@@ -23,9 +23,9 @@
                                                 <a href="/vortice/seccion/{{tipo_articulo.coleccion.cliente.cliente}}/prenda/{{tipo_articulo.nombre_articulo}}/" class="collection-image img-style">
                                                     <img class="lazyload" data-src="/media/{{ tipo_articulo.imagen_articulo }}" src="/media/{{ tipo_articulo.imagen_articulo }}" alt="collection-img">
                                                 </a>
-                                                <div class="collection-content">
+                                                <!-- <div class="collection-content">
                                                     <a href="/vortice/seccion/{{tipo_articulo.coleccion.cliente.cliente}}/prenda/{{tipo_articulo.nombre_articulo}}/" class="tf-btn collection-title hover-icon fs-12"><span>{{ tipo_articulo.nombre_articulo }}</span><i class="icon icon-arrow1-top-left"></i></a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -91,30 +91,6 @@
                             <span class="price"> ${{ product.price }}</span>
                         </div>
                     </div>
-                    <!-- card product  -->
-                {% endfor %}
-                {% for product in products_unisex %}
-                     <!-- card product -->
-                        <div class="card-product">
-                            <div class="card-product-wrapper">
-                                <a href="/vortice/producto/{{ product.id }}" class="product-img">
-                                    <img class="lazyload img-product" data-src="/media/{{ product.imagen_produc_01 }}"
-                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
-
-                                    {% if product.imagen_produc_02 %}
-                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_02 }}"
-                                    src="/media/{{ product.imagen_produc_02 }}" alt="image-product">
-                                    {% else %}
-                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
-                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }} hola</a>
-                                <span class="price"> ${{ product.price }}</span>
-                            </div>
-                        </div>
                     <!-- card product  -->
                 {% endfor %}
 

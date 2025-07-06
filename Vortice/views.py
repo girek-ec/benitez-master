@@ -7,6 +7,8 @@ from Girekstudio.models import Producto
 from benitez import settings
 from Vortice.models import *
 from cart.forms import CartAddProductForm
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404
 
 
 def index_vortice(request):
@@ -28,18 +30,17 @@ def index_vortice(request):
     return render(request, 'vortice/index_vortice.html', contexto)
 
 
-def seccion_filtro(request,secc,tipo):
+def seccion_filtro(request,secc):
     contexto ={
         'vortice':Vortice.objects.all().first(),
         'notificaciones': Notificaciones.objects.all().first(),
         'sliders':Coleccion.objects.all(),
         'secciones': Seccion_Cliente.objects.all(),
-        'seccion_id': Seccion_Cliente.objects.get(cliente=secc),
+        #'seccion_id': Seccion_Cliente.objects.get(cliente=secc),
         'colecciones':Coleccion.objects.all(),
-        'tipo_articulos_menu': Tipo_articulo.objects.all(),
+        'tipo_articulos_menu': Tipo_articulo.objects.filter(coleccion__cliente__cliente=secc),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=secc),
         'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=secc).order_by('-id'),
-         'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -50,23 +51,38 @@ def seccion_filtro(request,secc,tipo):
     return render(request,'vortice/vortice-shop.html', contexto)
 
 def tipo_filtro(request,seccion,tipo):
-    contexto ={
-        'vortice':Vortice.objects.all().first(),
-        'notificaciones': Notificaciones.objects.all().first(),
-        'sliders':Coleccion.objects.all(),
+    # 1. Asegura que la sección (hombre/mujer) exista:
+    seccion_obj = get_object_or_404(Seccion_Cliente, cliente__iexact=seccion)
+
+    # 2. Intenta obtener la sección “unisex” (case‐insensitive):
+    unisex_obj = Seccion_Cliente.objects.filter(cliente__iexact='unisex').first()
+
+    # 3. Construye filtro usando Q sobre instancias, no sobre strings:
+    products = Prod_prenda.objects.filter(
+        tipo_produc__nombre_articulo=tipo
+    ).filter(
+        Q(tipo_produc__coleccion__cliente=seccion_obj) |
+        Q(tipo_produc__coleccion__cliente=unisex_obj)
+    ).distinct()
+
+    contexto = {
+        'vortice': Vortice.objects.first(),
+        'notificaciones': Notificaciones.objects.first(),
+        'sliders': Coleccion.objects.all(),
         'secciones': Seccion_Cliente.objects.all(),
-        'seccion_id': Seccion_Cliente.objects.get(cliente=seccion),
-        'colecciones':Coleccion.objects.all(),
+        'seccion_id': seccion_obj,
+        'colecciones': Coleccion.objects.all(),
         'tipo_articulos_menu': Tipo_articulo.objects.all(),
-        'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion),
-        'products': Prod_prenda.objects.filter(tipo_produc__coleccion__cliente__cliente=seccion, tipo_produc__nombre_articulo=tipo),
-        'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
-        'servicios' : Servicios.objects.all(),
-        'giftCards' : GiftCard.objects.all(),
-        'anios' :  Anio.objects.all(),
-        'meses' :  Meses.objects.all(),
-        'mesmodas' : MesModa.objects.all(),
-        'mesmoda_galerias' : MesModa_galeria.objects.all(),
+        'tipo_articulos': Tipo_articulo.objects.filter(
+            coleccion__cliente__in=[seccion_obj] + ([unisex_obj] if unisex_obj else [])
+        ).distinct(),
+        'products': products,
+        'servicios': Servicios.objects.all(),
+        'giftCards': GiftCard.objects.all(),
+        'anios': Anio.objects.all(),
+        'meses': Meses.objects.all(),
+        'mesmodas': MesModa.objects.all(),
+        'mesmoda_galerias': MesModa_galeria.objects.all(),
     }
     return render(request, 'vortice/prendas.html', contexto)
 
@@ -82,7 +98,6 @@ def coleccion_filtro(request,seccion,coleccion):
         'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
         'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion ),
-
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),
@@ -105,7 +120,6 @@ def coleccion_filtro_prenda(request,seccion,coleccion,tipo):
         'colecciones_id':Coleccion.objects.filter(cliente__cliente=seccion, tema_colec=coleccion ).first(),
         'tipo_articulos': Tipo_articulo.objects.filter(coleccion__cliente__cliente=seccion, coleccion__tema_colec=coleccion ),
         'products': Prod_prenda.objects.filter(tipo_produc__coleccion__tema_colec=coleccion, tipo_produc__nombre_articulo=tipo ),
-        'products_unisex': Prod_prenda.objects.filter(tipo_produc__nombre_articulo=tipo),
         'servicios' : Servicios.objects.all(),
         'giftCards' : GiftCard.objects.all(),
         'anios' :  Anio.objects.all(),

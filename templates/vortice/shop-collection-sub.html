@@ -37,7 +37,7 @@
                      data-space-md="30" data-space="15" data-loop="false" data-auto-play="false">
                     <div class="swiper-wrapper">
                         {% for tipo_articulo in tipo_articulos %}
-                            {% if tipo_articulo.activo_menu %}
+                            {% if tipo_articulo.activo_menu_colec %}
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-2 hover-img">
                                         <div class="collection-inner">
@@ -114,30 +114,7 @@
                     </div>
                     <!-- card product  -->
                 {% endfor %}
-                {% for product in products_unisex %}
-                     <!-- card product -->
-                        <div class="card-product">
-                            <div class="card-product-wrapper">
-                                <a href="/vortice/producto/{{ product.id }}" class="product-img">
-                                    <img class="lazyload img-product" data-src="/media/{{ product.imagen_produc_01 }}"
-                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
 
-                                    {% if product.imagen_produc_02 %}
-                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_02 }}"
-                                    src="/media/{{ product.imagen_produc_02 }}" alt="image-product">
-                                    {% else %}
-                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
-                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <div class="card-product-info">
-                                <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }}</a>
-                                <span class="price"> ${{ product.price }}</span>
-                            </div>
-                        </div>
-                    <!-- card product  -->
-                {% endfor %}
             </div>
             <!-- pagination -->
             <ul class="tf-pagination-wrap tf-pagination-list">
