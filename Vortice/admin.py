@@ -94,6 +94,7 @@ class ProdPrendaResource(resources.ModelResource):
             'has_sizes',
             'imagen_produc_01',
             'imagen_produc_02',
+            'imagen_produc_03',
             'video_produc',
         )
         export_order = fields

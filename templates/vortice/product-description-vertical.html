@@ -79,24 +79,35 @@
                                             </div>
                                         {% endif %}
 
-                                        <div class="swiper-slide">
-                                            <div class="item">
-                                                <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}"
-                                                     src="/media/{{ products.imagen_produc_01 }}"
-                                                     alt="imagen producto vortice">
-                                            </div>
-                                        </div>
-                                        {% if products.video_produc %}
-                                            <div class="swiper-slide">
+                                        {% if products.imagen_produc_01 %}
+                                           <div class="swiper-slide">
                                                 <div class="item">
-                                                    <img class="lazyload"
-                                                         data-src="/media/{{ products.imagen_produc_02 }}"
+                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}"
+                                                         src="/media/{{ products.imagen_produc_01 }}"
+                                                         alt="imagen producto vortice">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                       {% if products.imagen_produc_02 %}
+                                           <div class="swiper-slide">
+                                                <div class="item">
+                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_02 }}"
                                                          src="/media/{{ products.imagen_produc_02 }}"
                                                          alt="imagen producto vortice">
                                                 </div>
                                             </div>
                                         {% endif %}
 
+                                       {% if products.imagen_produc_03 %}
+                                           <div class="swiper-slide">
+                                                <div class="item">
+                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_03 }}"
+                                                         src="/media/{{ products.imagen_produc_03 }}"
+                                                         alt="imagen producto vortice">
+                                                </div>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
 
@@ -110,15 +121,19 @@
                                                 </div>
                                             </div>
                                         {% endif %}
-                                        <div class="swiper-slide">
-                                            <div class="item"
-                                                 onclick="openPopup('/media/{{ products.imagen_produc_01 }}')">
-                                                <img class="tf-image-zoom lazyload"
-                                                     data-zoom="/media/{{ products.imagen_produc_01 }}"
-                                                     data-src="/media/{{ products.imagen_produc_01 }}"
-                                                     src="/media/{{ products.imagen_produc_01 }}" alt="">
+
+                                        {% if products.imagen_produc_01 %}
+                                            <div class="swiper-slide">
+                                                <div class="item"
+                                                     onclick="openPopup('/media/{{ products.imagen_produc_01 }}')">
+                                                    <img class="tf-image-zoom lazyload"
+                                                         data-zoom="/media/{{ products.imagen_produc_01 }}"
+                                                         data-src="/media/{{ products.imagen_produc_01 }}"
+                                                         src="/media/{{ products.imagen_produc_01 }}" alt="">
+                                                </div>
                                             </div>
-                                        </div>
+                                        {% endif %}
+
                                         {% if products.imagen_produc_02 %}
                                             <div class="swiper-slide">
                                                 <div class="item"
@@ -127,6 +142,17 @@
                                                          data-zoom="/media/{{ products.imagen_produc_02 }}"
                                                          data-src="/media/{{ products.imagen_produc_02 }}"
                                                          src="/media/{{ products.imagen_produc_02 }}" alt="">
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        {% if products.imagen_produc_03 %}
+                                            <div class="swiper-slide">
+                                                <div class="item"
+                                                     onclick="openPopup('/media/{{ products.imagen_produc_03 }}')">
+                                                    <img class="tf-image-zoom lazyload"
+                                                         data-zoom="/media/{{ products.imagen_produc_03 }}"
+                                                         data-src="/media/{{ products.imagen_produc_03 }}"
+                                                         src="/media/{{ products.imagen_produc_03 }}" alt="">
                                                 </div>
                                             </div>
                                         {% endif %}
@@ -536,27 +562,49 @@
         </div>
     </div>
     <script>
+      var thumbSwiper = new Swiper(".tf-product-media-thumbs", {
+          direction: 'vertical',
+          spaceBetween: 10,
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
+        });
+
+        var mainSwiper = new Swiper(".tf-product-media-main", {
+          spaceBetween: 10,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+          },
+          thumbs: {
+            swiper: thumbSwiper
+          }
+        });
+    </script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var swiper = new Swiper(".tf-sw-product-sell", {
-                slidesPerView: 4,
-                spaceBetween: 30,
+            // Swiper para las miniaturas
+            var thumbSwiper = new Swiper(".tf-product-media-thumbs", {
+                direction: 'vertical',
+                spaceBetween: 10,
+                slidesPerView: 'auto',
+                watchSlidesProgress: true,
+            });
+
+            // Swiper para la imagen principal
+            var mainSwiper = new Swiper(".tf-product-media-main", {
+                spaceBetween: 0,
                 loop: true,
+                speed: 1500,  // Transición más suave (1.5 segundos)
                 autoplay: {
-                    delay: 3000, // 3 segundos
-                    disableOnInteraction: false, // Sigue moviéndose después de interacción
+                    delay: 4000, // 4 segundos de espera
+                    disableOnInteraction: false,
                 },
-                navigation: {
-                    nextEl: ".nav-next-product",
-                    prevEl: ".nav-prev-product",
+                effect: 'slide',  // Podrías probar también 'fade' si te interesa
+                thumbs: {
+                    swiper: thumbSwiper,
                 },
-                pagination: {
-                    el: ".sw-pagination-product",
-                    clickable: true,
-                },
-                breakpoints: {
-                    768: {slidesPerView: 3, spaceBetween: 15},
-                    480: {slidesPerView: 2, spaceBetween: 10},
-                }
+                centeredSlides: true,
             });
         });
     </script>

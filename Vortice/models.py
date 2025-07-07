@@ -158,6 +158,7 @@ class Prod_prenda(models.Model):
 
     imagen_produc_01 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imagen_produc_02 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
+    imagen_produc_03 = models.ImageField(upload_to='vortice', null=True, blank=True, help_text='horizontal')
     video_produc = models.FileField(upload_to='vortice', null=True, blank=True, help_text='video')
     ESTADO_CHOICES = [
         ('disp', 'Disponible'),
