@@ -183,6 +183,7 @@ class ProdPrendaResource(resources.ModelResource):
 
 
 
+
 # Modifica la clase Prod_prendaAdmin para usar ImportExportModelAdmin
 @admin.register(Prod_prenda)
 class Prod_prendaAdmin(ImportExportModelAdmin, admin.ModelAdmin):

@@ -177,6 +177,7 @@ class Prod_prenda(models.Model):
 
 
 
+
     def __str__(self):
         return '%s %s' % ( self.tipo_produc,  self.nombre_produc)
 
