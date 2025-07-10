@@ -84,6 +84,7 @@ class ProdPrendaResource(resources.ModelResource):
         model = Prod_prenda
         fields = (
             'id',
+            'visible',
             'tipo_produc',
             'coleccion',
             'seccion',
@@ -186,10 +187,10 @@ class ProdPrendaResource(resources.ModelResource):
 @admin.register(Prod_prenda)
 class Prod_prendaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = ProdPrendaResource
-    list_display = ['id', 'miniatura', 'tipo_produc', 'nombre_produc', 'descripcion_produc', 'tipo_material', 'price', 'has_sizes']
+    list_display = ['id', 'miniatura','visible' ,'tipo_produc', 'nombre_produc', 'descripcion_produc', 'tipo_material', 'price', 'has_sizes']
     list_filter = ['tipo_produc', 'tipo_material']
     search_fields = ['nombre_produc', 'tipo_produc__nombre_articulo', 'tipo_material__material']
-    list_editable = ['tipo_produc', 'nombre_produc', 'tipo_material', 'price', 'has_sizes']
+    list_editable = ['visible' ,'tipo_produc', 'nombre_produc', 'tipo_material', 'price', 'has_sizes']
     list_display_links = ['miniatura', 'id']
 
     @admin.display(description="Imagen")

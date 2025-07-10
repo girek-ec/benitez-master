@@ -70,28 +70,30 @@
             <div class="grid-layout wrapper-shop" data-grid="grid-4">
 
                 {% for product in products %}
-                    <!-- card product -->
-                    <div class="card-product">
-                        <div class="card-product-wrapper">
-                            <a href="/vortice/producto/{{ product.id }}" class="product-img">
-                                <img class="lazyload img-product" data-src="/media/{{ product.imagen_produc_01 }}"
-                                     src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
+                    {% if product.visible %}
+                        <!-- card product -->
+                        <div class="card-product">
+                            <div class="card-product-wrapper">
+                                <a href="/vortice/producto/{{ product.id }}" class="product-img">
+                                    <img class="lazyload img-product" data-src="/media/{{ product.imagen_produc_01 }}"
+                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
 
-                                {% if product.imagen_produc_02 %}
-                                <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_02 }}"
-                                src="/media/{{ product.imagen_produc_02 }}" alt="image-product">
-                                {% else %}
-                                <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
-                                     src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
-                                {% endif %}
-                            </a>
+                                    {% if product.imagen_produc_02 %}
+                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_02 }}"
+                                    src="/media/{{ product.imagen_produc_02 }}" alt="image-product">
+                                    {% else %}
+                                    <img class="lazyload img-hover" data-src="/media/{{ product.imagen_produc_01 }}"
+                                         src="/media/{{ product.imagen_produc_01 }}" alt="image-product">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="card-product-info">
+                                <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }} </a>
+                                <span class="price"> ${{ product.price }}</span>
+                            </div>
                         </div>
-                        <div class="card-product-info">
-                            <a href="/vortice/producto/{{ product.id }}" class="title link">{{ product.nombre_produc }} </a>
-                            <span class="price"> ${{ product.price }}</span>
-                        </div>
-                    </div>
-                    <!-- card product  -->
+                        <!-- card product  -->
+                    {% endif %}
                 {% endfor %}
             </div>
             <!-- pagination -->

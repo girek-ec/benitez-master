@@ -93,6 +93,7 @@ class Seccion_Cliente(models.Model):
 class Coleccion(models.Model):
     nuevo=models.BooleanField(default=False)
     activo = models.BooleanField(default=False)
+    slider = models.BooleanField(default=False)
     cliente = models.ForeignKey(Seccion_Cliente, on_delete=models.CASCADE, null=True, blank=True)
     imag_colec_01 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='vertical')
     imag_colec_02 =models.FileField(upload_to='vortice', null=True, blank=True, help_text='slider inicio horizontal')
@@ -147,6 +148,7 @@ class Material_producto(models.Model):
 
 
 class Prod_prenda(models.Model):
+    visible= models.BooleanField(default=False)
     tipo_produc = models.ForeignKey(Tipo_articulo, on_delete=models.CASCADE, null=True, blank=True)
     nombre_produc = models.CharField(max_length=100, null=True, blank=True)
     descripcion_produc = models.TextField(max_length=400, null=True, blank=True)
