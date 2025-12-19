@@ -10,7 +10,7 @@
     <meta property="og:image" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}"/>
     <meta property="og:image:width" content="600"/>
     <meta property="og:image:height" content="600"/>
-    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ products.imag_serv_1 }}">
+    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}">
     <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
 
 
@@ -68,7 +68,7 @@
     <!-- start section -->
     <section id="down-section" class="pt-0">
         <div class="container">
-            <div class="row align-items-center justify-content-center" data-anime='{ " perspective": 1200 }'>
+            <div class="row align-items-center justify-content-center" data-anime='{ "perspective": 1200 }'>
                 <div class="col-lg-6 md-mb-40px"
                      data-anime='{ "translateY": [0, 0], "zoom": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <figure class="position-relative m-0">
@@ -84,7 +84,7 @@
                     </div>
                     <h3 class="fw-600 text-dark-gray mb-20px ls-minus-2px alt-font"></h3>
                     <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
-                    <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20servicio%20  https://www.benitez-ec/girekstudio/servicios/{{ servicio.titulo }} - GirekStudio "
+                    <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20servicio%20https://www.benitez-ec.com/girekstudio/servicios/{{ servicio.titulo }}-GirekStudio "
                        class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
                                     <span>
                                         <span class="btn-double-text" data-text="Escribir al Whatsapp &nbsp; &nbsp;"> Adquirir Servicio. &nbsp; </span>
@@ -157,23 +157,6 @@
     <!-- end section -->
 
     <!-- start section -->
-    <section class="ps-8 pe-8 xxl-ps-4 xxl-pe-4 xl-ps-2 xl-pe-2 sm-px-0 py-0">
-        <div class="container-fluid">
-
-            <div class="row mb-30px">
-                {% for galeria_serv in imag_video_serv %}
-                    <div class="col-sm-6 xs-mb-30px">
-                        <img class="w-100 border-radius-8px" style="margin: 10px !important;"
-                             src="/media/{{ galeria_serv.imagen }}" alt="">
-                        <br>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <!-- end section -->
-
-    <!-- start section -->
 
     <section class="pt-0 position-relative">
         <div id="particles-02" data-particle="true"
@@ -194,23 +177,34 @@
 
                 {% for plan in planes %}
                     <div class="col-lg-3 col-md-8 md-mb-30px">
-                        <div class="bg-white box-shadow-quadruple-large border border-radius-6px p-15 ps-18 pe-18 xl-p-13 text-center">
+                        <div class="bg-white box-shadow-quadruple-large border border-radius-6px p-15 ps-15 pe-15 xl-p-13 text-center">
+
                             {% if plan.inicio_activo %}
-                            	<span class="ps-15px pe-15px mb-20px text-uppercase text-white fs-12 lh-26 alt-font fw-700 border-radius-4px bg-dark-gray d-inline-block btn-gradient-pink-orange">Popular </span>
+                                <span class="ps-15px pe-15px mb-20px text-uppercase text-white fs-12 lh-26 alt-font fw-700 border-radius-4px bg-dark-gray d-inline-block btn-gradient-pink-orange">
+                    Popular
+                </span>
                             {% endif %}
-                            <span class="fs-26 lh-30 ls-minus-05px d-block text-dark-gray fw-600">{{ plan.titulo }}</span>
-                            <span class="fs-24 mb-25px d-inline-block">{{ plan.sub_titulo }}</span>
 
+                            <span class="fs-26 lh-30 ls-minus-05px d-block text-dark-gray fw-600">
+                {{ plan.titulo }}
+            </span>
 
+                            <span class="fs-20 mb-15px d-inline-block">
+                {{ plan.sub_titulo }}
+            </span>
 
-                            <div class="row align-items-center">
-                                <div class="col-lg-7 col-sm-5 pe-sm-0">
-                                    <h2 class="text-dark-gray mb-0 fw-700 ls-minus-2px text-center text-sm-end">
-                                        <sup class="fs-30">$</sup>{{ plan.precio }}
-
-                                    </h2>
+                            <!-- PRECIO CENTRADO REAL -->
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <h5 class="text-dark-gray mb-0 fw-700 ls-minus-2px text-center">
+                                        <sup class="fs-20">$</sup>{{ plan.precio }}
+                                    </h5>
                                 </div>
-                            </div>  <span class="fs-18 mb-25px d-inline-block">{{ plan.detalle }}</span>
+                            </div>
+
+                            <span class="fs-18 mb-25px d-inline-block">
+                {{ plan.detalle }}
+            </span>
 
                             <ul class="p-0 mt-20px mb-30px list-style-01 text-start lh-normal">
                                 {% for item in plan.plan_list_set.all %}
@@ -223,32 +217,45 @@
                                 {% endfor %}
                             </ul>
 
-                            {% if plan.inicio_activo %}
-                                <div class="pricing-footer w-100">
-                                        <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20plan%20de%20servicio%20{{ servicio.titulo }} - {{ plan.sub_titulo }}- ${{ plan.precio }} - GirekStudio"
-                                           class=" btn btn-medium btn-gradient-pink-orange btn-round-edge w-100 btn-box-shadow fw-600 ">
-                                            Elegir Plan
-                                        </a>
-                                    </div>
-                                </div>
+                            <!-- BOTÓN -->
+                            <div class="pricing-footer w-100">
+                                {% if plan.inicio_activo %}
+                                    <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20plan%20de%20servicio%20{{ servicio.titulo }} - {{ plan.titulo }} - {{ plan.sub_titulo }} - ${{ plan.precio }} - GirekStudio"
+                                       class="btn btn-medium btn-gradient-pink-orange btn-round-edge w-100 btn-box-shadow fw-600">
+                                        Elegir Plan
+                                    </a>
                                 {% else %}
-                                 <div class="pricing-footer w-100">
-                                        <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20plan%20de%20servicio%20{{ servicio.titulo }} -{{ plan.sub_titulo }}- ${{ plan.precio }} - GirekStudio"
-                                           class=" btn btn-small btn-dark-gray btn-box-shadow btn-round-edge border-1 w-100">
-                                            Elegir Plan
-                                        </a>
-                                    </div>
-                                </div>
-                             {% endif %}
+                                    <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20este%20plan%20de%20servicio%20{{ servicio.titulo }} - {{ plan.titulo }} - {{ plan.sub_titulo }} - ${{ plan.precio }} - GirekStudio"
+                                       class="btn btn-small btn-dark-gray btn-box-shadow btn-round-edge border-1 w-100">
+                                        Elegir Plan
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                        </div>
                     </div>
                 {% endfor %}
+
 
             </div>
         </div>
     </section>
 
+    <!-- start section -->
+    <section class="ps-8 pe-8 xxl-ps-4 xxl-pe-4 xl-ps-2 xl-pe-2 sm-px-0 py-0">
+        <div class="container-fluid">
 
-
-
+            <div class="row mb-30px">
+                {% for galeria_serv in imag_video_serv %}
+                    <div class="col-sm-6 xs-mb-30px">
+                        <img class="w-100 border-radius-8px" style="margin: 10px !important;"
+                             src="/media/{{ galeria_serv.imagen }}" alt="">
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
     <!-- end section -->
+
 {% endblock %}
