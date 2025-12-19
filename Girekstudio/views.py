@@ -68,8 +68,7 @@ def serviciosdescripcion_girekstudio(request, n,):
         'servicios': Servicio.objects.all().order_by("orden"),
         'imag_video_serv' : Imag_Video_Servicio.objects.filter(servicio=n),
         'listservicios': Lista_servicio.objects.all(),
-        'planes' : Planes.objects.filter(categoria_id=n),
-        'planes_listas': Plan_list.objects.filter(plan_serv=n),
+        'planes' : Planes.objects.filter(categoria_id=n).order_by('orden'),
         'contacto_empresa': Contacto_empresa.objects.all().first(),
     }
     return render(request, 'girekstudio/demo-branding-agency-services-detail.html', contexto)
