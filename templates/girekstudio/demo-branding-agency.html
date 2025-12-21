@@ -1,22 +1,36 @@
-﻿<!doctype html>
-<html class="no-js" lang="en">
+﻿<!DOCTYPE html>
+<html class="no-js" lang="es">
 
 <head>
     <title>GirekStudio - Agencia de Diseño</title>
-    {% block metas %}
-        <!-- metas pagweb -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta property="fb:app_id" content="926164441218858">
-        <meta property="og:site_name" content="GirekStudio">
-        <meta name="author" content="GirekStudio">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-        <meta property="og:title" content="GirekStudio - Agencia de Diseño" />
-        <meta property="og:description" content="{{ editable.sec_2_detalle_4 }}" />
-        <meta property="og:url" content="https://benitez-ec/girekstudio/" />
-        <meta property="og:image" content="https://benitez-ec/media/{{ editable.sec_1_imagen_01 }}" />
-        <meta property="og:type" content="website" />
-    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+{% block metas %}
+    <!-- Meta base -->
+    <meta name="description" content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web y soluciones digitales.">
+    <meta name="author" content="GirekStudio">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:site_name" content="GirekStudio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GirekStudio - Agencia de Diseño">
+    <meta property="og:description" content="{{ editable.sec_2_detalle_4 }}">
+    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/">
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
+    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GirekStudio - Agencia de Diseño">
+    <meta name="twitter:description" content="{{ editable.sec_2_detalle_4 }}">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
+    <meta name="twitter:image:alt" content="GirekStudio - Agencia de Diseño">
+{% endblock %}
+
     <!-- favicon icon -->
     <link rel="shortcut icon" href="/media/{{ marca.favicon }}">
     <link rel="apple-touch-icon" href="/media/{{ marca.favicon }}">
@@ -31,6 +45,7 @@
     <link rel="stylesheet" href="/static/static_girekstudio/css/style.css"/>
     <link rel="stylesheet" href="/static/static_girekstudio/css/responsive.css"/>
     <link rel="stylesheet" href="/static/static_girekstudio/demos/branding-agency/branding-agency.css"/>
+    <link rel="stylesheet" href="/static/static_girekstudio/vendor/magnific-popup/magnific-popup.min.css"/>
     <!--<link rel="stylesheet" href="/static/static_girekstudio/demos/fashion-store/fashion-store.css" />-->
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
@@ -145,9 +160,7 @@
                     <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets d-block d-sm-none"></div>
                     <!-- end slider pagination -->
                     <!-- start slider navigation -->
-                    <!-- <div class="slider-one-slide-prev-1 icon-very-small text-white swiper-button-prev slider-navigation-style-06 d-none d-sm-inline-block"><i class="line-icon-Arrow-OutLeft icon-extra-large"></i></div>
-                        <div class="slider-one-slide-next-1 icon-very-small text-white swiper-button-next slider-navigation-style-06 d-none d-sm-inline-block"><i class="line-icon-Arrow-OutRight icon-extra-large"></i></div> -->
-                    <!-- end slider navigation -->
+
                 </div>
                 <!-- start slider pagination -->
                 <div class="swiper-pagination-wrapper d-none d-lg-flex align-items-center justify-content-center position-absolute bottom-40px md-bottom-30px sm-bottom-20px left-minus-45 md-left-30px sm-left-20px z-index-9">
@@ -246,64 +259,52 @@
     </div>
 </section>
 <!-- end section -->
-
-<section class="">
-    <div class="">
-        {% for servicio in servicios %}
-            {% if servicio.activo %}
-                <div class="stack-item stack-item-{{ servicio.orden }}">
-                    {{ servicio.orden }}
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</section>
-
-
 <!-- start section -->
 <section class="stack-box py-0 z-index-99">
     <div class="stack-box-contain">
         {% for servicio in servicios %}
             {% if servicio.activo %}
-                <!-- start stack item -->
-                <div class="stack-item stack-item-0{{ servicio.orden }}  {% if servicio.white %} bg-white lg-pt-8 lg-pb-8 md-pb-0 {% endif %} {% if servicio.line %} bg-linen md-pt-0 md-pb-0  {% endif %}  " >
-                    <div class="stack-item-wrapper">
-                        <div class="container-fluid">
-                            <div class="row align-items-center full-screen md-h-auto">
-                                <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imag_serv_1 }}')">
-                                    <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
-                                    <div class="position-absolute right-0px bottom-minus-1px">
-                                        <div class="vertical-title-center">
-                                            <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray {% if servicio.white %} bg-white pt-30px pb-30px ps-10px pe-10px {% else %}  bg-linen pt-30px pb-30px ps-10px pe-10px {% endif %} ">
-                                                <span class="d-inline-block">{{ servicio.titulo}}</span>
+                {% if servicio.principal %}
+                    <!-- start stack item -->
+                    <div class="stack-item stack-item-0{{ servicio.orden }}  {% if servicio.white %} bg-white lg-pt-8 lg-pb-8 md-pb-0 {% endif %} {% if servicio.line %} bg-linen md-pt-0 md-pb-0  {% endif %}  " >
+                        <div class="stack-item-wrapper">
+                            <div class="container-fluid">
+                                <div class="row align-items-center full-screen md-h-auto">
+                                    <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url('/media/{{ servicio.imag_serv_1 }}')">
+                                        <div class="position-absolute right-minus-130px top-60px md-top-auto md-bottom-minus-50px fs-170 lg-fs-120 lg-right-minus-80px md-right-0px md-left-0px text-center text-lg-start alt-font z-index-9 fw-600 text-dark-gray opacity-3">{{ servicio.orden }} </div>
+                                        <div class="position-absolute right-0px bottom-minus-1px">
+                                            <div class="vertical-title-center">
+                                                <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray {% if servicio.white %} bg-white pt-30px pb-30px ps-10px pe-10px {% else %}  bg-linen pt-30px pb-30px ps-10px pe-10px {% endif %} ">
+                                                    <span class="d-inline-block">{{ servicio.titulo}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
-                                    <div class="mb-15px">
-                                        <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                                        <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">GirekStudio </span>
+                                    <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
+                                        <div class="mb-15px">
+                                            <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                                            <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">GirekStudio </span>
+                                        </div>
+                                        <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">{{ servicio.titulo}}</h1>
+                                        <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
+                                        <a href="/girekstudio/servicios/{{ servicio.id }}" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
+                                            <span>
+                                                <span class="btn-double-text" data-text="Ir">Explorar</span>
+                                                <span><i class="feather icon-feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
                                     </div>
-                                    <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">{{ servicio.titulo}}</h1>
-                                    <p class="w-95 md-w-100 mb-35px">{{ servicio.descripcion }}</p>
-                                    <a href="/girekstudio/servicios/{{ servicio.id }}" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Ir">Explorar</span>
-                                            <span><i class="feather icon-feather-arrow-right"></i></span>
-                                        </span>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- end stack item -->
+                    <!-- end stack item -->
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
 </section>
-<!-- end section --> -->
+<!-- end section -->
 
 
 <!-- start section -->
@@ -314,7 +315,7 @@
                  data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ editable.sec_1_titulo_2 }}</span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ editable.sec_1_titulo_7 }}</span>
                 </div>
                 <h4 class="text-dark-gray alt-font fw-600 w-90 ls-minus-2px">{{ editable.sec_1_subti_2 }}</h4>
             </div>
@@ -542,6 +543,7 @@
 <!-- javascript libraries -->
 <script type="text/javascript" src="/static/static_girekstudio/js/jquery.js"></script>
 <script type="text/javascript" src="/static/static_girekstudio/js/vendors.min.js"></script>
+<script src="/static/static_girekstudio/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="/static/static_girekstudio/js/main.js"></script>
 </body>
 </html>

@@ -1,31 +1,28 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
 {% block metas %}
-<!-- metas pagweb -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta property="fb:app_id" content="926164441218858">
-<meta property="og:site_name" content="GirekStudio">
-<meta name="author" content="GirekStudio">
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta property="og:title" content="GirekStudio - Agencia de Diseño- {{proyecto.nombreproyecto}}"  />
-<meta property="og:description" content="{{proyecto.detalle}}" />
-<meta property="og:url" content="https://www.benitez-ec.com/girekstudio/portafolio/{{proyecto.id}}" />
-<meta property="og:image:width" content="600"/>
-<meta property="og:image:height" content="600"/>
-<meta property="og:image" content="https://www.benitez-ec.com/media/{{proyecto.imagen}}" />
-<meta property="og:type" content="website" />
+    <!-- SEO -->
+    <meta name="description" content="{{ proyecto.detalle }}">
+    <meta name="author" content="GirekStudio">
 
-<!-- Meta etiquetas para Twitter (Twitter Cards) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GirekStudio - Agencia de Diseño">
-<meta name="twitter:description" content="{{proyecto.nombreproyecto}} - {{proyecto.detalle}}">
-<meta name="twitter:image" content="https://www.benitez-ec.com/media/{{proyecto.imagen}}">
-<meta name="twitter:image:alt" content="Vortice - Tienda Oficial">
-<meta name="twitter:image:width" content="1200">
-<meta name="twitter:image:height" content="628">
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:locale" content="es_ES">
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:site_name" content="GirekStudio">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ proyecto.nombreproyecto }} | GirekStudio">
+    <meta property="og:description" content="{{ proyecto.detalle }}">
+    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/portafolio/{{ proyecto.id }}">
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
+    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-
-
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ proyecto.nombreproyecto }} | GirekStudio">
+    <meta name="twitter:description" content="{{ proyecto.detalle }}">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
+    <meta name="twitter:image:alt" content="{{ proyecto.nombreproyecto }}">
 {% endblock %}
 
 
@@ -44,7 +41,11 @@
                         </a>
                     </div>
                     <div class="col-12 col-lg-7 col-md-6">
-                        <img class="border-radius-8px" src="/media/{{proyecto.imagen}}" alt="">
+                        {% if proyecto.tipo_video %}
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ proyecto.link }}?si=-aZWYmsiNPuMjgEY&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        {% else %}
+                            <img class="border-radius-8px" src="/media/{{proyecto.imagen}}" alt="">
+                        {% endif %}
                     </div>
                 </div>
             </div>

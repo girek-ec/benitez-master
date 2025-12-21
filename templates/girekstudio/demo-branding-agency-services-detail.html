@@ -1,35 +1,34 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
-
 {% block metas %}
+    <!-- SEO -->
+    <meta name="description" content="{{ servicio.descripcion }}">
+    <meta name="author" content="GirekStudio">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:locale" content="es_ES">
     <meta property="fb:app_id" content="926164441218858">
     <meta property="og:site_name" content="GirekStudio">
-    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/{{ servicio.id }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="GirekStudio - {{ servicio.titulo }}"/>
-    <meta property="og:description" content="{{ servicio.descripcion }}"/>
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}"/>
-    <meta property="og:image:width" content="600"/>
-    <meta property="og:image:height" content="600"/>
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ servicio.titulo }} | GirekStudio">
+    <meta property="og:description" content="{{ servicio.descripcion }}">
+    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/servicios/{{ servicio.id }}">
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}">
     <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}">
-    <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-
-    <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GirekStudio - {{ servicio.titulo }}">
+    <meta name="twitter:title" content="{{ servicio.titulo }} | GirekStudio">
     <meta name="twitter:description" content="{{ servicio.descripcion }}">
     <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ servicio.imag_serv_1 }}">
-    <meta name="twitter:image:alt" content="GirekStudio - {{ servicio.titulo }}">
-    <meta name="twitter:image:width" content="1200">
-    <meta name="twitter:image:height" content="628">
-
-
+    <meta name="twitter:image:alt" content="{{ servicio.titulo }}">
 {% endblock %}
 
 
 {% block principal %}
     <!-- start section  -->
-    <section class="top-space-margin">
+    <section class="position-relative overflow-hidden md-h-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center text-md-start"
@@ -143,13 +142,13 @@
                     {% endif %}
                     {% if servicio.video_link %}
                         <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                            <a href="https://www.youtube.com/watch?v={{ servicio.video_link }}"
+                            <a href="#"
+                               data-video="{{ servicio.video_link }}"
+                               data-type="iframe"
                                class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i
                                     class="fa-brands fa-youtube icon-small"></i>Ver</a>
                         </div>
                     {% endif %}
-
-
                 </div>
             </div>
         </div>
@@ -235,7 +234,6 @@
                         </div>
                     </div>
                 {% endfor %}
-
 
             </div>
         </div>

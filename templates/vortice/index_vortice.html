@@ -9,29 +9,31 @@
         <!-- Agrega el script de Google reCAPTCHA -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    {% block metas %}
-        <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
-        <meta property="fb:app_id" content="926164441218858">
-        <meta property="og:site_name" content="Vortice">
-        <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Vortice - Tienda Oficial">
-        <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana.">
-        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
+{% block metas %}
+    <!-- SEO -->
+    <meta name="description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
+    <meta name="author" content="Vortice Store">
 
-        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
-        <meta name="twitter:title" content="Vortice - Tienda Oficial">
-        <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana.">
-        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-        <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:locale" content="es_ES">
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:site_name" content="Vortice">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vortice Store | Tienda Oficial">
+    <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
+    <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
+    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-    {% endblock %}
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vortice Store | Tienda Oficial">
+    <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
+    <meta name="twitter:image:alt" content="Vortice Store - Moda Ecuatoriana">
+{% endblock %}
 
 
 

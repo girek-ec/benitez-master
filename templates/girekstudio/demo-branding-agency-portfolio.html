@@ -1,8 +1,5 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
 
-
-
-
 {% block principal %}
         <!-- start banner -->
         <section class="pb-0 top-space-margin position-relative overflow-hidden">
@@ -16,9 +13,7 @@
         </section>
         <!-- end banner -->
 
-
-
-        <!-- start section --> 
+        <!-- start section -->
         <section class="pt-3 pb-0 lg-pb-50px">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -35,8 +30,6 @@
             </div>
         </section>
         <!-- end section -->
-
-
 
         <!-- start section -->
         <section class="position-relative pt-0">
@@ -59,13 +52,22 @@
                                             {% endif %}
                                             {% if proyecto.tipo_video  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                <!-- Abrir versión embed (youtube-nocookie) con autoplay y mute -->
+                                                <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}"
+                                                   target="_blank" rel="noopener noreferrer"
+                                                   class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded ls-minus-05px">
+                                                   <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                </a>
                                                 </div>
                                             {% endif %}
 
                                             {% if proyecto.tipo_video_vertical  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                    <a href="https://www.youtube.com/shorts/{{ proyecto.link }}"
+                                                       target="_blank" rel="noopener noreferrer"
+                                                       class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded">
+                                                       <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                    </a>
                                                 </div>
                                             {% endif %}
 
@@ -97,13 +99,21 @@
                                             {% endif %}
                                             {% if proyecto.tipo_video  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}"
+                                                       target="_blank" rel="noopener noreferrer"
+                                                       class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded ls-minus-05px">
+                                                       <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                    </a>
                                                 </div>
                                             {% endif %}
 
                                             {% if proyecto.tipo_video_vertical  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                    <a href="https://www.youtube.com/shorts/{{ proyecto.link }}"
+                                                       target="_blank" rel="noopener noreferrer"
+                                                       class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded">
+                                                       <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                    </a>
                                                 </div>
                                             {% endif %}
 
@@ -136,13 +146,21 @@
                                             {% endif %}
                                             {% if proyecto.tipo_video  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}"
+                                                       target="_blank" rel="noopener noreferrer"
+                                                       class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded ls-minus-05px">
+                                                       <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                    </a>
                                                 </div>
                                             {% endif %}
 
                                             {% if proyecto.tipo_video_vertical  %}
                                                 <div class="absolute-middle-center text-white-space-nowrap z-index-9">
-                                                    <a href="https://www.youtube.com/watch?v=/{{ proyecto.link }}" class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded popup-youtube ls-minus-05px"><i class="fa-brands fa-youtube icon-small"></i>Ver</a>
+                                                    <a href="https://www.youtube.com/shorts/{{ proyecto.link }}"
+                                                       target="_blank" rel="noopener noreferrer"
+                                                       class="btn btn-extra-large btn-white left-icon btn-box-shadow fw-600 btn-rounded ls-minus-05px">
+                                                       <i class="fa-brands fa-youtube icon-small"></i>Ver
+                                                    </a>
                                                 </div>
                                             {% endif %}
 
@@ -161,6 +179,4 @@
                 </div>
             </div>
         </section>
-        <!-- end section -->
-
    {% endblock %}
