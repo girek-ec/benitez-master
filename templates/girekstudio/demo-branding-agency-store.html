@@ -27,29 +27,30 @@
                 <ul class="shop-modern shop-wrapper grid-loading grid grid-4col xl-grid-3col sm-grid-2col xs-grid-1col gutter-extra-large text-center" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                     <li class="grid-sizer"></li>
                     {% for  producto in productos %}
-                        <!-- start shop item -->
-                        <li class="grid-item">
-                            <div class="shop-box mb-10px">
-                                <div class="shop-image mb-20px">
-                                    <a href="/girekstudio/producto/{{producto.id}}">
-                                        <img src="/media/{{producto.imagen}}" alt="">
-                                        <span class="lable new">New</span>
-                                        <div class="shop-overlay bg-gradient-gray-light-dark-transparent"></div>
-                                    </a>
-                                    <div class="shop-buttons-wrap">
-                                        <a href="/girekstudio/producto/{{producto.id}} " class="alt-font btn btn-small btn-box-shadow btn-white btn-round-edge left-icon add-to-cart">
-                                            <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Ver Producto</span>
+                        {% if producto.activo %}
+                            <!-- start shop item -->
+                            <li class="grid-item">
+                                <div class="shop-box mb-10px">
+                                    <div class="shop-image mb-20px">
+                                        <a href="/girekstudio/producto/{{producto.id}}">
+                                            <img src="/media/{{producto.imagen}}" alt="">
+                                            <span class="lable new">New</span>
+                                            <div class="shop-overlay bg-gradient-gray-light-dark-transparent"></div>
                                         </a>
+                                        <div class="shop-buttons-wrap">
+                                            <a href="/girekstudio/producto/{{producto.id}} " class="alt-font btn btn-small btn-box-shadow btn-white btn-round-edge left-icon add-to-cart">
+                                                <i class="feather icon-feather-shopping-bag"></i><span class="quick-view-text button-text">Ver Producto</span>
+                                            </a>
+                                        </div>
                                     </div>
-
+                                    <div class="shop-footer text-center">
+                                        <a href="/girekstudio/producto/{{producto.id}}" class="alt-font text-dark-gray fs-19 fw-500">{{producto.nombre_producto}}</a>
+                                        <div class="price lh-22 fs-16">${{producto.precio}}</div>
+                                    </div>
                                 </div>
-                                <div class="shop-footer text-center">
-                                    <a href="/girekstudio/producto/{{producto.id}}" class="alt-font text-dark-gray fs-19 fw-500">{{producto.nombre_producto}}</a>
-                                    <div class="price lh-22 fs-16">${{producto.precio}}</div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end shop item -->
+                            </li>
+                            <!-- end shop item -->
+                        {% endif %}
                     {% endfor %}
                      
                 </ul>

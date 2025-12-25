@@ -60,6 +60,7 @@ def __str__(self):
 
 
 class Producto(models.Model):
+    activo = models.BooleanField(default=True, help_text="Activo para ser visualizado")
     clasif = models.ForeignKey(Clasif_producto, on_delete=models.CASCADE)
     proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
     nombre_producto = models.CharField(max_length=100, null=True, blank=True)
