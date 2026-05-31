@@ -1,0 +1,394 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}EralySoft - Soluciones por industria | POS para restaurantes y peluquerías{% endblock %}
+
+{% block content %}
+
+    <!-- start page title -->
+    <section class="ipad-top-space-margin bg-dark-gray cover-background page-title-big-typography"
+             style="background-image: url('/static/static_eraly/images/mesera002.png')">
+        <div class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
+             style="background-image: url('/static/static_eraly/images/vertical-line-bg-small.svg')"></div>
+        <div id="particles-style-01" class="h-100 position-absolute left-0px top-0 w-100" data-particle="true"
+             data-particle-options='{"particles": {"number": {"value": 8,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}'></div>
+        <div class="container">
+            <div class="row align-items-center extra-small-screen">
+                <div class="col-xl-6 col-lg-7 col-md-8 col-sm-9 position-relative page-title-extra-small"
+                     data-anime='{ "el": "childs", "translateY": [-15, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <h1 class="mb-20px alt-font text-yellow">Soluciones por industria</h1>
+                    <h2 class="fw-500 m-0 ls-minus-2px text-white alt-font">Sistemas POS adaptados a tu negocio</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title -->
+
+    <!-- start section - Restaurantes -->
+    <section class="bg-solitude-blue" id="restaurantes">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-xl-8 col-lg-10 text-center">
+                    <div class="icon-with-text-style-08 mb-20px d-inline-block">
+                        <div class="feature-box feature-box-left-icon-middle">
+                            <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-yellow me-15px">
+                                <i class="bi bi-shop d-inline-block icon-extra-medium text-dark-gray"></i>
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">Hostelería</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-dark-gray fw-600 ls-minus-1px"
+                        data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        Sistema POS para Restaurantes</h2>
+                    <p class="fs-18 w-70 mx-auto">Gestiona mesas, comandas, domicilios y más con nuestra solución
+                        integral.</p>
+                </div>
+            </div>
+            <div class="row align-items-center"
+                 data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 150, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <div class="col-xl-3 col-lg-4 col-md-12 tab-style-05 md-mb-30px sm-mb-20px">
+                    <!-- start tab navigation restaurantes -->
+                    <ul class="nav nav-tabs justify-content-center border-0 text-left fw-500 fs-18 alt-font">
+                        <li class="nav-item"><a data-bs-toggle="tab" href="#tab_restaurante_1"
+                                                class="nav-link d-flex align-items-center active"><i
+                                class="fa-solid fa-utensils icon-extra-medium text-dark-gray"></i><span>Gestión de mesas</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_restaurante_2"><i
+                                class="fa-solid fa-clipboard-list icon-extra-medium text-dark-gray"></i><span>Comandas</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_restaurante_3"><i
+                                class="fa-solid fa-motorcycle icon-extra-medium text-dark-gray"></i><span>Domicilios</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_restaurante_4"><i
+                                class="fa-solid fa-chart-line icon-extra-medium text-dark-gray"></i><span>Reportes y analytics</span></a>
+                        </li>
+                    </ul>
+                    <!-- end tab navigation -->
+                </div>
+                <div class="col-xl-9 col-lg-8 col-md-12">
+                    <div class="tab-content">
+                        <!-- tab 1 - Gestión de mesas -->
+                        <div class="tab-pane fade in active show" id="tab_restaurante_1">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                    <img src="https://placehold.co/600x730" alt="Gestión de mesas restaurante"
+                                         class="border-radius-6px w-100"/>
+                                </div>
+                                <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                    <span class="fs-18 fw-500 text-base-color mb-25px d-flex align-items-center justify-content-center justify-content-md-start"><span
+                                            class="text-center w-60px h-60px d-flex justify-content-center align-items-center rounded-circle bg-white box-shadow-medium-bottom align-middle me-15px flex-shrink-0"><i
+                                            class="fa-solid fa-utensils fs-22"></i></span>Control total de tu salón</span>
+                                    <h5 class="alt-font text-dark-gray mb-20px fw-500 ls-minus-1px"><span
+                                            class="fw-600">Visualiza</span> todas tus mesas en tiempo real</h5>
+                                    <p>Organiza tu restaurante con un mapa visual de mesas, control de tiempos y
+                                        asignación de meseros. Estado: ocupado, libre, reservado o en espera.</p>
+                                    <a href="/contacto/"
+                                       class="btn btn-large btn-box-shadow btn-rounded btn-base-color mt-10px">Solicitar
+                                        demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab 2 - Comandas -->
+                        <div class="tab-pane fade in" id="tab_restaurante_2">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                    <img src="https://placehold.co/600x730" alt="Comandas digitales"
+                                         class="border-radius-6px w-100"/>
+                                </div>
+                                <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                    <span class="fs-18 fw-500 text-base-color mb-25px d-flex align-items-center justify-content-center justify-content-md-start"><span
+                                            class="text-center w-60px h-60px d-flex justify-content-center align-items-center rounded-circle bg-white box-shadow-medium-bottom align-middle me-15px flex-shrink-0"><i
+                                            class="fa-solid fa-clipboard-list fs-22"></i></span>Comandas digitales</span>
+                                    <h5 class="alt-font text-dark-gray mb-20px fw-500 ls-minus-1px"><span
+                                            class="fw-600">Envía pedidos</span> directamente a cocina</h5>
+                                    <p>Elimina errores con comandas digitales. Los pedidos llegan instantáneamente a la
+                                        cocina con tiempos de preparación y prioridades.</p>
+                                    <a href="/contacto/"
+                                       class="btn btn-large btn-box-shadow btn-rounded btn-base-color mt-10px">Solicitar
+                                        demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab 3 - Domicilios -->
+                        <div class="tab-pane fade in" id="tab_restaurante_3">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                    <img src="https://placehold.co/600x730" alt="Gestión de domicilios"
+                                         class="border-radius-6px w-100"/>
+                                </div>
+                                <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                    <span class="fs-18 fw-500 text-base-color mb-25px d-flex align-items-center justify-content-center justify-content-md-start"><span
+                                            class="text-center w-60px h-60px d-flex justify-content-center align-items-center rounded-circle bg-white box-shadow-medium-bottom align-middle me-15px flex-shrink-0"><i
+                                            class="fa-solid fa-motorcycle fs-22"></i></span>Logística de domicilios</span>
+                                    <h5 class="alt-font text-dark-gray mb-20px fw-500 ls-minus-1px"><span
+                                            class="fw-600">Rastreo</span> de pedidos y entregas</h5>
+                                    <p>Gestiona domicilios, asigna repartidores, calcula tiempos de entrega y ofrece
+                                        seguimiento en tiempo real a tus clientes.</p>
+                                    <a href="/contacto/"
+                                       class="btn btn-large btn-box-shadow btn-rounded btn-base-color mt-10px">Solicitar
+                                        demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab 4 - Reportes -->
+                        <div class="tab-pane fade in" id="tab_restaurante_4">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                    <img src="https://placehold.co/600x730" alt="Reportes y analytics"
+                                         class="border-radius-6px w-100"/>
+                                </div>
+                                <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                    <span class="fs-18 fw-500 text-base-color mb-25px d-flex align-items-center justify-content-center justify-content-md-start"><span
+                                            class="text-center w-60px h-60px d-flex justify-content-center align-items-center rounded-circle bg-white box-shadow-medium-bottom align-middle me-15px flex-shrink-0"><i
+                                            class="fa-solid fa-chart-line fs-22"></i></span>Toma decisiones con datos</span>
+                                    <h5 class="alt-font text-dark-gray mb-20px fw-500 ls-minus-1px"><span
+                                            class="fw-600">Reportes</span> de ventas, productos y más</h5>
+                                    <p>Analiza tu negocio con reportes en tiempo real: productos más vendidos, horarios
+                                        pico, rendimiento de meseros y rentabilidad.</p>
+                                    <a href="/contacto/"
+                                       class="btn btn-large btn-box-shadow btn-rounded btn-base-color mt-10px">Solicitar
+                                        demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section Restaurantes -->
+
+    <!-- start sección separadora marquee -->
+    <section class="position-relative z-index-1 background-position-left-top background-no-repeat overflow-hidden">
+        <div class="container-fluid">
+            <div class="row position-relative mt-40px xs-mt-20px">
+                <div class="col swiper swiper-width-auto feather-shadow text-center"
+                     data-slider-options='{ "slidesPerView": "auto", "spaceBetween":80, "centeredSlides": true, "speed": 30000, "loop": true, "pagination": { "el": ".slider-four-slide-pagination-2", "clickable": false }, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-four-slide-next-2", "prevEl": ".slider-four-slide-prev-2" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
+                    <div class="swiper-wrapper marquee-slide">
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-600 opacity-1">restaurantes
+                                bares cafeterías
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-600 opacity-1">peluquerías spas
+                                clínicas
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-600 opacity-1">comercios
+                                farmacias ferreterías
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 position-absolute top-0 h-100 d-flex justify-content-center align-items-center left-0px z-index-1 text-center">
+                    <h4 class="alt-font text-dark-gray fs-45 fw-600 ls-minus-2px xs-ls-minus-1px mb-0 mt-40px xs-mt-15px">
+                        Más de 500 negocios ya confían en nosotros.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end sección separadora -->
+
+    <!-- start section - Belleza y servicios (Peluquerías) -->
+    <section class="bg-gradient-tranquil-white pt-0 position-relative align-items-center" id="belleza">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-xl-7 col-lg-6 text-center"
+                     data-anime='{ "el": "childs", "opacity": [0,1], "duration": 600, "delay": 100, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <div class="position-relative md-mb-50px xs-mb-30px pe-50px outside-box-left-10 md-outside-box-left-0 lg-pe-0 atropos"
+                         data-atropos>
+                        <div class="atropos-scale">
+                            <div class="atropos-rotate">
+                                <div class="atropos-inner text-center w-100 overflow-visible">
+                                    <div data-atropos-offset="-1" class="position-absolute left-0px">
+                                        <img src="https://placehold.co/760x645" alt="Sistema para peluquerías">
+                                    </div>
+                                    <img data-atropos-offset="1" class="position-relative z-index-9"
+                                         src="/static/static_eraly/images/demo-elearning-06.png" alt="POS Belleza">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6 position-relative z-index-1">
+                    <div class="icon-with-text-style-08 mb-20px"
+                         data-anime='{ "el": "childs", "translateY": [-30, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <div class="feature-box feature-box-left-icon-middle">
+                            <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-yellow me-15px">
+                                <i class="bi bi-scissors d-inline-block icon-extra-medium text-dark-gray"></i>
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">Belleza y servicios</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-40px sm-mb-30px"
+                        data-anime='{ "translateY": [-30, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        Sistema POS para peluquerías y centros de estética</h2>
+
+                    <div class="accordion accordion-style-05" id="accordion-style-05"
+                         data-anime='{ "el": "childs", "translateY": [-30, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <!-- accordion item 1 - Agendamiento -->
+                        <div class="accordion-item bg-white active-accordion">
+                            <h3 class="number alt-font mb-0 text-base-color fw-400 text-outline text-outline-color-base-color">
+                                01</h3>
+                            <div class="accordion-header">
+                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-belleza-01"
+                                   aria-expanded="true" data-bs-parent="#accordion-style-05">
+                                    <div class="accordion-title fs-18 position-relative pe-0 text-dark-gray fw-600 mb-0">
+                                        Agendamiento inteligente
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="accordion-belleza-01" class="accordion-collapse collapse show"
+                                 data-bs-parent="#accordion-style-05">
+                                <div class="accordion-body last-paragraph-no-margin">
+                                    <p>Gestiona citas, evita dobles reservas y envía recordatorios automáticos por
+                                        WhatsApp. Calendario por profesional, por servicio o por horario.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- accordion item 2 - Gestión de profesionales -->
+                        <div class="accordion-item bg-white">
+                            <h3 class="number alt-font mb-0 text-base-color fw-400 text-outline text-outline-color-base-color">
+                                02</h3>
+                            <div class="accordion-header">
+                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-belleza-02"
+                                   aria-expanded="false" data-bs-parent="#accordion-style-05">
+                                    <div class="accordion-title fs-18 position-relative pe-0 text-dark-gray fw-600 mb-0">
+                                        Gestión de profesionales y comisiones
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="accordion-belleza-02" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordion-style-05">
+                                <div class="accordion-body last-paragraph-no-margin">
+                                    <p>Controla el rendimiento de cada profesional, calcula comisiones automáticamente y
+                                        gestiona horarios de trabajo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- accordion item 3 - Inventario de productos -->
+                        <div class="accordion-item bg-white">
+                            <h3 class="number alt-font mb-0 text-base-color fw-400 text-outline text-outline-color-base-color">
+                                03</h3>
+                            <div class="accordion-header">
+                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-belleza-03"
+                                   aria-expanded="false" data-bs-parent="#accordion-style-05">
+                                    <div class="accordion-title fs-18 position-relative pe-0 text-dark-gray fw-600 mb-0">
+                                        Control de inventario y productos
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="accordion-belleza-03" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordion-style-05">
+                                <div class="accordion-body last-paragraph-no-margin">
+                                    <p>Administra productos de venta (shampoo, tintes, etc.), controla stock y recibe
+                                        alertas de inventario bajo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- accordion item 4 - Clientes y membresías -->
+                        <div class="accordion-item bg-white">
+                            <h3 class="number alt-font mb-0 text-base-color fw-400 text-outline text-outline-color-base-color">
+                                04</h3>
+                            <div class="accordion-header">
+                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-belleza-04"
+                                   aria-expanded="false" data-bs-parent="#accordion-style-05">
+                                    <div class="accordion-title fs-18 position-relative pe-0 text-dark-gray fw-600 mb-0">
+                                        Clientes frecuentes y membresías
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="accordion-belleza-04" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordion-style-05">
+                                <div class="accordion-body last-paragraph-no-margin">
+                                    <p>Gestiona programas de fidelización, tarjetas de cliente frecuente, paquetes de
+                                        servicios y membresías mensuales.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/contacto/"
+                       class="btn btn-extra-large btn-dark-gray btn-box-shadow btn-rounded btn-switch-text mt-40px">
+                    <span>
+                        <span class="btn-double-text" data-text="Solicitar demo">Solicitar demo</span>
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section Belleza y servicios -->
+
+    <!-- start sección más soluciones (próximamente) -->
+    <section class="overflow-hidden position-relative overlap-height">
+        <div class="container overlap-gap-section">
+            <div class="row align-items-end justify-content-center mb-8 sm-mb-50px">
+                <div class="col-xl-5 col-lg-6 col-md-9 position-relative md-mb-50px sm-mb-35px text-center text-lg-start"
+                     data-anime='{ "translateX": [-30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <div class="icon-with-text-style-08 mb-20px d-inline-block">
+                        <div class="feature-box feature-box-left-icon-middle">
+                            <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-yellow me-15px">
+                                <i class="bi bi-rocket-takeoff d-inline-block icon-extra-medium text-dark-gray"></i>
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">Próximamente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px w-90 mb-15px xl-w-100">Más soluciones en
+                        desarrollo</h2>
+                    <p class="m-0 w-80 xl-w-100">Estamos trabajando en soluciones para farmacias, ferreterías,
+                        panaderías y más. ¡Pronto disponibles!</p>
+                </div>
+                <div class="col-xl-5 col-lg-6 col-md-10 offset-xl-2 position-relative text-center text-lg-start mt-minus-1">
+                    <div class="row row-cols-1 row-cols-sm-2"
+                         data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <!-- próximos sectores -->
+                        <div class="col xs-mb-40px">
+
+                            <div class="text-center p-4 border-radius-6px bg-white box-shadow-quadruple-large position-relative overflow-hidden">
+
+                                <!-- ICONO -->
+                                <div class="position-relative ms-auto me-auto mb-20px">
+                                    <i class="fa-solid fa-prescription-bottle fs-50 position-relative z-index-1 mt-30px"
+                                       style="color: #136e44!important;"></i>
+                                    <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                                </div>
+                                <!-- TEXTO -->
+                                <span class="fs-18 fw-700 text-dark-gray d-block mb-5px"> Farmacias </span>
+                                <p class="fs-14 mb-0 lh-26">
+                                    Control de medicinas y más
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center p-4 border-radius-6px bg-white box-shadow-quadruple-large position-relative overflow-hidden">
+                                <!-- ICONO -->
+                                <div class="position-relative ms-auto me-auto mb-20px">
+                                    <i class="fa-solid fa-screwdriver-wrench fs-50 position-relative z-index-1 mt-30px"
+                                       style="color: #136e44!important;"></i>
+                                    <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                                </div>
+                                <!-- TEXTO -->
+                                <span class="fs-18 fw-700 text-dark-gray d-block mb-5px">Ferreterias </span>
+                                <p class="fs-14 mb-0 lh-26">
+                                    Producción y vitrina digital
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end sección próximas soluciones -->
+
+{% endblock %}

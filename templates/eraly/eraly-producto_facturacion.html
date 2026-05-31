@@ -1,0 +1,345 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}EralySoft - Facturación Electrónica | Firma Electrónica SRI Ecuador{% endblock %}
+
+{% block content %}
+
+<!-- start page title -->
+<section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0" style="background-image: url('/static/static_eraly/images/facturador.png')">
+    <div class="container">
+        <div class="row align-items-center small-screen">
+            <div class="col-lg-5 col-sm-7 position-relative page-title-extra-small">
+                <h1 class="mb-15px text-white opacity-7 fw-300 overflow-hidden">
+                    <span class="d-inline-block" data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300 }'>Facturación Electrónica</span>
+                </h1>
+                <h2 class="m-auto pb-5px pt-5px text-white fw-600 ls-minus-1px overflow-hidden">
+                    <span class="d-inline-block" data-anime='{ "translateY": [30, 0], "opacity": [0, 1], "easing": "easeOutCubic", "duration": 500, "staggervalue": 300, "delay": 300 }'>Cumple con el SRI fácilmente</span>
+                </h2>
+                <div class="mt-4">
+                    <a href="/contacto/" class="btn btn-base-color btn-rounded btn-large me-2">Solicitar demo</a>
+                    <a href="#planes" class="btn btn-outline-white btn-rounded btn-large">Ver planes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+
+<!-- start section - Beneficios -->
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-6 md-mb-30px animation-float" data-anime='{ "effect": "slide", "color": "#ffffff", "direction":"lr", "easing": "easeOutQuad", "delay":50}'>
+                <img src="/static/static_eraly/images/facturador2.png" alt="Facturación electrónica SRI">
+            </div>
+            <div class="col-xl-5 col-lg-6" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                <h2 class="fw-700 text-dark-gray ls-minus-2px">Todo lo que necesitas para facturar electrónicamente</h2>
+                <div class="mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-check-circle text-primary fs-24 me-3"></i>
+                        <span class="fw-600">Facturación electrónica autorizada por el SRI</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-check-circle text-primary fs-24 me-3"></i>
+                        <span class="fw-600">Firma electrónica con certificado digital</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-check-circle text-primary fs-24 me-3"></i>
+                        <span class="fw-600">Notas de crédito, débito y retenciones</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fa-solid fa-check-circle text-primary fs-24 me-3"></i>
+                        <span class="fw-600">Guías de remisión y nómina electrónica</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-check-circle text-primary fs-24 me-3"></i>
+                        <span class="fw-600">API para integración con tu sistema</span>
+                    </div>
+                </div>
+                <a href="/contacto/" class="btn btn-large btn-dark-gray btn-rounded btn-switch-text btn-box-shadow">
+                    <span>
+                        <span class="btn-double-text" data-text="Solicitar demo gratis">Solicitar demo gratis</span>
+                        <span><i class="feather icon-feather-arrow-right"></i></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section - Tipos de documentos -->
+<section class="bg-very-light-gray">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10 text-center">
+                <span class="text-base-color fw-600 mb-5px text-uppercase d-block">Documentos electrónicos</span>
+                <h2 class="fw-700 mb-15px text-dark-gray ls-minus-2px">Tipos de documentos que emitimos</h2>
+                <p class="fs-18">Todos los comprobantes electrónicos autorizados por el SRI</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="bg-white p-4 text-center border-radius-6px box-shadow-extra-large h-100">
+                    <i class="fa-solid fa-file-invoice fs-50 text-primary mb-3"></i>
+                    <h5 class="fw-700">Facturas</h5>
+                    <p class="mb-0">Facturas electrónicas con validación SRI</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="bg-white p-4 text-center border-radius-6px box-shadow-extra-large h-100">
+                    <i class="fa-solid fa-file-pen fs-50 text-primary mb-3"></i>
+                    <h5 class="fw-700">Notas de Crédito/Débito</h5>
+                    <p class="mb-0">Modificaciones y ajustes a facturas</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="bg-white p-4 text-center border-radius-6px box-shadow-extra-large h-100">
+                    <i class="fa-solid fa-percent fs-50 text-primary mb-3"></i>
+                    <h5 class="fw-700">Retenciones</h5>
+                    <p class="mb-0">Comprobantes de retención electrónicos</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="bg-white p-4 text-center border-radius-6px box-shadow-extra-large h-100">
+                    <i class="fa-solid fa-truck fs-50 text-primary mb-3"></i>
+                    <h5 class="fw-700">Guías de Remisión</h5>
+                    <p class="mb-0">Documentos de transporte electrónicos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section - Firma electrónica -->
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="text-center text-lg-start">
+                    <span class="text-base-color fw-600 mb-15px text-uppercase d-block">Firma electrónica</span>
+                    <h2 class="fw-700 text-dark-gray ls-minus-1px">Certificado digital para tu empresa</h2>
+                    <p class="mb-4">La firma electrónica es obligatoria para emitir facturas electrónicas. Te ayudamos a obtenerla y configurarla.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="bg-white p-3 text-center border-radius-6px box-shadow-extra-large">
+                                <i class="fa-solid fa-shield-hart fs-40 text-primary mb-2 d-block"></i>
+                                <span class="fw-600">Validez jurídica</span>
+                                <p class="mb-0 small">Reconocida por el SRI</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white p-3 text-center border-radius-6px box-shadow-extra-large">
+                                <i class="fa-solid fa-cloud-upload-alt fs-40 text-primary mb-2 d-block"></i>
+                                <span class="fw-600">Almacenamiento seguro</span>
+                                <p class="mb-0 small">En la nube o local</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="bg-yellow p-3 text-center border-radius-6px">
+                            <span class="fw-700">📄 Incluye: Certificado de Firma Electrónica + Asesoría para obtención</span>
+                        </div>
+                        <a href="/contacto/" class="btn btn-base-color btn-rounded w-100 mt-3">Solicitar firma electrónica →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1 text-center mt-5 mt-lg-0">
+                <i class="fa-solid fa-file-signature fs-150 text-primary opacity-25"></i>
+                <div class="bg-very-light-gray p-4 border-radius-6px mt-3">
+                    <div class="d-flex align-items-center justify-content-center gap-4 flex-wrap">
+                        <div><i class="fa-solid fa-check-circle text-success"></i> <span class="fw-600">Fácil de instalar</span></div>
+                        <div><i class="fa-solid fa-check-circle text-success"></i> <span class="fw-600">Soporte técnico</span></div>
+                        <div><i class="fa-solid fa-check-circle text-success"></i> <span class="fw-600">Renovación automática</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section - Preguntas frecuentes -->
+<section class="bg-very-light-gray">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <h2 class="fw-700 text-dark-gray ls-minus-2px">Preguntas frecuentes</h2>
+                <p>Resuelve tus dudas sobre facturación y firma electrónica</p>
+                <div class="mt-4">
+                    <a href="/contacto/" class="btn btn-base-color btn-rounded">Contactar soporte</a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="accordion accordion-style-02" id="accordionFaq">
+                    <div class="accordion-item mb-3">
+                        <div class="accordion-header border-bottom">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#faq1" class="d-block py-3">
+                                <span class="fw-600">¿Es obligatoria la facturación electrónica?</span>
+                            </a>
+                        </div>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pb-3">
+                                <p>Sí, desde 2022 todos los contribuyentes en Ecuador deben emitir facturación electrónica obligatoriamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <div class="accordion-header border-bottom">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#faq2" class="d-block py-3">
+                                <span class="fw-600">¿Qué es la firma electrónica?</span>
+                            </a>
+                        </div>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pb-3">
+                                <p>Es un certificado digital que identifica a tu empresa ante el SRI y es obligatorio para emitir facturas electrónicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <div class="accordion-header border-bottom">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#faq3" class="d-block py-3">
+                                <span class="fw-600">¿Cuánto tiempo toma la implementación?</span>
+                            </a>
+                        </div>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pb-3">
+                                <p>La implementación completa toma entre 3 a 5 días hábiles, incluyendo la obtención de la firma electrónica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#faq4" class="d-block py-3">
+                                <span class="fw-600">¿Puedo integrar con mi sistema POS?</span>
+                            </a>
+                        </div>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                            <div class="accordion-body pb-3">
+                                <p>Sí, contamos con una API REST para integrar la facturación electrónica con tu sistema POS o software actual.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-auto icon-with-text-style-08 text-center">
+                <div class="feature-box feature-box-left-icon-middle d-inline-flex">
+                    <div class="feature-box-icon me-10px">
+                        <i class="bi bi-headset icon-medium text-primary"></i>
+                    </div>
+                    <div class="feature-box-content">
+                        <span class="alt-font text-dark-gray fw-500 fs-18">Soporte especializado en facturación electrónica. <a href="/contacto/" class="text-decoration-line-bottom text-base-color fw-600">Contáctanos</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section - Planes -->
+<section id="planes">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10 text-center">
+                <span class="text-base-color fw-600 mb-5px text-uppercase d-block">Planes simples</span>
+                <h2 class="fw-700 mb-15px text-dark-gray ls-minus-2px">Planes de facturación electrónica</h2>
+                <p class="fs-18">Elige el plan que mejor se adapte a tu negocio</p>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <!-- Plan Básico -->
+            <div class="col-lg-4 col-md-8 mb-30px">
+                <div class="pricing-table text-center pt-16 pb-35px bg-white box-shadow-quadruple-large border-radius-6px h-100">
+                    <div class="pricing-header ps-18 pe-18">
+                        <div class="d-inline-block fs-12 text-uppercase bg-white ps-20px pe-20px fw-600 text-dark-gray mb-30px border-radius-100px box-shadow-large border">Básico</div>
+                        <h2 class="text-dark-gray fw-600 mb-10px ls-minus-3px"><sup class="fs-30">$</sup>29.900</h2>
+                        <p class="mb-25px">Hasta 500 facturas/mes</p>
+                        <a href="/contacto/" class="btn btn-dark-gray btn-round-edge w-100">Contratar</a>
+                    </div>
+                    <div class="pricing-body pt-15px pb-25px">
+                        <ul class="list-unstyled mb-0">
+                            <li class="pt-10px pb-10px">Facturación electrónica</li>
+                            <li class="pt-10px pb-10px">Notas de crédito/débito</li>
+                            <li class="pt-10px pb-10px">Retenciones electrónicas</li>
+                            <li class="pt-10px pb-10px">Soporte por email</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="/contacto/" class="text-decoration-line-bottom d-inline-block text-dark-gray fw-500">Incluye firma electrónica</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Profesional -->
+            <div class="col-lg-4 col-md-8 mb-30px">
+                <div class="pricing-table text-center pt-16 pb-35px bg-yellow box-shadow-quadruple-large border-radius-6px h-100">
+                    <div class="pricing-header ps-18 pe-18">
+                        <div class="d-inline-block fs-12 text-uppercase bg-yellow ps-20px pe-20px fw-600 text-dark-gray mb-30px border-radius-100px box-shadow-large border">🔥 Profesional</div>
+                        <h2 class="text-dark-gray fw-600 mb-10px ls-minus-3px"><sup class="fs-30">$</sup>59.900</h2>
+                        <p class="mb-25px">Facturas ilimitadas</p>
+                        <a href="/contacto/" class="btn btn-dark-gray btn-round-edge w-100">Contratar</a>
+                    </div>
+                    <div class="pricing-body pt-15px pb-25px">
+                        <ul class="list-unstyled mb-0">
+                            <li class="pt-10px pb-10px">Facturación ilimitada</li>
+                            <li class="pt-10px pb-10px">Guías de remisión</li>
+                            <li class="pt-10px pb-10px">Nómina electrónica</li>
+                            <li class="pt-10px pb-10px">Soporte prioritario 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="/contacto/" class="text-decoration-line-bottom d-inline-block text-dark-gray fw-500">Incluye API de integración</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Empresarial -->
+            <div class="col-lg-4 col-md-8">
+                <div class="pricing-table text-center pt-16 pb-35px bg-white box-shadow-quadruple-large border-radius-6px h-100">
+                    <div class="pricing-header ps-18 pe-18">
+                        <div class="d-inline-block fs-12 text-uppercase bg-white ps-20px pe-20px fw-600 text-dark-gray mb-30px border-radius-100px box-shadow-large border">Empresarial</div>
+                        <h2 class="text-dark-gray fw-600 mb-10px ls-minus-3px"><sup class="fs-30">$</sup>99.900</h2>
+                        <p class="mb-25px">Múltiples sucursales</p>
+                        <a href="/contacto/" class="btn btn-dark-gray btn-round-edge w-100">Contratar</a>
+                    </div>
+                    <div class="pricing-body pt-15px pb-25px">
+                        <ul class="list-unstyled mb-0">
+                            <li class="pt-10px pb-10px">Todo incluido</li>
+                            <li class="pt-10px pb-10px">Múltiples sucursales</li>
+                            <li class="pt-10px pb-10px">Reportes personalizados</li>
+                            <li class="pt-10px pb-10px">Soporte VIP 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="/contacto/" class="text-decoration-line-bottom d-inline-block text-dark-gray fw-500">Capacitación incluida</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 text-center">
+                <p class="text-dark-gray">¿Necesitas un plan personalizado? <a href="/contacto/" class="fw-700 text-base-color">Contáctanos</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start section CTA final -->
+<section class="bg-dark-gray py-5 text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="text-white fw-700">¿Listo para facturar electrónicamente?</h2>
+                <p class="text-white opacity-7 fs-18 mb-4">Cumple con el SRI y automatiza tu facturación</p>
+                <a href="/contacto/" class="btn btn-base-color btn-rounded btn-lg">📄 Solicitar demo gratis</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section CTA -->
+
+{% endblock %}

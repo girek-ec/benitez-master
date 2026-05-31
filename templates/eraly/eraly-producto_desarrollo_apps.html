@@ -1,0 +1,335 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}{{ servicio.titulo }} | {{ empresa.nombre }}{% endblock %}
+
+{% block meta_description %}
+Desarrollo de aplicaciones móviles y web apps personalizadas para empresas y emprendimientos.
+{% endblock %}
+
+{% block meta_keywords %}
+apps, aplicaciones moviles, android, ios, desarrollo software, web app, saas
+{% endblock %}
+
+{% block og_title %}
+Apps a Medida | {{ empresa.nombre }}
+{% endblock %}
+
+{% block og_description %}
+Desarrollamos aplicaciones móviles y empresariales adaptadas a tu negocio.
+{% endblock %}
+
+{% block og_image %}
+<meta property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block twitter_image %}
+<meta name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="cursor-page-inner">
+        <div class="circle-cursor circle-cursor-inner"></div>
+        <div class="circle-cursor circle-cursor-outer"></div>
+    </div>
+
+        <section class="p-0 cover-background full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px"
+                 style="background-image: url('/media/{{ servicio.imagen_banner}}')">
+
+
+<div id="particles-style-01" class="h-100 position-absolute left-0px top-0 w-100" data-particle="true"></div>
+
+<div class="container h-100 position-relative z-index-9">
+    <div class="row align-items-center h-100 justify-content-center">
+
+        <div class="col-lg-6 col-md-10 text-center position-relative md-mb-50px">
+            <div class="d-inline-block">
+                <div class="text-end w-90 lg-w-80 ms-auto animation-float">
+                    {% if servicio.imagen_3 %}
+                        <img src="{{ servicio.imagen_3.url }}" alt="{{ servicio.titulo }}">
+                    {% else %}
+                        <img src="/static/static_eraly/images/demo-application-home-01.webp" alt="App desarrollo">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="w-60 position-absolute left-minus-40px lg-left-minus-30px xs-left-15px xs-w-50 bottom-minus-50px mb-30 xs-mb-15">
+                {% if servicio.imagen_4 %}
+                    <img src="{{ servicio.imagen_4.url }}" class="border-radius-18px box-shadow-extra-large"
+                         alt="{{ servicio.titulo }}">
+                {% else %}
+                    <img src="/static/static_eraly/images/demo-application-home-01-02.jpg"
+                         class="border-radius-18px box-shadow-extra-large" alt="Web app">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-xl-5 ps-3 md-ps-15px col-lg-6 col-md-9 position-relative text-center text-lg-start">
+            <div class="fs-70 xl-fs-70 lh-80 mb-35px ls-minus-3px text-white">
+                <span class="d-inline-block">{{ servicio.titulo }}</span>
+            </div>
+
+            <span class="fs-19 w-90 xs-w-100 d-block lh-32 mb-35px mx-auto mx-lg-0 text-white">
+                    {{ servicio.subtitulo }}
+                </span>
+
+            <div class="row pe-20px md-ps-25px sm-px-0 md-border-end-0">
+                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📱%20Estoy%20interesado%20en%20desarrollar%20una%20app%20o%20web%20app%20a%20medida.%0A%0A🚀%20Deseo%20recibir%20asesoría%20y%20cotización.%0A%0AGracias."
+                   target="_blank"
+                   class="col-6">
+                    <button class="btn btn-large btn-rounded w-100 text-white"
+                            style="background-color:#0d633e!important;border-color:#0d633e!important;">
+                        {{ servicio.boton_texto }}
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<section class="overflow-hidden position-relative bg-gradient-very-light-gray py-0 lg-pt-8 lg-pb-8">
+    <div class="container" style="margin-bottom:50px!important; margin-top: 50px!important;">
+        <div class="row align-items-center ps-50px pe-50px lg-px-0 position-relative z-index-1 justify-content-md-center">
+
+            <div class="col-lg-6 md-mb-50px">
+                <div class="row">
+                    <div class="col-sm-6 xs-mb-30px">
+                            <img src="{{ servicio.imagen_3.url }}"
+                                 class="w-100 box-shadow-quadruple-large border-radius-10px"
+                                 data-bottom-top="transform: translateY(-250px)"
+                                 data-top-bottom="transform: translateY(200px)"
+                                 alt="{{ servicio.titulo }}">
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                            <img src="{{ servicio.imagen_4.url }}"
+                                 class="w-100 box-shadow-quadruple-large border-radius-10px"
+                                 data-bottom-top="transform: translateY(200px)"
+                                 data-top-bottom="transform: translateY(-300px)"
+                                 alt="{{ servicio.titulo }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 offset-lg-1 col-md-8 text-center text-lg-start">
+
+
+                <div class="row row-cols-1" style="margin-top: 60px!important; margin-bottom: 30px!important;">
+
+                    {% for beneficio in beneficios_servicio %}
+                        <div class="col-12 process-step-style-05 position-relative hover-box">
+                            <div class="process-step-item d-flex">
+
+                                <div class="process-step-icon-wrap position-relative">
+                                    <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-55px w-55px fs-15 fw-700 position-relative"
+                                         style="border:2px solid #0d633e;">
+                                    <span class="number position-relative z-index-1 text-dark-gray">
+                                        0{{ forloop.counter }}
+                                    </span>
+                                        <div class="box-overlay rounded-circle" style="background-color:#0d633e;"></div>
+                                    </div>
+
+                                    {% if not forloop.last %}
+                                        <span class="progress-step-separator opacity-3"
+                                              style="background-color:#0d633e;"></span>
+                                    {% endif %}
+                                </div>
+
+                                <div class="process-content ps-35px last-paragraph-no-margin mb-30px">
+                                <span class="d-block fw-700 mb-5px fs-18" style="color:#0d633e;">
+                                    {{ beneficio.titulo }}
+                                </span>
+
+                                    <p class="w-70 lg-w-90 sm-w-100">
+                                        {{ beneficio.descripcion }}
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-12">
+                            <p>No hay beneficios registrados todavía.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="position-relative z-index-2" id="planes">
+
+    <style>
+        #planes .plan-tab.active,
+        #planes .plan-tab:hover {
+            background-color: #0d633e !important;
+            border-color: #0d633e !important;
+        }
+
+        #planes .plan-tab.active .text-dark-gray,
+        #planes .plan-tab.active .fs-20,
+        #planes .plan-tab.active h5,
+        #planes .plan-tab.active span,
+        #planes .plan-tab.active .offer,
+        #planes .plan-tab:hover .text-dark-gray,
+        #planes .plan-tab:hover .fs-20,
+        #planes .plan-tab:hover h5,
+        #planes .plan-tab:hover span,
+        #planes .plan-tab:hover .offer {
+            color: #ffffff !important;
+        }
+
+        #planes .plan-tab.active .icon,
+        #planes .plan-tab:hover .icon {
+            border-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+
+        #planes .plan-tab.active .offer,
+        #planes .plan-tab:hover .offer {
+            background-color: rgba(255, 255, 255, .15) !important;
+            border-color: rgba(255, 255, 255, .35) !important;
+        }
+
+        #planes .tab-pane {
+            border-top: 4px solid #0d633e !important;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-7 text-center">
+                <div class="d-inline-block mb-15px fw-600 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-12"
+                     style="background-color:#0d633e!important;">
+                    Planes disponibles
+                </div>
+                <h3 class="fw-700 text-dark-gray w-65 lg-w-85 mx-auto ls-minus-1px">
+                    Elige el plan ideal para tu proyecto
+                </h3>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center pricing-table-style-07">
+            <div class="col-lg-6 col-md-12 md-mb-30px">
+                <ul class="nav nav-tabs justify-content-center border-0 text-left">
+
+                    {% for plan in planes_servicio %}
+                        <li class="nav-item mb-30px p-0">
+                            <a data-bs-toggle="tab"
+                               href="#plan_app_{{ plan.id }}"
+                               class="plan-tab nav-link {% if forloop.first %}active{% endif %} box-shadow-extra-large ps-45px pe-45px pt-35px pb-35px lg-p-5 xs-p-8 border-radius-8px">
+
+                                <div class="flex-column flex-sm-row d-flex align-items-center">
+
+                                    <div class="col align-items-center d-flex me-auto xs-w-auto mx-auto xs-mb-20px">
+                                        <div class="icon w-30px h-30px d-flex flex-shrink-0 align-items-center justify-content-center fs-11 border border-2 border-radius-100 me-10px">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+
+                                        <div class="fs-20 lg-fs-18 text-dark-gray fw-700 me-15px xs-me-0 text-start">
+                                            {{ plan.nombre }}
+                                        </div>
+                                    </div>
+
+                                    {% if plan.destacado %}
+                                        <div class="offer d-inline-block border border-color-light-medium-gray fw-600 text-dark-gray text-uppercase border-radius-30px ps-20px pe-20px fs-12 lh-26 xs-mb-20px">
+                                            Recomendado
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="col-auto ms-auto text-end">
+                                        <h5 class="fw-700 text-dark-gray d-inline-block align-middle mb-0">
+                                            ${{ plan.precio|floatformat:0 }}
+                                        </h5>
+                                        <span class="d-inline-block align-middle ms-10px opacity-7">
+                                        {{ plan.periodo }}
+                                    </span>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+            <div class="col-xl-5 col-lg-6">
+                <div class="tab-content">
+
+                    {% for plan in planes_servicio %}
+                        <div class="tab-pane position-relative fade {% if forloop.first %}in active show{% endif %} box-shadow-quadruple-large border-radius-8px pt-40px"
+                             id="plan_app_{{ plan.id }}">
+
+                        <span class="text-dark-gray fw-700 mb-15px fs-24 ls-minus-05px d-inline-block ps-45px pe-45px sm-ps-25px sm-pe-25px">
+                            {{ plan.descripcion }}
+                        </span>
+
+                            <div class="pricing-body overflow-hidden">
+                                <ul class="p-0 list-style-02 text-start">
+
+                                    {% for caracteristica in plan.caracteristicas.all %}
+                                        <li class="{% if not forloop.last %}border-bottom border-color-extra-medium-gray{% endif %} pt-15px pb-15px ps-45px pe-45px sm-ps-25px sm-pe-25px fw-500 {% if caracteristica.incluido %}text-dark-gray{% else %}opacity-8{% endif %}">
+                                            {% if caracteristica.incluido %}
+                                                <i class="feather icon-feather-check fs-20 me-10px"
+                                                   style="color:#0d633e!important;"></i>
+                                            {% else %}
+                                                <i class="feather icon-feather-x fs-20 text-red me-10px"></i>
+                                            {% endif %}
+                                            {{ caracteristica.texto }}
+                                        </li>
+                                    {% empty %}
+                                        <li class="pt-15px pb-15px ps-45px pe-45px sm-ps-25px sm-pe-25px fw-500 text-dark-gray">
+                                            <i class="feather icon-feather-check fs-20 me-10px"
+                                               style="color:#0d633e!important;"></i>
+                                            Sin características registradas
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+
+                                <div class="d-block bg-gradient-very-light-gray pt-25px pb-25px ps-45px pe-45px sm-ps-25px sm-pe-25px border-radius-8px">
+                                    <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📱%20Estoy%20interesado%20en%20el%20plan%20{{ plan.nombre|urlencode }}%20para%20desarrollo%20de%20apps.%0A%0A💰%20Precio:%20${{ plan.precio|floatformat:0 }}%20{{ plan.periodo|urlencode }}%0A%0A🚀%20Deseo%20más%20información%20y%20cotización."
+                                       target="_blank"
+                                       class="btn btn-medium btn-rounded btn-box-shadow fw-700 sm-mb-10px text-white"
+                                       style="background-color:#0d633e!important;border-color:#0d633e!important;">
+                                        {{ plan.boton_texto }}
+                                    </a>
+
+                                    <span class="fs-15 ms-15px d-inline-block">
+                                    Asesoría personalizada
+                                </span>
+                                </div>
+                            </div>
+
+                            <span class="position-absolute top-25px right-25px bg-white border border-1 border-color-extra-medium-gray box-shadow-large fw-800 text-dark-gray text-uppercase border-radius-3px ps-15px pe-15px fs-12 xs-right-10px xs-top-10px">
+                            {% if plan.destacado %}Recomendado{% else %}{{ plan.nombre }}{% endif %}
+                        </span>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock %}

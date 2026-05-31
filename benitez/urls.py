@@ -27,6 +27,7 @@ from Girekstudio.views import *
 from Vortice.views import *
 from Zatuar.views import *
 from Niska.views import *
+from Eraly.views import *
 from cart.views import *
 from orders.views import *
 from shop import views
@@ -111,5 +112,23 @@ urlpatterns = [
     path('payment/', include('payment.urls', namespace='payment')),
     path('coupons/', include('coupons.urls', namespace='coupons')),
     path('orden_pedido/', orden_pedido, name='orden pedido'),
+
+    # web eraly/
+    path('eraly/', index_eraly),
+    path('eraly/soluciones/', soluciones_eraly),
+    path('eraly/soluciones/<int:id>/', soluciones_eraly_id),
+    # Productos / Servicios
+    path('eraly/productos/', productos_eraly, name='productos'),
+    path('eraly/hosting/', hosting_eraly, name='hosting'),
+    path('eraly/web/', web_eraly, name='paginas_web'),
+    path('eraly/correos/', correos_eraly, name='correos'),
+    #path('eraly/facturacion/', facturacion_eraly, name='facturacion'),
+    path('eraly/apps/', apps_eraly, name='apps'),
+   # Contacto
+   path('eraly/contacto/', contacto_eraly, name='contacto'),
+   # Suscribirse
+   path('eraly/subscribe/', eraly_subscribe_newsletter, name='eraly_subscribe_newsletter'),
+
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

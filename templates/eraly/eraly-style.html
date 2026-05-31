@@ -1,0 +1,273 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}EralySoft - POS para Peluquerías | Spa | Centros de Belleza{% endblock %}
+
+{% block content %}
+
+<!-- start page title -->
+<section class="ipad-top-space-margin bg-dark-gray cover-background page-title-big-typography" style="background-image: url('https://placehold.co/1920x540')">
+    <div class="background-position-center-top h-100 w-100 position-absolute left-0px top-0" style="background-image: url('/static/static_eraly/images/vertical-line-bg-small.svg')"></div>
+    <div id="particles-style-01" class="h-100 position-absolute left-0px top-0 w-100" data-particle="true" data-particle-options='{"particles": {"number": {"value": 8,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}'></div>
+    <div class="container">
+        <div class="row align-items-center extra-small-screen">
+            <div class="col-xl-6 col-lg-7 col-md-8 col-sm-9 position-relative page-title-extra-small" data-anime='{ "el": "childs", "translateY": [-15, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <h1 class="mb-20px alt-font text-yellow">POS para Peluquerías</h1>
+                <h2 class="fw-500 m-0 ls-minus-2px text-white alt-font">Agendamiento | Profesionales | Ventas</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+
+<!-- start section - Beneficios rápidos -->
+<section>
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-7 text-center">
+                <h3 class="fw-600 text-dark-gray ls-minus-1px">¿Por qué elegirnos?</h3>
+                <p class="fs-18">Optimiza tu negocio de belleza</p>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2">
+            <!-- beneficio 1 - Agendamiento -->
+            <div class="col process-step-style-03 text-center last-paragraph-no-margin hover-box md-mb-50px">
+                <div class="process-step-icon-box position-relative mb-25px">
+                    <div class="d-inline-block position-relative overflow-hidden border-radius-100 progress-image w-180px h-180px">
+                        <img src="https://placehold.co/500x500" alt="Agendamiento">
+                        <div class="box-overlay bg-majorelle-blue"></div>
+                        <span class="number icon-extra-large text-white absolute-middle-center"><i class="fa-solid fa-calendar-check"></i></span>
+                    </div>
+                </div>
+                <span class="d-inline-block fs-19 text-dark-gray mb-5px fw-600 alt-font">Agendamiento</span>
+                <p class="w-70 lg-w-95 mx-auto">Citas online | Sin dobles reservas</p>
+            </div>
+            <!-- beneficio 2 - Profesionales -->
+            <div class="col process-step-style-03 text-center last-paragraph-no-margin hover-box md-mb-50px">
+                <div class="process-step-icon-box position-relative mb-25px">
+                    <div class="d-inline-block position-relative overflow-hidden border-radius-100 progress-image w-180px h-180px">
+                        <img src="https://placehold.co/500x500" alt="Profesionales">
+                        <div class="box-overlay bg-majorelle-blue"></div>
+                        <span class="number icon-extra-large text-white absolute-middle-center"><i class="fa-solid fa-user-astronaut"></i></span>
+                    </div>
+                </div>
+                <span class="d-inline-block fs-19 text-dark-gray mb-5px fw-600 alt-font">Gestión de Profesionales</span>
+                <p class="w-70 lg-w-95 mx-auto">Horarios | Comisiones | Rendimiento</p>
+            </div>
+            <!-- beneficio 3 - Clientes -->
+            <div class="col process-step-style-03 text-center last-paragraph-no-margin hover-box xs-mb-50px">
+                <div class="process-step-icon-box position-relative mb-25px">
+                    <div class="d-inline-block position-relative overflow-hidden border-radius-100 progress-image w-180px h-180px">
+                        <img src="https://placehold.co/500x500" alt="Clientes">
+                        <div class="box-overlay bg-majorelle-blue"></div>
+                        <span class="number icon-extra-large text-white absolute-middle-center"><i class="fa-solid fa-users"></i></span>
+                    </div>
+                </div>
+                <span class="d-inline-block fs-19 text-dark-gray mb-5px fw-600 alt-font">Fidelización</span>
+                <p class="w-70 lg-w-95 mx-auto">Membresías | Paquetes | Lealtad</p>
+            </div>
+            <!-- beneficio 4 - Inventario -->
+            <div class="col process-step-style-03 text-center last-paragraph-no-margin hover-box">
+                <div class="process-step-icon-box position-relative mb-25px">
+                    <div class="d-inline-block position-relative overflow-hidden border-radius-100 progress-image w-180px h-180px">
+                        <img src="https://placehold.co/500x500" alt="Inventario">
+                        <div class="box-overlay bg-majorelle-blue"></div>
+                        <span class="number icon-extra-large text-white absolute-middle-center"><i class="fa-solid fa-boxes"></i></span>
+                    </div>
+                </div>
+                <span class="d-inline-block fs-19 text-dark-gray mb-5px fw-600 alt-font">Inventario</span>
+                <p class="w-70 lg-w-95 mx-auto">Productos | Stock | Alertas</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section beneficios -->
+
+<!-- start section - Peluquerías y Belleza (main) -->
+<section class="bg-solitude-blue" id="peluquerias">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-xl-8 col-lg-10 text-center">
+                <div class="icon-with-text-style-08 mb-20px d-inline-block">
+                    <div class="feature-box feature-box-left-icon-middle">
+                        <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-yellow me-15px">
+                            <i class="fa-solid fa-scissors d-inline-block icon-extra-medium text-dark-gray"></i>
+                        </div>
+                        <div class="feature-box-content last-paragraph-no-margin">
+                            <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">Peluquerías | Spa | Centros de Estética</span>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-dark-gray fw-600 ls-minus-1px">Todo lo que necesitas para tu negocio</h2>
+                <p class="fs-18 w-70 mx-auto">Control total: citas, profesionales, productos y más</p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-xl-3 col-lg-4 col-md-12 tab-style-05 md-mb-30px sm-mb-20px">
+                <!-- tabs belleza -->
+                <ul class="nav nav-tabs justify-content-center border-0 text-left fw-500 fs-18 alt-font">
+                    <li class="nav-item"><a data-bs-toggle="tab" href="#tab_citas" class="nav-link d-flex align-items-center active"><i class="fa-solid fa-calendar-check me-2"></i><span>Citas</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_profesionales"><i class="fa-solid fa-user-astronaut me-2"></i><span>Profesionales</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_clientes"><i class="fa-solid fa-users me-2"></i><span>Clientes</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_productos"><i class="fa-solid fa-boxes me-2"></i><span>Productos</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_reportes"><i class="fa-solid fa-chart-line me-2"></i><span>Reportes</span></a></li>
+                </ul>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-12">
+                <div class="tab-content">
+                    <!-- Tab Citas -->
+                    <div class="tab-pane fade in active show" id="tab_citas">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                <img src="https://placehold.co/600x450" alt="Agendamiento de citas" class="border-radius-6px w-100" />
+                            </div>
+                            <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                <span class="badge bg-yellow text-dark-gray px-3 py-2 mb-3 d-inline-block"><i class="fa-solid fa-calendar-check me-1"></i> Agendamiento</span>
+                                <h5 class="fw-700 mb-3">Controla todas tus citas</h5>
+                                <p>Calendario por profesional | Recordatorios WhatsApp | Evita dobles reservas</p>
+                                <a href="/contacto/" class="btn btn-rounded btn-base-color mt-3">Solicitar demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Profesionales -->
+                    <div class="tab-pane fade in" id="tab_profesionales">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                <img src="https://placehold.co/600x450" alt="Gestión de profesionales" class="border-radius-6px w-100" />
+                            </div>
+                            <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                <span class="badge bg-yellow text-dark-gray px-3 py-2 mb-3 d-inline-block"><i class="fa-solid fa-user-astronaut me-1"></i> Profesionales</span>
+                                <h5 class="fw-700 mb-3">Gestiona tu equipo fácilmente</h5>
+                                <p>Horarios | Comisiones automáticas | Rendimiento por profesional</p>
+                                <a href="/contacto/" class="btn btn-rounded btn-base-color mt-3">Solicitar demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Clientes -->
+                    <div class="tab-pane fade in" id="tab_clientes">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                <img src="https://placehold.co/600x450" alt="Fidelización clientes" class="border-radius-6px w-100" />
+                            </div>
+                            <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                <span class="badge bg-yellow text-dark-gray px-3 py-2 mb-3 d-inline-block"><i class="fa-solid fa-users me-1"></i> Fidelización</span>
+                                <h5 class="fw-700 mb-3">Programa de lealtad</h5>
+                                <p>Membresías | Paquetes de servicios | Tarjeta de cliente frecuente</p>
+                                <a href="/contacto/" class="btn btn-rounded btn-base-color mt-3">Solicitar demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Productos -->
+                    <div class="tab-pane fade in" id="tab_productos">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                <img src="https://placehold.co/600x450" alt="Inventario productos" class="border-radius-6px w-100" />
+                            </div>
+                            <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                <span class="badge bg-yellow text-dark-gray px-3 py-2 mb-3 d-inline-block"><i class="fa-solid fa-boxes me-1"></i> Inventario</span>
+                                <h5 class="fw-700 mb-3">Control de productos</h5>
+                                <p>Stock en tiempo real | Alertas de inventario bajo | Control de ventas</p>
+                                <a href="/contacto/" class="btn btn-rounded btn-base-color mt-3">Solicitar demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Reportes -->
+                    <div class="tab-pane fade in" id="tab_reportes">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 offset-xl-1 sm-mb-30px">
+                                <img src="https://placehold.co/600x450" alt="Reportes" class="border-radius-6px w-100" />
+                            </div>
+                            <div class="col-xl-4 col-md-6 offset-xl-1 text-center text-md-start">
+                                <span class="badge bg-yellow text-dark-gray px-3 py-2 mb-3 d-inline-block"><i class="fa-solid fa-chart-line me-1"></i> Reportes</span>
+                                <h5 class="fw-700 mb-3">Datos para crecer</h5>
+                                <p>Servicios más vendidos | Profesional top | Ingresos por periodo</p>
+                                <a href="/contacto/" class="btn btn-rounded btn-base-color mt-3">Solicitar demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section Peluquerías y Belleza -->
+
+<!-- start section - Planes -->
+<section class="big-section">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-xl-7 col-lg-9 col-md-11 text-center">
+                <h2 class="text-dark-gray fw-700 alt-font ls-minus-1px">Planes para tu negocio</h2>
+                <p class="fs-18">Elige el que mejor se adapte a ti</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Plan Básico -->
+            <div class="col-lg-4 col-md-8 md-mb-30px">
+                <div class="bg-white box-shadow-quadruple-large border-radius-6px p-5 text-center h-100">
+                    <h5 class="fw-700">Básico</h5>
+                    <p class="mb-3">Para negocio pequeño</p>
+                    <h2 class="text-base-color fw-700">$39<span class="fs-14">/mes</span></h2>
+                    <hr>
+                    <ul class="list-unstyled text-start mt-4">
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Agendamiento básico</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Hasta 3 profesionales</li>
+                        <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Recordatorios WhatsApp</li>
+                        <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Fidelización</li>
+                    </ul>
+                    <a href="/contacto/" class="btn btn-dark-gray btn-rounded w-100 mt-3">Contratar</a>
+                </div>
+            </div>
+            <!-- Plan Profesional (Popular) -->
+            <div class="col-lg-4 col-md-8 md-mb-30px">
+                <div class="bg-yellow box-shadow-quadruple-large border-radius-6px p-5 text-center h-100">
+                    <span class="bg-dark-gray text-white px-3 py-1 rounded-pill fs-12">🔥 Más vendido</span>
+                    <h5 class="fw-700 mt-2">Profesional</h5>
+                    <p class="mb-3">Para negocio en crecimiento</p>
+                    <h2 class="fw-700">$79<span class="fs-14">/mes</span></h2>
+                    <hr>
+                    <ul class="list-unstyled text-start mt-4">
+                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Todo del plan Básico</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Recordatorios WhatsApp</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Programa de fidelización</li>
+                        <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> Comisiones automáticas</li>
+                    </ul>
+                    <a href="/contacto/" class="btn btn-dark-gray btn-rounded w-100 mt-3">Contratar</a>
+                </div>
+            </div>
+            <!-- Plan Premium -->
+            <div class="col-lg-4 col-md-8">
+                <div class="bg-white box-shadow-quadruple-large border-radius-6px p-5 text-center h-100">
+                    <h5 class="fw-700">Premium</h5>
+                    <p class="mb-3">Para cadenas o centros grandes</p>
+                    <h2 class="text-base-color fw-700">$149<span class="fs-14">/mes</span></h2>
+                    <hr>
+                    <ul class="list-unstyled text-start mt-4">
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Todo incluido</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Comisiones automáticas</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Múltiples sedes</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="/contacto/" class="btn btn-dark-gray btn-rounded w-100 mt-3">Contratar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section planes -->
+
+<!-- start section CTA final -->
+<section class="bg-dark-gray py-5 text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="text-white fw-700">¿Listo para optimizar tu negocio?</h2>
+                <p class="text-white opacity-7 fs-18 mb-4">Agenda una demo gratis y descubre cómo podemos ayudarte</p>
+                <a href="/contacto/" class="btn btn-base-color btn-rounded btn-lg">✂️ Quiero mi demo →</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section CTA -->
+
+{% endblock %}

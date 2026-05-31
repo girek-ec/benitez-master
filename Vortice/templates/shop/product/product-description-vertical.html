@@ -119,7 +119,24 @@
                                     </div>
                                     <div class="tf-product-info-badges">
                                         <div class="product-status-content">
-                                            <p class="fw-6">{{ products.descripcion_produc}}</p>
+                                            <p class="fw-6">
+                                              <div class="tf-product-info-badges">
+    <div class="product-status-content">
+     <p class="fw-6">hola aqui es prueba</p>
+        <p class="fw-6">
+            {% if products.detalle_prenda_id %}
+                {{ products.detalle_prenda.detalle|linebreaksbr }}
+            {% else %}
+                {{ products.descripcion_produc|linebreaksbr }}
+            {% endif %}
+        </p>
+    </div>
+</div>
+                                           <p>Producto ID: {{ products.id }}</p>
+<p>Detalle seleccionado: {{ products.detalle_prenda }}</p>
+<p>Detalle ID: {{ products.detalle_prenda_id }}</p>
+<p>Texto detalle: {{ products.detalle_prenda.detalle }}</p>
+                                            </p>
                                         </div>
                                     </div>
                                     {% if products.activa_descuento %}

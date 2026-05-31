@@ -1,0 +1,357 @@
+<footer class="bg-gradient-aztec-green position-relative">
+    <div class="position-absolute left-minus-100px top-25px">
+        <img src="/static/static_eraly/images/demo-elearning-bg-05.png" alt="" class="w-80">
+    </div>
+    <div class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
+         style="background-image: url('/static/static_eraly/images/vertical-line-bg-small.svg')"></div>
+
+    <!-- Banner CTA superior -->
+    <div class="container overlap-section">
+        <div class="row g-0 justify-content-center align-items-center text-center bg-base-color border-radius-6px ps-5 pe-5 pt-3 pb-3 mb-8 sm-p-25px background-position-left-bottom background-no-repeat contain-background position-relative"
+             style="background-image: url('/static/static_eraly/images/demo-elearning-bg-06.png')">
+            <div class="col-lg-auto lg-mb-20px">
+                <h6 class="alt-font fw-600 text-dark-gray m-0 ls-minus-1px d-inline-block me-30px lg-me-0">¿Listo para
+                    digitalizar tu negocio? &nbsp;</h6>
+            </div>
+            <div class="col-auto">
+                <a href="https://api.whatsapp.com/send?phone=+593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A🚀%20Quiero%20digitalizar%20mi%20negocio%20y%20me%20interesan%20sus%20soluciones:%0A%0A✅%20Sistemas%20POS%0A✅%20Apps%20Empresariales%0A✅%20Páginas%20Web%0A✅%20Software%20SaaS%0A✅%20Hosting%20y%20Dominios%0A✅%20Correos%20Corporativos%0A✅%20Automatización%20Empresarial%0A%0A📈%20Deseo%20una%20asesoría%20personalizada%20para%20mi%20empresa.%0A%0A🔥%20Quedo%20atento%20a%20más%20información.%20Gracias."
+                   target="_blank"
+                   class="btn btn-extra-large btn-dark-gray btn-rounded btn-box-shadow btn-switch-text d-inline-block me-20px align-middle xs-m-0">
+
+                    <span>
+
+                        <span class="btn-double-text"
+                              data-text="Chat ">  Cotizar
+                        </span>
+
+                        <span>
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </span>
+
+                    </span>
+
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-dark text-center text-sm-start position-relative">
+        <div class="row mb-5 sm-mb-7 xs-mb-30px">
+            <!-- Columna 1 - Logo y descripción -->
+            <div class="col-lg-3 col-md-4 col-sm-6 d-flex flex-column last-paragraph-no-margin md-mb-40px xs-mb-30px">
+
+                <a href="/" class="footer-logo mb-15px d-inline-block">
+                    {% if empresa.logo %}
+                        <img src="{{ empresa.logo.url }}" alt="{{ empresa.nombre }}">
+                    {% else %}
+                        <img src="/static/static_eraly/images/eraly_logo.png" alt="EralySoft">
+                    {% endif %}
+                </a>
+
+                <p class="lh-28">
+                    {{ empresa.descripcion|default:"Soluciones tecnológicas para tu negocio: POS, páginas web, hosting, correos y facturación electrónica." }}
+                </p>
+
+                <div class="elements-social social-text-style-01 mt-9 xs-mt-15px">
+                    <ul class="small-icon light fw-500">
+
+                        {% if empresa.facebook %}
+                            <li>
+                                <a class="facebook" href="{{ empresa.facebook }}" target="_blank">Fb.</a>
+                            </li>
+                        {% endif %}
+
+                        {% if empresa.instagram %}
+                            <li>
+                                <a class="instagram" href="{{ empresa.instagram }}" target="_blank">Ig.</a>
+                            </li>
+                        {% endif %}
+
+                        {% if empresa.twitter %}
+                            <li>
+                                <a class="twitter" href="{{ empresa.twitter }}" target="_blank">Tw.</a>
+                            </li>
+                        {% endif %}
+
+                        {% if empresa.linkedin %}
+                            <li>
+                                <a class="linkedin" href="{{ empresa.linkedin }}" target="_blank">In.</a>
+                            </li>
+                        {% endif %}
+
+                        {% if empresa.whatsapp %}
+                            <li>
+                                <a class="whatsapp"
+                                   href="https://api.whatsapp.com/send?phone=+593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft,%20deseo%20más%20información%20sobre%20sus%20servicios%20digitales."
+                                   target="_blank">
+
+                                    Wa.
+
+                                </a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Columna 2 - Sistemas POS y Servicios Web -->
+            <div class="col-lg-3 col-md-4 col-sm-6 ps-4 last-paragraph-no-margin md-mb-40px xs-mb-30px">
+
+                <span class="fw-500 fs-18 d-block text-white mb-10px">Sistemas POS</span>
+                <ul class="mb-25px">
+                    {% for apps in landings_menu %}
+                        <li>
+                            <a href="/eraly/soluciones/{{ apps.id }}/">
+                                {{ apps.titulo_hero }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <span class="fw-500 fs-18 d-block text-white mb-10px">Servicios Web</span>
+                <ul>
+                    <li><a href="/eraly/hosting/">Hosting + Dominio</a></li>
+                    <li><a href="/eraly/web/">Páginas Web</a></li>
+                    <li><a href="/eraly/correos/">Correos Corporativos</a></li>
+                    <li><a href="/eraly/apps/">Apps a medida</a></li>
+                </ul>
+
+            </div>
+            <!-- Columna 3 - Contacto -->
+            <div class="col-lg-3 col-md-4 col-sm-6 last-paragraph-no-margin xs-mb-30px">
+
+    <span class="fw-500 fs-18 d-block text-white mb-15px">
+        Contacto
+    </span>
+
+                {% if empresa.telefono %}
+                    <div class="mb-10px">
+                        <a href="tel:{{ empresa.telefono }}"
+                           class="text-white">
+
+                            📞 {{ empresa.telefono }}
+
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% if empresa.email %}
+                    <div class="mb-10px">
+                        <a href="mailto:{{ empresa.email }}"
+                           class="text-white">
+
+                            ✉️ {{ empresa.email }}
+
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% if empresa.whatsapp %}
+                    <div>
+                        <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft,%20deseo%20más%20información%20sobre%20sus%20servicios%20digitales."
+                           target="_blank"
+                           class="text-white">
+
+                            📱 WhatsApp
+
+                        </a>
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Columna 4 - Newsletter -->
+            <div class="col-lg-3 col-md-12 col-sm-6 text-md-center text-lg-start">
+
+                <span class="fs-18 fw-500 d-block text-white mb-20px">
+                    Recibe novedades
+                </span>
+
+                <div class="col-auto col-lg-12">
+
+                    <form action="/eraly/subscribe/"
+                          method="post"
+                          class="d-flex flex-column gap-3">
+
+                        {% csrf_token %}
+
+                        <!-- INPUT -->
+                        <input class="input-small bg-dark-gray border-color-transparent-white-light w-100 form-control required eraly-newsletter-input"
+                               type="email"
+                               name="email"
+                               placeholder="Tu correo electrónico..."
+                               required>
+
+                        <!-- BOTÓN -->
+                        <button type="submit"
+                                class="btn btn-small btn-rounded btn-box-shadow btn-base-color">
+
+                            <i class="feather icon-feather-mail me-5px"></i>
+                            Suscribirse
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+                {% if messages %}
+                    <div class="mt-15px">
+                        {% for message in messages %}
+                            <div class="fs-14 text-white">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-sm-start justify-content-lg-start fs-14">
+                    <div class="d-inline-block">
+                        <i class="line-icon-Handshake me-6px align-middle icon-very-medium"></i>
+                        Protegemos tu privacidad
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+       <!-- Footer bottom - Copyright y enlaces legales -->
+<ul class="footer-navbar fs-16 lh-normal">
+
+    <li class="nav-item">
+        <a href="/eraly/" class="nav-link ps-0">
+            Inicio
+        </a>
+    </li>
+
+    <!-- SISTEMAS POS -->
+    <li class="nav-item footer-dropdown">
+
+        <a href="javascript:void(0);"
+           class="nav-link"
+           onclick="return false;">
+            Sistemas POS ▾
+        </a>
+
+        <div class="footer-dropdown-menu">
+
+            {% for pos in landings_menu %}
+                <a href="/eraly/soluciones/{{ pos.id }}/">
+                    {{ pos.nombre }}
+                </a>
+            {% endfor %}
+
+        </div>
+
+    </li>
+
+<!-- SERVICIOS WEB -->
+<li class="nav-item footer-dropdown">
+
+    <a href="javascript:void(0);"
+       class="nav-link"
+       onclick="return false;">
+        Servicios Web ▾
+    </a>
+
+<div class="footer-dropdown-menu">
+
+    {% for servicio in servicios_menu %}
+
+        {% if servicio.tipo == 'hosting' %}
+            <a href="/eraly/hosting/">
+                {{ servicio.titulo }}
+            </a>
+
+        {% elif servicio.tipo == 'web' %}
+            <a href="/eraly/web/">
+                {{ servicio.titulo }}
+            </a>
+
+        {% elif servicio.tipo == 'correos' %}
+            <a href="/eraly/correos/">
+                {{ servicio.titulo }}
+            </a>
+
+        {% elif servicio.tipo == 'apps' %}
+            <a href="/eraly/apps/">
+                {{ servicio.titulo }}
+            </a>
+
+        {% elif servicio.tipo == 'facturacion' %}
+            <a href="/eraly/facturacion/">
+                {{ servicio.titulo }}
+            </a>
+
+        {% endif %}
+
+    {% empty %}
+
+        <a href="javascript:void(0);">
+            Sin servicios registrados
+        </a>
+
+    {% endfor %}
+
+</div>
+
+</li>
+
+    <li class="nav-item">
+        <a href="/eraly/contacto/" class="nav-link">
+            Contacto
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="/" class="nav-link">
+            © 2026 Eraly Soft · Una marca de Grupo Benítez
+        </a>
+    </li>
+
+</ul>
+    </div>
+</footer>
+
+<style>
+.footer-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.footer-dropdown-menu {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #1f2428;
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.footer-dropdown:hover .footer-dropdown-menu {
+    display: block;
+}
+
+.footer-dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.footer-dropdown-menu a:hover {
+    background: rgba(255,255,255,.08);
+    color: #ffffff;
+    padding-left: 20px;
+}
+</style>

@@ -1,0 +1,220 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+{% block title %}{{ servicio.titulo }} | {{ empresa.nombre }}{% endblock %}
+
+{% block meta_description %}
+{{ servicio.descripcion }}
+{% endblock %}
+
+{% block meta_keywords %}
+paginas web, diseño web, ecommerce, landing page, tienda online, desarrollo web
+{% endblock %}
+
+{% block og_title %}
+{{ servicio.titulo }} | {{ empresa.nombre }}
+{% endblock %}
+
+{% block og_description %}
+{{ servicio.subtitulo }}
+{% endblock %}
+
+{% block og_image %}
+<meta property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block twitter_image %}
+<meta name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0"
+             style="background-image: url('{{ servicio.imagen_banner.url }}')">
+
+        <div class="container">
+            <div class="row align-items-center small-screen">
+                <div class="col-lg-5 col-sm-7 position-relative page-title-extra-small">
+
+                    <h1 class="mb-15px text-white opacity-7 fw-300 overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.titulo }}
+                    </span>
+                    </h1>
+
+                    <h2 class="m-auto pb-5px pt-5px text-white fw-600 ls-minus-1px overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.subtitulo }}
+                    </span>
+                    </h2>
+
+                    <div class="mt-4">
+                        <a href="{{ servicio.boton_url }}"
+                           class="btn btn-rounded btn-large me-2 text-white"
+                           style="background:#136e44!important;">
+                            {{ servicio.boton_texto }}
+                        </a>
+
+                        <a href="#planes"
+                           class="btn btn-outline-white btn-rounded btn-large">
+                            Ver planes
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-6 md-mb-30px animation-float">
+                    <img src="{{ servicio.imagen_1.url }}" alt="{{ servicio.titulo }}">
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                <span class="fw-600 mb-15px text-uppercase d-block"
+                      style="color:#136e44!important;">
+                    Correos profesionales
+                </span>
+                    <h2 class="fw-700 text-dark-gray ls-minus-2px">
+                        ¿Por qué tener un correo corporativo?
+                    </h2>
+                    <p class="w-90 lg-w-100 mb-30px">
+                        {{ servicio.descripcion }}
+                    </p>
+                    <div class="mb-4">
+                        {% for beneficio in beneficios_servicio %}
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="{{ beneficio.icono }} fs-24 me-3"
+                                   style="color:#136e44!important;"></i>
+
+                                <span class="fw-600">
+                                {{ beneficio.titulo }}
+                            </span>
+                            </div>
+                        {% empty %}
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa-solid fa-check-circle fs-24 me-3"
+                                   style="color:#136e44!important;"></i>
+                                <span class="fw-600">
+                                No hay beneficios registrados.
+                            </span>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📧%20Estoy%20interesado%20en%20correos%20corporativos%20para%20mi%20empresa.%0A%0A✅%20Deseo%20más%20información%20sobre%20planes,%20precios%20y%20configuración.%0A%0A🚀%20Quedo%20atento%20a%20su%20asesoría.%20Gracias."
+                       target="_blank"
+                       class="btn btn-large btn-rounded btn-switch-text btn-box-shadow text-white"
+                       style="background:#136e44!important;">
+                    <span>
+                        <span class="btn-double-text" data-text="Cotizar ahora">
+                            Cotizar ahora
+                        </span>
+                        <span>
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </span>
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planes" style="background:#eef8f2;">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-10 text-center">
+                <span class="fw-600 mb-5px text-uppercase d-block"
+                      style="color:#136e44!important;">
+                    Planes simples
+                </span>
+                    <h2 class="fw-700 mb-15px text-dark-gray ls-minus-2px">
+                        Planes de correos corporativos
+                    </h2>
+                    <p class="fs-18">
+                        Elige el plan que mejor se adapte a tu empresa
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                {% for plan in planes_servicio %}
+                    <div class="col-lg-3 col-md-8 mb-30px">
+                        <div class="pricing-table text-center pt-16 pb-35px box-shadow-quadruple-large border-radius-6px h-100"
+                                {% if plan.destacado %}
+                             style="background:#eef8f2!important; border:2px solid #136e44;"
+                                {% else %}
+                             style="background:#ffffff!important; border:1px solid rgba(19,110,68,.18);"
+                                {% endif %}>
+                            <div class="pricing-header ps-18 pe-18">
+                                <div class="d-inline-block fs-12 text-uppercase ps-20px pe-20px fw-600 mb-30px border-radius-100px box-shadow-large border bg-white"
+                                     style="color:#136e44!important;">
+                                    {% if plan.destacado %}🔥 {% endif %}
+                                    {{ plan.nombre }}
+                                </div>
+                                <h2 class="text-dark-gray fw-600 mb-10px ls-minus-3px">
+                                    <sup class="fs-30">$</sup>{{ plan.precio|floatformat:0 }}
+                                </h2>
+                                <p class="mb-25px">
+                                    {{ plan.periodo }}
+                                </p>
+                                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📧%20Estoy%20interesado%20en%20el%20plan%20{{ plan.nombre|urlencode }}%20de%20correos%20corporativos.%0A%0A💰%20Precio:%20${{ plan.precio|floatformat:2 }}%20{{ plan.periodo|urlencode }}%0A%0A✅%20Deseo%20más%20información%20sobre%20contratación%20y%20configuración.%0A%0AGracias."
+                                   target="_blank"
+                                   class="btn btn-round-edge w-100 text-white"
+                                   style="background:#136e44!important;">
+                                    {{ plan.boton_texto }}
+                                </a>
+                            </div>
+                            <div class="pricing-body pt-15px pb-25px">
+                                <ul class="list-unstyled mb-0">
+                                    {% for caracteristica in plan.caracteristicas.all %}
+                                        <li class="pt-10px pb-10px {% if not caracteristica.incluido %}opacity-6{% endif %}">
+                                            {% if caracteristica.incluido %}
+                                                {{ caracteristica.texto }}
+                                            {% else %}
+                                                <del>{{ caracteristica.texto }}</del>
+                                            {% endif %}
+                                        </li>
+                                    {% empty %}
+                                        <li class="pt-10px pb-10px">
+                                            Sin características registradas.
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="pricing-footer">
+                                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📧%20Quiero%20consultar%20sobre%20el%20plan%20{{ plan.nombre|urlencode }}%20de%20correos%20corporativos.%0A%0AGracias."
+                                   target="_blank"
+                                   class="text-decoration-line-bottom d-inline-block fw-500"
+                                   style="color:#136e44!important;">
+                                    Solicitar asesoría
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12 text-center">
+                        <p>No hay planes registrados todavía.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 text-center">
+                    <p class="text-dark-gray">
+                        ¿Necesitas un plan personalizado?
+                        <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📧%20Necesito%20un%20plan%20personalizado%20de%20correos%20corporativos.%0A%0AQuedo%20atento."
+                           target="_blank"
+                           class="fw-700"
+                           style="color:#136e44!important;">
+                            Contáctanos
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

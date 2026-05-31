@@ -1,29 +1,28 @@
-
 {% extends 'vortice/index_vortice.html' %}
 
 
-    {% block metas %}
-        <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
-        <meta property="fb:app_id" content="926164441218858">
-        <meta property="og:site_name" content="Vortice">
-        <meta property="og:url" content="https://www.benitez-ec.com/vortice/producto/{{ products.id }}/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Vortice - {{ products.nombre_produc }}">
-        <meta property="og:description" content="{{ products.descripcion_produc }}">
-        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
-        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
-   
-        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
-        <meta name="twitter:title" content="Vortice - {{ products.nombre_produc }}">
-        <meta name="twitter:description" content="{{ products.descripcion_produc }}">
-        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
-        <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
-    {% endblock %}
+{% block metas %}
+    <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:site_name" content="Vortice">
+    <meta property="og:url" content="https://www.benitez-ec.com/vortice/producto/{{ products.id }}/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vortice - {{ products.nombre_produc }}">
+    <meta property="og:description" content="{{ products.descripcion_produc }}">
+    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
+
+    <!-- Meta etiquetas para Twitter (Twitter Cards) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
+    <meta name="twitter:title" content="Vortice - {{ products.nombre_produc }}">
+    <meta name="twitter:description" content="{{ products.descripcion_produc }}">
+    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ products.imagen_produc_01 }}">
+    <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
+{% endblock %}
 
 {% block principal %}
     <!-- Header -->
@@ -80,29 +79,32 @@
                                         {% endif %}
 
                                         {% if products.imagen_produc_01 %}
-                                           <div class="swiper-slide">
+                                            <div class="swiper-slide">
                                                 <div class="item">
-                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_01 }}"
+                                                    <img class="lazyload"
+                                                         data-src="/media/{{ products.imagen_produc_01 }}"
                                                          src="/media/{{ products.imagen_produc_01 }}"
                                                          alt="imagen producto vortice">
                                                 </div>
                                             </div>
                                         {% endif %}
 
-                                       {% if products.imagen_produc_02 %}
-                                           <div class="swiper-slide">
+                                        {% if products.imagen_produc_02 %}
+                                            <div class="swiper-slide">
                                                 <div class="item">
-                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_02 }}"
+                                                    <img class="lazyload"
+                                                         data-src="/media/{{ products.imagen_produc_02 }}"
                                                          src="/media/{{ products.imagen_produc_02 }}"
                                                          alt="imagen producto vortice">
                                                 </div>
                                             </div>
                                         {% endif %}
 
-                                       {% if products.imagen_produc_03 %}
-                                           <div class="swiper-slide">
+                                        {% if products.imagen_produc_03 %}
+                                            <div class="swiper-slide">
                                                 <div class="item">
-                                                    <img class="lazyload" data-src="/media/{{ products.imagen_produc_03 }}"
+                                                    <img class="lazyload"
+                                                         data-src="/media/{{ products.imagen_produc_03 }}"
                                                          src="/media/{{ products.imagen_produc_03 }}"
                                                          alt="imagen producto vortice">
                                                 </div>
@@ -178,10 +180,19 @@
                                 <div class="tf-product-info-title">
                                     <h5>{{ products.nombre_produc }}</h5>
                                 </div>
-                                <div class="tf-product-info-badges">
-                                    <div class="product-status-content">
-                                        <p class="fw-6">{{ products.descripcion_produc }}</p>
-                                    </div>
+
+                                            <div class="tf-product-info-badges">
+                                                <div class="product-status-content">
+                                                    <p class="fw-6">
+                                                        {% if products.detalle_prenda_id %}
+                                                            {{ products.detalle_prenda.detalle|linebreaksbr }}
+                                                        {% else %}
+                                                            {{ products.descripcion_produc|linebreaksbr }}
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                            </div>
+
                                 </div>
 
                                 <div class="tf-product-info-variant-picker">
@@ -202,30 +213,33 @@
                                                     {% if products.estado == 'reserv' %}
                                                         {# 1 Producto Reservado: mostramos solo un mensaje o botón deshabilitado #}
                                                         <div class="alert alert-warning text-center">
-                                                          <i class="icon-ban"></i>
-                                                          <strong>Reservado:</strong> Este producto está reservado.
+                                                            <i class="icon-ban"></i>
+                                                            <strong>Reservado:</strong> Este producto está reservado.
                                                         </div>
-                                                        <button class="btns-full" disabled style="border: #e6c13d !important; opacity: 0.6;">
-                                                          Reservado
+                                                        <button class="btns-full" disabled
+                                                                style="border: #e6c13d !important; opacity: 0.6;">
+                                                            Reservado
                                                         </button>
-                                                        {% elif products.estado == 'agot' %}
+                                                    {% elif products.estado == 'agot' %}
 
                                                         {# 2. Producto agotado #}
                                                         <div class="alert alert-danger text-center">
-                                                          <i class="icon-ban"></i>
-                                                          <strong>Agotado:</strong> Ya no está disponible.
+                                                            <i class="icon-ban"></i>
+                                                            <strong>Agotado:</strong> Ya no está disponible.
                                                         </div>
-                                                        <button class="btns-full" disabled style="border: #e6c13d !important; opacity: 0.6;">
-                                                          Agotado
+                                                        <button class="btns-full" disabled
+                                                                style="border: #e6c13d !important; opacity: 0.6;">
+                                                            Agotado
                                                         </button>
 
                                                     {% else %}
                                                         {# Producto disponible: mostramos el formulario de siempre #}
 
-                                                    <form action="{% url 'cart:cart_add' products.id %}" method="post">
-                                                        <div class="w-100">
-                                                            <div class="tf-product-info-buy-button">
-                                                                {% csrf_token %}
+                                                        <form action="{% url 'cart:cart_add' products.id %}"
+                                                              method="post">
+                                                            <div class="w-100">
+                                                                <div class="tf-product-info-buy-button">
+                                                                    {% csrf_token %}
 
                                                                     {# Campo oculto para override #}
                                                                     {{ cart_product_form.override }}
@@ -235,7 +249,8 @@
                                                                         <!-- Mensaje informativo para productos únicos -->
                                                                         <div class="alert alert-info mb-3">
                                                                             <i class="icon-info-circle"></i>
-                                                                            <strong>Producto exclusivo:</strong> Solo disponible una unidad.
+                                                                            <strong>Producto exclusivo:</strong> Solo
+                                                                            disponible una unidad.
                                                                         </div>
 
                                                                         <!-- Campos ocultos para cantidad y talla -->
@@ -260,18 +275,19 @@
                                                                             <div class="form-group mb-3">
                                                                                 <label>Talla:</label>
                                                                                 <p class="form-control-static">Única</p>
-                                                                                <input type="hidden" name="size" value="U">
+                                                                                <input type="hidden" name="size"
+                                                                                       value="U">
                                                                             </div>
                                                                         {% endif %}
                                                                     {% endif %}
-                                                            </div>
-                                                            <br>
+                                                                </div>
+                                                                <br>
 
-                                                            <input type="submit" value="Agregar" class="btns-full"
-                                                                   style="border: #e6c13d !important;">
-                                                        </div>
-                                                    </form>
-                                                {% endif %}
+                                                                <input type="submit" value="Agregar" class="btns-full"
+                                                                       style="border: #e6c13d !important;">
+                                                            </div>
+                                                        </form>
+                                                    {% endif %}
                                                 </div>
 
                                             </div>
@@ -562,23 +578,23 @@
         </div>
     </div>
     <script>
-      var thumbSwiper = new Swiper(".tf-product-media-thumbs", {
-          direction: 'vertical',
-          spaceBetween: 10,
-          slidesPerView: 'auto',
-          watchSlidesProgress: true
+        var thumbSwiper = new Swiper(".tf-product-media-thumbs", {
+            direction: 'vertical',
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            watchSlidesProgress: true
         });
 
 
         var mainSwiper = new Swiper(".tf-product-media-main", {
-          spaceBetween: 10,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-          },
-          thumbs: {
-            swiper: thumbSwiper
-          }
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            thumbs: {
+                swiper: thumbSwiper
+            }
         });
     </script>
 
@@ -612,64 +628,64 @@
 
 
     <style>
-    /* Estilos para el popup */
-    #imagePopup {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-
-    /* Imagen en pantalla completa */
-    #popupImage {
-        max-width: 100vw;
-        max-height: 100vh;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-</style>
-
-<!-- Contenedor del popup -->
-<div id="imagePopup" onclick="closePopup()">
-    <img id="popupImage" src="" alt="Imagen ampliada">
-</div>
-
-<script>
-    // Función para abrir el popup con la imagen seleccionada
-    function openPopup(imageUrl) {
-        const popup = document.getElementById("imagePopup");
-        const popupImage = document.getElementById("popupImage");
-        popup.style.display = "flex"; // Muestra el popup
-        popupImage.src = imageUrl; // Establece la imagen en el popup
-    }
-
-    // Cierra el popup
-    function closePopup() {
-        document.getElementById("imagePopup").style.display = "none";
-    }
-
-    // Cerrar con tecla ESC
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closePopup();
+        /* Estilos para el popup */
+        #imagePopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-    });
 
-    // Cerrar si se hace clic fuera de la imagen
-    window.onclick = function (event) {
-        const popup = document.getElementById("imagePopup");
-        if (event.target === popup) {
-            closePopup();
+        /* Imagen en pantalla completa */
+        #popupImage {
+            max-width: 100vw;
+            max-height: 100vh;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
-    };
-</script>
+    </style>
+
+    <!-- Contenedor del popup -->
+    <div id="imagePopup" onclick="closePopup()">
+        <img id="popupImage" src="" alt="Imagen ampliada">
+    </div>
+
+    <script>
+        // Función para abrir el popup con la imagen seleccionada
+        function openPopup(imageUrl) {
+            const popup = document.getElementById("imagePopup");
+            const popupImage = document.getElementById("popupImage");
+            popup.style.display = "flex"; // Muestra el popup
+            popupImage.src = imageUrl; // Establece la imagen en el popup
+        }
+
+        // Cierra el popup
+        function closePopup() {
+            document.getElementById("imagePopup").style.display = "none";
+        }
+
+        // Cerrar con tecla ESC
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closePopup();
+            }
+        });
+
+        // Cerrar si se hace clic fuera de la imagen
+        window.onclick = function (event) {
+            const popup = document.getElementById("imagePopup");
+            if (event.target === popup) {
+                closePopup();
+            }
+        };
+    </script>
 
 
 

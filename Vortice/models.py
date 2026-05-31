@@ -1,5 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.contrib.admin import BooleanFieldListFilter
+from PIL import Image
+import os
 from django.db import models
 from django.urls import reverse
 
@@ -133,6 +135,7 @@ class Tipo_articulo(models.Model):
 
     class Meta:
         verbose_name_plural = "4. Tipo de Articulo "
+        ordering = ['nombre_articulo']  # ← Orden alfabético
 
 
 class Material_producto(models.Model):
@@ -145,13 +148,71 @@ class Material_producto(models.Model):
         verbose_name_plural = "4. Material de producto"
 
 
+class DetallePrendaColeccion(models.Model):
+    tipo_articulo = models.ForeignKey(
+        Tipo_articulo,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        verbose_name="Tipo de artículo"
+    )
 
+    detalle = models.TextField(
+        max_length=800,
+        null=True,
+        blank=True,
+        verbose_name="Detalle de la prenda"
+    )
+
+    activo = models.BooleanField(default=True)
+
+    def __str__(self):
+        if self.tipo_articulo:
+            cliente = (
+                self.tipo_articulo.coleccion.cliente.cliente
+                if self.tipo_articulo.coleccion and self.tipo_articulo.coleccion.cliente
+                else "Sin sección"
+            )
+
+            coleccion = (
+                self.tipo_articulo.coleccion.tema_colec
+                if self.tipo_articulo.coleccion
+                else "Sin colección"
+            )
+
+            articulo = self.tipo_articulo.nombre_articulo or "Sin artículo"
+
+            return f"{cliente} - {coleccion} - {articulo}"
+
+        return "Detalle de prenda"
+
+    class Meta:
+        verbose_name_plural = "4. Detalles de prendas por colección"
+        ordering = [
+            "tipo_articulo__coleccion__cliente__cliente",
+            "tipo_articulo__coleccion__tema_colec",
+            "tipo_articulo__nombre_articulo",
+        ]
 
 class Prod_prenda(models.Model):
     visible= models.BooleanField(default=False)
     tipo_produc = models.ForeignKey(Tipo_articulo, on_delete=models.CASCADE, null=True, blank=True)
     nombre_produc = models.CharField(max_length=100, null=True, blank=True)
-    descripcion_produc = models.TextField(max_length=400, null=True, blank=True)
+    detalle_prenda = models.ForeignKey(
+        DetallePrendaColeccion,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Detalle de prenda",
+        help_text="Selecciona el detalle según la colección y tipo de prenda."
+    )
+
+    descripcion_produc = models.TextField(
+        max_length=400,
+        null=True,
+        blank=True,
+        help_text="Usar solo si deseas escribir una descripción personalizada."
+    )
     tipo_material = models.ForeignKey(Material_producto, null=True, blank=True, on_delete=models.SET_NULL)
     price = models.DecimalField(max_digits=999, decimal_places=2)
 
@@ -175,8 +236,39 @@ class Prod_prenda(models.Model):
         help_text="Selecciona si está disponible, agotado o reservado."
     )
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
+        imagenes = [
+            self.imagen_produc_01,
+            self.imagen_produc_02,
+            self.imagen_produc_03,
+        ]
 
+        for imagen in imagenes:
+            if imagen and hasattr(imagen, "path"):
+                img_path = imagen.path
+
+                if os.path.exists(img_path):
+                    try:
+                        img = Image.open(img_path)
+
+                        if img.mode in ("RGBA", "P"):
+                            img = img.convert("RGB")
+
+                        max_size = (1000, 1000)
+                        img.thumbnail(max_size)
+
+                        img.save(
+                            img_path,
+                            format="JPEG",
+                            quality=70,
+                            optimize=True,
+                            progressive=True
+                        )
+
+                    except Exception as e:
+                        print(f"Error optimizando imagen: {e}")
 
     def __str__(self):
         return '%s %s' % ( self.tipo_produc,  self.nombre_produc)

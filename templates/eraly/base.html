@@ -1,0 +1,148 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+
+    <title>{% block title %}{{ empresa.meta_titulo|default:"EralySoft - Software y servicios digitales" }}{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="{{ empresa.nombre|default:'EralySoft' }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <meta name="description" content="{% block meta_description %}{{ empresa.meta_descripcion|default:'Sistemas POS, páginas web, hosting, dominios, correos corporativos y automatización empresarial.' }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ empresa.meta_keywords|default:'POS, páginas web, hosting, dominios, correos corporativos, apps, Ecuador' }}{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="theme-color" content="#313e3b">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_EC">
+    <meta property="og:site_name" content="{{ empresa.nombre|default:'EralySoft' }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}{{ empresa.meta_titulo|default:'EralySoft - Software y servicios digitales' }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ empresa.meta_descripcion|default:'Soluciones digitales para empresas: POS, páginas web, hosting, dominios, correos corporativos y apps.' }}{% endblock %}">
+
+    {% block og_image %}
+        {% if empresa.logo_principal %}
+            <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ empresa.logo_principal.url }}">
+            <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{{ empresa.logo_principal.url }}">
+        {% else %}
+            <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'static_eraly/images/eraly_logo.png' %}">
+            <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% static 'static_eraly/images/eraly_logo.png' %}">
+        {% endif %}
+    {% endblock %}
+
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ empresa.meta_titulo|default:'EralySoft - Software y servicios digitales' }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ empresa.meta_descripcion|default:'Soluciones digitales para empresas modernas.' }}{% endblock %}">
+
+    {% block twitter_image %}
+        {% if empresa.logo_principal %}
+            <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ empresa.logo_principal.url }}">
+        {% else %}
+            <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'static_eraly/images/eraly_logo.png' %}">
+        {% endif %}
+    {% endblock %}
+
+    <!-- Favicon -->
+    {% if empresa.favicon %}
+        <link rel="shortcut icon" href="{{ empresa.favicon.url }}">
+        <link rel="apple-touch-icon" href="{{ empresa.favicon.url }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ empresa.favicon.url }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ empresa.favicon.url }}">
+    {% else %}
+        <link rel="shortcut icon" href="{% static 'static_eraly/images/eraly_logo.png' %}">
+    {% endif %}
+
+    <!-- Google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Style sheets and font icons -->
+    <link rel="stylesheet" href="{% static 'static_eraly/css/vendors.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static_eraly/css/icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static_eraly/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'static_eraly/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'static_eraly/demos/elearning/elearning.css' %}">
+
+    {% block extra_head %}{% endblock %}
+
+</head>
+
+<body data-mobile-nav-trigger-alignment="right"
+      data-mobile-nav-style="modern"
+      data-mobile-nav-bg-color="#313e3b">
+
+{% if messages %}
+    <div class="container position-fixed top-0 start-50 translate-middle-x mt-3 z-index-9">
+        {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show text-center eraly-alert"
+                 role="alert">
+
+                {{ message }}
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                </button>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<header>
+    {% include 'eraly/navbar.html' %}
+</header>
+
+{% block content %}
+{% endblock %}
+
+{% include 'eraly/footer.html' %}
+
+<!-- Scroll progress -->
+<div class="scroll-progress d-none d-xxl-block">
+    <a href="#" class="scroll-top" aria-label="scroll">
+        <span class="scroll-text">Scroll</span>
+        <span class="scroll-line">
+            <span class="scroll-point"></span>
+        </span>
+    </a>
+</div>
+
+<!-- Javascript libraries -->
+<script type="text/javascript" src="{% static 'static_eraly/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'static_eraly/js/vendors.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'static_eraly/js/main.js' %}"></script>
+
+{% if messages %}
+<script>
+    setTimeout(function () {
+        let alerts = document.querySelectorAll('.eraly-alert');
+
+        alerts.forEach(function(alert) {
+            if (typeof bootstrap !== 'undefined') {
+                let bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            } else {
+                alert.style.display = 'none';
+            }
+        });
+    }, 3500);
+</script>
+{% endif %}
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

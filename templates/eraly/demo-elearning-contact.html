@@ -1,0 +1,326 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}{{ empresa.contacto_titulo|default:"Contacto" }} | {{ empresa.nombre }}{% endblock %}
+
+{% block content %}
+
+<!-- start page title -->
+{% if empresa.contacto_banner %}
+<section class="ipad-top-space-margin bg-dark-gray cover-background page-title-big-typography"
+         style="background-image: url('{{ empresa.contacto_banner.url }}')">
+{% else %}
+<section class="ipad-top-space-margin bg-dark-gray cover-background page-title-big-typography"
+         style="background-image: url('https://placehold.co/1920x540')">
+{% endif %}
+
+    <div class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
+         style="background-image: url('/static/static_eraly/images/vertical-line-bg-small.svg')"></div>
+
+    <div class="container">
+        <div class="row align-items-center extra-small-screen">
+            <div class="col-xl-6 col-lg-7 col-md-8 col-sm-9 position-relative page-title-extra-small">
+
+                <h1 class="mb-20px alt-font" style="color:#2a3633!important;">
+                    {{ empresa.contacto_titulo|default:"Contáctanos" }}
+                </h1>
+
+                <h2 class="fw-500 m-0 ls-minus-2px text-white alt-font">
+                    {{ empresa.contacto_subtitulo|default:"Estamos aquí para ayudarte" }}
+                </h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+
+
+<!-- start section - Soporte personalizado -->
+<section class="position-relative overflow-hidden">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6 order-lg-2">
+                <div class="text-center text-lg-start">
+
+                    <div class="icon-with-text-style-08 mb-20px d-inline-block">
+                        <div class="feature-box feature-box-left-icon-middle">
+                            <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle me-15px" style="background:#2a3633!important;">
+                                <i class="bi bi-headset d-inline-block icon-extra-medium text-white"></i>
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">
+                                    {{ empresa.contacto_badge|default:"Soporte 24/7" }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-dark-gray fw-700 ls-minus-1px">
+                        {{ empresa.contacto_titulo_soporte|default:"¿Necesitas ayuda técnica?" }}
+                    </h2>
+
+                    <p class="fs-18 mb-4">
+                        {{ empresa.contacto_texto_soporte|default:"Nuestro equipo está disponible para atenderte." }}
+                    </p>
+
+                    <!-- tarjetas clickeables -->
+                    <div class="row mt-4">
+
+                        {% if empresa.whatsapp %}
+                        <div class="col-6">
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A🚀%20Deseo%20más%20información%20sobre%20sus%20servicios%20digitales.%0A%0AGracias."
+                               target="_blank"
+                               class="text-decoration-none">
+
+                                <div class="bg-white p-3 text-center border-radius-6px box-shadow-extra-large h-100">
+                                    <i class="fa-brands fa-whatsapp fs-40 text-success mb-2 d-block"></i>
+                                    <span class="fw-600 text-dark-gray">WhatsApp</span>
+                                    <p class="mb-0 small">Chatea ahora</p>
+                                </div>
+
+                            </a>
+                        </div>
+                        {% endif %}
+
+                        {% if empresa.email_soporte %}
+                        <div class="col-6">
+                            <a href="mailto:{{ empresa.email_soporte }}"
+                               class="text-decoration-none">
+
+                                <div class="bg-white p-3 text-center border-radius-6px box-shadow-extra-large h-100">
+                                    <i class="fa-regular fa-envelope fs-40 text-primary mb-2 d-block"></i>
+                                    <span class="fw-600 text-dark-gray">Correo</span>
+                                    <p class="mb-0 small">Enviar email</p>
+                                </div>
+
+                            </a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="mt-4">
+
+                        {% if empresa.telefono %}
+                        <a href="tel:{{ empresa.telefono }}"
+                           class="text-decoration-none">
+
+                            <div class="bg-dark-gray p-3 text-center border-radius-6px">
+                                <span class="text-white fs-18">
+                                    📞
+                                    <strong style="color:#8ec3b5;">
+                                        {{ empresa.telefono }}
+                                    </strong>
+                                </span>
+                            </div>
+
+                        </a>
+                        {% endif %}
+
+                        {% if empresa.whatsapp %}
+                        <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A🚀%20Deseo%20recibir%20asesoría%20sobre%20sus%20servicios%20digitales.%0A%0A✅%20Sistemas%20POS%0A✅%20Páginas%20Web%0A✅%20Hosting%20y%20Dominios%0A✅%20Correos%20Corporativos%0A✅%20Apps%20Empresariales%0A%0A📈%20Quedo%20atento%20a%20más%20información.%20Gracias."
+                           target="_blank"
+                           class="btn btn-rounded w-100 mt-3 text-white"
+style="background:#2a3633!important;border-color:#2a3633!important;">
+
+                            <i class="fa-brands fa-whatsapp me-5px"></i>
+                            Contactar por WhatsApp
+
+                        </a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 order-lg-1 text-center mt-5 mt-lg-0">
+                <i class="fa-solid fa-headset fs-150 opacity-25" style="color:#2a3633;"></i>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- end section Soporte -->
+
+
+<!-- start section - Introducción -->
+<section class="position-relative overflow-hidden">
+
+    <div class="container position-relative">
+
+        <div class="row mb-5 align-items-center overflow-hidden">
+
+            <div class="col-lg-6">
+
+                <h1 class="alt-font fw-700 text-dark-gray fancy-text-style-4 ls-minus-2px md-mb-20px">
+
+                    {{ empresa.contacto_titulo_intro|default:"Hablemos" }}
+
+                    <span data-fancy-text='{
+                        "effect": "rotate",
+                        "string": [
+                            "de tu negocio!",
+                            "de tecnología!",
+                            "de ventas!"
+                        ]
+                    }'></span>
+
+                    <i class="bi bi-emoji-smile icon-extra-large ms-20px"></i>
+
+                </h1>
+
+            </div>
+
+            <div class="col-lg-6 last-paragraph-no-margin">
+
+                <p>
+
+                    {{ empresa.contacto_texto_intro|default:"Cuéntanos tu proyecto y te asesoramos sin compromiso." }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- mapa -->
+        <div class="row">
+
+            <div class="col-12 sm-mb-30px">
+
+                <div class="map h-650px md-h-550px sm-h-450px border-radius-6px overflow-hidden">
+
+                    {% if empresa.mapa_iframe %}
+
+                        {{ empresa.mapa_iframe|safe }}
+
+                    {% else %}
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31842.42438988663!2d-79.9816716442657!3d-3.2568592890837174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x90330e252f104ed1%3A0xea4e189f2b2da97e!2sMachala!5e0!3m2!1ses-419!2sec!4v1779635508588!5m2!1ses-419!2sec"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+                    <!-- Tarjeta flotante de contacto -->
+            <div class="col-lg-5 col-md-6 contact-form-style-03 position-absolute sm-position-relative right-0px bottom-0">
+
+                <div class="bg-white p-13 md-p-10 position-relative overflow-hidden background-no-repeat background-position-right-bottom box-shadow-extra-large"
+                     style="background-image: url('/static/static_eraly/images/demo-elearning-contact-bg-01.png')">
+
+                    <div>
+
+                        <h6 class="alt-font text-dark-gray fw-600 ls-minus-1px mb-5px">
+                            {{ empresa.nombre }} - {{ empresa.ciudad|default:"Ecuador" }}
+                        </h6>
+
+                        <p class="w-100 mb-10px">
+                            {{ empresa.direccion|linebreaksbr }}
+                            <br>
+                            {{ empresa.oficina|default:"Oficina principal" }}
+                        </p>
+
+                        <div class="w-100 d-block">
+
+                            {% if empresa.telefono %}
+                                <span class="d-block mb-5px">
+                                    <span class="text-dark-gray fw-600">📞 Tel:</span>
+                                    <a href="tel:{{ empresa.telefono }}"
+                                       class="text-decoration-line-bottom fw-600"
+style="color:#2a3633!important;">
+                                        {{ empresa.telefono }}
+                                    </a>
+                                </span>
+                            {% endif %}
+
+                            {% if empresa.email %}
+                                <span class="d-block mb-5px">
+                                    <span class="text-dark-gray fw-600">✉️ Email:</span>
+                                    <a href="mailto:{{ empresa.email }}"
+                                       class="text-decoration-line-bottom fw-600"
+style="color:#2a3633!important;">
+                                        {{ empresa.email }}
+                                    </a>
+                                </span>
+                            {% endif %}
+
+                            {% if empresa.email_soporte %}
+                                <span class="d-block mb-5px">
+                                    <span class="text-dark-gray fw-600">🛠 Soporte:</span>
+                                    <a href="mailto:{{ empresa.email_soporte }}"
+                                       class="text-decoration-line-bottom fw-600"
+style="color:#2a3633!important;">
+                                        {{ empresa.email_soporte }}
+                                    </a>
+                                </span>
+                            {% endif %}
+
+                            {% if empresa.whatsapp %}
+                                <span class="d-block mb-5px">
+                                    <span class="text-dark-gray fw-600">💬 WhatsApp:</span>
+                                    <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0ADeseo%20más%20información%20sobre%20sus%20servicios%20digitales."
+                                       target="_blank"
+                                       class="text-decoration-line-bottom fw-600"
+style="color:#2a3633!important;">
+                                        {{ empresa.whatsapp }}
+                                    </a>
+                                </span>
+                            {% endif %}
+
+                            {% if empresa.horario %}
+                                <span class="d-block">
+                                    <span class="text-dark-gray fw-600">🕒 Horario:</span>
+                                    {{ empresa.horario }}
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mt-25px">
+
+                            {% if empresa.whatsapp %}
+                                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A🚀%20Quiero%20recibir%20asesoría%20personalizada%20sobre%20sus%20servicios%20digitales.%0A%0AGracias."
+                                   target="_blank"
+                                   class="btn btn-rounded w-100 text-white" style="background:#2a3633!important;border-color:#2a3633!important;">
+
+                                    <i class="fa-brands fa-whatsapp me-5px"></i>
+                                    Chatear ahora
+
+                                </a>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- end section Introducción -->
+<style>
+
+    .btn-eraly-contacto:hover{
+        background:#1d2725!important;
+        border-color:#1d2725!important;
+        color:#fff!important;
+    }
+
+</style>
+{% endblock %}

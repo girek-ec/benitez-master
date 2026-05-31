@@ -7,50 +7,113 @@ from django.utils.html import format_html
 from Vortice.models import *
 from Vortice.snippers import Attr
 
-# Clase base personalizada para ModelAdmin
-class BaseAdmin(admin.ModelAdmin):
+
+class OrdenForeignKeyMixin:
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+
+        if db_field.name == "cliente":
+            kwargs["queryset"] = Seccion_Cliente.objects.order_by("cliente")
+
+        elif db_field.name == "coleccion":
+            kwargs["queryset"] = Coleccion.objects.select_related(
+                "cliente"
+            ).order_by(
+                "cliente__cliente",
+                "tema_colec"
+            )
+
+        elif db_field.name in ["tipo_articulo", "tipo_produc"]:
+            kwargs["queryset"] = Tipo_articulo.objects.select_related(
+                "coleccion",
+                "coleccion__cliente"
+            ).order_by(
+                "coleccion__cliente__cliente",
+                "coleccion__tema_colec",
+                "nombre_articulo"
+            )
+
+        elif db_field.name == "detalle_prenda":
+            kwargs["queryset"] = DetallePrendaColeccion.objects.select_related(
+                "tipo_articulo",
+                "tipo_articulo__coleccion",
+                "tipo_articulo__coleccion__cliente"
+            ).order_by(
+                "tipo_articulo__coleccion__cliente__cliente",
+                "tipo_articulo__coleccion__tema_colec",
+                "tipo_articulo__nombre_articulo"
+            )
+
+        elif db_field.name == "tipo_material":
+            kwargs["queryset"] = Material_producto.objects.order_by("material")
+
+        elif db_field.name == "anio":
+            kwargs["queryset"] = Anio.objects.order_by("anio")
+
+        elif db_field.name == "mes":
+            kwargs["queryset"] = Meses.objects.select_related(
+                "anio"
+            ).order_by(
+                "anio__anio",
+                "nombre_mes"
+            )
+
+        elif db_field.name == "mesmoda":
+            kwargs["queryset"] = MesModa.objects.select_related(
+                "mes",
+                "coleccion"
+            ).order_by(
+                "mes__anio__anio",
+                "mes__nombre_mes",
+                "titulo"
+            )
+
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class BaseAdmin(OrdenForeignKeyMixin, admin.ModelAdmin):
     def __init__(self, model, *args, **kwargs):
         self.list_display = Attr(model)
-        self.list_display_links = [Attr(model)[0]]  # Usar solo el primer campo como enlace
+        self.list_display_links = [Attr(model)[0]]
         super().__init__(model, *args, **kwargs)
 
     def get_list_display(self, request):
-        # Attr(self.model) devuelve la lista de campos básicos
-        campos = list(Attr(self.model))
-        return campos
+        return list(Attr(self.model))
 
-# Inline para MesModa_galeria
-class MesModa_galeriaInline(admin.StackedInline):
+
+class MesModa_galeriaInline(OrdenForeignKeyMixin, admin.StackedInline):
     model = MesModa_galeria
     extra = 0
 
-# Admin para Vortice
+
 @admin.register(Vortice)
 class VorticeAdmin(BaseAdmin):
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
 
-# Admin para Notificaciones
+
 @admin.register(Notificaciones)
 class NotificacionesAdmin(BaseAdmin):
     pass
 
-# Admin para Seccion_Cliente
+
 @admin.register(Seccion_Cliente)
 class Seccion_ClienteAdmin(BaseAdmin):
-    pass
+    ordering = ["cliente"]
 
-# Admin para Coleccion
+
 @admin.register(Coleccion)
 class ColeccionAdmin(BaseAdmin):
+    ordering = ["cliente__cliente", "tema_colec"]
+    list_filter = ["cliente"]
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
 
 
-# Admin para Tipo_articulo
 @admin.register(Tipo_articulo)
 class Tipo_articuloAdmin(BaseAdmin):
-    # no ponemos list_display aquí
+    ordering = ["coleccion__cliente__cliente", "coleccion__tema_colec", "nombre_articulo"]
+    list_filter = ["coleccion"]
+    search_fields = ["nombre_articulo", "coleccion__tema_colec", "coleccion__cliente__cliente"]
+
     def get_list_display(self, request):
-        # recupero los campos base + mi miniatura
         return super().get_list_display(request) + ["miniatura"]
 
     @admin.display(description="Imagen")
@@ -63,48 +126,61 @@ class Tipo_articuloAdmin(BaseAdmin):
         return "-"
 
 
+@admin.register(DetallePrendaColeccion)
+class DetallePrendaColeccionAdmin(OrdenForeignKeyMixin, admin.ModelAdmin):
+    list_display = ["id", "tipo_articulo", "activo"]
+    list_filter = ["tipo_articulo", "activo"]
+    search_fields = [
+        "tipo_articulo__nombre_articulo",
+        "tipo_articulo__coleccion__tema_colec",
+        "tipo_articulo__coleccion__cliente__cliente",
+        "detalle",
+    ]
+    ordering = [
+        "tipo_articulo__coleccion__cliente__cliente",
+        "tipo_articulo__coleccion__tema_colec",
+        "tipo_articulo__nombre_articulo",
+    ]
 
 
-
-
-# Admin para Material_producto
 @admin.register(Material_producto)
 class Material_productoAdmin(BaseAdmin):
-    pass
+    ordering = ["material"]
 
 
 class ProdPrendaResource(resources.ModelResource):
-    # Campos personalizados para las relaciones
-    tipo_produc = fields.Field(column_name='Tipo de Producto')
-    coleccion = fields.Field(column_name='Colección')
-    seccion = fields.Field(column_name='Sección')
-    tipo_material = fields.Field(attribute='tipo_material', column_name='Material')
+    tipo_produc = fields.Field(column_name="Tipo de Producto")
+    coleccion = fields.Field(column_name="Colección")
+    seccion = fields.Field(column_name="Sección")
+    tipo_material = fields.Field(attribute="tipo_material", column_name="Material")
+    detalle_prenda = fields.Field(column_name="Detalle de Prenda")
 
     class Meta:
         model = Prod_prenda
+        import_id_fields = ('id',)
         fields = (
-            'id',
-            'visible',
-            'tipo_produc',
-            'coleccion',
-            'seccion',
-            'nombre_produc',
-            'descripcion_produc',
-            'tipo_material',
-            'price',
-            'has_sizes',
-            'imagen_produc_01',
-            'imagen_produc_02',
-            'imagen_produc_03',
-            'video_produc',
+            "id",
+            "visible",
+            "tipo_produc",
+            "coleccion",
+            "seccion",
+            "nombre_produc",
+            "detalle_prenda",
+            "descripcion_produc",
+            "tipo_material",
+            "price",
+            "has_sizes",
+            "is_unique",
+            "estado",
+            "imagen_produc_01",
+            "imagen_produc_02",
+            "imagen_produc_03",
+            "video_produc",
         )
         export_order = fields
 
-    # EXPORTACIÓN
     def dehydrate_tipo_produc(self, obj):
-        if obj.tipo_produc:
-            return obj.tipo_produc.nombre_articulo
-        return ""
+        return obj.tipo_produc.nombre_articulo if obj.tipo_produc else ""
 
     def dehydrate_coleccion(self, obj):
         if obj.tipo_produc and obj.tipo_produc.coleccion:
@@ -119,126 +195,171 @@ class ProdPrendaResource(resources.ModelResource):
     def dehydrate_tipo_material(self, obj):
         return obj.tipo_material.material if obj.tipo_material else ""
 
-    # IMPORTACIÓN
+    def dehydrate_detalle_prenda(self, obj):
+        if obj.detalle_prenda:
+            return obj.detalle_prenda.id
+        return ""
+
     def before_import_row(self, row, **kwargs):
-        # Manejar el campo Tipo de Producto
-        tipo_producto = row.get('Tipo de Producto')
+        tipo_producto = row.get("Tipo de Producto")
+        coleccion = row.get("Colección")
+        seccion = row.get("Sección")
+
         if tipo_producto:
-            # Usar filter().first() para evitar el error "get() returned more than one"
-            tipo_producto_obj = Tipo_articulo.objects.filter(nombre_articulo=tipo_producto).first()
+            tipo_producto_obj = Tipo_articulo.objects.filter(
+                nombre_articulo=tipo_producto
+            )
+
+            if coleccion:
+                tipo_producto_obj = tipo_producto_obj.filter(
+                    coleccion__tema_colec=coleccion
+                )
+
+            if seccion:
+                tipo_producto_obj = tipo_producto_obj.filter(
+                    coleccion__cliente__cliente=seccion
+                )
+
+            tipo_producto_obj = tipo_producto_obj.first()
+
             if tipo_producto_obj:
-                row['tipo_produc'] = tipo_producto_obj.id
+                row["tipo_produc"] = tipo_producto_obj.id
             else:
-                # Si no existe, crear un nuevo objeto
-                tipo_producto_obj = Tipo_articulo.objects.create(nombre_articulo=tipo_producto)
-                row['tipo_produc'] = tipo_producto_obj.id
+                row["tipo_produc"] = None
         else:
-            row['tipo_produc'] = None
+            row["tipo_produc"] = None
 
-        # Manejar el campo Colección
-        coleccion = row.get('Colección')
-        if coleccion:
-            # Usar filter().first() para evitar el error "get() returned more than one"
-            coleccion_obj = Coleccion.objects.filter(tema_colec=coleccion).first()
-            if coleccion_obj:
-                row['coleccion'] = coleccion_obj.id
-            else:
-                # Si no existe, crear un nuevo objeto
-                coleccion_obj = Coleccion.objects.create(tema_colec=coleccion)
-                row['coleccion'] = coleccion_obj.id
-        else:
-            row['coleccion'] = None
-
-        # Manejar el campo Sección
-        seccion = row.get('Sección')
-        if seccion:
-            # Usar filter().first() para evitar el error "get() returned more than one"
-            seccion_obj = Seccion_Cliente.objects.filter(cliente=seccion).first()
-            if seccion_obj:
-                row['seccion'] = seccion_obj.id
-            else:
-                # Si no existe, crear un nuevo objeto
-                seccion_obj = Seccion_Cliente.objects.create(cliente=seccion)
-                row['seccion'] = seccion_obj.id
-        else:
-            row['seccion'] = None
-
-        # 📌 Obtener el material, asegurando que sea una cadena vacía si es None
-        material = row.get('Material', '')  # ✅ Si es None, se convierte en una cadena vacía
-        material = material.strip() if material else None  # ✅ Evita error con None
+        material = row.get("Material", "")
+        material = material.strip() if material else None
 
         if material:
-            # ✅ Buscar si el material existe en la base de datos o crearlo si no existe
-            material_obj, created = Material_producto.objects.get_or_create(material=material)
-
-            # 🔥 Aquí está el cambio importante: Asignar la **instancia** y no el string
-            row['tipo_material'] = material_obj.id  # ✅ PASAR EL ID, NO EL STRING
+            material_obj, created = Material_producto.objects.get_or_create(
+                material=material
+            )
+            row["tipo_material"] = material_obj.id
         else:
-            row['tipo_material'] = None  # ✅ Permitir que sea nulo si no hay material
+            row["tipo_material"] = None
+
+        detalle_prenda = row.get("Detalle de Prenda", "")
+
+        if detalle_prenda:
+            detalle_obj = DetallePrendaColeccion.objects.filter(
+                id=detalle_prenda
+            ).first()
+            row["detalle_prenda"] = detalle_obj.id if detalle_obj else None
+        else:
+            row["detalle_prenda"] = None
 
 
-    def get_export_format(self):
-
-        return XLSX()
 
 
-
-
-# Modifica la clase Prod_prendaAdmin para usar ImportExportModelAdmin
 @admin.register(Prod_prenda)
-class Prod_prendaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class Prod_prendaAdmin(OrdenForeignKeyMixin, ImportExportModelAdmin):
     resource_class = ProdPrendaResource
-    list_display = ['id', 'miniatura','visible' ,'tipo_produc', 'nombre_produc', 'descripcion_produc', 'tipo_material', 'price', 'has_sizes']
-    list_filter = ['tipo_produc', 'tipo_material']
-    search_fields = ['nombre_produc', 'tipo_produc__nombre_articulo', 'tipo_material__material']
-    list_editable = ['visible' ,'tipo_produc', 'nombre_produc', 'tipo_material', 'price', 'has_sizes']
-    list_display_links = ['miniatura', 'id']
+    formats = [XLSX]
+
+    list_display = [
+        "id",
+        "miniatura",
+        "visible",
+        "tipo_produc",
+        "nombre_produc",
+        "detalle_prenda",
+        "descripcion_corta",
+        "tipo_material",
+        "price",
+        "has_sizes",
+    ]
+
+    list_filter = [
+        "visible",
+        "tipo_produc",
+        "detalle_prenda",
+        "tipo_material",
+        "estado",
+    ]
+
+    search_fields = [
+        "nombre_produc",
+        "tipo_produc__nombre_articulo",
+        "tipo_produc__coleccion__tema_colec",
+        "detalle_prenda__detalle",
+        "tipo_material__material",
+    ]
+
+    list_editable = [
+        "visible",
+        "tipo_produc",
+        "nombre_produc",
+        "detalle_prenda",
+        "tipo_material",
+        "price",
+        "has_sizes",
+    ]
+
+    list_display_links = ["miniatura", "id"]
+
+    ordering = [
+        "tipo_produc__coleccion__cliente__cliente",
+        "tipo_produc__coleccion__tema_colec",
+        "tipo_produc__nombre_articulo",
+        "nombre_produc",
+    ]
 
     @admin.display(description="Imagen")
     def miniatura(self, obj):
         if obj.imagen_produc_01:
-            return format_html('<img src="{}" width="50" height="50"/>', obj.imagen_produc_01.url)
+            return format_html(
+                '<img src="{}" width="50" height="50"/>',
+                obj.imagen_produc_01.url
+            )
         return "Sin imagen"
 
-
     @admin.display(description="Descripción")
-    def descripcion_produc(self, obj):
-        return f"{obj.descripcion_produc[:10]}..." if obj.descripcion_produc else "Sin descripción"
+    def descripcion_corta(self, obj):
+        if obj.detalle_prenda and obj.detalle_prenda.detalle:
+            return f"{obj.detalle_prenda.detalle[:30]}..."
+        if obj.descripcion_produc:
+            return f"{obj.descripcion_produc[:30]}..."
+        return "Sin descripción"
 
 
-# Admin para Servicios
 @admin.register(Servicios)
 class ServiciosAdmin(BaseAdmin):
     pass
 
-# Admin para GiftCard
+
 @admin.register(GiftCard)
 class GiftCardAdmin(BaseAdmin):
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
 
-# Admin para Anio
+
 @admin.register(Anio)
 class Anioadmin(BaseAdmin):
-    pass
+    ordering = ["anio"]
 
-# Admin para Meses
+
 @admin.register(Meses)
 class MesesAdmin(BaseAdmin):
-    pass
+    ordering = ["anio__anio", "nombre_mes"]
+    list_filter = ["anio"]
 
-# Admin para MesModa
+
 @admin.register(MesModa)
 class MesModaAdmin(BaseAdmin):
+    ordering = ["mes__anio__anio", "mes__nombre_mes", "titulo"]
+    list_filter = ["mes", "coleccion"]
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
     inlines = [MesModa_galeriaInline]
 
-# Admin para MesModa_galeria
+
 @admin.register(MesModa_galeria)
 class MesModa_galeriaAdmin(BaseAdmin):
+    ordering = ["mesmoda__titulo"]
     list_display = list(BaseAdmin.list_display) + ["miniatura"]
 
 
-# Admin para Bancos
 @admin.register(Banco)
 class BancoAdmin(BaseAdmin):
+    ordering = ["nombre"]
     list_display = list(BaseAdmin.list_display)

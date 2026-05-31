@@ -1,0 +1,325 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+{% block title %}{{ servicio.titulo }} | {{ empresa.nombre }}{% endblock %}
+
+{% block meta_description %}
+{{ servicio.descripcion }}
+{% endblock %}
+
+{% block meta_keywords %}
+hosting, dominios, servidores, ssl, correos corporativos, alojamiento web, ecuador
+{% endblock %}
+
+{% block og_title %}
+{{ servicio.titulo }} | {{ empresa.nombre }}
+{% endblock %}
+
+{% block og_description %}
+{{ servicio.subtitulo }}
+{% endblock %}
+
+{% block og_image %}
+<meta property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block twitter_image %}
+<meta name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+
+{% block content %}
+
+{% if servicio.imagen_banner %}
+<section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0"
+         style="background-image: url('{{ servicio.imagen_banner.url }}')">
+{% else %}
+<section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0"
+         style="background-image: url('/static/static_eraly/images/dominios1.png')">
+{% endif %}
+    <div class="container">
+        <div class="row align-items-center small-screen">
+            <div class="col-lg-5 col-sm-7 position-relative page-title-extra-small">
+
+                <h1 class="mb-15px text-white opacity-7 fw-300 overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.titulo }}
+                    </span>
+                </h1>
+
+                <h2 class="m-auto pb-5px pt-5px text-white fw-600 ls-minus-1px overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.subtitulo }}
+                    </span>
+                </h2>
+
+                <div class="mt-4">
+                    <a href="{{ servicio.boton_url }}"
+                       class="btn btn-rounded btn-large me-2 text-white"
+                       style="background:#0d2e51!important;">
+                        {{ servicio.boton_texto }}
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background:#f4f8ff;">
+    <div class="container">
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-lg-8 text-center">
+                <span class="fw-600 mb-5px text-uppercase d-block"
+                      style="color:#0d2e51!important;">
+                    ¡Oferta especial!
+                </span>
+
+                <h2 class="text-dark-gray fw-700 ls-minus-1px">
+                    DOMINIOS
+                </h2>
+
+                <p class="fs-18 w-70 mx-auto">
+                    {{ servicio.descripcion }}
+                </p>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center">
+
+            {% for dominio in dominios_servicio %}
+                <div class="col md-mb-30px">
+                    <div class="bg-white h-100 border-radius-6px p-13 last-paragraph-no-margin text-center box-shadow-extra-large">
+
+                        <h3 class="fw-700 ls-minus-1px text-center mb-20px"
+                            style="color:#0d2e51!important;">
+                            {{ dominio.extension }}
+                        </h3>
+
+                        <span class="separator-line-1px w-100 bg-extra-medium-gray d-block mb-20px"></span>
+
+                        <p>Desde</p>
+
+                        <h5 class="text-dark-gray fw-600 mb-0">
+                            ${{ dominio.precio|floatformat:0 }}
+                            <small class="fs-14">{{ dominio.periodo }}</small>
+                        </h5>
+
+                        <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre }}%0A%0A🌐%20Estoy%20interesado%20en%20registrar%20un%20dominio%20{{ dominio.extension }}%20para%20mi%20negocio.%0A%0A📌%20Deseo%20consultar:%0A✅%20Disponibilidad%0A✅%20Registro%20anual%0A%0A🚀%20Quedo%20atento%20a%20más%20información.%20Gracias."
+                           target="_blank"
+                           class="btn btn-small btn-rounded mt-20px text-white"
+                           style="background:#0d2e51!important;">
+                            Contratar
+                        </a>
+
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No hay dominios registrados todavía.</p>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row mt-5 xs-mt-7">
+            <div class="col-12 text-center">
+                <div class="fw-700 text-uppercase border-radius-30px ps-20px pe-20px fs-12 me-10px sm-m-5px d-inline-block align-middle"
+                     style="background:#0d2e51;color:#ffffff;">
+                    +100 dominios
+                </div>
+
+                <div class="text-dark-gray d-inline-block align-middle fw-500 fs-20 ls-minus-05px">
+                    <span class="fw-700">Nuestros clientes</span> confían en el servicio web
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-lg-6 col-md-11 position-relative text-center text-lg-end animation-float md-mb-50px">
+
+                {% if servicio.imagen_1 %}
+                    <img class="w-90" src="{{ servicio.imagen_1.url }}" alt="{{ servicio.titulo }}">
+                {% else %}
+                    <img class="w-90" src="/static/static_eraly/images/hosting3.png" alt="Hosting rápido">
+                {% endif %}
+
+            </div>
+
+            <div class="col-lg-5 offset-lg-1">
+
+                <span class="fw-600 mb-15px text-uppercase d-block"
+                      style="color:#0d2e51!important;">
+                    Hosting profesional
+                </span>
+
+                <h2 class="fw-700 text-dark-gray ls-minus-1px">
+                    Todo lo que necesitas para tu sitio web
+                </h2>
+
+                <p class="w-90 lg-w-100 mb-30px">
+                    Alojamiento rápido, seguro y con soporte técnico 24/7 en español.
+                </p>
+
+                <div class="mb-40px">
+                    {% for beneficio in beneficios_servicio %}
+                        <div class="col icon-with-text-style-08 mb-15px">
+                            <div class="feature-box feature-box-left-icon-middle bg-very-light-gray border-radius-5px pt-15px pb-15px ps-25px pe-25px">
+
+                                <div class="feature-box-icon rounded-circle box-shadow-large me-10px"
+                                     style="background:#0d2e51!important;">
+                                    <i class="{{ beneficio.icono }} fs-11 text-white"></i>
+                                </div>
+
+                                <div class="feature-box-content">
+                                    <span class="text-dark-gray fw-500">
+                                        {{ beneficio.titulo }}
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>No hay beneficios registrados todavía.</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="planes" style="background:#f4f8ff;">
+    <div class="container">
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-8 text-center">
+
+                <span class="fw-600 mb-5px text-uppercase d-block"
+                      style="color:#0d2e51!important;">
+                    Planes simples
+                </span>
+
+                <h2 class="fw-700 text-dark-gray ls-minus-1px">
+                    Planes para todos
+                </h2>
+
+                <p class="fs-18">
+                    Elige el plan que mejor se adapte a tu negocio
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            {% for plan in planes_servicio %}
+                <div class="col-lg-4 col-md-8 mb-30px">
+
+                    <div class="pricing-table text-center pt-16 pb-35px box-shadow-quadruple-large border-radius-6px h-100"
+                         {% if plan.destacado %}
+                            style="background-color:#0d2e51!important;"
+                         {% else %}
+                            style="background:#ffffff!important; border:2px solid #304c87;"
+                         {% endif %}>
+
+                        <div class="pricing-header ps-18 pe-18">
+
+                            <div class="d-inline-block fs-12 text-uppercase ps-20px pe-20px fw-600 mb-30px border-radius-100px box-shadow-large border bg-white"
+                                 style="color:#0d2e51!important;">
+                                {% if plan.destacado %}🔥 {% endif %}
+                                {{ plan.nombre }}
+                            </div>
+
+                            <h2 class="fw-600 mb-10px ls-minus-3px"
+                                {% if plan.destacado %}
+                                    style="color:#ffffff;"
+                                {% else %}
+                                    style="color:#1f1f1f;"
+                                {% endif %}>
+
+                                <sup class="fs-30">$</sup>{{ plan.precio|floatformat:0 }}
+                                <span class="fs-16 fw-400">{{ plan.periodo }}</span>
+
+                            </h2>
+
+                            <p class="mb-25px"
+                               {% if plan.destacado %}
+                                    style="color:#ffffff;"
+                               {% endif %}>
+                                {{ plan.descripcion }}
+                            </p>
+
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre }}%0A%0A🚀%20Estoy%20interesado%20en%20el%20Plan%20{{ plan.nombre }}%20de%20Hosting.%0A%0A📌%20Deseo%20más%20información%20sobre%20precio,%20beneficios%20y%20contratación.%0A%0AGracias."
+                               target="_blank"
+                               class="btn btn-dark-gray btn-round-edge w-100"
+                               {% if plan.destacado %}
+                                   style="background-color:#304c87!important;"
+                               {% endif %}>
+                                {{ plan.boton_texto }}
+                            </a>
+
+                        </div>
+
+                        <div class="pricing-body pt-15px pb-25px">
+
+                            <ul class="list-unstyled mb-0"
+                                {% if plan.destacado %}
+                                    style="color:#ffffff;"
+                                {% endif %}>
+
+                                {% for caracteristica in plan.caracteristicas.all %}
+                                    <li class="pt-10px pb-10px">
+                                        {% if caracteristica.incluido %}
+                                            {{ caracteristica.texto }}
+                                        {% else %}
+                                            <del>{{ caracteristica.texto }}</del>
+                                        {% endif %}
+                                    </li>
+                                {% empty %}
+                                    <li class="pt-10px pb-10px">
+                                        Sin características registradas.
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No hay planes registrados todavía.</p>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 text-center">
+                <p class="text-dark-gray">
+                    ¿Necesitas un plan personalizado?
+                    <a href="/eraly/contacto/"
+                       class="fw-700"
+                       style="color:#0d2e51!important;">
+                        Contáctanos
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,371 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ empresa.meta_titulo }}
+{% endblock %}
+
+{% block meta_description %}
+{{ empresa.meta_descripcion }}
+{% endblock %}
+
+{% block meta_keywords %}
+{{ empresa.meta_keywords }}
+{% endblock %}
+
+{% block og_title %}
+{{ empresa.meta_titulo }}
+{% endblock %}
+
+{% block og_description %}
+{{ empresa.meta_descripcion }}
+{% endblock %}
+
+{% block og_image %}
+<meta property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}/media/{{ empresa.logo_principal }}">
+{% endblock %}
+
+{% block twitter_image %}
+<meta name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}/media/{{ empresa.logo_principal }}">
+{% endblock %}
+{% block content %}
+
+    <!-- start section hero -->
+    <section
+            class="p-0 overflow-hidden bg-dark-gray full-screen ipad-top-space-margin md-h-auto position-relative md-pb-70px sm-pb-40px cover-background"
+            style="background-image: url('/static/static_eraly/images/demo-elearning-hero-bg.jpg')">
+        <div class="background-position-center-top h-100 w-100 position-absolute left-0px top-0"
+             style="background-image: url('/static/static_eraly/images/vertical-line-bg-small.svg')"></div>
+        <div id="particles-style-01" class="h-100 position-absolute left-0px top-0 w-100" data-particle="true"
+             data-particle-options='{"particles": {"number": {"value": 6,"density": {"enable": true,"value_area": 2000}},"color": {"value": ["#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b", "#d5d52b"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 1,"random": false,"anim": {"enable": false,"speed": 1,"sync": false}},"size": {"value": 8,"random": true,"anim": {"enable": false,"sync": true}},"line_linked":{"enable":false,"distance":0,"color":"#ffffff","opacity":1,"width":1},"move": {"enable": true,"speed":1,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}'></div>
+        <div class="position-absolute left-minus-80px top-25" data-bottom-top="transform: translateY(-80px)"
+             data-top-bottom="transform: translateY(80px)">
+            <img src="/static/static_eraly/images/demo-elearning-01.png" alt="">
+        </div>
+        <div class="container h-100">
+            <div class="row align-items-center justify-content-center h-100">
+                <div class="col-xl-5 col-lg-6 col-md-12 text-white text-center text-lg-start position-relative z-index-1 d-flex flex-column justify-content-center h-100 md-mt-50px md-mb-20px xs-mb-10px"
+                     data-anime='{ "el": "childs", "opacity": [0, 1], "rotateY": [90, 0], "rotateZ": [-10, 0], "translateY": [80, 0], "translateZ": [50, 0], "staggervalue": 200, "duration": 600, "delay": 100, "easing": "easeOutCirc" }'>
+                    <span class="alt-font fs-60 lh-60 sm-fs-60 fw-500 mb-20px ls-minus-2px"
+                          style="margin-bottom: 15px!important;">Soluciones digitales.</span>
+                    <div class="mb-30px w-80 md-w-60 sm-w-100 d-block mx-auto mx-lg-0 overflow-hidden">
+                        <span class="fs-18 fw-300 opacity-5 d-inline-block">Apps, sistemas POS, SaaS, páginas web, hosting, dominios, correos corporativos y automatización empresarial.</span>
+                    </div>
+                    <div class="overflow-hidden d-flex justify-content-between align-items-start flex-wrap gap-3">
+
+                        <!-- BOTÓN IZQUIERDA -->
+                        <div>
+
+                            <a href="https://api.whatsapp.com/send?phone=+593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A🚀%20Quiero%20digitalizar%20mi%20negocio%20y%20me%20interesan%20sus%20soluciones:%0A%0A✅%20Sistemas%20POS%0A✅%20Apps%20Empresariales%0A✅%20Páginas%20Web%0A✅%20Software%20SaaS%0A✅%20Hosting%20y%20Dominios%0A✅%20Correos%20Corporativos%0A✅%20Automatización%20Empresarial%0A%0A📈%20Deseo%20una%20asesoría%20personalizada%20para%20mi%20empresa.%0A%0A🔥%20Quedo%20atento%20a%20más%20información.%20Gracias."
+                               target="_blank"
+                               class="btn btn-extra-large btn-base-color btn-rounded btn-switch-text fw-600 left-icon">
+
+                        <span>
+                            <span>
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </span>
+
+                            <span class="btn-double-text ls-minus-05px"
+                                  data-text="Cotizar ahora">
+
+                                Cotizar ahora
+
+                            </span>
+                        </span>
+
+                            </a>
+
+                        </div>
+
+                        <!-- LINKS DERECHA -->
+                        <div class="d-flex flex-column align-items-start align-items-lg-end">
+
+                            <a href="/eraly/soluciones/1/"
+                               class="btn btn-link btn-hover-animation-switch btn-extra-large text-white btn-icon-left mb-2">
+
+                        <span>
+                            <span class="btn-text">Sistemas  POS</span>
+                            <span class="btn-icon">
+                                <i class="feather icon-feather-arrow-right"></i>
+                            </span>
+                            <span class="btn-icon">
+                                <i class="feather icon-feather-arrow-right"></i>
+                            </span>
+                        </span>
+
+                            </a>
+
+                            <a href="/eraly/soluciones/2/"
+                               class="btn btn-link btn-hover-animation-switch btn-extra-large text-white btn-icon-left">
+
+                        <span>
+                            <span class="btn-text">Servicios Web</span>
+                            <span class="btn-icon">
+                                <i class="feather icon-feather-arrow-right"></i>
+                            </span>
+                            <span class="btn-icon">
+                                <i class="feather icon-feather-arrow-right"></i>
+                            </span>
+                        </span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                    <div class="row row-cols-3 justify-content-center counter-style-04 w-100 md-w-auto position-absolute lg-position-relative bottom-80px lg-bottom-0px lg-mt-50px">
+                        <!-- start counter item -->
+                        <div class="col text-center text-lg-start">
+                            <h5 class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px" data-text="+"
+                                data-to="100"></h5>
+                            <div class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"></div>
+                            <span class="fw-300 text-white opacity-5">Proyectos</span>
+                        </div>
+                        <!-- end counter item -->
+                        <!-- start counter item -->
+                        <div class="col text-center text-lg-start">
+                            <h5 class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px" data-text="+"
+                                data-to="98"></h5>
+                            <div class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"></div>
+                            <span class="fw-300 text-white opacity-5">% Satisfacción</span>
+                        </div>
+                        <!-- end counter item -->
+                        <!-- start counter item -->
+                        <div class="col text-center text-lg-start">
+                            <h5 class="vertical-counter d-inline-flex alt-font text-white fw-600 mb-10px" data-text="+"
+                                data-to="24"></h5>
+                            <div class="divider-style-03 divider-style-03-01 border-2 border-color-base-color mb-5px w-80 xs-w-90 md-mx-auto"></div>
+                            <span class="fw-300 text-white opacity-5">/7 Soporte</span>
+                        </div>
+                        <!-- end counter item -->
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 pt-30px lg-pt-0">
+                    <div class="position-relative outside-box-right-10 md-outside-box-right-0 atropos" data-atropos>
+                        <div class="atropos-scale">
+                            <div class="atropos-rotate">
+                                <div class="atropos-inner text-center w-100">
+                                    <div data-atropos-offset="-1" class="position-absolute left-0px right-0px">
+                                        <img src="/static/static_eraly/images/eraly_mesera_fondo-08.png" alt="">
+                                    </div>
+                                    <img data-atropos-offset="1" class="position-relative z-index-9 animation-float"
+                                         src="/static/static_eraly/images/eraly005.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start section servicios principales -->
+    <section class="position-relative z-index-1 background-position-left-top background-no-repeat overflow-hidden"
+             style="background-image: url('/static/static_eraly/images/demo-elearning-02.png')">
+        <div class="position-absolute right-0px bottom-minus-90px z-index-minus-1 d-none d-md-inline-block"
+             data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)">
+            <img src="/static/static_eraly/images/demo-elearning-04.png" alt="">
+        </div>
+        <div class="container">
+            <div class="row align-items-end justify-content-center mb-8 xs-mb-12">
+                <div class="col-xl-5 col-lg-6 col-md-10 position-relative md-mb-20px text-center text-lg-start"
+                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <div class="icon-with-text-style-08 mb-20px d-inline-block">
+                        <div class="feature-box feature-box-left-icon-middle">
+                            <div class="feature-box-icon feature-box-icon-rounded w-55px h-55px rounded-circle bg-yellow me-15px">
+                                <i class="bi bi-code-slash d-inline-block icon-extra-medium text-dark-gray"></i>
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block alt-font fs-19 fw-500 ls-minus-05px text-dark-gray">Nuestros servicios</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="alt-font text-dark-gray fw-600 ls-minus-3px mb-0">Soluciones integrales para tu
+                        empresa.</h2>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-10 offset-xl-1 text-center text-lg-start last-paragraph-no-margin"
+                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <span class="fw-600 mb-5px text-dark-gray d-block fs-18">Tecnología que impulsa tu negocio</span>
+                    <p class="w-85 xl-w-95 lg-w-100">Desarrollamos software a medida, automatizamos procesos y te
+                        ofrecemos infraestructura tecnológica de primer nivel.</p>
+                </div>
+            </div>
+
+            <div class="row g-0 row-cols-1 row-cols-lg-4 row-cols-sm-2 align-items-center mb-4"
+                 data-anime='{ "el": "childs", "translateX": [-15, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+
+                <!-- 1. Hosting + Dominios -->
+                <div class="col services-box-style-07 text-center last-paragraph-no-margin border-end border-color-transparent-dark-very-light md-mb-50px xs-border-end-0">
+                    <div class="pe-30px ps-30px pb-30px xl-ps-20px xl-pe-20px">
+                        <div class="position-relative ms-auto me-auto mb-20px">
+                            <i class="fa-solid fa-server fs-50 position-relative z-index-1 mt-30px"
+                               style="color: #136e44!important;"></i>
+                            <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                        </div>
+                        <span class="fs-18 fw-600 text-dark-gray d-block mb-5px">Hosting + Dominio</span>
+                        <p class="lh-28 fs-14">.com | .ec | Alojamiento rápido</p>
+                    </div>
+
+                    <div class="d-flex flex-column overflow-hidden w-100 justify-content-center position-relative">
+                        <div class="fs-12 fw-700 text-uppercase text-dark-gray border-top border-bottom border-color-transparent-dark-very-light pt-8px pb-8px">
+                            <span class="text-down d-block">Ingreso recurrente</span>
+                        </div>
+                        <div class="btn-hover d-flex align-items-center justify-content-center bg-dark-gray">
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A🌐%20Estoy%20interesado%20en%20Hosting%20y%20Dominios%20para%20mi%20negocio.%0A%0A📌%20Deseo%20consultar:%0A✅%20Disponibilidad%20de%20dominio%0A✅%20Hosting%20profesional%0A✅%20Certificado%20SSL%0A✅%20Correos%20corporativos%0A%0A🚀%20Quedo%20atento%20a%20su%20asesoría.%20Gracias."
+                               target="_blank"
+                               class="inner-link btn btn-link btn-hover-animation-switch btn-extra-large text-white w-100 h-100 d-flex align-items-center justify-content-center">
+                    <span>
+                        <span class="btn-text">Cotizar</span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- 2. Páginas Web -->
+                <div class="col services-box-style-07 text-center last-paragraph-no-margin border-end border-color-transparent-dark-very-light xs-mb-50px xs-border-end-0">
+                    <div class="pe-30px ps-30px pb-30px xl-ps-20px xl-pe-20px">
+                        <div class="position-relative ms-auto me-auto mb-20px">
+                            <i class="fa-solid fa-laptop-code fs-50 position-relative z-index-1 mt-30px"
+                               style="color: #136e44!important;"></i>
+                            <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                        </div>
+                        <span class="fs-18 fw-600 text-dark-gray d-block mb-5px">Páginas Web</span>
+                        <p class="lh-28 fs-14">Landing | Tienda | Corporativa</p>
+                    </div>
+
+                    <div class="d-flex flex-column overflow-hidden w-100 justify-content-center position-relative">
+                        <div class="fs-12 fw-700 text-uppercase text-dark-gray border-top border-bottom border-color-transparent-dark-very-light pt-8px pb-8px">
+                            <span class="text-down d-block">+300 sitios</span>
+                        </div>
+                        <div class="btn-hover d-flex align-items-center justify-content-center bg-dark-gray">
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A💻%20Estoy%20interesado%20en%20una%20Página%20Web%20para%20mi%20negocio.%0A%0A📌%20Deseo%20información%20sobre:%0A✅%20Sitio%20web%20corporativo%0A✅%20Landing%20Page%0A✅%20Tienda%20Online%0A✅%20Diseño%20profesional%0A%0A📈%20Me%20gustaría%20recibir%20una%20cotización.%20Gracias."
+                               target="_blank"
+                               class="inner-link btn btn-link btn-hover-animation-switch btn-extra-large text-white w-100 h-100 d-flex align-items-center justify-content-center">
+                    <span>
+                        <span class="btn-text">Cotizar</span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Sistemas POS -->
+                <div class="col services-box-style-07 text-center last-paragraph-no-margin border-end border-color-transparent-dark-very-light md-mb-50px">
+                    <div class="pe-30px ps-30px pb-30px xl-ps-20px xl-pe-20px">
+                        <div class="position-relative ms-auto me-auto mb-20px">
+                            <i class="fa-solid fa-cash-register fs-50 position-relative z-index-1 mt-30px"
+                               style="color: #136e44!important;"></i>
+                            <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                        </div>
+                        <span class="fs-18 fw-600 text-dark-gray d-block mb-5px">Sistemas POS</span>
+                        <p class="lh-28 fs-14">Facturación + Inventario real</p>
+                    </div>
+
+                    <div class="d-flex flex-column overflow-hidden w-100 justify-content-center position-relative">
+                        <div class="fs-12 fw-700 text-uppercase text-dark-gray border-top border-bottom border-color-transparent-dark-very-light pt-8px pb-8px">
+                            <span class="text-down d-block">+200 comercios</span>
+                        </div>
+                        <div class="btn-hover d-flex align-items-center justify-content-center bg-dark-gray">
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A🖥️%20Estoy%20interesado%20en%20un%20Sistema%20POS.%0A%0A📌%20Deseo%20información%20sobre:%0A✅%20Control%20de%20ventas%0A✅%20Inventario%0A✅%20Facturación%0A✅%20Reportes%20gerenciales%0A%0A🚀%20Quiero%20una%20asesoría%20para%20mi%20negocio.%20Gracias."
+                               target="_blank"
+                               class="inner-link btn btn-link btn-hover-animation-switch btn-extra-large text-white w-100 h-100 d-flex align-items-center justify-content-center">
+                    <span>
+                        <span class="btn-text">Cotizar</span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Apps a medida -->
+                <div class="col services-box-style-07 text-center last-paragraph-no-margin">
+                    <div class="pe-30px ps-30px pb-30px xl-ps-20px xl-pe-20px">
+                        <div class="position-relative ms-auto me-auto mb-20px">
+                            <i class="fa-solid fa-mobile-alt fs-50 position-relative z-index-1 mt-30px"
+                               style="color: #136e44!important;"></i>
+                            <div class="h-80px w-80px rounded-circle bg-very-light-gray position-absolute top-0 start-50 translate-middle-x"></div>
+                        </div>
+                        <span class="fs-18 fw-600 text-dark-gray d-block mb-5px">Apps a medida</span>
+                        <p class="lh-28 fs-14">iOS | Android | Híbridas y más</p>
+                    </div>
+
+                    <div class="d-flex flex-column overflow-hidden w-100 justify-content-center position-relative">
+                        <div class="fs-12 fw-700 text-uppercase text-dark-gray border-top border-bottom border-color-transparent-dark-very-light pt-8px pb-8px">
+                            <span class="text-down d-block">+50 apps</span>
+                        </div>
+                        <div class="btn-hover d-flex align-items-center justify-content-center bg-dark-gray">
+                            <a  href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A📱%20Estoy%20interesado%20en%20el%20desarrollo%20de%20una%20Aplicación%20a%20Medida.%0A%0A📌%20Deseo%20información%20sobre:%0A✅%20Apps%20Android%20e%20iOS%0A✅%20Aplicaciones%20empresariales%0A✅%20Integración%20con%20sistemas%0A✅%20Desarrollo%20personalizado%0A%0A🚀%20Quedo%20atento%20a%20una%20asesoría.%20Gracias."
+                               target="_blank"
+                               class="inner-link btn btn-link btn-hover-animation-switch btn-extra-large text-white w-100 h-100 d-flex align-items-center justify-content-center">
+                    <span>
+                        <span class="btn-text">Cotizar</span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="btn-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row position-relative mt-40px xs-mt-20px">
+
+                <div class="col swiper swiper-width-auto feather-shadow text-center"
+                     data-slider-options='{ "slidesPerView": "auto", "spaceBetween":80, "centeredSlides": true, "speed": 30000, "loop": true, "pagination": { "el": ".slider-four-slide-pagination-2", "clickable": false }, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-four-slide-next-2", "prevEl": ".slider-four-slide-prev-2" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
+
+                    <div class="swiper-wrapper marquee-slide">
+
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-700 opacity-1">
+                                sistemas pos apps empresariales automatización
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-700 opacity-1">
+                                páginas web saas tecnología para negocios
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="fs-190 ls-minus-10px pt-10px pb-10px alt-font fw-700 opacity-1">
+                                digitaliza automatiza crece vende más
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 position-absolute top-0 h-100 d-flex justify-content-center align-items-center left-0px z-index-1 text-center">
+
+                    <h4 class="alt-font text-dark-gray fs-45 fw-700 ls-minus-2px xs-ls-minus-1px mb-0 mt-40px xs-mt-15px">
+
+                        Automatiza tu negocio y aumenta tus ventas.
+
+                    </h4>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+
+
+
+{% endblock %}

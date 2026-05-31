@@ -1,0 +1,308 @@
+{% extends 'eraly/base.html' %}
+{% load static %}
+
+{% block title %}{{ servicio.titulo }} | {{ empresa.nombre }}{% endblock %}
+
+{% block meta_description %}
+Correos corporativos profesionales para empresas con dominio propio, seguridad y soporte técnico.
+{% endblock %}
+
+{% block meta_keywords %}
+correo corporativo, email empresarial, correo profesional, dominio propio, hosting mail
+{% endblock %}
+
+{% block og_title %}
+Correos Corporativos | {{ empresa.nombre }}
+{% endblock %}
+
+{% block og_description %}
+Comunica confianza con correos corporativos profesionales para tu empresa.
+{% endblock %}
+
+{% block og_image %}
+<meta property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block twitter_image %}
+<meta name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{{ servicio.imagen_banner.url }}">
+{% endblock %}
+
+{% block content %}
+
+{% if servicio.imagen_banner %}
+<section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0"
+         style="background-image: url('{{ servicio.imagen_banner.url }}')">
+{% else %}
+<section class="page-title-big-typography bg-dark-gray ipad-top-space-margin cover-background md-py-0"
+         style="background-image: url('/static/static_eraly/images/eralycorreo2.png')">
+{% endif %}
+    <div class="container">
+        <div class="row align-items-center small-screen">
+            <div class="col-lg-5 col-sm-7 position-relative page-title-extra-small">
+
+                <h1 class="mb-15px text-white opacity-7 fw-300 overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.titulo }}
+                    </span>
+                </h1>
+
+                <h2 class="m-auto pb-5px pt-5px text-white fw-600 ls-minus-1px overflow-hidden">
+                    <span class="d-inline-block">
+                        {{ servicio.subtitulo }}
+                    </span>
+                </h2>
+
+                <div class="mt-4">
+                    <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=📧%20Hola%20{{ empresa.nombre }}%0A%0AEstoy%20interesado%20en%20el%20servicio%20de%20Correos%20Corporativos.%0A%0A✅%20Correo%20con%20mi%20dominio%0A✅%20Configuración%20profesional%0A✅%20Soporte%20técnico%0A%0A🚀%20Deseo%20una%20cotización."
+                       target="_blank"
+                       class="btn btn-base-color btn-rounded btn-large me-2"
+                       style="background:#0ea5e9!important;">
+                        {{ servicio.boton_texto }}
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+            <div class="col-xl-7 col-lg-6 md-mb-30px animation-float">
+
+                {% if servicio.imagen_1 %}
+                    <img src="{{ servicio.imagen_1.url }}" alt="{{ servicio.titulo }}">
+                {% else %}
+                    <img src="/static/static_eraly/images/eralycorreo1.png" alt="Correos corporativos">
+                {% endif %}
+
+            </div>
+
+            <div class="col-xl-5 col-lg-6">
+
+                <span class="fw-600 mb-15px text-uppercase d-block"
+                      style="color:#0ea5e9!important;">
+                    Correos profesionales
+                </span>
+
+                <h2 class="fw-700 text-dark-gray ls-minus-2px">
+                    Comunica confianza con tu empresa
+                </h2>
+
+                <p class="w-90 lg-w-100 mb-30px">
+                    {{ servicio.descripcion }}
+                </p>
+
+                <div class="mb-40px">
+
+                    {% for beneficio in beneficios_servicio %}
+                        <div class="col icon-with-text-style-08 mb-15px">
+                            <div class="feature-box feature-box-left-icon-middle bg-very-light-gray border-radius-5px pt-15px pb-15px ps-25px pe-25px">
+
+                                <div class="feature-box-icon rounded-circle box-shadow-large me-10px"
+                                     style="background:#0ea5e9!important;">
+                                    <i class="{{ beneficio.icono }} fs-11 text-white"></i>
+                                </div>
+
+                                <div class="feature-box-content">
+                                    <span class="text-dark-gray fw-500">
+                                        {{ beneficio.titulo }}
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>No hay beneficios registrados todavía.</p>
+                    {% endfor %}
+
+                </div>
+
+                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=📧%20Hola%20{{ empresa.nombre }}%0A%0ADeseo%20más%20información%20sobre%20Correos%20Corporativos.%0A%0AGracias."
+                   target="_blank"
+                   class="btn btn-large btn-dark-gray btn-rounded btn-switch-text btn-box-shadow">
+
+                    <span>
+                        <span class="btn-double-text" data-text="Cotizar ahora">
+                            Cotizar ahora
+                        </span>
+                        <span>
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </span>
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="planes" class="bg-very-light-gray">
+    <div class="container">
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10 text-center">
+
+                <span class="fw-600 mb-5px text-uppercase d-block"
+                      style="color:#0ea5e9!important;">
+                    Planes disponibles
+                </span>
+
+                <h2 class="fw-700 mb-15px text-dark-gray ls-minus-2px">
+                    Planes de correos corporativos
+                </h2>
+
+                <p class="fs-18">
+                    Elige la solución ideal para tu empresa.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-center">
+
+            {% for plan in planes_servicio %}
+                <div class="col-lg-4 col-md-8 mb-30px">
+
+                    <div class="pricing-table text-center pt-16 pb-35px box-shadow-quadruple-large border-radius-6px h-100"
+                         {% if plan.destacado %}
+                             style="background:#0ea5e9!important;"
+                         {% else %}
+                             style="background:#ffffff!important; border:2px solid #0ea5e9;"
+                         {% endif %}>
+
+                        <div class="pricing-header ps-18 pe-18">
+
+                            <div class="d-inline-block fs-12 text-uppercase ps-20px pe-20px fw-600 text-dark-gray mb-30px border-radius-100px box-shadow-large border bg-white">
+                                {% if plan.destacado %}🔥 {% endif %}
+                                {{ plan.nombre }}
+                            </div>
+
+                            <h2 class="fw-600 mb-10px ls-minus-3px"
+                                {% if plan.destacado %}
+                                    style="color:#ffffff;"
+                                {% else %}
+                                    style="color:#1f1f1f;"
+                                {% endif %}>
+
+                                <sup class="fs-30">$</sup>{{ plan.precio|floatformat:2 }}
+                                <span class="fs-16 fw-400">{{ plan.periodo }}</span>
+
+                            </h2>
+
+                            <p class="mb-25px"
+                               {% if plan.destacado %}
+                                   style="color:#ffffff;"
+                               {% endif %}>
+                                {{ plan.descripcion }}
+                            </p>
+
+                            <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=📧%20Hola%20{{ empresa.nombre }}%0A%0AEstoy%20interesado%20en%20el%20Plan%20{{ plan.nombre }}%20de%20Correos%20Corporativos.%0A%0A📌%20Deseo%20más%20información%20sobre%20precio,%20beneficios%20y%20contratación.%0A%0AGracias."
+                               target="_blank"
+                               class="btn btn-dark-gray btn-round-edge w-100"
+                               {% if plan.destacado %}
+                                   style="background:#075985!important;"
+                               {% endif %}>
+                                {{ plan.boton_texto }}
+                            </a>
+
+                        </div>
+
+                        <div class="pricing-body pt-15px pb-25px">
+
+                            <ul class="list-unstyled mb-0"
+                                {% if plan.destacado %}
+                                    style="color:#ffffff;"
+                                {% endif %}>
+
+                                {% for caracteristica in plan.caracteristicas.all %}
+                                    <li class="pt-10px pb-10px">
+                                        {% if caracteristica.incluido %}
+                                            {{ caracteristica.texto }}
+                                        {% else %}
+                                            <del>{{ caracteristica.texto }}</del>
+                                        {% endif %}
+                                    </li>
+                                {% empty %}
+                                    <li class="pt-10px pb-10px">
+                                        Sin características registradas.
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No hay planes registrados todavía.</p>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 text-center">
+                <p class="text-dark-gray">
+                    ¿Necesitas un plan personalizado?
+                    <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=📧%20Hola%20{{ empresa.nombre }}%0A%0ANecesito%20un%20plan%20personalizado%20de%20correos%20corporativos.%0A%0AGracias."
+                       target="_blank"
+                       class="fw-700"
+                       style="color:#0ea5e9!important;">
+                        Contáctanos
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% if preguntas_servicio %}
+<section>
+    <div class="container">
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                <span class="fw-600 mb-5px text-uppercase d-block"
+                      style="color:#0ea5e9!important;">
+                    Preguntas frecuentes
+                </span>
+
+                <h2 class="fw-700 text-dark-gray ls-minus-1px">
+                    Dudas sobre correos corporativos
+                </h2>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                {% for pregunta in preguntas_servicio %}
+                    <div class="mb-25px border-bottom pb-20px">
+                        <h5 class="fw-700 text-dark-gray mb-10px">
+                            {{ pregunta.pregunta }}
+                        </h5>
+                        <p class="mb-0">
+                            {{ pregunta.respuesta }}
+                        </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

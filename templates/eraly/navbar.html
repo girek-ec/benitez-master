@@ -1,0 +1,191 @@
+<!-- start header -->
+<header>
+    <!-- start navigation -->
+    <nav class="navbar navbar-expand-lg header-transparent bg-transparent header-reverse" data-header-hover="light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <div class="col-auto col-lg-2 me-lg-0 me-auto">
+                <a class="navbar-brand" href="/">
+                    {% if empresa and empresa.logo_principal %}
+                        <img src="{{ empresa.logo_principal.url }}"
+                             data-at2x="{{ empresa.logo_principal.url }}" alt="{{ empresa.nombre|default:'EralySoft' }}"
+                             class="default-logo">
+                    {% else %}
+                        <img src="/static/static_eraly/images/eraly_logo.png"
+                             data-at2x="/static/static_eraly/images/eraly_logo.png" alt="EralySoft"
+                             class="default-logo">
+                    {% endif %}
+
+                    {% if empresa and empresa.logo_alternativo %}
+                        <img src="{{ empresa.logo_alternativo.url }}"
+                             data-at2x="{{ empresa.logo_alternativo.url }}"
+                             alt="{{ empresa.nombre|default:'EralySoft' }}"
+                             class="alt-logo">
+                        <img src="{{ empresa.logo_alternativo.url }}"
+                             data-at2x="{{ empresa.logo_alternativo.url }}"
+                             alt="{{ empresa.nombre|default:'EralySoft' }}"
+                             class="mobile-logo">
+                    {% else %}
+                        <img src="/static/static_eraly/images/eraly_logo_1.png"
+                             data-at2x="/static/static_eraly/images/eraly_logo_1.png" alt="EralySoft"
+                             class="alt-logo">
+                        <img src="/static/static_eraly/images/eraly_logo_1.png"
+                             data-at2x="/static/static_eraly/images/eraly_logo_1.png" alt="EralySoft"
+                             class="mobile-logo">
+                    {% endif %}
+
+                    {% if empresa and empresa.nombre %}
+                        <span class="ms-2 d-none d-lg-inline fw-700 text-dark-gray">{{ empresa.nombre }}</span>
+                    {% endif %}
+                </a>
+            </div>
+<!-- Menú principal -->
+<div class="col-auto menu-order position-static">
+    <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-line"></span>
+        <span class="navbar-toggler-line"></span>
+        <span class="navbar-toggler-line"></span>
+        <span class="navbar-toggler-line"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav alt-font">
+
+            <li class="nav-item">
+                <a href="/eraly/" class="nav-link">Inicio</a>
+            </li>
+
+            <!-- Sistemas POS -->
+            <li class="nav-item dropdown dropdown-with-icon">
+                <span class="nav-link" style="cursor:pointer;">
+                    Sistemas POS ▾
+                </span>
+
+                <i class="fa-solid fa-angle-down dropdown-toggle"
+                   id="navbarDropdownSolucionesDynamic"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false"></i>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownSolucionesDynamic">
+                    {% for apps in landings_menu %}
+                        <li>
+                            <a href="/eraly/soluciones/{{ apps.id }}/">
+                                <i class="{{ apps.categoria_icono }}"></i>
+                                <div class="submenu-icon-content">
+                                    <span>{{ apps.titulo_hero }}</span>
+                                    <p>{{ apps.subtitulo_hero }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+            <!-- Servicios Web -->
+            <li class="nav-item dropdown dropdown-with-icon">
+                <span class="nav-link" style="cursor:pointer;">
+                    Servicios Web ▾
+                </span>
+
+                <i class="fa-solid fa-angle-down dropdown-toggle"
+                   id="navbarDropdownProducto"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false"></i>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownProducto">
+
+                    {% for servicio in servicios_menu %}
+                        {% if servicio.tipo == 'hosting' %}
+                            <li>
+                                <a href="/eraly/hosting/">
+                                    <i class="bi bi-server"></i>
+                                    <div class="submenu-icon-content">
+                                        <span>{{ servicio.titulo }}</span>
+                                        <p>{{ servicio.subtitulo }}</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        {% elif servicio.tipo == 'web' %}
+                            <li>
+                                <a href="/eraly/web/">
+                                    <i class="bi bi-code-square"></i>
+                                    <div class="submenu-icon-content">
+                                        <span>{{ servicio.titulo }}</span>
+                                        <p>{{ servicio.subtitulo }}</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        {% elif servicio.tipo == 'correos' %}
+                            <li>
+                                <a href="/eraly/correos/">
+                                    <i class="bi bi-envelope-paper"></i>
+                                    <div class="submenu-icon-content">
+                                        <span>{{ servicio.titulo }}</span>
+                                        <p>{{ servicio.subtitulo }}</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        {% elif servicio.tipo == 'apps' %}
+                            <li>
+                                <a href="/eraly/apps/">
+                                    <i class="bi bi-phone"></i>
+                                    <div class="submenu-icon-content">
+                                        <span>{{ servicio.titulo }}</span>
+                                        <p>{{ servicio.subtitulo }}</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        {% elif servicio.tipo == 'facturacion' %}
+                            <li>
+                                <a href="/eraly/facturacion/">
+                                    <i class="bi bi-receipt"></i>
+                                    <div class="submenu-icon-content">
+                                        <span>{{ servicio.titulo }}</span>
+                                        <p>{{ servicio.subtitulo }}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="/eraly/contacto/" class="nav-link">Contacto</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+            <!-- Teléfono y botón CTA -->
+            <div class="col-auto col-lg-2 text-end d-none d-sm-flex">
+                <div class="header-icon">
+                    <div>
+                        <a href="https://api.whatsapp.com/send?phone=+593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A%0A🚀%20Quiero%20digitalizar%20mi%20negocio%20y%20me%20interesan%20sus%20soluciones:%0A%0A✅%20Sistemas%20POS%0A✅%20Apps%20Empresariales%0A✅%20Páginas%20Web%0A✅%20Software%20SaaS%0A✅%20Hosting%20y%20Dominios%0A✅%20Correos%20Corporativos%0A✅%20Automatización%20Empresarial%0A%0A📈%20Deseo%20una%20asesoría%20personalizada%20para%20mi%20empresa.%0A%0A🔥%20Quedo%20atento%20a%20más%20información.%20Gracias."
+                           target="_blank"
+                           class="btn btn-small btn-rounded btn-box-shadow btn-base-color">
+
+                            <i class="fa-brands fa-whatsapp me-5px"></i>
+                            Chat
+
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- end navigation -->
+</header>
+<!-- end header -->

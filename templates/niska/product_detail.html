@@ -56,38 +56,28 @@
                                         class="text-decoration-none text-color-default text-color-hover-primary"
                                         data-hash data-hash-offset="75" data-hash-trigger-click=".nav-link-reviews"
                                         data-hash-trigger-click-delay="1000">
-                                        <span class="count text-color-inherit"
-                                                itemprop="ratingCount">{{ product.clasif.clasificacion_producto }}</span>
-
+                                        <span class="count text-color-inherit"  itemprop="ratingCount">{{ product.clasif.clasificacion_producto }}</span>
                                     </a>
+                                    - <span class="text-info"><span class="price-unit">$</span>{{ product.precio }}</span>
                                 </div>
                             </div>
-                            <br>
                             <p class="text-3-5 mb-3">{{ product.descripcion }}</p>
+
                             <div class="row align-items-center">
-                                <p>
-                                    <a type="button" class="btn btn-rounded btn-primary " target="_blank"
-                                       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbenitez-ec.com%20niska%20producto%20{{ product.id }}%2F&amp;src=sdkpreparse">Compartir
-                                        por Facebook</a>
-                                </p>
 
                                 <p>
                                     <a type="button" class="btn btn-rounded btn-success" title="Click para chatear"
-                                       href="https://api.whatsapp.com/send?phone=593{{marca.celular}}&text=Hola%20Me%20interesa%20un%20producto%20 https://www.benitez-ec.com/niska/producto/{{ product.id }}/  "
-                                       target="_blank" rel="noopener">Envíanos un mensaje por WhatsApp</a>
+                                       href="https://api.whatsapp.com/send?phone=+593{{marca.celular}}&text=Hola%20Me%20interesa%20un%20producto%20 https://www.benitez-ec.com/niska/producto/{{ product.id }}/  "
+                                       target="_blank" rel="noopener">Pedidos por WhatsApp</a>
                                 </p>
                             </div>
                         
                             <div class="d-flex align-items-center" style="text-align: center">
                                 <ul class="social-icons social-icons-medium social-icons-clean-with-border social-icons-clean-with-border-border-grey social-icons-clean-with-border-icon-dark mr-3 mb-0">
                                     <div class="d-flex align-items-center" style="text-align: center">
-                                        
-
-
 
                                     <li>
-                                        <div id="description"
-                                                class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
+                                        <div id="description"   class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2" style="margin-top: 0px !important;">
                                             <ul class="nav nav-tabs justify-content-start">
 
                                                 <li class="nav-item active"><a
@@ -98,16 +88,8 @@
                                             <div class="tab-content p-0">
 
                                                 <div class="tab-pane px-0 py-3 active" id="productInfo">
-                                                    <table class="table table-striped m-0">
+                                                    <table class="table table-striped m-0" style="text-align: justify !important;">
                                                         <tbody>
-                                                        <tr>
-                                                            <th class="border-top-0">
-                                                                Embalaje:
-                                                            </th>
-                                                            <td class="border-top-0">
-                                                                {{ product.embalaje }}
-                                                            </td>
-                                                        </tr>
                                                         <tr>
                                                             <th>
                                                                 Empaque:
@@ -118,7 +100,7 @@
                                                         </tr>
                                                         <tr>
                                                             <th>
-                                                                Sabores:
+                                                                Variedades:
                                                             </th>
                                                             <td>
                                                                 {{ product.sabores }}
@@ -126,7 +108,7 @@
                                                         </tr>
                                                         <tr>
                                                             <th>
-                                                                Duracion:
+                                                                Vida útil:
                                                             </th>
                                                             <td>
                                                                 {{ product.duracion }}
@@ -134,7 +116,7 @@
                                                         </tr>
                                                         <tr>
                                                             <th>
-                                                                Presentaciones:
+                                                                Presentación:
                                                             </th>
                                                             <td>
                                                                 {{ product.presentaciones }}

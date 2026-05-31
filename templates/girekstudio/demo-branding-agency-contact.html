@@ -77,11 +77,12 @@
                                 <h2 class="text-dark-gray alt-font fw-600 w-90 xxl-w-100 ls-minus-2px " style="text-align: center !important;">¡Nos encantaría saber de usted!</h2>
                                                                                         <p class="fs-14 lh-24 w-100 mb-0 text-center text-lg-start">Creamos productos con una identidad sólida. Aportamos ideas brillantes y sumamos el nombre de marca al mundo del éxito. Ofrecemos campañas de marketing personalizadas para utilizar a su audiencia y hacer un cambio positivo.</p>
 
-                            <div class="position-relative form-group form-textarea mt-15px mb-0">
-                                    <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100 left-icon" type="submit"><i class="fa-regular fa-envelope"></i>Escribenos al WhatsApp</button>
-                                    <p class="fs-14 lh-24 w-100 mb-0 text-center text-lg-start">Nos comprometemos a proteger su privacidad. Nunca recopilaremos información sobre usted sin su consentimiento explícito.</p>
-                                    <div class="form-results mt-20px d-none"></div>
-                                </div>
+                                <a href="https://api.whatsapp.com/send?phone=+593{{ contacto_empresa.whatsapp }}&text=Hola%20Me%20interesa%20un%20servicio%20de%20dise%C3%B1o"
+                                   target="_blank"
+                                   class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px w-100 left-icon d-inline-block text-center">
+
+                                    <i class="fa-brands fa-whatsapp"></i> Escríbenos al WhatsApp
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -96,10 +97,10 @@
                         <div class="fs-22 mb-30px text-dark-gray">Contacto <span class="fw-600"> Redes sociales </span></div>
                         <ul class="extra-large-icon fw-600" data-anime='{ "el": "childs", "translateX": [10, 0], "opacity": [0,1], "duration": 300, "delay": 100, "staggervalue": 300, "easing": "easeOutQuad" }'>
                             <li><a class="facebook" href="https://www.facebook.com/{{ contacto_empresa.facebook }}" target="_blank"><span class="brand-label text-dark-gray">facebook</span><span class="brand-icon fa-brands fa-facebook-f"></span></a></li>
-                            <li><a class="instagram" href="http://www.instagram.com{{ contacto_empresa.instagram }}" target="_blank"><span class="brand-label text-dark-gray">Instagram</span><span class="brand-icon fa-brands fa-instagram"></span></a></li>
-                            <li><a class="twitter" href="http://www.twitter.com{{ contacto_empresa.twitter }}" target="_blank"><span class="brand-label text-dark-gray">Twitter</span><span class="brand-icon fa-brands fa-twitter"></span></a></li>
-                            <li><a class="tiktok" href="http://www.tiktok.com{{ contacto_empresa.tiktok }}" target="_blank"><span class="brand-label text-dark-gray">Tiktok</span><span class="brand-icon fa-brands fa-tiktok"></span></a></li>
-                            <li><a class="youtube" href="http://www.youtube.com{{ contacto_empresa.youtube }}" target="_blank"><span class="brand-label text-dark-gray">Youtube</span><span class="brand-icon fa-brands fa-youtube"></span></a></li>
+                            <li><a class="instagram" href="http://www.instagram.com/{{ contacto_empresa.instagram }}" target="_blank"><span class="brand-label text-dark-gray">Instagram</span><span class="brand-icon fa-brands fa-instagram"></span></a></li>
+                            <li><a class="twitter" href="http://www.twitter.com/{{ contacto_empresa.twitter }}" target="_blank"><span class="brand-label text-dark-gray">Twitter</span><span class="brand-icon fa-brands fa-twitter"></span></a></li>
+                            <li><a class="tiktok" href="http://www.tiktok.com/{{ contacto_empresa.tiktok }}" target="_blank"><span class="brand-label text-dark-gray">Tiktok</span><span class="brand-icon fa-brands fa-tiktok"></span></a></li>
+                            <li><a class="youtube" href="http://www.youtube.com/{{ contacto_empresa.youtube }}" target="_blank"><span class="brand-label text-dark-gray">Youtube</span><span class="brand-icon fa-brands fa-youtube"></span></a></li>
 
                         </ul>
                     </div>
