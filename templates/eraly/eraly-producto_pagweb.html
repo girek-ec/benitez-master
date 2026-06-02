@@ -50,14 +50,15 @@ paginas web, diseño web, ecommerce, landing page, tienda online, desarrollo web
                     </h2>
 
                     <div class="mt-4">
-                        <a href="{{ servicio.boton_url }}"
+                        <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A🚀%20Me%20interesa%20{{ servicio.titulo|urlencode }}%0A📝%20{{ servicio.subtitulo|urlencode }}%0A📈%20Deseo%20más%20información,%20una%20asesoría%20personalizada%20y%20una%20cotización.%20Gracias."
+                           target="_blank"
                            class="btn btn-rounded btn-large me-2 text-white"
                            style="background:#136e44!important;">
                             {{ servicio.boton_texto }}
                         </a>
 
                         <a href="#planes"
-                           class="btn btn-outline-white btn-rounded btn-large">
+                           class="btn btn-outline-white btn-rounded btn-large" style="color: #ffffff!important;">
                             Ver planes
                         </a>
                     </div>

@@ -77,14 +77,17 @@ Desarrollamos aplicaciones móviles y empresariales adaptadas a tu negocio.
                 </span>
 
             <div class="row pe-20px md-ps-25px sm-px-0 md-border-end-0">
-                <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20{{ empresa.nombre|urlencode }}%0A%0A📱%20Estoy%20interesado%20en%20desarrollar%20una%20app%20o%20web%20app%20a%20medida.%0A%0A🚀%20Deseo%20recibir%20asesoría%20y%20cotización.%0A%0AGracias."
-                   target="_blank"
-                   class="col-6">
-                    <button class="btn btn-large btn-rounded w-100 text-white"
-                            style="background-color:#0d633e!important;border-color:#0d633e!important;">
-                        {{ servicio.boton_texto }}
-                    </button>
-                </a>
+                 <a href="https://api.whatsapp.com/send?phone=593{{ empresa.whatsapp }}&text=👋%20Hola%20EralySoft%0A🚀%20Me%20interesa%20{{ servicio.titulo|urlencode }}%0A📝%20{{ servicio.subtitulo|urlencode }}%0A📈%20Deseo%20más%20información,%20una%20asesoría%20personalizada%20y%20una%20cotización.%20Gracias."
+                           target="_blank"
+                           class="btn btn-rounded btn-large me-2 text-white"
+                           style="background:#136e44!important;">
+                            {{ servicio.boton_texto }}
+                        </a>
+
+                        <a href="#planes"
+                           class="btn btn-outline-white btn-rounded btn-large" style="color: #ffffff!important;">
+                            Ver planes
+                        </a>
             </div>
         </div>
 
