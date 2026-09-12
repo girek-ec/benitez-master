@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 #from dotenv import load_dotenv
 
 
@@ -27,7 +30,15 @@ SECRET_KEY = 'django-insecure-9*%w$ow!)u#3$rg+(w=o3sz6kf_p(e@dbted^*1l9lhecb$swi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv(
+    'ALLOWED_HOSTS',
+    'localhost,127.0.0.1'
+).split(',')
+
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    'CSRF_TRUSTED_ORIGINS',
+    ''
+).split(',')
 
 
 INSTALLED_APPS = [
@@ -54,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,16 +100,16 @@ WSGI_APPLICATION = 'benitez.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-
-
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST', 'benitez-db'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -129,19 +141,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
-
-# STATIC_ROOT='/var/www/benitez-master//static/'
-STATICFILES_DIRS=[
-   'static',
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
 ]
 
-MEDIA_URL="/media/"
-# MEDIA_ROOT='/var/www/benitez-master//media/'
-MEDIA_ROOT='media'
-#MEDIA_ROOT="/var/www/benitez-master/media/"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
 
@@ -178,15 +189,37 @@ REDIS_DB = 1
 
 
 
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'vortice.ec@gmail.com'  # Tu correo electrónico
+#EMAIL_HOST_PASSWORD = 'wcdb ujft mlzc rssk'   # Tu contraseña de correo electrónico
+#EMAIL_TIMEOUT = 10
+
+
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'vortice.ec@gmail.com'  # Tu correo electrónico
-EMAIL_HOST_PASSWORD = 'wcdb ujft mlzc rssk'   # Tu contraseña de correo electrónico
+
+EMAIL_HOST_USER = 'ad6f42001@smtp-brevo.com'
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
+
+DEFAULT_FROM_EMAIL = 'Vortice Ecuador <vortice.ec@gmail.com>'
+
+EMAIL_TIMEOUT = 10
+
 
 # API DE WHATSAPP
 #WHATSAPP_TOKEN = os.environ["WHATSAPP_TOKEN"]
 #WHATSAPP_CALLBACK_TOKEN = os.environ["WHATSAPP_CALLBACK_TOKEN"]
 #WHATSAPP_NUMBER_ID = os.environ["WHATSAPP_NUMBER_ID"]
 #WHATSAPP_RECEIVER = os.environ["WHATSAPP_RECEIVER"]
+
+# Google reCAPTCHA
+RECAPTCHA_SITE_KEY = "6LdjleUqAAAAAMgPqyj2LMsG5izrhTO3MShPNkLp"
+RECAPTCHA_SECRET_KEY = "6LdjleUqAAAAAASKyK7z0Hl4xJqeqZDI9G9AL42j"

@@ -180,25 +180,27 @@ def payment_canceled(request):
     return render(request, 'payment/canceled.html', context)
 
 
-
 def send_whatsapp_and_email(request):
     order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
 
-    # Validar que haya productos
     if order.items.count() == 0 or order.get_total_cost() <= 0:
         return redirect('cart:cart_detail')
 
-    # Generar mensaje de WhatsApp
+    recaptcha_response = request.GET.get('g-recaptcha-response')
+
+    if not recaptcha_response or not verify_recaptcha(recaptcha_response):
+        return redirect('payment:process')
+
     whatsapp_message = generate_whatsapp_message(order)
+# Correo desactivado temporalmente porque Gmail SMTP no responde desde el VPS
+    try:
+        send_order_email(order, order.email)
+    except Exception as e:
+        print("ERROR EMAIL:", e)
 
-    # Enviar el correo electrónico
-    send_order_email(order, order.email)
-
-    # Redirigir a WhatsApp
     whatsapp_url = f"https://wa.me/593993239290?text={whatsapp_message}"
     return redirect(whatsapp_url)
-
 
 def send_order_email(order, customer_email):
     # Generar el mensaje de WhatsApp
@@ -261,8 +263,9 @@ def send_order_email(order, customer_email):
     send_mail(
         email_subject,
         email_message,
-        settings.EMAIL_HOST_USER,  # Dirección de correo electrónico del remitente
-        [customer_email],  # Correo electrónico del cliente
+        settings.DEFAULT_FROM_EMAIL,  # Dirección de correo electrónico del remitente
+        [customer_email,'vortice.ec@gmail.com'],
+        fail_silently=False,  # Correo electrónico del cliente
     )
 
 
