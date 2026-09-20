@@ -1,124 +1,314 @@
 {% extends 'vortice/index_vortice.html' %}
 
-        {% block metas %}
-        <!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
-        <meta property="fb:app_id" content="926164441218858">
-        <meta property="og:site_name" content="Vortice">
-        <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Vortice - Tienda Oficial">
-        <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana.">
-        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
-        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:image:type" content="image/jpeg"> <!-- Asegura compatibilidad con los formatos de imagen -->
 
-        <!-- Meta etiquetas para Twitter (Twitter Cards) -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@VorticeOficial"> <!-- Reemplaza con el usuario de Twitter si existe -->
-        <meta name="twitter:title" content="Vortice - Tienda Oficial">
-        <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana.">
-        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
-        <meta name="twitter:image:alt" content="Imagen promocional de Vortice - Tienda Oficial">
-    {% endblock %}
+{% block metas %}
+
+    <!-- Open Graph -->
+    <meta property="fb:app_id" content="926164441218858">
+    <meta property="og:site_name" content="Vórtice">
+    <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
+    <meta property="og:type" content="website">
+
+    <meta property="og:title"
+          content="Vórtice - Nuestra historia">
+
+    <meta property="og:description"
+          content="Vórtice. Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
+
+    <meta property="og:image"
+          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
+
+    <meta property="og:image:secure_url"
+          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@VorticeOficial">
+
+    <meta name="twitter:title"
+          content="Vórtice - Nuestra historia">
+
+    <meta name="twitter:description"
+          content="Vórtice. Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
+
+    <meta name="twitter:image"
+          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
+
+    <meta name="twitter:image:alt"
+          content="Vórtice - Nuestra historia">
+
+{% endblock %}
+
+
 
 {% block principal %}
-        <!-- Slider -->
-        <section class="tf-slideshow about-us-page position-relative">
-            <div class="banner-wrapper">
-                <img class="lazyload" src="/media/{{vortice.s2_imagen}}" data-src="/media/{{vortice.s2_imagen}}" alt="image-collection">
-                <div class="box-content text-center">
-                    <div class="container">
-                        <div class="text text-white"><br class="d-xl-block d-none"> </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /Slider -->
-        <!-- flat-title -->
-        <section class="flat-spacing-9">
-            <div class="container">
-                <div class="flat-title my-0" >
-                    <span  class="title" style="text-align: right !important;"> {{vortice.about_titulo_01}} </span>
-                    <p class="sub-title text_black-2" style="text-align: right !important;">
-                        {{vortice.about_subtitulo_01}} 
-                    </p>
-                </div>
-            </div>
-        </section>
-        <!-- /flat-title -->
-        <div class="container"><div class="line"></div></div>
-        <!-- image-text -->
-        <section class="flat-spacing-23 flat-image-text-section">
-            <div class="container">
-                <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
-                    <div class="tf-image-wrap">
-                        <img class="lazyload w-100" data-src="/media/{{vortice.about_03_imagen_01}}" src="/media/{{vortice.about_03_imagen_01}}" alt="collection-img">
-                    </div>
-                    <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
-                        <div>
-                            <div class="heading " style="text-align: center !important;">{{vortice.about_titulo_02}}</div>
-                            <div class="text" style="text-align: center !important;">
-                                <h6 style="text-align: center">{{vortice.about_subtitulo_02}} </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="flat-spacing-15">
-            <div class="container">
-                <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
-                    <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
-                        <div>
-                            <div class="heading"  style="text-align: center !important;">{{vortice.about_titulo_03}} hola</div>
-                            <div class="text" style="text-align: left !important;">
-                                <h6 style="text-align: center">{{vortice.about_subtitulo_03}}</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-img-group">
-                        <div class="tf-image-wrap box-img item-1">
-                            <div class="img-style">
-                                <img class="lazyload" src="/media/{{vortice.about_03_imagen}}" data-src="/media/{{vortice.about_03_imagen}}" alt="img-vortice">
-                            </div>
-                        </div>
-                        <div class="tf-image-wrap box-img item-2">
-                            <div class="img-style">
-                                <img class="lazyload" src="/media/{{vortice.about_03_imagen_2}}" data-src="/media/{{vortice.about_03_imagen_2}}" alt="img-vortice">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /image-text -->
-
-        <!-- /flat-title -->
-        <div class="container"><div class="line"></div></div>
-        <!-- image-text -->
-        <section class="flat-spacing-23 flat-image-text-section">
-            <div class="container">
-                <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
-                    <div class="tf-image-wrap">
-                        <img class="lazyload w-100" data-src="/media/{{vortice.about_04_imagen}}" src="/media/{{vortice.about_04_imagen}}" alt="collection-vortice">
-                    </div>
-                    <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
-                        <div>
-                            <div class="heading " style="text-align: center !important;">{{vortice.about_titulo_04}}</div>
-                            <div class="text">
-                                  <h6 style="text-align: center">{{vortice.about_subtitulo_04}}</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-       
-       
 
 
-{% endblock %}    
+<!-- ==========================================================
+     VÓRTICE · NOSOTROS
+     ========================================================== -->
+
+
+<!-- HERO
+========================================================== -->
+
+<section class="tf-slideshow about-us-page position-relative vortice-about-hero">
+
+    <div class="banner-wrapper">
+
+        <img
+            class="lazyload"
+            src="/media/{{ vortice.s2_imagen }}"
+            data-src="/media/{{ vortice.s2_imagen }}"
+            alt="Vórtice - Nuestra historia">
+
+    </div>
+
+</section>
+
+<!-- /HERO -->
+
+
+
+<!-- ==========================================================
+     INTRODUCCIÓN
+     ========================================================== -->
+
+<section class="flat-spacing-9 vortice-about-intro">
+
+    <div class="container">
+
+        <div class="flat-title my-0 vortice-about-intro-content">
+
+            <span class="title">
+                {{ vortice.about_titulo_01 }}
+            </span>
+
+            <p class="sub-title text_black-2">
+                {{ vortice.about_subtitulo_01 }}
+            </p>
+
+            <p class="vortice-about-description">
+                Vórtice es una marca ecuatoriana que encuentra inspiración en nuestras
+                raíces, el arte y la identidad para transformarlos en propuestas de
+                diseño contemporáneo. Creamos piezas en ediciones limitadas, pensadas
+                para expresar una forma auténtica y diferente de vestir.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="container">
+    <div class="line"></div>
+</div>
+
+
+
+<!-- ==========================================================
+     HISTORIA / IDENTIDAD
+     IMAGEN IZQUIERDA
+     ========================================================== -->
+
+<section class="flat-spacing-23 flat-image-text-section vortice-about-section">
+
+    <div class="container">
+
+        <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
+
+
+            <!-- IMAGEN -->
+
+            <div class="tf-image-wrap">
+
+                <img
+                    class="lazyload w-100"
+                    data-src="/media/{{ vortice.about_03_imagen_01 }}"
+                    src="/media/{{ vortice.about_03_imagen_01 }}"
+                    alt="Historia de Vórtice">
+
+            </div>
+
+
+            <!-- TEXTO -->
+
+            <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
+
+                <div class="vortice-about-content">
+
+                    <div class="heading">
+                        {{ vortice.about_titulo_02 }}
+                    </div>
+
+                    <div class="text">
+
+                        <h6>
+                            {{ vortice.about_subtitulo_02 }}
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     RAÍCES / PROCESO
+     TEXTO IZQUIERDA + DOS IMÁGENES
+     ========================================================== -->
+
+<section class="flat-spacing-15 vortice-about-section vortice-about-section-alt">
+
+    <div class="container">
+
+        <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
+
+
+            <!-- TEXTO -->
+
+            <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
+
+                <div class="vortice-about-content">
+
+                    <div class="heading">
+                        {{ vortice.about_titulo_03 }}
+                    </div>
+
+                    <div class="text">
+
+                        <h6>
+                            {{ vortice.about_subtitulo_03 }}
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMÁGENES -->
+
+            <div class="grid-img-group">
+
+                <div class="tf-image-wrap box-img item-1">
+
+                    <div class="img-style">
+
+                        <img
+                            class="lazyload"
+                            src="/media/{{ vortice.about_03_imagen }}"
+                            data-src="/media/{{ vortice.about_03_imagen }}"
+                            alt="Proceso creativo Vórtice">
+
+                    </div>
+
+                </div>
+
+
+                <div class="tf-image-wrap box-img item-2">
+
+                    <div class="img-style">
+
+                        <img
+                            class="lazyload"
+                            src="/media/{{ vortice.about_03_imagen_2 }}"
+                            data-src="/media/{{ vortice.about_03_imagen_2 }}"
+                            alt="Diseño y elaboración Vórtice">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- DIVISOR -->
+
+<div class="container">
+    <div class="line"></div>
+</div>
+
+
+
+<!-- ==========================================================
+     FILOSOFÍA / PROPÓSITO
+     IMAGEN IZQUIERDA
+     ========================================================== -->
+
+<section class="flat-spacing-23 flat-image-text-section vortice-about-section">
+
+    <div class="container">
+
+        <div class="tf-grid-layout md-col-2 tf-img-with-text style-4">
+
+
+            <!-- IMAGEN -->
+
+            <div class="tf-image-wrap">
+
+                <img
+                    class="lazyload w-100"
+                    data-src="/media/{{ vortice.about_04_imagen }}"
+                    src="/media/{{ vortice.about_04_imagen }}"
+                    alt="Identidad Vórtice">
+
+            </div>
+
+
+            <!-- TEXTO -->
+
+            <div class="tf-content-wrap px-0 d-flex justify-content-center w-100">
+
+                <div class="vortice-about-content">
+
+                    <div class="heading">
+                        {{ vortice.about_titulo_04 }}
+                    </div>
+
+                    <div class="text">
+
+                        <h6>
+                            {{ vortice.about_subtitulo_04 }}
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,3962 @@
+/* ==========================================================
+   VÓRTICE
+   SISTEMA VISUAL DE MARCA
+   ==========================================================
+
+   Concepto:
+   NUEVAS RAÍCES
+
+   Identidad:
+   Raíces · Diseño · Artesanía · Exclusividad · Juventud
+
+   Tipografías:
+   Cormorant Garamond + Montserrat
+
+   ========================================================== */
+
+
+/* ==========================================================
+   01. VARIABLES
+   ========================================================== */
+
+:root {
+
+    /* Colores */
+    --vortice-carbon: #111111;
+    --vortice-marfil: #F6F3ED;
+    --vortice-blanco: #FFFFFF;
+
+    --vortice-tierra: #9A6846;
+    --vortice-arena: #D9C9B5;
+
+    --vortice-texto: #292929;
+    --vortice-texto-suave: #6F6F6F;
+    --vortice-borde: #E5E0D8;
+
+
+    /* Tipografías */
+    --vortice-font-editorial:
+        'Cormorant Garamond',
+        Georgia,
+        serif;
+
+    --vortice-font-ui:
+        'Montserrat',
+        Arial,
+        sans-serif;
+
+
+    /* Espaciados */
+    --vortice-space-xs: 8px;
+    --vortice-space-sm: 16px;
+    --vortice-space-md: 32px;
+    --vortice-space-lg: 64px;
+    --vortice-space-xl: 100px;
+
+
+    /* Transición */
+    --vortice-transition: 0.3s ease;
+}
+
+
+/* ==========================================================
+   02. BASE
+   ========================================================== */
+
+body {
+    font-family: var(--vortice-font-ui);
+    color: var(--vortice-texto);
+}
+
+
+/* ==========================================================
+   03. DISPLAY
+   Hero / campañas
+   ========================================================== */
+
+.vortice-display {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(58px, 7vw, 100px);
+
+    font-weight: 600;
+
+    line-height: 0.92;
+
+    letter-spacing: -3px;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   04. H1
+   ========================================================== */
+
+.vortice-h1 {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(48px, 5vw, 72px);
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   05. H2
+   ========================================================== */
+
+.vortice-h2 {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(38px, 4vw, 54px);
+
+    font-weight: 600;
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   06. FRASE EDITORIAL
+   ========================================================== */
+
+.vortice-quote {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(25px, 2.7vw, 38px);
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    line-height: 1.25;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   07. TEXTO GENERAL
+   ========================================================== */
+
+.vortice-body {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.75;
+
+    color: var(--vortice-texto);
+}
+
+
+/* ==========================================================
+   08. LABEL
+   ========================================================== */
+
+.vortice-label {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    color: var(--vortice-tierra);
+}
+
+
+/* ==========================================================
+   09. BOTÓN PRINCIPAL
+   ========================================================== */
+
+.vortice-btn-primary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 48px;
+
+    padding: 0 28px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    color: var(--vortice-blanco);
+
+    background-color: var(--vortice-carbon);
+
+    border: 1px solid var(--vortice-carbon);
+
+    border-radius: 0;
+
+    transition: var(--vortice-transition);
+}
+
+
+.vortice-btn-primary:hover {
+    color: var(--vortice-carbon);
+
+    background-color: transparent;
+
+    border-color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   10. BOTÓN SECUNDARIO
+   ========================================================== */
+
+.vortice-btn-secondary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 48px;
+
+    padding: 0 28px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    color: var(--vortice-carbon);
+
+    background-color: transparent;
+
+    border: 1px solid var(--vortice-carbon);
+
+    border-radius: 0;
+
+    transition: var(--vortice-transition);
+}
+
+
+.vortice-btn-secondary:hover {
+    color: var(--vortice-blanco);
+
+    background-color: var(--vortice-carbon);
+}
+
+
+/* ==========================================================
+   11. ENLACE EDITORIAL
+   ========================================================== */
+
+.vortice-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 5px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    color: var(--vortice-carbon);
+
+    border-bottom: 1px solid var(--vortice-carbon);
+
+    transition: var(--vortice-transition);
+}
+
+
+.vortice-link:hover {
+    color: var(--vortice-tierra);
+
+    border-color: var(--vortice-tierra);
+}
+
+
+/* ==========================================================
+   12. FONDOS DE MARCA
+   ========================================================== */
+
+.vortice-bg-marfil {
+    background-color: var(--vortice-marfil);
+}
+
+
+.vortice-bg-carbon {
+    background-color: var(--vortice-carbon);
+}
+
+
+.vortice-bg-arena {
+    background-color: var(--vortice-arena);
+}
+
+
+/* ==========================================================
+   13. SECCIONES
+   ========================================================== */
+
+.vortice-section {
+    padding-top: var(--vortice-space-xl);
+
+    padding-bottom: var(--vortice-space-xl);
+}
+
+
+/* ==========================================================
+   14. DIVISOR EDITORIAL
+   ========================================================== */
+
+.vortice-line {
+    display: block;
+
+    width: 45px;
+
+    height: 1px;
+
+    margin: 18px 0;
+
+    background-color: var(--vortice-tierra);
+}
+
+
+/* ==========================================================
+   15. HERO / SLIDER
+   ========================================================== */
+
+
+/* Etiqueta */
+
+.vortice-slider-label {
+    display: block;
+
+    margin-bottom: 14px;
+}
+
+
+/* Título */
+
+.vortice-slider-title {
+    max-width: 720px;
+
+    margin: 0 0 18px 0;
+
+    color: var(--vortice-carbon) !important;
+
+    text-shadow: none !important;
+}
+
+
+/* Subtítulo */
+
+.vortice-slider-subtitle {
+    max-width: 520px;
+
+    margin-bottom: 30px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    color: var(--vortice-texto) !important;
+
+    text-shadow: none !important;
+}
+
+
+/* ==========================================================
+   16. TABLET
+   ========================================================== */
+
+@media (max-width: 991px) {
+
+    .vortice-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+
+    .vortice-slider-title {
+        max-width: 600px;
+    }
+
+
+    .vortice-slider-subtitle {
+        max-width: 460px;
+    }
+
+}
+
+
+/* ==========================================================
+   17. MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+    .vortice-display {
+        font-size: 52px;
+
+        line-height: 0.95;
+
+        letter-spacing: -2px;
+    }
+
+
+    .vortice-h1 {
+        font-size: 44px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .vortice-h2 {
+        font-size: 36px;
+    }
+
+
+    .vortice-quote {
+        font-size: 27px;
+    }
+
+
+    .vortice-body {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .vortice-section {
+        padding-top: 55px;
+
+        padding-bottom: 55px;
+    }
+
+
+    /* Hero */
+
+    .vortice-slider-label {
+        margin-bottom: 10px;
+    }
+
+
+    .vortice-slider-title {
+        max-width: 90%;
+
+        margin-bottom: 14px;
+    }
+
+
+    .vortice-slider-subtitle {
+        max-width: 85%;
+
+        margin-bottom: 22px;
+
+        font-size: 15px;
+
+        line-height: 1.55;
+    }
+
+}
+
+/* ==========================================================
+   18. TOP BAR
+   ========================================================== */
+
+.vortice-topbar {
+    width: 100%;
+    min-height: 34px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--vortice-carbon);
+}
+
+
+.vortice-topbar-inner {
+    min-height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    font-family: var(--vortice-font-ui);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 1.6px;
+
+    text-transform: uppercase;
+
+    color: var(--vortice-blanco);
+}
+
+
+.vortice-topbar-dot {
+    color: var(--vortice-tierra);
+}
+
+
+/* ==========================================================
+   TOP BAR · MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+    .vortice-topbar {
+        min-height: 32px;
+    }
+
+
+    .vortice-topbar-inner {
+        min-height: 32px;
+
+        gap: 8px;
+
+        font-size: 8px;
+
+        letter-spacing: 0.8px;
+
+        white-space: nowrap;
+    }
+
+
+    .vortice-topbar-inner span:nth-of-type(2),
+    .vortice-topbar-inner span:nth-of-type(3),
+    .vortice-topbar-inner span:nth-of-type(4),
+    .vortice-topbar-inner span:nth-of-type(5) {
+        display: none;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · COLECCIONES HOME
+   SOLO TIPOGRAFÍA
+   ========================================================== */
+
+/* Mujer / Bolsos / Accesorios / Hombre */
+
+.masonry-layout .collection-title {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 30px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -0.5px !important;
+
+    text-transform: none !important;
+}
+
+
+/* Flecha */
+
+.masonry-layout .collection-title .icon {
+    font-size: 16px;
+}
+
+
+/* Móvil */
+
+@media (max-width: 767px) {
+
+    .masonry-layout .collection-title {
+        font-size: 25px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · NUEVA COLECCIÓN
+   ========================================================== */
+
+
+/* NUEVA COLECCIÓN */
+
+.vortice-collection-label {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 2.5px !important;
+
+    text-transform: uppercase;
+
+    color: var(--vortice-tierra) !important;
+}
+
+
+/* Nombre de la colección */
+
+.vortice-collection-heading {
+    margin-top: 12px;
+
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(42px, 4vw, 58px) !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -1.5px !important;
+
+    color: var(--vortice-carbon) !important;
+}
+
+
+/* Descripción */
+
+.vortice-collection-description {
+    max-width: 520px;
+
+    margin-top: 20px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 15px !important;
+
+    font-weight: 400;
+
+    line-height: 1.75 !important;
+
+    color: var(--vortice-texto-suave) !important;
+}
+
+
+@media (max-width: 767px) {
+
+    .vortice-collection-heading {
+        font-size: 40px !important;
+    }
+
+
+    .vortice-collection-description {
+        font-size: 14px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · SERVICIOS / PERSONALIZACIÓN
+   ========================================================== */
+
+
+/* Etiqueta */
+
+.vortice-services-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    text-align: center;
+
+    color: var(--vortice-tierra);
+}
+
+
+/* Título principal */
+
+.vortice-services-title {
+    margin: 0;
+
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -1.5px;
+
+    text-align: center;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* Frase editorial */
+
+.vortice-services-intro {
+    margin: 12px 0 0;
+
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 24px;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    line-height: 1.3;
+
+    text-align: center;
+
+    color: var(--vortice-texto-suave);
+}
+
+
+/* Nombre de cada servicio */
+
+.vortice-service-name {
+    margin: 18px 0 8px;
+
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* Descripción */
+
+.vortice-service-description {
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    color: var(--vortice-texto-suave);
+}
+
+
+/* Móvil */
+
+@media (max-width: 767px) {
+
+    .vortice-services-title {
+        font-size: 40px;
+    }
+
+
+    .vortice-services-intro {
+        font-size: 21px;
+    }
+
+
+    .vortice-service-name {
+        font-size: 25px;
+    }
+
+
+    .vortice-service-description {
+        font-size: 13px;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · MES MODA
+   ========================================================== */
+
+.vortice-moda-title {
+    font-family: var(--vortice-font-editorial) !important;
+    font-size: clamp(48px, 5vw, 72px) !important;
+    font-weight: 600 !important;
+    line-height: 0.98 !important;
+    letter-spacing: -2px !important;
+}
+
+.vortice-moda-subtitle {
+    max-width: 560px;
+
+    margin-top: 14px;
+    margin-bottom: 25px;
+
+    font-family: var(--vortice-font-ui) !important;
+    font-size: 15px !important;
+    font-weight: 500;
+    line-height: 1.7 !important;
+}
+
+@media (max-width: 767px) {
+
+    .vortice-moda-title {
+        font-size: 43px !important;
+        letter-spacing: -1px !important;
+    }
+
+    .vortice-moda-subtitle {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+}
+
+/* MES MODA · VIDEO */
+
+.vortice-moda-video-title {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(52px, 6vw, 82px) !important;
+
+    font-weight: 600 !important;
+
+    line-height: 0.95 !important;
+
+    letter-spacing: -2px !important;
+}
+
+.vortice-moda-video-subtitle {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 2.5px !important;
+
+    text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+
+    .vortice-moda-video-title {
+        font-size: 46px !important;
+        letter-spacing: -1px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · GIFT CARD
+   ========================================================== */
+
+.vortice-gift-label {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 2.5px !important;
+
+    text-transform: uppercase;
+
+    color: var(--vortice-tierra) !important;
+}
+
+
+/* Título */
+
+.vortice-gift-title {
+    margin-top: 12px;
+
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: clamp(44px, 4vw, 58px) !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -1.5px !important;
+
+    color: var(--vortice-carbon) !important;
+}
+
+
+/* Descripción */
+
+.vortice-gift-description {
+    max-width: 500px;
+
+    margin: 18px auto 0;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 15px !important;
+
+    font-weight: 400;
+
+    line-height: 1.7 !important;
+
+    color: var(--vortice-texto-suave) !important;
+}
+
+
+/* Precio */
+
+.vortice-gift-price {
+    margin-top: 15px;
+    margin-bottom: 22px;
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    color: var(--vortice-carbon);
+}
+
+
+@media (max-width: 767px) {
+
+    .vortice-gift-title {
+        font-size: 40px !important;
+    }
+
+    .vortice-gift-description {
+        font-size: 14px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   VÓRTICE · FOOTER
+   SOLO IDENTIDAD VISUAL / TIPOGRAFÍA
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   TEXTO GENERAL
+   ---------------------------------------------------------- */
+
+#footer {
+    font-family: var(--vortice-font-ui);
+}
+
+
+/* Datos de contacto */
+
+#footer .footer-infor p,
+#footer .footer-infor a {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+
+    color: var(--vortice-texto-suave);
+}
+
+
+/* ----------------------------------------------------------
+   TÍTULOS
+   Ayuda / Sobre Nosotros / Registro
+   ---------------------------------------------------------- */
+
+#footer .footer-heading h6 {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 24px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.3px;
+
+    color: var(--vortice-carbon);
+}
+
+
+/* ----------------------------------------------------------
+   ENLACES
+   ---------------------------------------------------------- */
+
+#footer .footer-menu_item {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px !important;
+
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    color: var(--vortice-texto-suave);
+
+    transition: color 0.25s ease;
+}
+
+
+#footer .footer-menu_item:hover {
+    color: var(--vortice-tierra) !important;
+}
+
+
+/* ----------------------------------------------------------
+   REDES SOCIALES
+   Solo color, no cambiamos estructura
+   ---------------------------------------------------------- */
+
+#footer .tf-social-icon a {
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+#footer .tf-social-icon a:hover {
+    color: var(--vortice-tierra) !important;
+
+    border-color: var(--vortice-tierra) !important;
+}
+
+
+/* ----------------------------------------------------------
+   FOOTER INFERIOR
+   ---------------------------------------------------------- */
+
+#footer .footer-bottom {
+    border-top: 1px solid var(--vortice-borde);
+}
+
+
+#footer .footer-bottom .footer-menu_item {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px !important;
+
+    font-weight: 500;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* ----------------------------------------------------------
+   MÓVIL
+   ---------------------------------------------------------- */
+
+@media (max-width: 767px) {
+
+    #footer .footer-heading h6 {
+        font-size: 22px !important;
+    }
+
+
+    #footer .footer-infor p,
+    #footer .footer-infor a {
+        font-size: 12px;
+    }
+
+
+    #footer .footer-menu_item {
+        font-size: 12px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · BOTONES DEL HOME
+   Solo tipografía y acabado visual
+   ========================================================== */
+
+/* Nueva colección */
+.tf-img-with-text .tf-btn,
+
+/* Mes Moda */
+.tf-hero-image-liquid .tf-btn,
+.slider-video .tf-btn,
+
+/* Gift Card */
+.tf-img-with-text.style-2 .tf-btn,
+
+/* Servicios */
+.blog-article-item .btn {
+
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 1.2px !important;
+
+    text-transform: uppercase;
+}
+
+/* ==========================================================
+   VÓRTICE · BOTÓN SERVICIOS
+   ========================================================== */
+
+.blog-article-item .btn-primary {
+    padding: 12px 24px;
+
+    color: var(--vortice-blanco) !important;
+
+    background-color: var(--vortice-carbon) !important;
+
+    border: 1px solid var(--vortice-carbon) !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    transition: 0.3s ease;
+}
+
+
+.blog-article-item .btn-primary:hover {
+    color: var(--vortice-carbon) !important;
+
+    background-color: transparent !important;
+
+    border-color: var(--vortice-carbon) !important;
+}
+
+/* ==========================================================
+   VÓRTICE · CATEGORÍAS / COLECCIONES
+   ACABADO TIPOGRÁFICO
+   ========================================================== */
+
+.masonry-layout .collection-content .collection-title {
+    font-family: var(--vortice-font-editorial) !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: none !important;
+}
+
+
+/* Flecha más discreta */
+
+.masonry-layout .collection-content .collection-title i {
+    margin-left: 8px;
+
+    font-size: 14px !important;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Pequeño movimiento editorial */
+
+.masonry-layout .collection-item:hover
+.collection-title i {
+    transform: translate(3px, -3px);
+}
+
+
+/* Móvil */
+
+@media (max-width: 767px) {
+
+    .masonry-layout .collection-content .collection-title {
+        font-size: 25px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · HOME
+   CONSISTENCIA TIPOGRÁFICA
+   ========================================================== */
+
+.tf-img-with-text .description,
+.tf-hero-image-liquid p,
+.blog-article-item .article-content {
+    font-family: var(--vortice-font-ui);
+}
+
+
+/* Evita negritas excesivas en textos descriptivos */
+
+.vortice-collection-description,
+.vortice-gift-description,
+.vortice-service-description {
+    font-weight: 400 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · SUBMENÚ / MEGA MENU
+   SOLO TIPOGRAFÍA
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   TÍTULOS DEL SUBMENÚ
+   Productos / Colecciones
+   ---------------------------------------------------------- */
+
+#header .mega-menu .menu-heading {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 22px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.15 !important;
+
+    letter-spacing: -0.3px !important;
+
+    text-transform: none !important;
+
+    color: var(--vortice-carbon) !important;
+}
+
+
+/* ----------------------------------------------------------
+   ENLACES
+   Camisetas / Buzos / nombres de colecciones...
+   ---------------------------------------------------------- */
+
+#header .mega-menu .menu-link-text {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px !important;
+
+    font-weight: 500 !important;
+
+    line-height: 1.6 !important;
+
+    letter-spacing: 0.1px !important;
+
+    text-transform: none !important;
+
+    color: var(--vortice-texto-suave) !important;
+}
+
+
+/* Hover de enlaces */
+
+#header .mega-menu .menu-link-text:hover {
+    color: var(--vortice-tierra) !important;
+}
+
+
+/* ----------------------------------------------------------
+   NOMBRE SOBRE LA IMAGEN
+   Hombre / Mujer / etc.
+   ---------------------------------------------------------- */
+
+#header .mega-menu .collection-title {
+    font-family: var(--vortice-font-editorial) !important;
+
+    font-size: 21px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.1 !important;
+
+    letter-spacing: -0.3px !important;
+
+    text-transform: none !important;
+
+    color: var(--vortice-carbon) !important;
+}
+
+/* ==========================================================
+   VÓRTICE · TARJETAS DE PRODUCTO
+   ========================================================== */
+
+
+/* Nombre del producto */
+
+.wrapper-shop .card-product-info .title {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 13px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.45 !important;
+
+    letter-spacing: 0.1px !important;
+
+    color: var(--vortice-carbon) !important;
+
+    text-transform: none !important;
+
+    transition: color 0.25s ease;
+}
+
+
+.wrapper-shop .card-product-info .title:hover {
+    color: var(--vortice-tierra) !important;
+}
+
+
+/* Precio */
+
+.wrapper-shop .card-product-info .price {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 13px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.4 !important;
+
+    letter-spacing: 0 !important;
+
+    color: var(--vortice-texto-suave) !important;
+}
+
+/* ==========================================================
+   VÓRTICE · CONTROLES DE CATÁLOGO
+   ========================================================== */
+
+.tf-shop-control .tf-view-layout-switch {
+    color: var(--vortice-texto-suave);
+}
+
+
+.tf-shop-control .tf-view-layout-switch.active {
+    color: var(--vortice-carbon);
+}
+
+
+.tf-shop-control .tf-view-layout-switch:hover {
+    color: var(--vortice-tierra);
+}
+
+/* ==========================================================
+   VÓRTICE · PAGINACIÓN
+   ========================================================== */
+
+.tf-pagination-wrap .pagination-link {
+    font-family: var(--vortice-font-ui) !important;
+
+    font-size: 12px !important;
+
+    font-weight: 600 !important;
+
+    color: var(--vortice-carbon);
+}
+
+
+.tf-pagination-wrap li.active .pagination-link {
+    font-weight: 700 !important;
+}
+
+
+.tf-pagination-wrap .pagination-link:hover {
+    color: var(--vortice-tierra);
+}
+/* ==========================================================
+   VÓRTICE · TEXTO TARJETAS DE PRODUCTOS
+   ========================================================== */
+
+/* NOMBRE DEL PRODUCTO */
+.card-product .card-product-info .title,
+.card-product .card-product-info a.title,
+.wrapper-shop .card-product .card-product-info .title {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.2px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+/* HOVER DEL NOMBRE */
+.card-product .card-product-info .title:hover,
+.card-product .card-product-info a.title:hover {
+    color: #9A6846 !important;
+}
+
+/* PRECIO */
+.card-product .card-product-info .price,
+.wrapper-shop .card-product .card-product-info .price {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+/* ==========================================================
+   VÓRTICE · DETALLE DE PRODUCTO
+   ========================================================== */
+
+/* NOMBRE DEL PRODUCTO */
+
+.tf-main-product .tf-product-info-title h5 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 42px !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -1px !important;
+    color: #111111 !important;
+    text-transform: none !important;
+}
+
+/* DESCRIPCIÓN PRINCIPAL */
+
+.tf-main-product .product-status-content p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.75 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+/* PRECIO */
+
+.tf-main-product .tf-product-info-price .price-on-sale {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+    color: #111111 !important;
+}
+
+/* TALLA / CANTIDAD */
+
+.tf-main-product .form-group label {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 1.3px !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+}
+
+.tf-main-product .form-control-static {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #6F6F6F !important;
+}
+
+/* INFORMACIÓN AUXILIAR */
+
+.tf-main-product .tf-product-extra-icon .text,
+.tf-main-product .tf-product-delivery p,
+.tf-main-product .tf-product-trust-mess p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    color: #6F6F6F !important;
+}
+
+/* PESTAÑAS DEL PRODUCTO */
+
+.widget-tabs .widget-menu-tab .inner {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.7px !important;
+    color: #6F6F6F !important;
+}
+
+.widget-tabs .widget-menu-tab .item-title.active .inner {
+    color: #111111 !important;
+}
+
+/* SUBTÍTULOS DE INFORMACIÓN */
+
+.tf-product-des-demo h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 23px !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    color: #111111 !important;
+}
+
+/* TEXTOS DE INFORMACIÓN */
+
+.tf-product-des-demo li,
+.tf-product-des-demo span {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: #6F6F6F !important;
+}
+
+/* ==========================================================
+   VÓRTICE · COMPRA DEL PRODUCTO
+   ========================================================== */
+
+/* BOTÓN AGREGAR */
+
+.tf-main-product .tf-product-info-buy-button .btns-full {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.3px !important;
+    text-transform: uppercase !important;
+}
+
+/* ESTADOS DEL PRODUCTO */
+
+.tf-main-product .alert {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+}
+
+.tf-main-product .alert strong {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-weight: 700 !important;
+}
+
+/* PRODUCTO EXCLUSIVO */
+
+.tf-main-product .alert-info {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+}
+
+.tf-main-product .alert-info strong {
+    font-weight: 700 !important;
+    letter-spacing: 0.2px;
+}
+
+/* ==========================================================
+   VÓRTICE · ENTREGA / DEVOLUCIÓN
+   ========================================================== */
+
+.tf-main-product .tf-product-info-delivery-return p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: #6F6F6F !important;
+}
+
+.tf-main-product .tf-product-info-delivery-return .fw-7 {
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+
+.tf-main-product .tf-product-delivery p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1px;
+    color: #111111 !important;
+}
+
+.tf-main-product .tf-product-trust-mess p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0.2px;
+    color: #111111 !important;
+}
+
+.tf-main-product .tf-product-info-extra-link .text {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px;
+    color: #111111 !important;
+}
+
+.tf-main-product .tf-product-info-extra-link a:hover .text {
+    color: #9A6846 !important;
+}
+
+
+/* ==========================================================
+   VÓRTICE · INFORMACIÓN INFERIOR DEL PRODUCTO
+   SOLO TIPOGRAFÍA / COLOR
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   PESTAÑAS
+   Descripción / Envío / Política de Devoluciones
+   ---------------------------------------------------------- */
+
+.widget-tabs .widget-menu-tab .item-title .inner {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: #6F6F6F !important;
+}
+
+
+/* Pestaña seleccionada */
+
+.widget-tabs .widget-menu-tab .item-title.active .inner {
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+
+/* Hover */
+
+.widget-tabs .widget-menu-tab .item-title:hover .inner {
+    color: #9A6846 !important;
+}
+
+
+/* ----------------------------------------------------------
+   CARACTERÍSTICAS / CUIDADO DE LOS MATERIALES
+   ---------------------------------------------------------- */
+
+.widget-tabs .tf-product-des-demo h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.3px !important;
+    color: #111111 !important;
+}
+
+
+/* Textos de características */
+
+.widget-tabs .tf-product-des-demo li,
+.widget-tabs .tf-product-des-demo span {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: #6F6F6F !important;
+}
+
+
+/* ----------------------------------------------------------
+   TÍTULOS DE ENVÍO Y TÉRMINOS
+   ---------------------------------------------------------- */
+
+.widget-tabs .tf-page-privacy-policy .title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 25px !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.4px !important;
+    color: #111111 !important;
+}
+
+
+/* Textos de envío / términos */
+
+.widget-tabs .tf-page-privacy-policy p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.75 !important;
+    color: #6F6F6F !important;
+}
+
+/* ==========================================================
+   VÓRTICE · MODAL TABLA DE TALLAS
+   SOLO TIPOGRAFÍA Y COLOR
+   ========================================================== */
+
+/* Título principal: Tabla de tallas */
+#find_size .demo-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    color: #111111 !important;
+}
+
+/* Subtítulo: Guía de tallas */
+#find_size .tf-rte h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 23px !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    color: #111111 !important;
+}
+
+/* Encabezados de la tabla */
+#find_size .tf-sizeguide-table th {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+}
+
+/* Datos XS, S, M, medidas, etc. */
+#find_size .tf-sizeguide-table td {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #6F6F6F !important;
+}
+
+
+
+/* ==========================================================
+   VÓRTICE · INSTRUCCIONES DE PAGO
+   ========================================================== */
+
+
+/* TÍTULO PRINCIPAL */
+
+#info_compra .demo-title,
+#info_compra .modal-title,
+#info_compra h2:first-of-type,
+#info_compra h3:first-of-type {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULOS DE LOS PASOS */
+
+#info_compra h2,
+#info_compra h3,
+#info_compra h4,
+#info_compra h5,
+#info_compra h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.3px !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULOS COMO:
+   1. Depósito...
+   2. Confirmación...
+   3. Entrega...
+*/
+
+#info_compra h3,
+#info_compra h4 {
+    font-size: 24px !important;
+}
+
+
+/* TEXTO GENERAL */
+
+#info_compra p,
+#info_compra li,
+#info_compra .text,
+#info_compra .description {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+
+/* PALABRAS DESTACADAS */
+
+#info_compra strong,
+#info_compra b {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+
+/* ==========================================================
+   BOTÓN · ENVIAR COMPROBANTE
+   ========================================================== */
+
+#info_compra a.btn,
+#info_compra button,
+#info_compra .btn,
+#info_compra .tf-btn {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.1px !important;
+    text-transform: uppercase !important;
+
+    color: #FFFFFF !important;
+    background-color: #111111 !important;
+    border-color: #111111 !important;
+}
+
+
+/* HOVER */
+
+#info_compra a.btn:hover,
+#info_compra button:hover,
+#info_compra .btn:hover,
+#info_compra .tf-btn:hover {
+    color: #FFFFFF !important;
+    background-color: #9A6846 !important;
+    border-color: #9A6846 !important;
+}
+
+
+/* ==========================================================
+   BOTÓN CERRAR · X
+   ========================================================== */
+
+#info_compra .btn-close,
+#info_compra .icon-close,
+#info_compra .close-modal,
+#info_compra [data-bs-dismiss="modal"] {
+    color: #111111 !important;
+    opacity: 1 !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+
+
+/* Si la X utiliza un icono interno */
+
+#info_compra .btn-close::before,
+#info_compra .icon-close::before,
+#info_compra .close-modal::before {
+    color: #111111 !important;
+    opacity: 1 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · MODAL ENTREGA Y DEVOLUCIÓN
+   ========================================================== */
+
+#quick_view .demo-title,
+#quick_view .modal-title,
+#quick_view .header .title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    color: #111111 !important;
+}
+
+
+#quick_view h5,
+#quick_view h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+}
+
+
+#quick_view p,
+#quick_view li,
+#quick_view span {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    color: #6F6F6F !important;
+}
+
+
+#quick_view strong {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · MODAL COMPARTIR
+   ========================================================== */
+
+#share_social .demo-title,
+#share_social .modal-title,
+#share_social .header .title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    color: #111111 !important;
+}
+
+
+#share_social p,
+#share_social span,
+#share_social a {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · CARRITO DE COMPRAS
+   SOLO TIPOGRAFÍA Y COLOR
+   ========================================================== */
+
+
+/* TÍTULO DEL CARRITO */
+
+.tf-cart-countdown .title-left p {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    color: #111111 !important;
+}
+
+/* ENCABEZADOS */
+
+.tf-table-page-cart thead th {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+}
+
+/* NOMBRE DEL PRODUCTO */
+
+.tf-table-page-cart .cart-title {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.1px !important;
+    color: #111111 !important;
+}
+
+.tf-table-page-cart .cart-title:hover {
+    color: #9A6846 !important;
+}
+
+
+
+/* PRECIOS */
+
+.tf-table-page-cart .cart-price,
+.tf-table-page-cart .cart-total {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    color: #111111 !important;
+}
+
+/* CANTIDAD */
+
+.tf-table-page-cart .cart-quantity,
+.tf-table-page-cart .unique-quantity,
+.tf-table-page-cart select,
+.tf-table-page-cart input {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
+
+/* ACTUALIZAR */
+
+.tf-table-page-cart .btn-update {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: #111111 !important;
+}
+
+/* ELIMINAR PRODUCTO */
+
+.tf-table-page-cart td form input[type="submit"] {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* RESUMEN ECONÓMICO */
+
+.tf-table-page-cart tr.subtotal td {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    color: #6F6F6F !important;
+}
+
+.tf-table-page-cart tr.subtotal .cart-total {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+}
+
+
+/* ÚLTIMA FILA: TOTAL FINAL */
+
+.tf-table-page-cart tr.subtotal:last-of-type td {
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · CARRITO · CUPÓN
+   ========================================================== */
+
+/* CAMPO DEL CUPÓN */
+
+.tf-page-cart-footer .coupon-box input:not([type="submit"]) {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    color: #111111 !important;
+}
+
+.tf-page-cart-footer .coupon-box input::placeholder {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #6F6F6F !important;
+}
+
+/* BOTÓN APLICAR CUPÓN */
+
+.tf-page-cart-footer .coupon-box input[type="submit"] {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+/* ==========================================================
+   SEGUIR COMPRANDO
+   ========================================================== */
+
+.tf-page-cart-checkout .cart-checkout-btn .tf-btn {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+/* ==========================================================
+   BOTÓN PRINCIPAL · COMPRAR
+   ========================================================== */
+
+.tf-page-cart-checkout .tf-product-info-buy-button .btns-full {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.3px !important;
+    text-transform: uppercase !important;
+}
+
+/* MENSAJE DE PAGO SEGURO */
+
+.tf-page-cart-checkout .tf-page-cart_imgtrust p {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.2px !important;
+    color: #6F6F6F !important;
+}
+
+/* CUPÓN APLICADO */
+
+.tf-table-page-cart td .quantity,
+.tf-table-page-cart td .quantity + * {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
+.tf-table-page-cart tbody tr td {
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* ==========================================================
+   VÓRTICE · CARRITO · RESUMEN ECONÓMICO
+   ========================================================== */
+
+.tf-table-page-cart tr.subtotal td {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+.tf-table-page-cart tr.subtotal .cart-total {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+}
+
+/* TOTAL FINAL */
+
+.tf-table-page-cart .vortice-cart-total td {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    color: #111111 !important;
+}
+
+.tf-table-page-cart .vortice-cart-total .cart-total {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
+
+/* CUPÓN APLICADO */
+
+.tf-table-page-cart .vortice-coupon-applied {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.2px !important;
+    color: #9A6846 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · BLOG / MODELO DEL MES
+   ========================================================== */
+
+
+/* TÍTULO PRINCIPAL */
+
+.tf-page-title .heading {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 44px !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.8px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+/* MES EN LA LÍNEA DE TIEMPO */
+
+.tf-timeline-wrap .tf-timeline-time {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase !important;
+    color: #9A6846 !important;
+}
+
+/* ETIQUETA EDITORIAL */
+
+.tf-timeline-wrap .tf-timeline-label {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    color: #6F6F6F !important;
+}
+
+
+/* ==========================================================
+   TÍTULO DE LA PUBLICACIÓN
+   ========================================================== */
+
+.tf-timeline-wrap h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* HOVER DEL TÍTULO */
+
+.tf-timeline-wrap a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+/* ==========================================================
+   TÍTULO DE LA PUBLICACIÓN
+   ========================================================== */
+
+.tf-timeline-wrap h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* HOVER DEL TÍTULO */
+
+.tf-timeline-wrap a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+
+/* ==========================================================
+   VÓRTICE · BLOG · AJUSTES EDITORIALES
+   ========================================================== */
+
+
+/* Evitar que el enlace herede colores o decoraciones
+   del template original */
+
+.tf-timeline-wrap .tf-timeline-content > a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+/* TÍTULO */
+
+.tf-timeline-wrap .tf-timeline-content h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULO AL PASAR EL MOUSE */
+
+.tf-timeline-wrap .tf-timeline-content > a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+
+
+/* SUBTÍTULO EDITORIAL */
+
+.tf-timeline-wrap .tf-timeline-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.2px !important;
+    color: #292929 !important;
+}
+
+
+/* DESCRIPCIÓN */
+
+.tf-timeline-wrap .tf-timeline-description {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+
+/* ==========================================================
+   VÓRTICE · BLOG · AJUSTES EDITORIALES
+   ========================================================== */
+
+
+/* Evitar que el enlace herede colores o decoraciones
+   del template original */
+
+.tf-timeline-wrap .tf-timeline-content > a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+/* TÍTULO */
+
+.tf-timeline-wrap .tf-timeline-content h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULO AL PASAR EL MOUSE */
+
+.tf-timeline-wrap .tf-timeline-content > a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+
+
+/* SUBTÍTULO EDITORIAL */
+
+.tf-timeline-wrap .tf-timeline-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.2px !important;
+    color: #292929 !important;
+}
+
+
+/* DESCRIPCIÓN */
+
+.tf-timeline-wrap .tf-timeline-description {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+
+/* ==========================================================
+   VÓRTICE · BLOG · AJUSTES EDITORIALES
+   ========================================================== */
+
+
+/* Evitar que el enlace herede colores o decoraciones
+   del template original */
+
+.tf-timeline-wrap .tf-timeline-content > a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+/* TÍTULO */
+
+.tf-timeline-wrap .tf-timeline-content h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULO AL PASAR EL MOUSE */
+
+.tf-timeline-wrap .tf-timeline-content > a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+
+
+/* SUBTÍTULO EDITORIAL */
+
+.tf-timeline-wrap .tf-timeline-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.2px !important;
+    color: #292929 !important;
+}
+
+
+/* DESCRIPCIÓN */
+
+.tf-timeline-wrap .tf-timeline-description {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+/* ==========================================================
+   VÓRTICE · BLOG · AJUSTES EDITORIALES
+   ========================================================== */
+
+
+/* Evitar que el enlace herede colores o decoraciones
+   del template original */
+
+.tf-timeline-wrap .tf-timeline-content > a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+/* TÍTULO */
+
+.tf-timeline-wrap .tf-timeline-content h4.tf-timeline-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* TÍTULO AL PASAR EL MOUSE */
+
+.tf-timeline-wrap .tf-timeline-content > a:hover h4.tf-timeline-title {
+    color: #9A6846 !important;
+}
+
+
+/* SUBTÍTULO EDITORIAL */
+
+.tf-timeline-wrap .tf-timeline-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.2px !important;
+    color: #292929 !important;
+}
+
+
+/* DESCRIPCIÓN */
+
+.tf-timeline-wrap .tf-timeline-description {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #6F6F6F !important;
+}
+
+/* ==========================================================
+   VÓRTICE · DETALLE MODELO DEL MES
+   HERO EDITORIAL
+   ========================================================== */
+
+/* TÍTULO SOBRE VIDEO */
+
+.tf-slideshow.slider-video .box-content .heading {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(48px, 6vw, 82px) !important;
+    font-weight: 600 !important;
+    line-height: 0.95 !important;
+    letter-spacing: -1.5px !important;
+    text-transform: none !important;
+}
+
+
+/* TÍTULO SOBRE IMAGEN */
+
+.tf-hero-image-liquid .box-content .heading {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(48px, 6vw, 82px) !important;
+    font-weight: 600 !important;
+    line-height: 0.95 !important;
+    letter-spacing: -1.5px !important;
+    text-transform: none !important;
+}
+
+/* SUBTÍTULO EDITORIAL */
+
+.tf-slideshow.slider-video .box-content .subheading,
+.tf-hero-image-liquid .box-content p {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(20px, 2vw, 28px) !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.2px !important;
+}
+
+/* ==========================================================
+   OTROS MODELOS DEL MES
+   ========================================================== */
+
+.tf-sw-recent .blog-article-item {
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+section .flat-title h5 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 36px !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.6px !important;
+    text-transform: none !important;
+    color: #111111 !important;
+}
+
+
+/* ETIQUETAS DE ARTÍCULOS */
+
+.tf-sw-recent .article-label .tf-btn {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+}
+
+/* ==========================================================
+   VÓRTICE · MODAL POLÍTICAS · CERRAR
+   ========================================================== */
+
+#quick_view .modal-content {
+    position: relative !important;
+}
+
+#quick_view .header {
+    position: absolute !important;
+    top: 14px !important;
+    right: 14px !important;
+    left: auto !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    z-index: 100 !important;
+}
+
+
+/* BOTÓN */
+
+#quick_view .icon-close-popup {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: #FFFFFF !important;
+    border: 1px solid #E5E0D8 !important;
+    border-radius: 50% !important;
+
+    color: #111111 !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+
+    font-size: 0 !important;
+
+    transition: background-color .25s ease,
+                border-color .25s ease,
+                color .25s ease !important;
+}
+
+
+/* OCULTAR EL ICONO ORIGINAL */
+
+#quick_view .icon-close-popup::before {
+    content: "" !important;
+    display: none !important;
+}
+
+
+/* CREAR NUESTRA X */
+
+#quick_view .icon-close-popup::after {
+    content: "×" !important;
+
+    display: block !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+
+    color: #111111 !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* HOVER */
+
+#quick_view .icon-close-popup:hover {
+    background: #111111 !important;
+    border-color: #111111 !important;
+}
+
+#quick_view .icon-close-popup:hover::after {
+    color: #FFFFFF !important;
+}
+
+/* ==========================================================
+   VÓRTICE · NOSOTROS
+   NUEVAS RAÍCES
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   HERO
+   ---------------------------------------------------------- */
+
+.vortice-about-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.vortice-about-hero .banner-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.vortice-about-hero .banner-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+
+/* ----------------------------------------------------------
+   INTRODUCCIÓN
+   ---------------------------------------------------------- */
+
+.vortice-about-intro .vortice-about-intro-content {
+    max-width: 920px;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    text-align: right !important;
+}
+
+
+/* TÍTULO PRINCIPAL */
+
+.vortice-about-intro .title {
+    display: block;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(42px, 5vw, 64px) !important;
+    font-weight: 600 !important;
+    line-height: 1.02 !important;
+
+    letter-spacing: -1.2px !important;
+    text-transform: none !important;
+
+    color: #111111 !important;
+
+    margin-bottom: 20px !important;
+}
+
+
+/* TEXTO INTRODUCTORIO */
+
+.vortice-about-intro .sub-title {
+    max-width: 760px;
+    margin-left: auto !important;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.8 !important;
+    letter-spacing: 0 !important;
+
+    color: #6F6F6F !important;
+
+    text-align: right !important;
+}
+
+
+
+/* ----------------------------------------------------------
+   DIVISORES
+   ---------------------------------------------------------- */
+
+.vortice-about-intro + .container .line,
+.vortice-about-section + .container .line {
+    border-color: #E5E0D8 !important;
+    opacity: 1 !important;
+}
+
+
+
+/* ----------------------------------------------------------
+   BLOQUES EDITORIALES
+   ---------------------------------------------------------- */
+
+.vortice-about-section {
+    position: relative;
+}
+
+
+/* CONTENEDOR DEL TEXTO */
+
+.vortice-about-content {
+    width: 100%;
+    max-width: 520px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+
+/* TÍTULOS */
+
+.vortice-about-content .heading {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+
+    font-size: clamp(36px, 4vw, 52px) !important;
+    font-weight: 600 !important;
+
+    line-height: 1.02 !important;
+    letter-spacing: -0.9px !important;
+
+    text-transform: none !important;
+
+    color: #111111 !important;
+
+    text-align: left !important;
+
+    margin-bottom: 24px !important;
+}
+
+
+/* TEXTO */
+
+.vortice-about-content .text {
+    text-align: left !important;
+}
+
+
+.vortice-about-content .text h6 {
+    margin: 0 !important;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+
+    font-size: 14px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.85 !important;
+    letter-spacing: 0 !important;
+
+    text-transform: none !important;
+
+    color: #6F6F6F !important;
+
+    text-align: left !important;
+}
+
+
+
+/* ----------------------------------------------------------
+   PEQUEÑO DETALLE EDITORIAL EN LOS TÍTULOS
+   ---------------------------------------------------------- */
+
+.vortice-about-content .heading::before {
+    content: "";
+
+    display: block;
+
+    width: 36px;
+    height: 1px;
+
+    background-color: #9A6846;
+
+    margin-bottom: 20px;
+}
+
+
+
+/* ----------------------------------------------------------
+   IMÁGENES
+   ---------------------------------------------------------- */
+
+.vortice-about-section .tf-image-wrap {
+    overflow: hidden;
+}
+
+
+.vortice-about-section .tf-image-wrap img {
+    width: 100%;
+    display: block;
+}
+
+
+
+/* ----------------------------------------------------------
+   BLOQUE CENTRAL CON DOS IMÁGENES
+   ---------------------------------------------------------- */
+
+.vortice-about-section-alt .vortice-about-content {
+    padding-left: 20px;
+    padding-right: 50px;
+}
+
+
+
+/* ----------------------------------------------------------
+   HOVER FOTOGRÁFICO MUY SUTIL
+   ---------------------------------------------------------- */
+
+.vortice-about-section .tf-image-wrap img {
+    transition: transform 0.7s ease;
+}
+
+
+.vortice-about-section .tf-image-wrap:hover img {
+    transform: scale(1.015);
+}
+
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 991px) {
+
+    .vortice-about-intro .vortice-about-intro-content {
+        max-width: 100%;
+    }
+
+
+    .vortice-about-content {
+        max-width: 100%;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .vortice-about-section-alt .vortice-about-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .vortice-about-content .heading {
+        font-size: 40px !important;
+    }
+
+}
+
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+
+    /* INTRO */
+
+    .vortice-about-intro .vortice-about-intro-content {
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+
+    .vortice-about-intro .title {
+        font-size: 38px !important;
+
+        line-height: 1.05 !important;
+
+        letter-spacing: -0.7px !important;
+
+        text-align: left !important;
+
+        margin-bottom: 16px !important;
+    }
+
+
+    .vortice-about-intro .sub-title {
+        margin-left: 0 !important;
+
+        font-size: 14px !important;
+        line-height: 1.75 !important;
+
+        text-align: left !important;
+    }
+
+
+
+    /* CONTENIDO */
+
+    .vortice-about-content {
+        padding: 35px 5px 10px 5px;
+    }
+
+
+    .vortice-about-section-alt .vortice-about-content {
+        padding: 10px 5px 35px 5px;
+    }
+
+
+    .vortice-about-content .heading {
+        font-size: 36px !important;
+
+        line-height: 1.05 !important;
+
+        letter-spacing: -0.6px !important;
+
+        margin-bottom: 18px !important;
+    }
+
+
+    .vortice-about-content .heading::before {
+        width: 30px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .vortice-about-content .text h6 {
+        font-size: 13px !important;
+
+        line-height: 1.75 !important;
+    }
+
+}
+
+
+
+/* ==========================================================
+   MÓVILES PEQUEÑOS
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .vortice-about-intro .title {
+        font-size: 34px !important;
+    }
+
+
+    .vortice-about-content .heading {
+        font-size: 32px !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · NOSOTROS · AJUSTE FINAL DE ESPACIADO
+   ========================================================== */
+
+/* INTRODUCCIÓN */
+
+.vortice-about-intro {
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+}
+
+
+/* SECCIONES EDITORIALES */
+
+.vortice-about-section {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+}
+
+
+/* BLOQUES DE TEXTO */
+
+.vortice-about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* EVITAR ESPACIOS EXCESIVOS */
+
+.vortice-about-content .heading {
+    margin-top: 0 !important;
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 991px) {
+
+    .vortice-about-intro {
+        padding-top: 55px !important;
+        padding-bottom: 55px !important;
+    }
+
+    .vortice-about-section {
+        padding-top: 65px !important;
+        padding-bottom: 65px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+    .vortice-about-intro {
+        padding-top: 45px !important;
+        padding-bottom: 45px !important;
+    }
+
+    .vortice-about-section {
+        padding-top: 45px !important;
+        padding-bottom: 45px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   VÓRTICE · PRESENTACIÓN DE LA MARCA
+   ========================================================== */
+
+.vortice-about-intro {
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+}
+
+
+/* CONTENEDOR */
+
+.vortice-about-intro .vortice-about-intro-content {
+    width: 100%;
+    max-width: 850px;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    text-align: center !important;
+}
+
+
+/* TÍTULO VÓRTICE */
+
+.vortice-about-intro .title {
+    display: block;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(46px, 5vw, 64px) !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+    letter-spacing: -1px !important;
+
+    text-transform: none !important;
+
+    color: #111111 !important;
+
+    text-align: center !important;
+
+    margin-bottom: 14px !important;
+}
+
+
+/* FRASE DE MARCA */
+
+.vortice-about-intro .sub-title {
+    max-width: 700px;
+
+    margin: 0 auto 30px auto !important;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+
+    line-height: 1.3 !important;
+    letter-spacing: -0.2px !important;
+
+    color: #292929 !important;
+
+    text-align: center !important;
+}
+
+
+/* PEQUEÑO DETALLE */
+
+.vortice-about-intro .sub-title::after {
+    content: "";
+
+    display: block;
+
+    width: 36px;
+    height: 1px;
+
+    margin: 25px auto 0 auto;
+
+    background-color: #9A6846;
+}
+
+
+/* DESCRIPCIÓN DE LA MARCA */
+
+.vortice-about-description {
+    max-width: 720px;
+
+    margin: 0 auto !important;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.85 !important;
+    letter-spacing: 0 !important;
+
+    color: #6F6F6F !important;
+
+    text-align: center !important;
+}
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+    .vortice-about-intro {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+
+    .vortice-about-intro .vortice-about-intro-content {
+        max-width: 100%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+    }
+
+    .vortice-about-intro .title {
+        font-size: 40px !important;
+        text-align: center !important;
+    }
+
+    .vortice-about-intro .sub-title {
+        font-size: 21px !important;
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+
+    .vortice-about-description {
+        font-size: 13px !important;
+        line-height: 1.75 !important;
+        text-align: center !important;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · PRODUCTO
+   SELECTORES CANTIDAD Y TALLA
+   ========================================================== */
+
+/* ETIQUETAS: CANTIDAD / TALLA */
+
+.tf-main-product .form-group label {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+
+    color: #111111 !important;
+
+    margin-bottom: 8px !important;
+}
+
+
+/* SELECT DE CANTIDAD Y TALLA */
+
+.tf-main-product .form-group select,
+.tf-main-product .form-group .form-select,
+.tf-main-product .form-group .form-control {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.4 !important;
+    letter-spacing: 0 !important;
+
+    color: #292929 !important;
+
+    background-color: #FFFFFF !important;
+
+    border: 1px solid #E5E0D8 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* OPCIONES: 1, 2, 3... / S, M, L... */
+
+.tf-main-product .form-group select option {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    color: #292929 !important;
+
+    background-color: #FFFFFF !important;
+}
+
+
+/* FOCUS */
+
+.tf-main-product .form-group select:focus,
+.tf-main-product .form-group .form-select:focus,
+.tf-main-product .form-group .form-control:focus {
+    border-color: #9A6846 !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* TALLA ÚNICA */
+
+.tf-main-product .form-control-static {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.5 !important;
+
+    color: #6F6F6F !important;
+
+    margin: 0 !important;
+}
+
+
+/* ==========================================================
+   SI EL FORMULARIO GENERA INPUT NUMÉRICO EN VEZ DE SELECT
+   ========================================================== */
+
+.tf-main-product .form-group input[type="number"] {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    color: #292929 !important;
+
+    border: 1px solid #E5E0D8 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* ==========================================================
+   MÓVIL
+   ========================================================== */
+
+@media (max-width: 767px) {
+
+    .tf-main-product .form-group select,
+    .tf-main-product .form-group .form-select,
+    .tf-main-product .form-group .form-control,
+    .tf-main-product .form-group input[type="number"] {
+        font-size: 12px !important;
+        font-weight: 400 !important;
+    }
+
+}
+
+
+/* ==========================================================
+   VÓRTICE · GIFT CARD
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   HERO
+---------------------------------------------------------- */
+
+.vortice-gift-hero .wrap-slider {
+    position: relative;
+}
+
+.vortice-gift-hero .wrap-slider::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .18);
+
+    pointer-events: none;
+}
+
+.vortice-gift-hero .box-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.vortice-gift-hero-label {
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+
+.vortice-gift-hero-title {
+    max-width: 760px;
+
+    margin: 0 0 15px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(50px, 6vw, 82px) !important;
+    font-weight: 600 !important;
+
+    line-height: .98 !important;
+    letter-spacing: -1.5px !important;
+
+    color: #FFFFFF !important;
+}
+
+
+.vortice-gift-hero-subtitle {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.7 !important;
+
+    color: rgba(255, 255, 255, .90) !important;
+}
+
+
+/* ----------------------------------------------------------
+   INTRO
+---------------------------------------------------------- */
+
+.vortice-gift-intro {
+    padding: 65px 0;
+
+    background: #111111;
+}
+
+
+.vortice-gift-intro-inner {
+    display: grid;
+
+    grid-template-columns: 100px 1fr auto;
+
+    align-items: center;
+
+    gap: 40px;
+}
+
+
+.vortice-gift-intro-icon img {
+    width: 80px;
+    max-height: 80px;
+
+    object-fit: contain;
+}
+
+
+.vortice-gift-label {
+    display: block;
+
+    margin-bottom: 13px;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 1.8px !important;
+    text-transform: uppercase !important;
+
+    color: #9A6846 !important;
+}
+
+
+.vortice-gift-intro-content h2 {
+    margin: 0 0 12px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 44px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    color: #FFFFFF !important;
+}
+
+
+.vortice-gift-intro-content p {
+    max-width: 650px;
+
+    margin: 0;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.8 !important;
+
+    color: rgba(255,255,255,.68) !important;
+}
+
+
+/* ----------------------------------------------------------
+   ENCABEZADOS
+---------------------------------------------------------- */
+
+.vortice-gift-section-heading {
+    max-width: 760px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+
+.vortice-gift-section-heading h2 {
+    margin: 0 0 15px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: clamp(38px, 4vw, 50px) !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    color: #111111 !important;
+}
+
+
+.vortice-gift-section-heading p {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.8 !important;
+
+    color: #6F6F6F !important;
+}
+
+
+/* ----------------------------------------------------------
+   TARJETAS
+---------------------------------------------------------- */
+
+.vortice-gift-card {
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+}
+
+
+.vortice-gift-card .card-product-wrapper {
+    overflow: hidden;
+
+    border-radius: 0 !important;
+}
+
+
+.vortice-gift-card .img-product {
+    transition: transform .6s ease;
+}
+
+
+.vortice-gift-card:hover .img-product {
+    transform: scale(1.02);
+}
+
+
+.vortice-gift-card .card-product-info {
+    padding-top: 18px !important;
+
+    text-align: left !important;
+}
+
+
+.vortice-gift-card-title {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    line-height: 1.5 !important;
+
+    color: #111111 !important;
+}
+
+
+.vortice-gift-card-link {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 9px;
+
+    padding-bottom: 3px;
+
+    border-bottom: 1px solid #D9C9B5;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+
+    color: #6F6F6F !important;
+
+    transition: color .25s ease,
+                border-color .25s ease;
+}
+
+
+.vortice-gift-card-link:hover {
+    color: #9A6846 !important;
+    border-color: #9A6846;
+}
+
+
+/* ----------------------------------------------------------
+   BENEFICIOS
+---------------------------------------------------------- */
+
+.vortice-gift-benefits {
+    padding: 90px 0;
+
+    background: #F6F3ED;
+}
+
+
+.vortice-gift-benefits-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid #D9C9B5;
+}
+
+
+.vortice-gift-benefit {
+    padding: 38px 40px 20px;
+
+    border-right: 1px solid #D9C9B5;
+}
+
+
+.vortice-gift-benefit:last-child {
+    border-right: 0;
+}
+
+
+.vortice-gift-number {
+    display: block;
+
+    margin-bottom: 35px;
+
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color: #9A6846;
+}
+
+
+.vortice-gift-benefit h3 {
+    margin-bottom: 12px;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+
+    line-height: 1.1 !important;
+
+    color: #111111 !important;
+}
+
+
+.vortice-gift-benefit p {
+    margin: 0;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+
+    line-height: 1.8 !important;
+
+    color: #6F6F6F !important;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 991px) {
+
+    .vortice-gift-intro-inner {
+        grid-template-columns: 70px 1fr;
+    }
+
+    .vortice-gift-intro-action {
+        grid-column: 2;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .vortice-gift-hero-title {
+        font-size: 44px !important;
+    }
+
+    .vortice-gift-hero-subtitle {
+        font-size: 13px !important;
+    }
+
+
+    .vortice-gift-intro {
+        padding: 50px 0;
+    }
+
+    .vortice-gift-intro-inner {
+        display: block;
+
+        text-align: center;
+    }
+
+    .vortice-gift-intro-icon {
+        margin-bottom: 25px;
+    }
+
+    .vortice-gift-intro-icon img {
+        width: 65px;
+    }
+
+    .vortice-gift-intro-content h2 {
+        font-size: 38px !important;
+    }
+
+    .vortice-gift-intro-content p {
+        margin: 0 auto 25px;
+    }
+
+
+    .vortice-gift-section-heading {
+        margin-bottom: 40px;
+    }
+
+
+    .vortice-gift-benefits {
+        padding: 60px 0;
+    }
+
+    .vortice-gift-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vortice-gift-benefit {
+        padding: 30px 0;
+
+        border-right: 0;
+        border-bottom: 1px solid #D9C9B5;
+    }
+
+    .vortice-gift-benefit:last-child {
+        border-bottom: 0;
+    }
+
+    .vortice-gift-number {
+        margin-bottom: 15px;
+    }
+
+}
+
+/* ==========================================================
+   VÓRTICE · SERVICIOS · NORMALIZACIÓN IMAGEN / VIDEO
+   ========================================================== */
+
+.vortice-service-card {
+    height: 100%;
+}
+
+
+/* IMAGEN Y VIDEO COMPARTEN EXACTAMENTE EL MISMO ESPACIO */
+
+.vortice-service-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.2 / 1;
+    overflow: hidden;
+    background: #F6F3ED;
+}
+
+
+/* IMAGEN */
+
+.vortice-service-media img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+
+/* VIDEO */
+
+.vortice-service-media video {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+
+/* CONTENIDO */
+
+.vortice-service-card .vortice-service-content {
+    padding-top: 26px !important;
+    margin-top: 0 !important;
+    text-align: center;
+}
+
+
+/* TÍTULO */
+
+.vortice-service-name {
+    margin: 0 0 18px !important;
+
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+
+    color: #111111 !important;
+}
+
+
+/* DESCRIPCIÓN */
+
+.vortice-service-description {
+    margin: 0 auto !important;
+    max-width: 390px;
+
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.8 !important;
+
+    color: #6F6F6F !important;
+}
+
+
+/* ==========================================================
+   VÓRTICE · SERVICIOS · BOTÓN CENTRADO
+   ========================================================== */
+
+.vortice-services
+.vortice-service-card
+.article-content.vortice-service-content
+.vortice-service-action {
+    width: 100% !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    margin: 0 !important;
+    padding: 26px 0 0 0 !important;
+
+    position: static !important;
+    float: none !important;
+    transform: none !important;
+}
+
+
+/* BOTÓN */
+
+.vortice-services
+.vortice-service-card
+.vortice-service-action
+a.btn.btn-primary {
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: fit-content !important;
+    min-width: 180px !important;
+
+    margin: 0 !important;
+
+    position: static !important;
+    float: none !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+
+    text-align: center !important;
+}
+
+.vortice-services
+.vortice-service-card
+.article-content.vortice-service-content {
+
+    width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    text-align: center !important;
+}
+
+.vortice-services .swiper-wrapper {
+    align-items: stretch !important;
+}
+
+.vortice-services .swiper-slide {
+    height: auto !important;
+}
+
+.vortice-services .vortice-service-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.vortice-services .vortice-service-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.vortice-services .vortice-service-action {
+    margin-top: auto !important;
+}

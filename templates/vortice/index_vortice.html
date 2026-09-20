@@ -2,56 +2,124 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
-        <meta charset="utf-8">
-        <title>Vortice | Tienda Oficial</title>
-        <meta name="author" content="Vortice | Tienda Oficial">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!-- Agrega el script de Google reCAPTCHA -->
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <meta charset="utf-8">
 
-{% block metas %}
-    <!-- SEO -->
-    <meta name="description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
-    <meta name="author" content="Vortice Store">
+    <title>Vortice | Tienda Oficial</title>
+    <meta property="og:locale" content="es_EC">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:locale" content="es_ES">
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:site_name" content="Vortice">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Vortice Store | Tienda Oficial">
-    <meta property="og:description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
-    <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta name="author" content="Vortice | Tienda Oficial">
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vortice Store | Tienda Oficial">
-    <meta name="twitter:description" content="Venta de ropa de alta calidad 100% Ecuatoriana. Moda exclusiva hecha en Ecuador.">
-    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ vortice.meta_inicio }}">
-    <meta name="twitter:image:alt" content="Vortice Store - Moda Ecuatoriana">
-{% endblock %}
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
+    <!-- =====================================================
+         GOOGLE RECAPTCHA
+    ====================================================== -->
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="/static/static_vortice/fonts/fonts.css">
-    <link rel="stylesheet" href="/static/static_vortice/fonts/font-icons.css">
-    <link rel="stylesheet" href="/static/static_vortice/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/static_vortice/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/static/static_vortice/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="/static/static_vortice/css/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js"
+            async defer></script>
 
-    <!-- Favicon y Touch Icons -->
-    <link rel="shortcut icon" href="https://www.benitez-ec.com/media/{{ vortice.favicon }}">
-    <link rel="apple-touch-icon-precomposed" href="https://www.benitez-ec.com/media/{{ vortice.favicon }}">
 
-    <!-- Swiper -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- =====================================================
+         SEO / REDES SOCIALES
+    ====================================================== -->
+{% load static %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="es"
+      lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Vórtice | Tienda Oficial</title>
+
+    <meta name="author"
+          content="Vórtice | Tienda Oficial">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!-- FAVICON VÓRTICE -->
+    {% if vortice.favicon %}
+        <link rel="icon"
+              type="image/png"
+              href="/media/{{ vortice.favicon }}">
+
+        <link rel="shortcut icon"
+              type="image/png"
+              href="/media/{{ vortice.favicon }}">
+
+        <link rel="apple-touch-icon"
+              href="/media/{{ vortice.favicon }}">
+    {% endif %}
+
+
+    <!-- GOOGLE RECAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js"
+            async defer></script>
+
+
+    {% block metas %}
+        ...
+    {% endblock %}
+
+
+    <!-- =====================================================
+         CSS ORIGINAL DE LA PLANTILLA
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="/static/static_vortice/fonts/fonts.css">
+
+    <link rel="stylesheet"
+          href="/static/static_vortice/fonts/font-icons.css">
+
+    <link rel="stylesheet"
+          href="/static/static_vortice/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="/static/static_vortice/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet"
+          href="/static/static_vortice/css/animate.css">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="/static/static_vortice/css/styles.css">
+
+
+    <!-- =====================================================
+         VÓRTICE · TIPOGRAFÍAS OFICIALES
+         Cormorant Garamond + Montserrat
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         VÓRTICE · SISTEMA VISUAL
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="/static/static_vortice/css/vortice-brand.css">
+
+
+
+
 </head>
 
 
@@ -59,62 +127,39 @@
 
 <div id="wrapper">
     <!-- Top bar -->
-    <div class="tf-top-bar bg_white line">
-        <div class="px_15 lg-px_40">
-            <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
-                <ul class="tf-top-bar_item tf-social-icon d-flex gap-10">
-                    <li><a href="https://www.facebook.com/{{ vortice.facebook }}"
-                           class="box-icon w_28 round social-facebook bg_line"><i class="icon fs-12 icon-fb"></i></a>
-                    </li>
-                    <li><a href="https://www.x.com/{{ vortice.twiter }}"
-                           class="box-icon w_28 round social-twiter bg_line"><i class="icon fs-10 icon-Icon-x"></i></a>
-                    </li>
-                    <li><a href="https://www.instagram.com/{{ vortice.instagram }}"
-                           class="box-icon w_28 round social-instagram bg_line"><i
-                            class="icon fs-12 icon-instagram"></i></a></li>
-                    <li><a href="https://www.tiktok.com/{{ vortice.tiktok }}"
-                           class="box-icon w_28 round social-tiktok bg_line"><i class="icon fs-12 icon-tiktok"></i></a>
-                    </li>
-                    <li><a href="https://www.pinterest.com/{{ vortice.pinterest }}"
-                           class="box-icon w_28 round social-pinterest bg_line"><i
-                            class="icon fs-12 icon-pinterest-1"></i></a></li>
-                </ul>
-                <div class="text-center overflow-hidden">
-                    <div class="swiper tf-sw-top_bar" data-preview="1" data-space="0" data-loop="true" data-speed="1000"
-                         data-delay="2000">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <p class="top-bar-text fw-5">{{ notificaciones.texto_1 }}<a href="/vortice/"
-                                                                                            title="all collection"
-                                                                                            class="tf-btn btn-line">{{ notificaciones.texto_2 }}<i
-                                        class="icon icon-arrow1-top-left"></i></a></p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p class="top-bar-text fw-5">{{ notificaciones.texto_3 }}</p>
-                            </div>
-                            <div class="swiper-slide">
-                                <p class="top-bar-text fw-5">{{ notificaciones.texto_4 }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- =====================================================
+       VÓRTICE · TOP BAR
+  ===================================================== -->
 
-                <div class="top-bar-language tf-cur justify-content-end">
-                    <div class="tf-languages">
-                        <a href="https://api.whatsapp.com/send?phone=+5930993239290&amp;text=Hola%20Vortice-Store%20Deseo%20suscribirme ">
-                                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text"> <i class="icon icon-account"></i> CHAT</span></button>
-                                    </a>
-                    </div>
-                </div>
+    <div class="vortice-topbar">
+
+        <div class="container">
+
+            <div class="vortice-topbar-inner">
+
+                <span>Hecho en Ecuador</span>
+
+                <span class="vortice-topbar-dot">·</span>
+
+                <span>Ediciones limitadas</span>
+
+                <span class="vortice-topbar-dot">·</span>
+
+                <span>Envíos nacionales</span>
+
             </div>
+
         </div>
+
     </div>
+
+    <!-- /VÓRTICE · TOP BAR -->
     <!-- /Top bar -->
     <!-- Header -->
     <header id="header" class="header-default">
         <div class="px_15 lg-px_40">
-                <div class="row wrapper-header align-items-center">
-                    <div class="col-md-4 col-3 tf-lg-hidden">
+            <div class="row wrapper-header align-items-center">
+                <div class="col-md-4 col-3 tf-lg-hidden">
                     <a href="#mobileMenu" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" fill="none">
                             <path d="M2.00056 2.28571H16.8577C17.1608 2.28571 17.4515 2.16531 17.6658 1.95098C17.8802 1.73665 18.0006 1.44596 18.0006 1.14286C18.0006 0.839753 17.8802 0.549063 17.6658 0.334735C17.4515 0.120408 17.1608 0 16.8577 0H2.00056C1.69745 0 1.40676 0.120408 1.19244 0.334735C0.978109 0.549063 0.857702 0.839753 0.857702 1.14286C0.857702 1.44596 0.978109 1.73665 1.19244 1.95098C1.40676 2.16531 1.69745 2.28571 2.00056 2.28571ZM0.857702 8C0.857702 7.6969 0.978109 7.40621 1.19244 7.19188C1.40676 6.97755 1.69745 6.85714 2.00056 6.85714H22.572C22.8751 6.85714 23.1658 6.97755 23.3801 7.19188C23.5944 7.40621 23.7148 7.6969 23.7148 8C23.7148 8.30311 23.5944 8.59379 23.3801 8.80812C23.1658 9.02245 22.8751 9.14286 22.572 9.14286H2.00056C1.69745 9.14286 1.40676 9.02245 1.19244 8.80812C0.978109 8.59379 0.857702 8.30311 0.857702 8ZM0.857702 14.8571C0.857702 14.554 0.978109 14.2633 1.19244 14.049C1.40676 13.8347 1.69745 13.7143 2.00056 13.7143H12.2863C12.5894 13.7143 12.8801 13.8347 13.0944 14.049C13.3087 14.2633 13.4291 14.554 13.4291 14.8571C13.4291 15.1602 13.3087 15.4509 13.0944 15.6653C12.8801 15.8796 12.5894 16 12.2863 16H2.00056C1.69745 16 1.40676 15.8796 1.19244 15.6653C0.978109 15.4509 0.857702 15.1602 0.857702 14.8571Z"
@@ -135,74 +180,75 @@
                             </li>
                             {% for cliente in secciones %}
                                 {% if cliente.mostrar %}
-                                <li class="menu-item">
-                                    <a href="/vortice/seccion/{{ cliente.cliente }}" class="item-link">{{ cliente.cliente }}<i
-                                            class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu mega-menu">
-                                        <div class="container">
-                                            <div class="row">
+                                    <li class="menu-item">
+                                        <a href="/vortice/seccion/{{ cliente.cliente }}"
+                                           class="item-link">{{ cliente.cliente }}<i
+                                                class="icon icon-arrow-down"></i></a>
+                                        <div class="sub-menu mega-menu">
+                                            <div class="container">
+                                                <div class="row">
 
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Productos</div>
-                                                        <ul class="menu-list">
-                                                            {% for tipo_articulo in tipo_articulos_menu %}
-                                                                {% if tipo_articulo.coleccion.cliente == cliente %}
-                                                                    {% if tipo_articulo.activo_menu %}
-                                                                        <li>
-                                                                            <a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/"
-                                                                            class="menu-link-text link">- {{ tipo_articulo.nombre_articulo }}</a>
-                                                                        </li>
+                                                    <div class="col-lg-2">
+                                                        <div class="mega-menu-item">
+                                                            <div class="menu-heading">Productos</div>
+                                                            <ul class="menu-list">
+                                                                {% for tipo_articulo in tipo_articulos_menu %}
+                                                                    {% if tipo_articulo.coleccion.cliente == cliente %}
+                                                                        {% if tipo_articulo.activo_menu %}
+                                                                            <li>
+                                                                                <a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/"
+                                                                                   class="menu-link-text link">- {{ tipo_articulo.nombre_articulo }}</a>
+                                                                            </li>
+                                                                        {% endif %}
                                                                     {% endif %}
-                                                                {% endif %}
-                                                            {% endfor %}
-                                                       </ul>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Colecciones</div>
-                                                        <ul class="menu-list">
-                                                            {% for coleccion in colecciones %}
-                                                                {% if coleccion.cliente == cliente %}
-                                                                    {% if coleccion.cliente.cliente %}
-                                                                    	<li>
-                                                                         <a href="/vortice/seccion/{{ coleccion.cliente.cliente}}/coleccion/{{ coleccion.tema_colec  }}/"
-                                                                           class="menu-link-text link">- {{ coleccion.tema_colec  }}</a>
-                                                                    </li>
+                                                    <div class="col-lg-2">
+                                                        <div class="mega-menu-item">
+                                                            <div class="menu-heading">Colecciones</div>
+                                                            <ul class="menu-list">
+                                                                {% for coleccion in colecciones %}
+                                                                    {% if coleccion.cliente == cliente %}
+                                                                        {% if coleccion.cliente.cliente %}
+                                                                            <li>
+                                                                                <a href="/vortice/seccion/{{ coleccion.cliente.cliente }}/coleccion/{{ coleccion.tema_colec }}/"
+                                                                                   class="menu-link-text link">- {{ coleccion.tema_colec }}</a>
+                                                                            </li>
+                                                                        {% endif %}
                                                                     {% endif %}
-                                                                {% endif %}
-                                                            {% endfor %}
-                                                        </ul>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div class="col-lg-3">
-                                                    <div class="collection-item hover-img">
-                                                        <div class="collection-inner">
-                                                            <a href="/vortice/seccion/{{ cliente.cliente}}/"
-                                                               class="collection-image img-style">
-                                                                <img class="lazyload"
-                                                                     data-src="/media/{{ cliente.imag_cliente_01 }}"
-                                                                     src="/media/{{ cliente.imag_cliente_01 }}"
-                                                                     alt="collection-demo-1">
-                                                            </a>
-                                                            <div class="collection-content">
-                                                                <a href="/vortice/seccion/{{ cliente.cliente}}/"
-                                                                   class="tf-btn hover-icon btn-xl collection-title fs-16"><span>{{ cliente.cliente }}</span><i
-                                                                        class="icon icon-arrow1-top-left"></i></a>
+                                                    <div class="col-lg-3">
+                                                        <div class="collection-item hover-img">
+                                                            <div class="collection-inner">
+                                                                <a href="/vortice/seccion/{{ cliente.cliente }}/"
+                                                                   class="collection-image img-style">
+                                                                    <img class="lazyload"
+                                                                         data-src="/media/{{ cliente.imag_cliente_01 }}"
+                                                                         src="/media/{{ cliente.imag_cliente_01 }}"
+                                                                         alt="collection-demo-1">
+                                                                </a>
+                                                                <div class="collection-content">
+                                                                    <a href="/vortice/seccion/{{ cliente.cliente }}/"
+                                                                       class="tf-btn hover-icon btn-xl collection-title fs-16"><span>{{ cliente.cliente }}</span><i
+                                                                            class="icon icon-arrow1-top-left"></i></a>
 
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
                                 {% endif %}
                             {% endfor %}
 
@@ -217,7 +263,8 @@
                             </li>
 
                             <li class="menu-item">
-                                <a href="/vortice/nosotros/" class="item-link">Nosotros<i class="icon icon-arrow"></i></a>
+                                <a href="/vortice/nosotros/" class="item-link">Nosotros<i
+                                        class="icon icon-arrow"></i></a>
 
                             </li>
 
@@ -228,26 +275,26 @@
                     <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
 
                         <li class="nav-cart">
-                            <a href="/cart/"  class="nav-icon-item">
+                            <a href="/cart/" class="nav-icon-item">
                                 <i class="icon icon-bag"></i>
                                 {% with total_items=cart|length %}
-                                   {% if total_items > 0 %}
-                                       <span class="count-box"> {{ total_items }}
+                                    {% if total_items > 0 %}
+                                        <span class="count-box"> {{ total_items }}
                                             <a href="{% url "cart:cart_detail" %}">
                                             Total:
                                                 {{ cart.get_total_price_with_shipping|floatformat:2 }}
                                             </a>
                                        </span>
-                                   {% elif not order %}
-                                       <span class="count-box"> 0
+                                    {% elif not order %}
+                                        <span class="count-box"> 0
                                             <a href="{% url "cart:cart_detail" %}">
                                             Vacio
                                             </a>
                                        </span>
 
-                                   {% endif %}
+                                    {% endif %}
 
-                                   {% endwith %}
+                                {% endwith %}
                             </a>
                         </li>
                     </ul>
@@ -258,102 +305,170 @@
     <!-- /Header -->
 
     {% block principal %}
-        <!-- Slider -->
+
+        <!-- =====================================================
+             VÓRTICE · HERO / SLIDER
+        ===================================================== -->
+
         <div class="tf-slideshow slider-home-2 slider-effect-fade position-relative">
-            <div class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false"
-                 data-space="0" data-loop="true" data-auto-play="true" data-delay="2000" data-speed="1000">
+
+            <div class="swiper tf-sw-slideshow"
+                 data-preview="1"
+                 data-tablet="1"
+                 data-mobile="1"
+                 data-centered="false"
+                 data-space="0"
+                 data-loop="true"
+                 data-auto-play="true"
+                 data-delay="5000"
+                 data-speed="1000">
+
                 <div class="swiper-wrapper">
+
                     {% for slider in sliders %}
+
                         {% if slider.slider %}
+
                             <div class="swiper-slide" lazy="true">
+
                                 <div class="wrap-slider">
-                                    <img class="lazyload" data-src="/media/{{ slider.imag_colec_02 }}"
-                                         src="/media/{{ slider.imag_colec_02 }}" alt="fashion-slideshow-01">
+
+                                    <!-- Imagen -->
+                                    <img class="lazyload"
+                                         data-src="/media/{{ slider.imag_colec_02 }}"
+                                         src="/media/{{ slider.imag_colec_02 }}"
+                                         alt="{{ slider.tema_colec }}">
+
+
+                                    <!-- Contenido -->
                                     <div class="box-content">
+
                                         <div class="container">
-                                            <h1 class="fade-item fade-item-1">{{ slider.tema_colec }}</h1>
-                                            <p class="fade-item fade-item-2">{{ slider.sub_tema_colec }}</p>
-                                            <a href="/vortice/seccion/{{ slider.cliente.cliente}}/coleccion/{{ slider.tema_colec}}"
-                                               class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"><span>Ver Colección</span><i class="icon icon-arrow-right"></i></a>
+
+
+                                            <!-- Identidad de marca -->
+                                            <span class="fade-item fade-item-1 vortice-label vortice-slider-label">
+                                        Vórtice · Nuevas Raíces
+                                    </span>
+
+
+                                            <!-- Nombre de colección -->
+                                            <h1 class="fade-item fade-item-1 vortice-display vortice-slider-title">
+                                                {{ slider.tema_colec }}
+                                            </h1>
+
+
+                                            <!-- Subtítulo -->
+                                            <p class="fade-item fade-item-2 vortice-body vortice-slider-subtitle">
+                                                {{ slider.sub_tema_colec }}
+                                            </p>
+
+
+                                            <!-- Botón -->
+                                            <a href="/vortice/seccion/{{ slider.cliente.cliente }}/coleccion/{{ slider.tema_colec }}"
+                                               class="fade-item fade-item-3 vortice-btn-primary">
+
+                                                <span>Descubrir colección</span>
+
+                                                <i class="icon icon-arrow-right"></i>
+
+                                            </a>
+
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         {% endif %}
+
                     {% endfor %}
+
                 </div>
 
             </div>
+
+
+            <!-- Paginación -->
             <div class="wrap-pagination sw-absolute-2">
+
                 <div class="container">
+
                     <div class="sw-dots sw-pagination-slider"></div>
+
                 </div>
+
             </div>
+
         </div>
-        <!-- /Slider -->
+
+        <!-- /VÓRTICE · HERO / SLIDER -->
+
         <!-- Collection -->
 
         {% for coleccion in colecciones %}
-        {% if coleccion.principal %}
-        <section class="flat-spacing-8">
-            <div class="container-full">
-                <div class="masonry-layout">
-                    <div class="item-1 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/vortice/seccion/mujer/" class="collection-image img-style rounded-0">
-                                <img class="lazyload" data-src="/media/{{coleccion.imag_01}}"
-                                     src="/media/{{coleccion.imag_01}}" alt="collection-img">
-                            </a>
-                            <div class="collection-content">
-                                <a href="/vortice/seccion/mujer/"
-                                   class="tf-btn collection-title hover-icon"><span>Mujer</span><i
-                                        class="icon icon-arrow1-top-left"></i></a>
+            {% if coleccion.principal %}
+                <section class="flat-spacing-8">
+                    <div class="container-full">
+                        <div class="masonry-layout">
+                            <div class="item-1 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
+                                <div class="collection-inner">
+                                    <a href="/vortice/seccion/mujer/" class="collection-image img-style rounded-0">
+                                        <img class="lazyload" data-src="/media/{{ coleccion.imag_01 }}"
+                                             src="/media/{{ coleccion.imag_01 }}" alt="collection-img">
+                                    </a>
+                                    <div class="collection-content">
+                                        <a href="/vortice/seccion/mujer/"
+                                           class="tf-btn collection-title hover-icon"><span>Mujer</span><i
+                                                class="icon icon-arrow1-top-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-2 collection-item large hover-img wow fadeInUp" data-wow-delay=".1s">
+                                <div class="collection-inner">
+                                    <a href="/vortice/seccion/mujer/" class="collection-image img-style rounded-0">
+                                        <img class="lazyload" data-src="/media/{{ coleccion.imag_02 }}"
+                                             src="/media/{{ coleccion.imag_02 }}" alt="collection-img">
+                                    </a>
+                                    <div class="collection-content">
+                                        <a href="/vortice/seccion/mujer/"
+                                           class="tf-btn collection-title hover-icon"><span>Bolsos</span><i
+                                                class="icon icon-arrow1-top-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-3 collection-item large hover-img wow fadeInUp" data-wow-delay=".2s">
+                                <div class="collection-inner">
+                                    <a href="/vortice/seccion/hombre/" class="collection-image img-style rounded-0">
+                                        <img class="lazyload" data-src="/media/{{ coleccion.imag_03 }}"
+                                             src="/media/{{ coleccion.imag_03 }}" alt="collection-img">
+                                    </a>
+                                    <div class="collection-content">
+                                        <a href="/vortice/seccion/hombre/"
+                                           class="tf-btn collection-title hover-icon"><span>Accesorios</span><i
+                                                class="icon icon-arrow1-top-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-4 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
+                                <div class="collection-inner">
+                                    <a href="/vortice/seccion/hombre/" class="collection-image img-style rounded-0">
+                                        <img class="lazyload" data-src="/media/{{ coleccion.imag_04 }}"
+                                             src="/media/{{ coleccion.imag_04 }}" alt="collection-img">
+                                    </a>
+                                    <div class="collection-content">
+                                        <a href="/vortice/seccion/hombre/"
+                                           class="tf-btn collection-title hover-icon"><span>Hombre</span><i
+                                                class="icon icon-arrow1-top-left"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="item-2 collection-item large hover-img wow fadeInUp" data-wow-delay=".1s">
-                        <div class="collection-inner">
-                            <a href="/vortice/seccion/mujer/" class="collection-image img-style rounded-0">
-                                <img class="lazyload" data-src="/media/{{coleccion.imag_02}}"
-                                     src="/media/{{coleccion.imag_02}}" alt="collection-img">
-                            </a>
-                            <div class="collection-content">
-                                <a href="/vortice/seccion/mujer/"
-                                   class="tf-btn collection-title hover-icon"><span>Bolsos</span><i
-                                        class="icon icon-arrow1-top-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-3 collection-item large hover-img wow fadeInUp" data-wow-delay=".2s">
-                        <div class="collection-inner">
-                            <a href="/vortice/seccion/hombre/" class="collection-image img-style rounded-0">
-                                <img class="lazyload" data-src="/media/{{coleccion.imag_03}}"
-                                     src="/media/{{coleccion.imag_03}}" alt="collection-img">
-                            </a>
-                            <div class="collection-content">
-                                <a href="/vortice/seccion/hombre/"
-                                   class="tf-btn collection-title hover-icon"><span>Accesorios</span><i
-                                        class="icon icon-arrow1-top-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-4 collection-item large hover-img wow fadeInUp" data-wow-delay="0s">
-                        <div class="collection-inner">
-                            <a href="/vortice/seccion/hombre/" class="collection-image img-style rounded-0">
-                                <img class="lazyload" data-src="/media/{{coleccion.imag_04}}"
-                                     src="/media/{{coleccion.imag_04}}" alt="collection-img">
-                            </a>
-                            <div class="collection-content">
-                                <a href="/vortice/seccion/hombre/"
-                                   class="tf-btn collection-title hover-icon"><span>Hombre</span><i
-                                        class="icon icon-arrow1-top-left"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% endif %}
+                </section>
+            {% endif %}
         {% endfor %}
 
         <!-- /Collection -->
@@ -368,9 +483,17 @@
                                      src="/media/{{ colec.imagen }}" alt="collection-img">
                             </div>
                             <div class="tf-content-wrap wow fadeInUp" data-wow-delay="0s">
-                                <span class="sub-heading text-uppercase fw-7">Nueva Colección</span>
-                                <div class="heading">{{ colec.tema }}</div>
-                                <p class="description">{{ colec.detalle }}</p>
+                               <span class="sub-heading text-uppercase fw-7 vortice-collection-label">
+    Nueva Colección
+</span>
+
+                                <div class="heading vortice-collection-heading">
+                                    {{ colec.tema }}
+                                </div>
+
+                                <p class="description vortice-collection-description">
+                                    {{ colec.detalle }}
+                                </p>
                                 <a href="/vortice/seccion/{{ colec.id }}/{{ mes.id }}/"
                                    class="tf-btn style-2 btn-fill radius-3 animate-hover-btn">Ver colección</a>
                             </div>
@@ -391,10 +514,18 @@
                              alt="img-banner" loading="lazy">
                         <div class="box-content">
                             <div class="container wow fadeInUp" data-wow-delay="0s">
-                                <h2 class="heading">{{ mesmoda.titulo }}</h2>
-                                <p>{{ mesmoda.subtitulo }}</p>
-                                <a href="/vortice/post/{{ mesmoda.id }}/" class="tf-btn btn-fill btn-md animate-hover-btn radius-3">Ver
-                                    Galería</a>
+                                <h2 class="heading vortice-moda-title">
+                                    {{ mesmoda.titulo }}
+                                </h2>
+
+                                <p class="vortice-moda-subtitle">
+                                    {{ mesmoda.subtitulo }}
+                                </p>
+
+                                <a href="/vortice/post/{{ mesmoda.id }}/"
+                                   class="tf-btn btn-fill btn-md animate-hover-btn radius-3">
+                                    Ver Galería
+                                </a>
                             </div>
                         </div>
                     </section>
@@ -405,8 +536,13 @@
                             <video src="/media/{{ mesmoda.video }}" autoplay muted playsinline loop></video>
                             <div class="box-content">
                                 <div class="container">
-                                    <p class="fade-item fade-item-1 subheading text-white fw-7">{{ mesmoda.subtitulo }}</p>
-                                    <h1 class="fade-item fade-item-2 heading text-white">{{ mesmoda.titulo }}</h1>
+                                    <p class="fade-item fade-item-1 subheading text-white fw-7 vortice-moda-video-subtitle">
+                                        {{ mesmoda.subtitulo }}
+                                    </p>
+
+                                    <h1 class="fade-item fade-item-2 heading text-white vortice-moda-video-title">
+                                        {{ mesmoda.titulo }}
+                                    </h1>
                                     <a href="/vortice/post/{{ mesmoda.id }}/"
                                        class="fade-item fade-item-3 tf-btn fill-outline-light btn-icon radius-3"><span>Ver Galería</span><i
                                             class="icon icon-arrow-right"></i></a>
@@ -436,10 +572,20 @@
                             <div class="tf-content-wrap text-center w-100 wow fadeInUp" data-wow-delay="0s">
                                 <span class="sub-heading text-uppercase fw-7">{{ card.titulo }}</span>
                                 <div class="heading">Gifts Cards</div>
-                                <p class="description">{{ card.detalle }} <br class="d-none d-xl-block">
-                                    ${{ card.precio }}</p>
-                                <a href="/vortice/gift/"
-                                   class="tf-btn style-2 btn-fill radius-3 animate-hover-btn">Comprar</a>
+                                <span class="sub-heading text-uppercase fw-7 vortice-gift-label">{{ card.titulo }}</span>
+
+                                <div class="heading vortice-gift-title">
+                                    Gift Card
+                                </div>
+
+                                <p class="description vortice-gift-description">
+                                    {{ card.detalle }}
+                                </p>
+
+                                <div class="vortice-gift-price">
+                                    ${{ card.precio }}
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -448,65 +594,126 @@
         {% endfor %}
         <!-- /Shop Collection -->
 
-        <section class="flat-spacing-14">
+        <section class="flat-spacing-14 vortice-services">
             <div class="container">
+
                 <div class="flat-title wow fadeInUp" data-wow-delay="0s">
-                    <span class="title">Servicios Vortice - Personalización</span>
+
+            <span class="vortice-services-label">
+                HECHO PARA TI
+            </span>
+
+                    <h2 class="vortice-services-title">
+                        Servicios Vórtice
+                    </h2>
+
+                    <p class="vortice-services-intro">
+                        Tu idea. Nuestras manos. Una pieza única.
+                    </p>
+
                 </div>
+
+
                 <div class="hover-sw-nav view-default hover-sw-3">
-                    <div class="swiper tf-sw-recent" data-preview="3" data-tablet="2" data-mobile="1" data-space-lg="30"
-                         data-space-md="30" data-space="15" data-pagination="1" data-pagination-md="1"
+
+                    <div class="swiper tf-sw-recent"
+                         data-preview="3"
+                         data-tablet="2"
+                         data-mobile="1"
+                         data-space-lg="30"
+                         data-space-md="30"
+                         data-space="15"
+                         data-pagination="1"
+                         data-pagination-md="1"
                          data-pagination-lg="1">
+
                         <div class="swiper-wrapper">
+
                             {% for servicio in servicios %}
+
                                 <div class="swiper-slide" lazy="true">
-                                    <div class="blog-article-item wow fadeInUp" data-wow-delay="0s">
 
-                                        {% if servicio.video %}
-                                            <div class="swiper-slide">
-                                                <div class="item">
-                                                    <video playsinline="true" autoplay preload="metadata" muted loop
-                                                           src="/media/{{ servicio.video }}"></video>
-                                                </div>
-                                            </div>
-                                        {% else %}
-                                            <div class="article-thumb h-460 rounded-0">
-                                                <img class="lazyload" data-src="/media/{{ servicio.imagen }}"
-                                                     src="/media/{{ servicio.imagen }}" alt="img-blog">
-                                            </div>
-                                        {% endif %}
+                                    <div class="blog-article-item vortice-service-card wow fadeInUp"
+                                         data-wow-delay="0s">
 
-                                        <div class="article-content">
-                                            <div class="text-1">
-                                                <p style="text-align: center">{{ servicio.servicio }}</p>
-                                            </div>
-                                            <div class="text-3">
-                                                <p style="text-align: center">{{ servicio.detalle }}</p>
-                                            </div>
 
-                                            <!-- Botón de WhatsApp -->
-                                            <div style="text-align: center; margin-top: 10px;">
+                                        <!-- IMAGEN / VIDEO -->
+                                        <div class="vortice-service-media">
+
+                                            {% if servicio.video %}
+
+                                                <video
+                                                        playsinline
+                                                        autoplay
+                                                        preload="metadata"
+                                                        muted
+                                                        loop>
+                                                    <source src="/media/{{ servicio.video }}">
+                                                </video>
+
+                                            {% else %}
+
+                                                <img
+                                                        class="lazyload"
+                                                        data-src="/media/{{ servicio.imagen }}"
+                                                        src="/media/{{ servicio.imagen }}"
+                                                        alt="{{ servicio.servicio }}">
+
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <!-- CONTENIDO -->
+                                        <div class="article-content vortice-service-content">
+
+                                            <p class="vortice-service-name">
+                                                {{ servicio.servicio }}
+                                            </p>
+
+                                            <p class="vortice-service-description">
+                                                {{ servicio.detalle }}
+                                            </p>
+
+
+                                            <div class="vortice-service-action"
+                                                 style="align-content: center!important; text-align: center!important;">
+
                                                 <a href="https://wa.me/593{{ vortice.whatsapp }}?text=Deseo%20más%20información%20sobre%20el%20servicio%20de%20:%20{{ servicio.servicio }}"
                                                    target="_blank"
-                                                   class="btn btn-primary">
+                                                   class="btn btn-primary" style="align-content: center !important;">
+
                                                     Más información
+
                                                 </a>
+
                                             </div>
 
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             {% endfor %}
+
                         </div>
+
                     </div>
+
+
                     <div class="nav-sw nav-next-slider nav-next-recent box-icon w_46 round">
                         <span class="icon icon-arrow-left"></span>
                     </div>
+
                     <div class="nav-sw nav-prev-slider nav-prev-recent box-icon w_46 round">
                         <span class="icon icon-arrow-right"></span>
                     </div>
+
                     <div class="sw-dots style-2 sw-pagination-recent justify-content-center"></div>
+
                 </div>
+
             </div>
         </section>
 
@@ -572,19 +779,21 @@
                             </div>
                             <ul class="footer-menu-list tf-collapse-content">
 
-                               
+
                                 <li>
-                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item" >Envíos</a>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Envíos</a>
                                 </li>
 
 
                                 <li>
-                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Términos y condiciones</a>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Términos y
+                                        condiciones</a>
                                 </li>
                                 <li>
-                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Preguntas frecuentes</a>
+                                    <a href="#quick_view" data-bs-toggle="modal" class="footer-menu_item">Preguntas
+                                        frecuentes</a>
                                 </li>
-                       
+
                             </ul>
                         </div>
                         <div class="col-xl-3 col-md-6 col-12 footer-col-block">
@@ -605,10 +814,11 @@
                                 {% for cliente in secciones %}
                                     <li>
 
-                                        <a href="/vortice/seccion/{{ cliente.cliente }}" class="footer-menu_item">{{ cliente.cliente }}</a>
+                                        <a href="/vortice/seccion/{{ cliente.cliente }}"
+                                           class="footer-menu_item">{{ cliente.cliente }}</a>
                                     </li>
                                 {% endfor %}
-                              
+
                                 <li>
                                     <a href="/vortice/gift/" class="footer-menu_item">GiftCard</a>
                                 </li>
@@ -621,35 +831,20 @@
                         <div class="col-xl-3 col-md-6 col-12">
                             <div class="footer-newsletter footer-col-block">
                                 <div class="footer-heading footer-heading-desktop">
-                                    <h6>Regístrate para recibir correos electrónicos
+                                    <h6> Conecta con Vórtice
                                     </h6>
                                 </div>
-                                <div class="tf-pagination-wrap view-more-button text-center" style="padding-top: 5px !important;">
-                                    <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20Deseo%20suscribirme " >
-                                    <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text"> <i class="icon icon-account"></i> Escribenos</span></button>
+                                <div class="tf-pagination-wrap view-more-button text-center"
+                                     style="padding-top: 5px !important;">
+                                    <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20Deseo%20suscribirme ">
+                                        <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span
+                                                class="text"> <i class="icon icon-account"></i> Escríbenos</span>
+                                        </button>
                                         <br><br>
                                     </a>
                                 </div>
 
-                                <div class="tf-collapse-content">
-                                    <div class="tf-cur">
-                                        <div class="tf-currencies">
-                                            <select class="image-select center style-default type-currencies">
 
-                                                
-                                                <option selected data-thumbnail="/static/static_vortice/images/country/us.svg">USD <span>$ | United States</span>
-                                                </option>
-                                                
-                                            </select>
-                                        </div>
-                                        <div class="tf-languages">
-                                            <select class="image-select center style-default type-languages">
-                                                <option>English</option>                                                        
-                                                <option>Español</option>                               
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -661,7 +856,9 @@
                         <div class="col-12">
                             <div class="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                                 <a href="/" class="footer-menu_item">
-                                    <div class="footer-menu_item">© 2024 Vortice Store. Vortice es una marca de Grupo Benitez</div>
+                                    <div class="footer-menu_item">© 2024 Vortice Store. Vortice es una marca de Grupo
+                                        Benitez
+                                    </div>
                                 </a>
                                 <div class="tf-payment">
                                     <img src="/static/static_vortice/images/payments/visa.png" alt="">
@@ -692,7 +889,7 @@
 <!-- toolbar-bottom -->
 <div class="tf-toolbar-bottom type-1150">
     <div class="toolbar-item active">
-        <a href="/vortice/"  aria-controls="offcanvasLeft">
+        <a href="/vortice/" aria-controls="offcanvasLeft">
             <div class="toolbar-icon">
                 <i class="icon-shop"></i>
             </div>
@@ -703,7 +900,7 @@
     {% for cliente in secciones %}
 
         <div class="toolbar-item">
-            <a href="/vortice/seccion/{{ cliente.cliente }}"  aria-controls="offcanvasLeft">
+            <a href="/vortice/seccion/{{ cliente.cliente }}" aria-controls="offcanvasLeft">
                 <div class="toolbar-icon">
                     <i class="icon-account"></i>
                 </div>
@@ -713,7 +910,7 @@
     {% endfor %}
 
     <div class="toolbar-item">
-        <a href="/vortice/blog/"  aria-controls="offcanvasLeft">
+        <a href="/vortice/blog/" aria-controls="offcanvasLeft">
             <div class="toolbar-icon">
                 <i class="icon-view"></i>
             </div>
@@ -721,14 +918,14 @@
         </a>
     </div>
     <div class="toolbar-item">
-        <a href="/vortice/nosotros/" >
+        <a href="/vortice/nosotros/">
             <div class="toolbar-icon">
                 <i class="icon-bag"></i>
             </div>
             <div class="toolbar-label">Vortice</div>
         </a>
     </div>
-   
+
 </div>
 <!-- /toolbar-bottom -->
 
@@ -746,25 +943,29 @@
                 {% for cliente in secciones %}
 
                     <li class="nav-mb-item">
-                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current" data-bs-toggle="collapse"
-                        aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
+                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current"
+                           data-bs-toggle="collapse"
+                           aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
                             <span>{{ cliente.cliente }}</span>
                             <span class="btn-open-sub"></span>
                         </a>
                         <div id="dropdown-menu-{{ cliente.cliente }}" class="collapse">
                             <ul class="sub-nav-menu">
-                                {% for tipo_articulo in tipo_articulos_menu %}                                        
+                                {% for tipo_articulo in tipo_articulos_menu %}
                                     {% if tipo_articulo.coleccion.cliente == cliente %}
                                         {% if tipo_articulo.activo_menu %}
-                                            <li><a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/" class="sub-nav-link">{{ tipo_articulo.nombre_articulo }}</a> </li>
+                                            <li>
+                                                <a href="/vortice/seccion/{{ tipo_articulo.coleccion.cliente.cliente }}/prenda/{{ tipo_articulo.nombre_articulo }}/"
+                                                   class="sub-nav-link">{{ tipo_articulo.nombre_articulo }}</a></li>
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </ul>
                         </div>
 
-                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current" data-bs-toggle="collapse"
-                        aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
+                        <a href="#dropdown-menu-{{ cliente.cliente }}" class="collapsed mb-menu-link current"
+                           data-bs-toggle="collapse"
+                           aria-expanded="true" aria-controls="dropdown-menu-{{ cliente.cliente }}">
                             <span> Colecciones </span>
                             <span class="btn-open-sub"></span>
                         </a>
@@ -774,7 +975,8 @@
                                     {% if coleccion.cliente == cliente %}
                                         {% if coleccion.cliente.cliente %}
                                             <li>
-                                                <a href="/vortice/seccion/{{ coleccion.cliente.cliente}}/coleccion/{{ coleccion.tema_colec  }}/" class="menu-link-text link">- {{ coleccion.tema_colec  }}</a>  
+                                                <a href="/vortice/seccion/{{ coleccion.cliente.cliente }}/coleccion/{{ coleccion.tema_colec }}/"
+                                                   class="menu-link-text link">- {{ coleccion.tema_colec }}</a>
                                                 <br>
                                             </li>
                                         {% endif %}
@@ -785,7 +987,7 @@
 
                     </li>
                 {% endfor %}
-           
+
                 <li class="nav-mb-item">
                     <a href="/vortice/blog/"
                        class="mb-menu-link">Moda
@@ -805,16 +1007,17 @@
             </ul>
             <br><br><br>
             <div class="mb-other-content">
-               
+
                 <ul class="mb-info">
                     <li>Dirección: Machala, <br> El Oro - Ecuador</li>
-                    <li>Email: <b>{{vortice.correo}}</b></li>
-                    <li>Celuar: <b>(593) {{vortice.celular}}</b></li>
+                    <li>Email: <b>{{ vortice.correo }}</b></li>
+                    <li>Celuar: <b>(593) {{ vortice.celular }}</b></li>
                 </ul>
             </div>
         </div>
         <div class="mb-bottom">
-            <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20 " class="site-nav-icon"><i class="icon icon-account"></i>Escribenos</a>
+            <a href="https://api.whatsapp.com/send?phone=+593{{ vortice.whatsapp }}&text=Hola%20Vortice-Store%20 "
+               class="site-nav-icon"><i class="icon icon-account"></i>Escribenos</a>
             <div class="bottom-bar-language">
                 <div class="tf-currencies">
                     <select class="image-select center style-default type-currencies">
@@ -834,197 +1037,204 @@
 <!-- /mobile menu -->
 
 
-
-
- <!-- modal quick_view -->
-    <div class="modal fade modalDemo" id="quick_view">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="header">
-                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
-                </div>
-                <div class="wrap">
-                    <div class="tf-product-media-wrap">
-                        <div class="swiper tf-single-slide">
-                            <div class="swiper-wrapper" >
-                                <div class="swiper-slide">
-                                    <div class="item">
-                                        <img src="/media/{{ vortice.img_termi_condi  }}" alt="">
-                                    </div>
+<!-- modal quick_view -->
+<div class="modal fade modalDemo" id="quick_view">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="header">
+                <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+            </div>
+            <div class="wrap">
+                <div class="tf-product-media-wrap">
+                    <div class="swiper tf-single-slide">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="item">
+                                    <img src="/media/{{ vortice.img_termi_condi }}" alt="">
                                 </div>
-
                             </div>
-                            <div class="swiper-button-next button-style-arrow single-slide-prev"></div>
-                            <div class="swiper-button-prev button-style-arrow single-slide-next"></div>
+
                         </div>
+                        <div class="swiper-button-next button-style-arrow single-slide-prev"></div>
+                        <div class="swiper-button-prev button-style-arrow single-slide-next"></div>
                     </div>
-                    <div class="tf-product-info-wrap position-relative">
-                        <div class="tf-product-info-list">
-                            <div class="tf-product-info-title">
-                                <h5>Política de Envíos:</h5>
-                            </div>
-                            <div class="text">
-                               <strong>Cobertura:</strong>
-                                <p style="margin: 0px !important;">Realizamos envíos a todo Ecuador y al extranjero.</p>
-                                <br>
-                                <strong>Tiempos de entrega:</strong>
-                                <p style="margin: 0px !important;">Ecuador: Entre 3 y 7 días hábiles </p>
-                                <p style="margin: 0px !important;"> Internacional: Entre 10 y 15 días hábiles.</p>
-                                <br>
-                                <strong>Costo de envío:</strong>
-                                <p style="margin: 0px !important;">Envíos nacionales:El Costo de envio es de $5 y Gratis en pedidos mayores a $50.</p>
-                                <p style="margin: 0px !important;">Internacionales: Calculado según el destino y peso del paquete.</p>
-                                <br>
-                            </div>
+                </div>
+                <div class="tf-product-info-wrap position-relative">
+                    <div class="tf-product-info-list">
+                        <div class="tf-product-info-title">
+                            <h5>Política de Envíos:</h5>
+                        </div>
+                        <div class="text">
+                            <strong>Cobertura:</strong>
+                            <p style="margin: 0px !important;">Realizamos envíos a todo Ecuador y al extranjero.</p>
+                            <br>
+                            <strong>Tiempos de entrega:</strong>
+                            <p style="margin: 0px !important;">Ecuador: Entre 3 y 7 días hábiles </p>
+                            <p style="margin: 0px !important;"> Internacional: Entre 10 y 15 días hábiles.</p>
+                            <br>
+                            <strong>Costo de envío:</strong>
+                            <p style="margin: 0px !important;">Envíos nacionales:El Costo de envio es de $5 y Gratis en
+                                pedidos mayores a $50.</p>
+                            <p style="margin: 0px !important;">Internacionales: Calculado según el destino y peso del
+                                paquete.</p>
+                            <br>
+                        </div>
 
 
-                            <div class="tf-product-info-title">
-                                <h5>Términos y Condiciones:</h5>
-                            </div>
-                            <div class="text">
-                                <strong>Política de devoluciones:</strong>
-                                <p style="margin: 0px !important;">Por razones de exclusividad, no aceptamos devoluciones de prendas adquiridas en Vórtice. Recomendamos verificar cuidadosamente la talla, el diseño y las especificaciones antes de completar tu compra.</p>
-                                <br>
-                                <strong>Métodos de pago:</strong>
-                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras.</p>
-                                <br>
-                            </div>
+                        <div class="tf-product-info-title">
+                            <h5>Términos y Condiciones:</h5>
+                        </div>
+                        <div class="text">
+                            <strong>Política de devoluciones:</strong>
+                            <p style="margin: 0px !important;">Por razones de exclusividad, no aceptamos devoluciones de
+                                prendas adquiridas en Vórtice. Recomendamos verificar cuidadosamente la talla, el diseño
+                                y las especificaciones antes de completar tu compra.</p>
+                            <br>
+                            <strong>Métodos de pago:</strong>
+                            <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias
+                                bancarias y pagos a través de plataformas seguras.</p>
+                            <br>
+                        </div>
 
-                            <div class="tf-product-info-title">
-                                <h5>Preguntas Frecuentes (FAQ):</h5>
-                            </div>
-                            <div class="text">
-                               <strong>¿Cuánto tiempo tarda en llegar mi pedido?:</strong>
-                                <p style="margin: 0px !important;">Los envíos dentro de Ecuador toman entre 3 y 7 días hábiles. Los internacionales pueden tardar entre 10 y 15 días hábiles.</p>
-                                <br>
-                                <strong>¿Aceptan pedidos personalizados?</strong>
-                                <p style="margin: 0px !important;">¡Sí! Contamos con opciones de personalización. Contáctanos para más detalles.</p>
-                                <br>
-                                <strong>¿Qué hago si mi producto llegó dañado o no es el que pedí?</strong>
-                                <p style="margin: 0px !important;">Escríbenos a nuestro servicio al cliente dentro de las primeras 48 horas tras recibir el pedido. Resolveremos el inconveniente lo antes posible.</p>
-                                <br>
-                                <strong>¿Dónde están ubicados? </strong>
-                                <p style="margin: 0px !important;">Operamos desde Ecuador, pero ofrecemos envíos a nivel nacional e internacional.</p>
-                                <br>
-                                <strong>¿Tienen tiendas físicas?</strong>
-                                <p style="margin: 0px !important;">Actualmente, somos una tienda exclusivamente online.</p>
-                                <br>
-                                <strong>¿Cuáles son los métodos de pago disponibles?</strong>
-                                <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias bancarias y pagos a través de plataformas seguras.</p>
-                                <br>
+                        <div class="tf-product-info-title">
+                            <h5>Preguntas Frecuentes (FAQ):</h5>
+                        </div>
+                        <div class="text">
+                            <strong>¿Cuánto tiempo tarda en llegar mi pedido?:</strong>
+                            <p style="margin: 0px !important;">Los envíos dentro de Ecuador toman entre 3 y 7 días
+                                hábiles. Los internacionales pueden tardar entre 10 y 15 días hábiles.</p>
+                            <br>
+                            <strong>¿Aceptan pedidos personalizados?</strong>
+                            <p style="margin: 0px !important;">¡Sí! Contamos con opciones de personalización.
+                                Contáctanos para más detalles.</p>
+                            <br>
+                            <strong>¿Qué hago si mi producto llegó dañado o no es el que pedí?</strong>
+                            <p style="margin: 0px !important;">Escríbenos a nuestro servicio al cliente dentro de las
+                                primeras 48 horas tras recibir el pedido. Resolveremos el inconveniente lo antes
+                                posible.</p>
+                            <br>
+                            <strong>¿Dónde están ubicados? </strong>
+                            <p style="margin: 0px !important;">Operamos desde Ecuador, pero ofrecemos envíos a nivel
+                                nacional e internacional.</p>
+                            <br>
+                            <strong>¿Tienen tiendas físicas?</strong>
+                            <p style="margin: 0px !important;">Actualmente, somos una tienda exclusivamente online.</p>
+                            <br>
+                            <strong>¿Cuáles son los métodos de pago disponibles?</strong>
+                            <p style="margin: 0px !important;">Aceptamos tarjetas de crédito, débito, transferencias
+                                bancarias y pagos a través de plataformas seguras.</p>
+                            <br>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /modal quick_view -->
-
+</div>
+<!-- /modal quick_view -->
 
 
 <!-- modal find_size -->
-    <div class="modal fade modalDemo tf-product-modal" id="info_compra">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="header">
-                    <div class="demo-title"> Instrucciones de Pago</div>
-                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+<div class="modal fade modalDemo tf-product-modal" id="info_compra">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="header">
+                <div class="demo-title"> Instrucciones de Pago</div>
+                <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+            </div>
+            <div class="tf-rte">
+                <h4></h4>
+                <h6>1. "Depósito o Transferencia Bancaria".</h6>
+                <p>✅ El cliente realiza el pago mediante depósito o transferencia bancaria.</p>
+                <p>✅ Debe enviar el comprobante de pago por:</p>
+                <p>✅ WhatsApp o Correo electrónico.</p>
+                <p>• Importante: incluye tu <strong>Número de Pedido: </strong></p>
+                <div class="text-center mt-4" style="margin-bottom: 20px!important;">
+                    <a href="https://wa.me/593993239290?text=Hola,%20mi%20número%20de%20pedido%20es:%20{{ order.id }}"
+                       class="btn btn-primary btn-lg" style="font-size: 18px; padding: 10px 20px; border-radius: 5px;"
+                       target="_blank">Enviar tu comprobante🚀</a>
                 </div>
-                <div class="tf-rte">
-                     <h4></h4>
-                    <h6>1. "Depósito o Transferencia Bancaria".</h6>
-                    <p>✅ El cliente realiza el pago mediante depósito o transferencia bancaria.</p>
-                    <p>✅ Debe enviar el comprobante de pago por:</p>
-                    <p>✅ WhatsApp o Correo electrónico.</p>
-                    <p>• Importante: incluye tu <strong>Número de Pedido: </strong></p>
-                    <div class="text-center mt-4" style="margin-bottom: 20px!important;">
-                        <a href="https://wa.me/593993239290?text=Hola,%20mi%20número%20de%20pedido%20es:%20{{ order.id }}" class="btn btn-primary btn-lg" style="font-size: 18px; padding: 10px 20px; border-radius: 5px;" target="_blank">Enviar tu comprobante🚀</a>
-                    </div>
-                    <p>✅ El equipo de ventas verifica la transacción en la cuenta bancaria.</p>
-                    <h6>2. Confirmación del Pedido</h6>
-                    <p>✅ Una vez validado el pago, Se procede a la preparación del producto y datos de entrega para el envio por transporte</p>
-                    <h6>3. Entrega y Cierre del Pedido</h6>
-                    <p>✅ El cliente recibe su pedido. y Se solicita confirmación de recepción o firma de entrega.</p>
-                    <p></p>
-                    <p></p>
-                </div>
+                <p>✅ El equipo de ventas verifica la transacción en la cuenta bancaria.</p>
+                <h6>2. Confirmación del Pedido</h6>
+                <p>✅ Una vez validado el pago, Se procede a la preparación del producto y datos de entrega para el envio
+                    por transporte</p>
+                <h6>3. Entrega y Cierre del Pedido</h6>
+                <p>✅ El cliente recibe su pedido. y Se solicita confirmación de recepción o firma de entrega.</p>
+                <p></p>
+                <p></p>
             </div>
         </div>
     </div>
-    <!-- /modal find_size -->
+</div>
+<!-- /modal find_size -->
 
 
 <!-- modal find_size -->
-    <div class="modal fade modalDemo tf-product-modal" id="find_size">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="header">
-                    <div class="demo-title">Tabla de tallas</div>
-                    <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
-                </div>
-                <div class="tf-rte">
-                    <div class="tf-table-res-df">
-                        <h6>Guía de tallas</h6>
-                        <table class="tf-sizeguide-table">
-                            <thead>
-                                <tr>
-                                    <th>Tamaño</th>
-                                    <th>Pecho</th>
-                                    <th>Alto</th>
-                                    <th>Manga</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>XS</td>
-                                    <td>2</td>
-                                    <td>32</td>
-                                    <td>24 - 25</td>
-                                </tr>
-                                <tr>
-                                    <td>S</td>
-                                    <td>4</td>
-                                    <td>34 - 35</td>
-                                    <td>26 - 27</td>
-                                </tr>
-                                <tr>
-                                    <td>M</td>
-                                    <td>6</td>
-                                    <td>36 - 37</td>
-                                    <td>28 - 29</td>
-                                </tr>
-                                <tr>
-                                    <td>L</td>
-                                    <td>8</td>
-                                    <td>38 - 29</td>
-                                    <td>30 - 31</td>
-                                </tr>
-                                <tr>
-                                    <td>XL</td>
-                                    <td>10</td>
-                                    <td>40 - 41</td>
-                                    <td>32 - 33</td>
-                                </tr>
-                                <tr>
-                                    <td>XXL</td>
-                                    <td>12</td>
-                                    <td>42 - 43</td>
-                                    <td>34 - 35</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<div class="modal fade modalDemo tf-product-modal" id="find_size">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="header">
+                <div class="demo-title">Tabla de tallas</div>
+                <span class="icon-close icon-close-popup" data-bs-dismiss="modal"></span>
+            </div>
+            <div class="tf-rte">
+                <div class="tf-table-res-df">
+                    <h6>Guía de tallas</h6>
+                    <table class="tf-sizeguide-table">
+                        <thead>
+                        <tr>
+                            <th>Tamaño</th>
+                            <th>Pecho</th>
+                            <th>Alto</th>
+                            <th>Manga</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>XS</td>
+                            <td>2</td>
+                            <td>32</td>
+                            <td>24 - 25</td>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>4</td>
+                            <td>34 - 35</td>
+                            <td>26 - 27</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>6</td>
+                            <td>36 - 37</td>
+                            <td>28 - 29</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>8</td>
+                            <td>38 - 29</td>
+                            <td>30 - 31</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>10</td>
+                            <td>40 - 41</td>
+                            <td>32 - 33</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
+                            <td>12</td>
+                            <td>42 - 43</td>
+                            <td>34 - 35</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /modal find_size -->
-
-
-
-
+</div>
+<!-- /modal find_size -->
 
 
 <!-- /modal find_size -->
@@ -1043,24 +1253,24 @@
 <script type="text/javascript" src="/static/static_vortice/js/main.js"></script>
 
 <script>
-let timeout;
+    let timeout;
 
-document.querySelectorAll('.box-nav-ul .menu-item').forEach(item => {
+    document.querySelectorAll('.box-nav-ul .menu-item').forEach(item => {
 
-    const submenu = item.querySelector('.sub-menu');
+        const submenu = item.querySelector('.sub-menu');
 
-    item.addEventListener('mouseenter', () => {
-        clearTimeout(timeout);
-        submenu.style.display = "block";
+        item.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+            submenu.style.display = "block";
+        });
+
+        item.addEventListener('mouseleave', () => {
+            timeout = setTimeout(() => {
+                submenu.style.display = "none";
+            }, 9000); // ← tiempo de espera en milisegundos
+        });
+
     });
-
-    item.addEventListener('mouseleave', () => {
-        timeout = setTimeout(() => {
-            submenu.style.display = "none";
-        }, 9000); // ← tiempo de espera en milisegundos
-    });
-
-});
 </script>
 
 </body>
