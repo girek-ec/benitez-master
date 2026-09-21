@@ -1,0 +1,578 @@
+{% extends 'girekstudio/demo-branding-agency.html' %}
+{% load static %}
+
+{% block metas %}
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    <meta name="author" content="Girekstudio">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Girekstudio">
+    <meta property="og:title" content="{{ publicacion.titulo }}">
+    <meta property="og:description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    <meta property="og:url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+    {% if publicacion.imagen_horizontal %}
+        <meta property="og:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_horizontal.url }}">
+    {% else %}
+        <meta property="og:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ publicacion.titulo }}">
+    <meta name="twitter:description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    <style>
+        .detalle-girekstudio {
+            --color-girekstudio: #b58a4a;
+            --color-girekstudio-oscuro: #17212b;
+        }
+
+        .detalle-girekstudio .imagen-portada {
+            width: 100%;
+            max-height: 680px;
+            object-fit: cover;
+        }
+
+        .detalle-girekstudio .categoria-articulo {
+            color: var(--color-girekstudio);
+        }
+
+        .detalle-girekstudio .contenido-blog {
+            color: #707070;
+        }
+
+        .detalle-girekstudio .contenido-blog h5 {
+            margin: 38px 0 15px;
+            color: var(--color-girekstudio-oscuro);
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .detalle-girekstudio .contenido-blog h5:first-child {
+            margin-top: 0;
+        }
+
+        .detalle-girekstudio .contenido-blog p {
+            margin-bottom: 22px;
+            text-align: left;
+        }
+
+        .detalle-girekstudio .contenido-blog strong {
+            color: #454545;
+            font-weight: 700;
+        }
+
+        .detalle-girekstudio .contenido-blog em {
+            color: #454545;
+        }
+
+        .detalle-girekstudio .contenido-blog ul {
+            margin: 28px 0;
+            padding: 25px 30px 25px 50px;
+            border-left: 4px solid var(--color-girekstudio);
+            border-radius: 5px;
+            background-color: #f7f4ef;
+        }
+
+        .detalle-girekstudio .contenido-blog li {
+            margin-bottom: 10px;
+            line-height: 1.65;
+        }
+
+        .detalle-girekstudio .video-blog {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 6px;
+            background-color: #000;
+        }
+
+        .detalle-girekstudio .video-blog iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .detalle-girekstudio .galeria-blog img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .detalle-girekstudio .relacionados-girekstudio .blog-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .detalle-girekstudio .linea-decorativa {
+            display: inline-block;
+            width: 55px;
+            height: 2px;
+            background-color: var(--color-girekstudio);
+        }
+
+        @media (max-width: 767px) {
+            .detalle-girekstudio .contenido-blog h5 {
+                margin-top: 32px;
+                font-size: 21px;
+            }
+
+            .detalle-girekstudio .contenido-blog ul {
+                padding: 22px 20px 22px 40px;
+            }
+
+            .detalle-girekstudio .galeria-blog img {
+                height: 280px;
+            }
+
+            .detalle-girekstudio .relacionados-girekstudio .blog-image img {
+                height: 460px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block principal %}
+
+    <main class="detalle-girekstudio">
+
+        <!-- Imagen horizontal de portada -->
+        <section class="top-space-margin half-section py-0">
+            <div class="container">
+                <div class="row g-0">
+
+                    <div class="col-12">
+
+                        {% if publicacion.imagen_horizontal %}
+
+                            <img class="imagen-portada border-radius-2px"
+                                 src="{{ publicacion.imagen_horizontal.url }}"
+                                 alt="{{ publicacion.titulo }}" >
+
+                        {% else %}
+                                 src="{{ publicacion.imagen_principal.url }}"
+                                 alt="{{ publicacion.titulo }} ">
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Título de la publicación -->
+        <section class="pt-50px pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 text-center">
+                        <span class="categoria-articulo fs-14 fw-700 ls-1px text-uppercase mb-15px d-block">
+
+                            <a href="{% url 'blog_categoria' publicacion.categoria.slug %}"
+                               class="categoria-articulo">
+
+                                {{ publicacion.categoria }}
+
+                            </a>
+
+                            <span class="text-medium-gray">
+                                &middot; {{ publicacion.fecha_publicacion|date:'d/m/Y' }}
+                            </span>
+
+                        </span>
+
+                        <span class="linea-decorativa mb-20px"></span>
+
+
+                        <div class="w-140px mx-auto text-center">
+                            <img src="{{ publicacion.imagen_principal.url }}"
+                                 class="rounded-circle w-120px d-block mx-auto"
+                                 alt="Girekstudio"
+                                 data-no-retina="">
+                        </div>
+
+                        <h1 class="alt-font fw-600 ls-minus-2px text-dark-gray mx-auto w-100 mb-4"
+                            style="margin-top: 10px !important;">
+                            {{ publicacion.titulo }}
+                        </h1>
+                        {% if publicacion.subtitulo %}
+                            <p class="fs-20 lh-30 w-100 mx-auto" style="margin-top: -40px !important;">
+                                {{ publicacion.subtitulo }}
+                            </p>
+                        {% endif %}
+                     <!-- Autor -->
+                        <div class="d-flex justify-content-center align-items-center flex-wrap mt-15px">
+
+                            <span class="fs-15 text-medium-gray me-5px">
+                                Escrito por:
+                            </span>
+
+                            <span class="fs-15 fw-700 categoria-articulo">
+                                Mgs. Manuel Benítez Gómez
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido HTML -->
+        <section class="pt-30px pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-12">
+
+                        <div class="contenido-blog fs-15 lh-26 last-paragraph-no-margin">
+                            {{ publicacion.contenido|safe }}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Video -->
+        {% if publicacion.video_embed_url %}
+            <section class="pb-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+
+                            <div class="mb-25px">
+                                <span class="linea-decorativa me-10px"></span>
+
+                                <h5 class="d-inline-block text-dark-gray fw-600 mb-0">
+                                    Historia audiovisual
+                                </h5>
+                            </div>
+
+                            <div class="video-blog">
+                                <iframe
+                                        src="{{ publicacion.video_embed_url }}"
+                                        title="Video: {{ publicacion.titulo }}"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        loading="lazy"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+
+        <!-- Galería -->
+        {% with fotos=publicacion.galeria.all %}
+            {% if fotos %}
+                <section class="galeria-blog top-space-margin right-side-bar">
+                    <div class="container">
+
+                        <!-- Título de la galería -->
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-12">
+                                <span class="linea-decorativa me-10px"></span>
+
+                                <h5 class="d-inline-block text-dark-gray fw-600 mb-0">
+                                    Galería del proyecto
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!-- Imágenes -->
+                        <div class="row justify-content-center">
+                            <div class="col-12 blog-standard">
+
+                                <div class="blog-details mb-12">
+                                    <ul class="image-gallery-style-01 mb-7 gallery-wrapper grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-2col xs-grid-1col gutter-small">
+
+                                        <!-- Elemento requerido por la cuadrícula -->
+                                        <li class="grid-sizer"></li>
+
+                                        {% for foto in fotos %}
+                                            <li class="grid-item transition-inner-all">
+                                                <div class="gallery-box">
+
+                                                    <a href="{{ foto.imagen.url }}"
+                                                       class="galeria-lightbox"
+                                                       data-group="lightbox-gallery"
+                                                       title="{{ foto.titulo|default:publicacion.titulo }}">
+
+                                                        <div class="position-relative gallery-image bg-white overflow-hidden">
+
+                                                            <img src="{{ foto.imagen.url }}"
+                                                                 class="w-100"
+                                                                 alt="{{ foto.titulo|default:publicacion.titulo }}"
+                                                                 loading="lazy">
+
+                                                            <div class="d-flex align-items-center justify-content-center position-absolute top-0px left-0px w-100 h-100 gallery-hover move-bottom-top">
+
+                                                                <div class="d-flex align-items-center justify-content-center w-50px h-50px rounded-circle bg-dark-gray">
+                                                                    <i class="feather icon-feather-search text-white icon-small"></i>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </a>
+
+                                                    {% if foto.titulo %}
+                                                        <div class="text-center mt-10px fs-14 text-medium-gray">
+                                                            {{ foto.titulo }}
+                                                        </div>
+                                                    {% endif %}
+
+                                                </div>
+                                            </li>
+                                        {% empty %}
+                                            <li class="col-12">
+                                                <p class="text-center text-medium-gray">
+                                                    No existen fotografías disponibles.
+                                                </p>
+                                            </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            {% endif %}
+        {% endwith %}
+
+
+
+
+        <!-- Categoría y regreso -->
+        <section class="half-section">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <div class="col-12 blog-standard">
+
+                        <div class="h-2px w-100 bg-extra-medium-gray mb-30px"></div>
+
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+
+                            <div class="tag-cloud">
+
+                                <a href="{% url 'blog_categoria' publicacion.categoria.slug %}">
+                                    {{ publicacion.categoria }}
+                                </a>
+
+                            </div>
+
+                            <a href="{% url 'blog_lista' %}"
+                               class="btn btn-small btn-dark-gray btn-switch-text btn-rounded">
+
+                                <span>
+                                    <span class="btn-double-text"
+                                          data-text="Volver al archivo">
+                                        Volver al archivo
+                                    </span>
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Publicaciones relacionadas -->
+        {% if relacionados %}
+
+            <section class="relacionados-girekstudio bg-very-light-gray pt-50px pb-50px">
+
+                <div class="container">
+
+                    <!-- Encabezado -->
+                    <div class="row justify-content-center mb-4">
+
+                        <div class="col-12 text-center">
+
+                    <span class="text-uppercase fw-700 ls-2px fs-13 d-block mb-10px"
+                          style="color: #b58a4a;">
+                        Continúa explorando
+                    </span>
+
+                            <h5 class="fw-600 text-dark-gray alt-font ls-minus-1px">
+                                Otros artículos relacionados
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Publicaciones relacionadas -->
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <ul class="blog-simple blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+
+                                <li class="grid-sizer"></li>
+
+                                {% for blog in relacionados %}
+
+                                    <li class="grid-item">
+
+                                        <figure class="position-relative mb-0 box-hover">
+
+                                            <!-- Imagen -->
+                                            <div class="blog-image">
+
+                                                <img src="{{ blog.imagen_principal.url }}"
+                                                     alt="{{ blog.titulo }}"
+                                                     loading="lazy">
+
+                                                <span class="box-overlay bg-dark-slate-blue"></span>
+
+                                                <span class="bg-gradient-gray-light-dark-transparent position-absolute opacity-6 top-0px left-0px w-100 h-100"></span>
+
+                                            </div>
+
+                                            <figcaption class="d-flex flex-column h-100">
+
+                                                <!-- Icono central -->
+                                                <div class="my-auto w-100 text-center blog-hover-icon">
+
+                                                    <a href="{{ blog.get_absolute_url }}"
+                                                       class="d-inline-block"
+                                                       aria-label="Leer {{ blog.titulo }}">
+
+                                                        <i class="line-icon-Arrow-OutRight icon-extra-large text-white"></i>
+
+                                                    </a>
+
+                                                </div>
+
+                                                <!-- Información -->
+                                                <div class="position-relative post-content p-14 text-center last-paragraph-no-margin">
+
+                                                    <div class="position-relative z-index-2 overflow-hidden">
+
+                                                        <!-- Categoría -->
+                                                        <a href="{% url 'blog_categoria' blog.categoria.slug %}"
+                                                           class="d-inline-block fs-12 text-gradient-light-blue-light-turquoise mb-5px text-uppercase fw-600">
+
+                                                            {{ blog.categoria }}
+
+                                                        </a>
+
+                                                        <!-- Título -->
+                                                        <a href="{{ blog.get_absolute_url }}"
+                                                           class="card-title fs-20 alt-font fw-500 text-white mb-0 d-block">
+
+                                                            {{ blog.titulo }}
+
+                                                        </a>
+
+                                                        <!-- Botón -->
+                                                        <div class="hover-text">
+
+                                                            <a href="{{ blog.get_absolute_url }}"
+                                                               class="btn btn-link-gradient btn-medium text-white thin mt-20px mb-5px opacity-6 fw-300">
+
+                                                                Continuar leyendo
+                                                                <span class="bg-white"></span>
+
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="box-overlay bg-dark-slate-blue"></div>
+
+                                                </div>
+
+                                            </figcaption>
+
+                                        </figure>
+
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        {% endif %}
+
+    </main>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!window.jQuery || !jQuery.fn.magnificPopup) {
+                console.error('No se pudo cargar Magnific Popup para la galería.');
+                return;
+            }
+
+            $('.galeria-blog').magnificPopup({
+                delegate: 'a.galeria-lightbox',
+                type: 'image',
+                closeOnContentClick: false,
+                closeBtnInside: true,
+                fixedContentPos: true,
+                mainClass: 'mfp-with-zoom',
+                removalDelay: 300,
+                image: {
+                    verticalFit: true,
+                    titleSrc: function (item) {
+                        return item.el.attr('title') || '';
+                    }
+                },
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0, 1],
+                    tPrev: 'Anterior',
+                    tNext: 'Siguiente',
+                    tCounter: '%curr% de %total%'
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,410 @@
+{% extends 'colexin/demo-decor-store.html' %}
+{% load static %}
+
+{% block metas %}
+    <meta name="description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+    <meta name="author" content="Colexin">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Colexin">
+    <meta property="og:title" content="{{ publicacion.titulo }}">
+    <meta property="og:description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:image"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ publicacion.titulo }}">
+    <meta name="twitter:description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+    <meta name="twitter:image"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+
+    <style>
+        .detalle-colexin {
+            --colexin-dorado: #b58a4a;
+            --colexin-oscuro: #17212b;
+            --colexin-crema: #f7f3ec;
+        }
+
+        .detalle-colexin .hero-blog img {
+            display: block;
+            width: 100%;
+            max-height: 680px;
+            object-fit: cover;
+        }
+
+        .detalle-colexin .hero-blog.imagen-principal img {
+            max-height: 720px;
+            object-fit: contain;
+            background-color: var(--colexin-crema);
+        }
+
+        .detalle-colexin .dato-publicacion,
+        .detalle-colexin .enlace-categoria {
+            color: var(--colexin-dorado);
+        }
+
+        .detalle-colexin .contenido-blog {
+            color: #525252;
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        .detalle-colexin .contenido-blog h2,
+        .detalle-colexin .contenido-blog h3,
+        .detalle-colexin .contenido-blog h4,
+        .detalle-colexin .contenido-blog h5 {
+            margin-top: 38px;
+            margin-bottom: 15px;
+            color: var(--colexin-oscuro);
+            font-family: var(--alt-font);
+            font-size: 22px;
+            line-height: 30px;
+            font-weight: 600;
+            letter-spacing: -.3px;
+        }
+
+        .detalle-colexin .contenido-blog h2:first-child,
+        .detalle-colexin .contenido-blog h3:first-child,
+        .detalle-colexin .contenido-blog h4:first-child,
+        .detalle-colexin .contenido-blog h5:first-child {
+            margin-top: 0;
+        }
+
+        .detalle-colexin .contenido-blog p {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .detalle-colexin .contenido-blog ul,
+        .detalle-colexin .contenido-blog ol {
+            margin: 0 0 24px 22px;
+            padding: 0;
+        }
+
+        .detalle-colexin .contenido-blog li {
+            margin-bottom: 8px;
+        }
+
+        .detalle-colexin .contenido-blog strong {
+            color: #303942;
+            font-weight: 700;
+        }
+
+        .detalle-colexin .contenido-blog blockquote {
+            margin: 30px 0;
+            padding: 20px 25px;
+            border-left: 3px solid var(--colexin-dorado);
+            background-color: var(--colexin-crema);
+            color: var(--colexin-oscuro);
+            font-style: italic;
+        }
+
+        .detalle-colexin .contenido-blog img {
+            max-width: 100%;
+            height: auto;
+            margin: 25px auto;
+            border-radius: 6px;
+        }
+
+        .detalle-colexin .contenido-blog iframe {
+            max-width: 100%;
+        }
+
+        .detalle-colexin .video-blog {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 56.25%;
+            border-radius: 6px;
+            background-color: #000;
+        }
+
+        .detalle-colexin .video-blog iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .detalle-colexin .galeria-blog img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .detalle-colexin .separador-blog {
+            width: 100%;
+            height: 2px;
+            background-color: var(--colexin-oscuro);
+        }
+
+        .detalle-colexin .relacionados-blog .blog-image img {
+            width: 100%;
+            height: 470px;
+            object-fit: cover;
+        }
+
+        .detalle-colexin .relacionados-blog .box-overlay {
+            background-color: var(--colexin-oscuro);
+        }
+
+        .detalle-colexin .relacionados-blog .dato-relacionado {
+            color: #d8b474 !important;
+        }
+
+        @media (max-width: 767px) {
+            .detalle-colexin .titulo-publicacion {
+                font-size: 36px;
+                line-height: 42px;
+            }
+
+            .detalle-colexin .contenido-blog {
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .detalle-colexin .contenido-blog h2,
+            .detalle-colexin .contenido-blog h3,
+            .detalle-colexin .contenido-blog h4,
+            .detalle-colexin .contenido-blog h5 {
+                font-size: 20px;
+                line-height: 27px;
+            }
+
+            .detalle-colexin .galeria-blog img {
+                height: 280px;
+            }
+
+            .detalle-colexin .relacionados-blog .blog-image img {
+                height: 440px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block principal %}
+    <main class="detalle-colexin">
+
+        {% if publicacion.imagen_horizontal %}
+            <section class="top-space-margin half-section py-0 hero-blog">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{ publicacion.imagen_horizontal.url }}"
+                                 alt="{{ publicacion.titulo }}">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% else %}
+            <section class="top-space-margin half-section pb-0 hero-blog imagen-principal">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <img class="border-radius-6px"
+                                 src="{{ publicacion.imagen_principal.url }}"
+                                 alt="{{ publicacion.titulo }}">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        <section class="pt-50px pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 text-center">
+                        <span class="dato-publicacion fs-14 mb-15px d-inline-block text-uppercase fw-700 ls-1px">
+                            {{ publicacion.fecha_publicacion|date:'d/m/Y' }} ·
+                            <a href="{% url 'blog_categoria_colexin' publicacion.categoria.slug %}"
+                               class="enlace-categoria fw-700">
+                                {{ publicacion.categoria }}
+                            </a>
+                        </span>
+
+                        <h1 class="titulo-publicacion alt-font fw-700 ls-minus-2px text-dark-gray mx-auto w-85 xl-w-100 mb-4">
+                            {{ publicacion.titulo }}
+                        </h1>
+
+                        {% if publicacion.subtitulo %}
+                            <p class="fs-19 lh-30 w-80 mx-auto xl-w-100">
+                                {{ publicacion.subtitulo }}
+                            </p>
+                        {% endif %}
+
+                        <i class="feather icon-feather-more-horizontal icon-double-large text-light-gray d-inline-block mt-3"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-30px pb-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
+                        <article class="contenido-blog last-paragraph-no-margin">
+                            {{ publicacion.contenido|safe }}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if publicacion.video_embed_url %}
+            <section class="pb-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10">
+                            <div class="video-blog">
+                                <iframe src="{{ publicacion.video_embed_url }}"
+                                        title="Video: {{ publicacion.titulo }}"
+                                        loading="lazy"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        {% if publicacion.galeria.all %}
+            <section class="galeria-blog pb-0">
+                <div class="container">
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-12 col-md-8 text-center">
+                            <span class="text-uppercase fw-700 fs-13 ls-2px"
+                                  style="color: #b58a4a;">
+                                Detalles de la colección
+                            </span>
+                            <h5 class="alt-font fw-600 text-dark-gray mt-10px">
+                                Galería de imágenes
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center g-4">
+                        {% for foto in publicacion.galeria.all %}
+                            <div class="col-12 col-lg-6">
+                                <figure class="mb-0">
+                                    <img src="{{ foto.imagen.url }}"
+                                         class="border-radius-6px"
+                                         alt="{{ foto.titulo|default:publicacion.titulo }}"
+                                         loading="lazy">
+
+                                    {% if foto.titulo %}
+                                        <figcaption class="text-center mt-10px fs-14 text-medium-gray">
+                                            {{ foto.titulo }}
+                                        </figcaption>
+                                    {% endif %}
+                                </figure>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        <section class="half-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
+                        <div class="separador-blog mb-30px"></div>
+
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <div class="tag-cloud">
+                                <a href="{% url 'blog_categoria_colexin' publicacion.categoria.slug %}">
+                                    {{ publicacion.categoria }}
+                                </a>
+                            </div>
+
+                            <a href="{% url 'blog_lista_colexin' %}"
+                               class="btn btn-small btn-dark-gray btn-switch-text btn-rounded">
+                                <span>
+                                    <span class="btn-double-text" data-text="Volver al blog">
+                                        Volver al blog
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if relacionados %}
+            <section class="relacionados-blog bg-very-light-gray border-radius-6px">
+                <div class="container-fluid px-4">
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-12 col-md-7 text-center">
+                            <span class="ls-2px text-uppercase fw-700 lh-22 mb-10px d-block"
+                                  style="color: #b58a4a;">
+                                También puede interesarte
+                            </span>
+                            <h5 class="fw-600 text-dark-gray alt-font ls-minus-1px">
+                                Publicaciones relacionadas
+                            </h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="blog-simple blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                                <li class="grid-sizer"></li>
+
+                                {% for blog in relacionados %}
+                                    <li class="grid-item">
+                                        <figure class="position-relative mb-0 box-hover">
+                                            <div class="blog-image">
+                                                <img src="{{ blog.imagen_principal.url }}"
+                                                     alt="{{ blog.titulo }}"
+                                                     loading="lazy">
+                                                <span class="box-overlay"></span>
+                                                <span class="bg-gradient-gray-light-dark-transparent position-absolute opacity-7 top-0px left-0px w-100 h-100"></span>
+                                            </div>
+
+                                            <figcaption class="d-flex flex-column h-100">
+                                                <div class="my-auto w-100 text-center blog-hover-icon">
+                                                    <a href="{{ blog.get_absolute_url }}"
+                                                       class="d-inline-block"
+                                                       aria-label="Leer {{ blog.titulo }}">
+                                                        <i class="line-icon-Arrow-OutRight icon-extra-large text-white"></i>
+                                                    </a>
+                                                </div>
+
+                                                <div class="position-relative post-content p-14 text-center last-paragraph-no-margin">
+                                                    <div class="position-relative z-index-2 overflow-hidden">
+                                                        <a href="{% url 'blog_categoria_colexin' blog.categoria.slug %}"
+                                                           class="dato-relacionado d-inline-block fs-13 mb-8px text-uppercase fw-700 ls-1px">
+                                                            {{ blog.categoria }} · {{ blog.fecha_publicacion|date:'d/m/Y' }}
+                                                        </a>
+
+                                                        <a href="{{ blog.get_absolute_url }}"
+                                                           class="card-title fs-20 alt-font fw-600 text-white mb-0 d-block">
+                                                            {{ blog.titulo }}
+                                                        </a>
+
+                                                        <div class="hover-text">
+                                                            <a href="{{ blog.get_absolute_url }}"
+                                                               class="btn btn-link-gradient btn-medium text-white thin mt-20px mb-5px opacity-8 fw-400">
+                                                                Continuar leyendo
+                                                                <span class="bg-white"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="box-overlay"></div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    </main>
+{% endblock %}

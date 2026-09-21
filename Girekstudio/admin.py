@@ -31,6 +31,10 @@ class Producto_ImagenInline(admin.StackedInline):
     model = Producto_Imagen
     extra = 0
 
+class ImagenBlogInline(admin.StackedInline):
+    model = ImagenBlog
+    extra = 0
+
 @admin.register(Editables)
 class EditablesAdmin(admin.ModelAdmin):
     list_display = Attr(Editables)
@@ -147,3 +151,26 @@ class Producto_ImagenAdmin(admin.ModelAdmin):
 class SliderAdmin(admin.ModelAdmin):
     list_display = Attr(Slider)
     list_display_links = Attr(Slider)
+
+@admin.register(CategoriaBlog)
+class CategoriaBlogAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'slug', 'activo')
+    list_filter = ('activo',)
+    search_fields = ('nombre',)
+    prepopulated_fields = {'slug': ('nombre',)}
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'categoria', 'fecha_publicacion', 'activo', 'destacado', 'vista_previa')
+    list_filter = ('activo', 'destacado', 'categoria', 'fecha_publicacion')
+    search_fields = ('titulo', 'subtitulo', 'contenido')
+    date_hierarchy = 'fecha_publicacion'
+    prepopulated_fields = {'slug': ('titulo',)}
+    list_editable = ('activo', 'destacado')
+    inlines = [ImagenBlogInline]
+
+@admin.register(ImagenBlog)
+class ImagenBlogAdmin(admin.ModelAdmin):
+    list_display = ('blog', 'titulo', 'orden', 'vista_previa')
+    list_filter = ('blog',)
+    search_fields = ('blog__titulo', 'titulo')

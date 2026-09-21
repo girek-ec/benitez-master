@@ -1,0 +1,281 @@
+{% extends 'colexin/demo-decor-store.html' %}
+{% load static %}
+
+{% block metas %}
+    <meta name="description"
+          content="Artículos sobre coleccionismo, numismática, monedas, billetes, medallas y objetos históricos.">
+    <meta name="author" content="Colexin">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Colexin">
+    <meta property="og:title" content="Blog de coleccionismo y numismática | Colexin">
+    <meta property="og:description"
+          content="Descubre la historia y el valor cultural de monedas, billetes y objetos de colección.">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        .blog-colexin {
+            --colexin-dorado: #b58a4a;
+            --colexin-oscuro: #17212b;
+            --colexin-crema: #f7f3ec;
+        }
+
+        .blog-colexin .titulo-principal {
+            color: var(--colexin-oscuro);
+        }
+
+        .blog-colexin .linea-decorativa {
+            display: inline-block;
+            width: 55px;
+            height: 2px;
+            margin-bottom: 18px;
+            background-color: var(--colexin-dorado);
+        }
+
+        .blog-colexin .filtros-categorias a {
+            display: inline-block;
+            margin: 4px;
+            padding: 8px 17px;
+            border: 1px solid #d8d8d8;
+            border-radius: 30px;
+            color: #555;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all .3s ease;
+        }
+
+        .blog-colexin .filtros-categorias a:hover,
+        .blog-colexin .filtros-categorias a.activo {
+            border-color: var(--colexin-oscuro);
+            color: #fff;
+            background-color: var(--colexin-oscuro);
+        }
+
+        .blog-colexin .blog-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+
+        .blog-colexin .dato-publicacion {
+            color: #d8b474 !important;
+        }
+
+        .blog-colexin .distintivo {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 5;
+            padding: 6px 13px;
+            border-radius: 20px;
+            color: #fff;
+            background-color: var(--colexin-dorado);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .blog-colexin .box-overlay {
+            background-color: var(--colexin-oscuro);
+        }
+
+        .blog-colexin .sin-publicaciones {
+            list-style: none;
+            background-color: var(--colexin-crema);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 991px) {
+            .blog-colexin .blog-image img {
+                height: 430px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .blog-colexin .titulo-principal {
+                font-size: 38px;
+                line-height: 44px;
+            }
+
+            .blog-colexin .blog-image img {
+                height: 460px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block principal %}
+    <main class="blog-colexin">
+
+        <section class="pb-0 top-space-margin md-pt-0">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-xl-7 col-lg-9 text-center">
+                        <span class="linea-decorativa"></span>
+                        <span class="d-block text-uppercase fs-13 fw-700 ls-2px mb-15px"
+                              style="color: #b58a4a;">
+                            Archivo histórico Colexin
+                        </span>
+
+                        {% if categoria_actual %}
+                            <h1 class="titulo-principal alt-font ls-minus-2px fw-700">
+                                {{ categoria_actual.nombre }}
+                            </h1>
+                            <p class="fs-18 lh-30 w-85 md-w-100 mx-auto">
+                                Publicaciones, piezas e historias relacionadas con esta categoría.
+                            </p>
+                        {% else %}
+                            <h1 class="titulo-principal alt-font ls-minus-2px fw-700">
+                                Historias que conservan valor
+                            </h1>
+                            <p class="fs-18 lh-30 w-85 md-w-100 mx-auto">
+                                Descubre el origen, los detalles y el valor cultural de monedas,
+                                billetes, medallas y objetos que forman parte de nuestra memoria histórica.
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-30px pb-50px">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center filtros-categorias">
+                        <a href="{% url 'blog_lista_colexin' %}"
+                           class="{% if not categoria_actual %}activo{% endif %}">
+                            Todas
+                        </a>
+
+                        {% for categoria in categorias_blog %}
+                            <a href="{% url 'blog_categoria_colexin' categoria.slug %}"
+                               class="{% if categoria_actual and categoria_actual.pk == categoria.pk %}activo{% endif %}">
+                                {{ categoria.nombre }}
+                                <span>({{ categoria.total_publicaciones }})</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-0 ps-7 pe-7 xl-ps-2 xl-pe-2 xs-px-0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="blog-simple blog-wrapper grid-loading grid grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            <li class="grid-sizer"></li>
+
+                            {% for blog in publicaciones %}
+                                <li class="grid-item">
+                                    <figure class="position-relative mb-0 box-hover">
+                                        <div class="blog-image">
+                                            <img src="{{ blog.imagen_principal.url }}"
+                                                 alt="{{ blog.titulo }}"
+                                                 loading="lazy">
+
+                                            {% if blog.destacado %}
+                                                <span class="distintivo">Destacado</span>
+                                            {% endif %}
+
+                                            <span class="box-overlay"></span>
+                                            <span class="bg-gradient-gray-light-dark-transparent position-absolute opacity-7 top-0px left-0px w-100 h-100"></span>
+                                        </div>
+
+                                        <figcaption class="d-flex flex-column h-100">
+                                            <div class="my-auto w-100 text-center blog-hover-icon">
+                                                <a href="{{ blog.get_absolute_url }}"
+                                                   class="d-inline-block"
+                                                   aria-label="Leer {{ blog.titulo }}">
+                                                    <i class="line-icon-Arrow-OutRight icon-extra-large text-white"></i>
+                                                </a>
+                                            </div>
+
+                                            <div class="position-relative post-content p-14 text-center last-paragraph-no-margin">
+                                                <div class="position-relative z-index-2 overflow-hidden">
+                                                    <a href="{% url 'blog_categoria_colexin' blog.categoria.slug %}"
+                                                       class="dato-publicacion d-inline-block fs-13 mb-10px text-uppercase fw-700 ls-1px">
+                                                        {{ blog.categoria }} · {{ blog.fecha_publicacion|date:'d/m/Y' }}
+                                                    </a>
+
+                                                    <a href="{{ blog.get_absolute_url }}"
+                                                       class="card-title fs-20 alt-font fw-600 text-white mb-0 d-block">
+                                                        {{ blog.titulo }}
+                                                    </a>
+
+                                                    <div class="hover-text">
+                                                        {% if blog.subtitulo %}
+                                                            <p class="text-white opacity-7 fs-14 lh-22 mt-15px mb-10px">
+                                                                {{ blog.subtitulo|truncatechars:100 }}
+                                                            </p>
+                                                        {% endif %}
+
+                                                        <a href="{{ blog.get_absolute_url }}"
+                                                           class="btn btn-link-gradient btn-medium text-white thin mt-10px mb-5px opacity-8 fw-400">
+                                                            Descubrir su historia
+                                                            <span class="bg-white"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-overlay"></div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            {% empty %}
+                                <li class="sin-publicaciones w-100 text-center py-5 px-4">
+                                    <i class="line-icon-Old-Camera icon-extra-large text-medium-gray mb-20px"></i>
+                                    <h5 class="text-dark-gray fw-600">
+                                        Todavía no existen publicaciones.
+                                    </h5>
+                                    <p>
+                                        Próximamente compartiremos nuevas historias y piezas de colección.
+                                    </p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% if publicaciones.has_other_pages %}
+                        <div class="col-12 mt-5 d-flex justify-content-center">
+                            <nav aria-label="Paginación del blog">
+                                <ul class="pagination pagination-style-01 fs-13 fw-500 mb-0">
+                                    {% if publicaciones.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="?page={{ publicaciones.previous_page_number }}"
+                                               aria-label="Página anterior">
+                                                <i class="feather icon-feather-arrow-left fs-18"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for numero in publicaciones.paginator.page_range %}
+                                        <li class="page-item {% if publicaciones.number == numero %}active{% endif %}">
+                                            <a class="page-link" href="?page={{ numero }}">
+                                                {{ numero|stringformat:'02d' }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+
+                                    {% if publicaciones.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="?page={{ publicaciones.next_page_number }}"
+                                               aria-label="Página siguiente">
+                                                <i class="feather icon-feather-arrow-right fs-18"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

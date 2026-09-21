@@ -95,6 +95,7 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a href="/girekstudio/portafolio/" class="nav-link">Portafolio</a></li>
+                        <li class="nav-item"><a href="/girekstudio/blog/" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="/girekstudio/tienda/" class="nav-link">Tienda</a></li>
                         <li class="nav-item"><a href="/girekstudio/contacto/" class="nav-link">Contacto</a></li>
                     </ul>
@@ -183,7 +184,7 @@
 <section class="pt-0 border-top border-color-extra-medium-gray mt-6 md-mt-0 sm-border-top-0">
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-0">
-            
+
         </div>
     </div>
 </section>
@@ -493,7 +494,7 @@
                         <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Enviar un mensaje</span>
                        Escribir</a>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md-2 offset-lg-1 col-6 order-3 order-md-2">
@@ -503,6 +504,7 @@
                     <li><a href="/girekstudio/estudio/">Agencia</a></li>
                     <li><a href="/girekstudio/servicios/">Servicios</a></li>
                     <li><a href="/girekstudio/portafolio/">Portafolio</a></li>
+                    <li><a href="/girekstudio/blog/">Blog</a></li>
                     <li><a href="/girekstudio/contacto/">Contacto</a></li>
                 </ul>
             </div>
@@ -510,10 +512,10 @@
                 <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Síguenos</span>
                 <ul>
                     <li><a href="https://www.pinterest.com/{{ contacto_empresa.pinterest }}" target="_blank">Pinterest</a></li>
-                    <li><a href="http://www.twitter.com/{{ contacto_empresa.twitter }}" target="_blank">Twitter</a></li>
-                    <li><a href="http://www.facebook.com/{{ contacto_empresa.facebook }}" target="_blank">Facebook</a></li>
-                    <li><a href="http://www.instagram.com/{{ contacto_empresa.instagram }}" target="_blank">Instagram</a></li>
-                    <li><a href="http://www.youtube.com/{{ contacto_empresa.youtube }}" target="_blank">Youtube</a></li>
+                    <li><a href="https://www.twitter.com/{{ contacto_empresa.twitter }}" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.facebook.com/{{ contacto_empresa.facebook }}" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/{{ contacto_empresa.instagram }}" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/{{ contacto_empresa.youtube }}" target="_blank">Youtube</a></li>
                 </ul>
             </div>
             <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
@@ -548,5 +550,6 @@
 <script type="text/javascript" src="/static/static_girekstudio/js/vendors.min.js"></script>
 <script src="/static/static_girekstudio/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="/static/static_girekstudio/js/main.js"></script>
+{% block extra_js %}{% endblock %}
 </body>
 </html>

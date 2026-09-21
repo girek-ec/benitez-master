@@ -1,8 +1,10 @@
 from itertools import product
+
+from django.db.models import Count, Q
 from unicodedata import category
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from Girekstudio.models import *
 from Home.models import *
@@ -159,3 +161,89 @@ def producto_id_girekstudio(request, n):
 
     return render(request, 'girekstudio/demo-branding-agency-product.html', contexto)
 
+
+
+def blog_girekstudio(request, categoria_slug=None):
+    publicaciones = (
+        Blog.objects.filter(activo=True, fecha_publicacion__lte=timezone.now())
+        .select_related('categoria')
+        .prefetch_related('galeria')
+    )
+    categoria_actual = None
+
+    if categoria_slug:
+        categoria_actual = get_object_or_404(
+            CategoriaBlog,
+            slug=categoria_slug,
+            activo=True,
+        )
+        publicaciones = publicaciones.filter(categoria=categoria_actual)
+
+    categorias = (
+        CategoriaBlog.objects.filter(activo=True)
+        .annotate(
+            total_publicaciones=Count(
+                'publicaciones',
+                filter=Q(
+                    publicaciones__activo=True,
+                    publicaciones__fecha_publicacion__lte=timezone.now(),
+                ),
+            )
+        )
+        .filter(total_publicaciones__gt=0)
+    )
+    pagina = Paginator(publicaciones, 16).get_page(request.GET.get('page'))
+
+    contexto = {
+        'marca': Marca.objects.all().first(),
+        'editable': Editables.objects.all().first(),
+        'contacto_empresa': Contacto_empresa.objects.all().first(),
+        'servicios': Servicio.objects.all().order_by('orden'),
+        'clientes': Cliente.objects.all(),
+        'frases': Frase.objects.all(),
+        'publicaciones': pagina,
+        'categorias_blog': categorias,
+        'categoria_actual': categoria_actual,
+    }
+    return render(request, 'girekstudio/lista.html', contexto)
+
+
+def blog_detalle_girekstudio(request, slug):
+    publicacion = get_object_or_404(
+        Blog.objects
+        .select_related('categoria')
+        .prefetch_related('galeria'),
+        slug=slug,
+        activo=True,
+        fecha_publicacion__lte=timezone.now(),
+    )
+
+    # Publicaciones relacionadas:
+    # únicamente de la misma categoría y excluyendo la publicación actual
+    relacionados = (
+        Blog.objects.filter(
+            categoria=publicacion.categoria,
+            activo=True,
+            fecha_publicacion__lte=timezone.now(),
+        )
+        .exclude(pk=publicacion.pk)
+        .select_related('categoria')
+        .order_by('-fecha_publicacion')[:12]
+    )
+
+    contexto = {
+        'marca': Marca.objects.all().first(),
+        'editable': Editables.objects.all().first(),
+        'contacto_empresa': Contacto_empresa.objects.all().first(),
+        'servicios': Servicio.objects.all().order_by('orden'),
+        'clientes': Cliente.objects.all(),
+        'frases': Frase.objects.all(),
+        'publicacion': publicacion,
+        'relacionados': relacionados,
+    }
+
+    return render(
+        request,
+        'girekstudio/detalle.html',
+        contexto
+    )

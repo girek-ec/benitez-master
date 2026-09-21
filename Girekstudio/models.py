@@ -1,9 +1,14 @@
+from urllib.parse import parse_qs, urlparse
+
 from ckeditor.fields import RichTextField
 from django.contrib.admin import BooleanFieldListFilter
 from django.db import models
+from django.urls import reverse
+from django.utils import timezone
+from django.utils.safestring import mark_safe
+from django.utils.text import slugify
 
 # Create your models here.
-from django.utils.safestring import mark_safe
 
 
 class Ciudad(models.Model):
@@ -395,3 +400,128 @@ class Sucursales(models.Model):
 
     class Meta:
         verbose_name_plural = "TEAM- 02 Sucursales "
+
+
+
+
+class CategoriaBlog(models.Model):
+    nombre = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
+    activo = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nombre)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = "BLOG- 01 Categoría"
+        verbose_name_plural = "BLOG- 01 Categorías"
+
+
+class Blog(models.Model):
+    categoria = models.ForeignKey(
+        CategoriaBlog,
+        on_delete=models.PROTECT,
+        related_name='publicaciones',
+    )
+    titulo = models.CharField(max_length=180)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    subtitulo = models.CharField(max_length=300, blank=True)
+    imagen_principal = models.ImageField(
+        upload_to='girekstudio/blog/principal/',
+        help_text='Imagen recomendada: 1200 x 700 px',
+    )
+    imagen_horizontal = models.FileField(upload_to='girekstudio/blog/', null=True, blank=True)
+    contenido = models.TextField()
+    video_youtube = models.URLField(
+        max_length=500,
+        blank=True,
+        help_text='Pegue el enlace completo de YouTube. Ejemplo: https://youtu.be/xxxxxxxxxxx',
+    )
+    activo = models.BooleanField(default=True, help_text='Visible en el sitio web')
+    destacado = models.BooleanField(default=False, help_text='Mostrar como publicación destacada')
+    fecha_publicacion = models.DateTimeField(default=timezone.now)
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug_base = slugify(self.titulo)[:180] or 'publicacion'
+            slug = slug_base
+            numero = 2
+            existentes = Blog.objects.exclude(pk=self.pk)
+            while existentes.filter(slug=slug).exists():
+                slug = f'{slug_base}-{numero}'
+                numero += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.titulo
+
+    def get_absolute_url(self):
+        return reverse('blog_detalle', kwargs={'slug': self.slug})
+
+    @property
+    def video_embed_url(self):
+        """Convierte enlaces habituales de YouTube en una URL para iframe."""
+        if not self.video_youtube:
+            return ''
+
+        parsed = urlparse(self.video_youtube)
+        host = parsed.netloc.lower().replace('www.', '')
+        video_id = ''
+
+        if host == 'youtu.be':
+            video_id = parsed.path.strip('/').split('/')[0]
+        elif host in ('youtube.com', 'm.youtube.com'):
+            if parsed.path == '/watch':
+                video_id = parse_qs(parsed.query).get('v', [''])[0]
+            elif parsed.path.startswith(('/embed/', '/shorts/')):
+                partes = parsed.path.strip('/').split('/')
+                video_id = partes[1] if len(partes) > 1 else ''
+
+        return f'https://www.youtube.com/embed/{video_id}' if video_id else ''
+
+    def vista_previa(self):
+        if not self.imagen_principal:
+            return '-'
+        return mark_safe(
+            '<img width="140" height="80" style="object-fit:cover" src="{}">'.format(
+                self.imagen_principal.url
+            )
+        )
+
+    class Meta:
+        ordering = ['-fecha_publicacion']
+        verbose_name = "BLOG- 02 Publicación"
+        verbose_name_plural = "BLOG- 02 Publicaciones"
+
+
+class ImagenBlog(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='galeria')
+    imagen = models.ImageField(upload_to='girekstudio/blog/galeria/')
+    titulo = models.CharField(max_length=150, blank=True, help_text='Texto opcional de la imagen')
+    orden = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.blog} - imagen {self.orden}'
+
+    def vista_previa(self):
+        if not self.imagen:
+            return '-'
+        return mark_safe(
+            '<img width="120" height="80" style="object-fit:cover" src="{}">'.format(
+                self.imagen.url
+            )
+        )
+
+    class Meta:
+        ordering = ['orden', 'id']
+        verbose_name = "BLOG- 03 Imagen de galería"
+        verbose_name_plural = "BLOG- 03 Galería de imágenes"

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Product, Category, Marca
+from .models import Product, Category, Marca,BlogColexin,  CategoriaBlogColexin, ImagenBlogColexin
 from .snippers import Attr
 
 
@@ -37,3 +37,83 @@ class ProductAdmin(admin.ModelAdmin):
         if obj.image_1 and hasattr(obj.image_1, 'url'):
             return format_html('<img src="{}" width="50" height="50" style="border-radius:5px;"/>', obj.image_1.url)
         return "Sin imagen"
+
+
+class ImagenBlogColexinInline(admin.TabularInline):
+    model = ImagenBlogColexin
+    extra = 1
+    fields = (
+        "imagen",
+        "titulo",
+        "orden",
+    )
+
+
+@admin.register(CategoriaBlogColexin)
+class CategoriaBlogColexinAdmin(admin.ModelAdmin):
+    list_display = (
+        "nombre",
+        "slug",
+        "activo",
+    )
+
+    list_filter = ("activo",)
+    search_fields = ("nombre",)
+    prepopulated_fields = {
+        "slug": ("nombre",),
+    }
+
+
+@admin.register(BlogColexin)
+class BlogColexinAdmin(admin.ModelAdmin):
+    list_display = (
+        "titulo",
+        "categoria",
+        "fecha_publicacion",
+        "activo",
+        "destacado",
+        "vista_previa",
+    )
+
+    list_filter = (
+        "activo",
+        "destacado",
+        "categoria",
+        "fecha_publicacion",
+    )
+
+    search_fields = (
+        "titulo",
+        "subtitulo",
+        "contenido",
+    )
+
+    date_hierarchy = "fecha_publicacion"
+
+    prepopulated_fields = {
+        "slug": ("titulo",),
+    }
+
+    list_editable = (
+        "activo",
+        "destacado",
+    )
+
+    inlines = [ImagenBlogColexinInline]
+
+
+@admin.register(ImagenBlogColexin)
+class ImagenBlogColexinAdmin(admin.ModelAdmin):
+    list_display = (
+        "blog",
+        "titulo",
+        "orden",
+        "vista_previa",
+    )
+
+    list_filter = ("blog",)
+
+    search_fields = (
+        "blog__titulo",
+        "titulo",
+    )

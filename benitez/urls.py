@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import *
 from django.urls import path, include
-
+from shop import views as colexin_views
 
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 
 from Home.views import *
+from Girekstudio import views as girekstudio_views
 from Girekstudio.views import *
 from Vortice.views import *
 from Zatuar.views import *
@@ -58,6 +59,9 @@ urlpatterns = [
     path('girekstudio/tienda/', tienda_girekstudio),
     path('girekstudio/tienda/<int:id>/', producto_cate_girekstudio),
     path('girekstudio/producto/<int:n>/', producto_id_girekstudio),
+    path('girekstudio/blog/', girekstudio_views.blog_girekstudio, name='blog_lista'),
+    path('girekstudio/blog/categoria/<slug:categoria_slug>/', girekstudio_views.blog_girekstudio, name='blog_categoria',  ),
+    path('girekstudio/blog/<slug:slug>/', girekstudio_views.blog_detalle_girekstudio, name='blog_detalle'),
     path('girekstudio/contacto/', contacto_girekstudio),
     # path('girekstudio/error/', error404),
     # web girekstudio/
@@ -104,7 +108,25 @@ urlpatterns = [
     path('colexin/tienda/', productos_colexin),
     path('colexin/tienda/<str:cate>/', productos_cate_colexin, name='productos_cate_colexin'),
     path('colexin/producto/<int:n>/', producto_id_colexin),
+
+    # Blog Colexin
+    path(
+      "colexin/blog/",
+      colexin_views.blog_colexin,
+      name="blog_lista_colexin",
+    ),
+    path(
+      "colexin/blog/categoria/<slug:categoria_slug>/",
+      colexin_views.blog_colexin,
+      name="blog_categoria_colexin",
+    ),
+    path(
+      "colexin/blog/<slug:slug>/",
+      colexin_views.blog_detalle_colexin,
+      name="blog_detalle_colexin",
+    ),
     # web colexin/
+
 
     #path('admin/', admin.site.urls),
     path('cart/', include('cart.urls', namespace='cart')),
