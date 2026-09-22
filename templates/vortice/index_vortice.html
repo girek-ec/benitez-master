@@ -1,30 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<head>
-    <meta charset="utf-8">
-
-    <title>Vortice | Tienda Oficial</title>
-    <meta property="og:locale" content="es_EC">
-
-    <meta name="author" content="Vortice | Tienda Oficial">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-    <!-- =====================================================
-         GOOGLE RECAPTCHA
-    ====================================================== -->
-
-    <script src="https://www.google.com/recaptcha/api.js"
-            async defer></script>
-
-
-    <!-- =====================================================
-         SEO / REDES SOCIALES
-    ====================================================== -->
-{% load static %}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -43,9 +17,79 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <meta name="description"
+          content="Vórtice, tienda ecuatoriana de moda, diseño y productos exclusivos.">
 
-    <!-- FAVICON VÓRTICE -->
+
+    <!-- =====================================================
+         SEO / DIRECCIÓN CANÓNICA
+    ====================================================== -->
+
+    <link rel="canonical"
+          href="https://benitez-ec.com/vortice/">
+
+
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
+
+    {% block metas %}
+
+        <meta property="og:type"
+              content="website">
+
+        <meta property="og:locale"
+              content="es_EC">
+
+        <meta property="og:site_name"
+              content="Vórtice">
+
+        <meta property="og:title"
+              content="Vórtice | Tienda Oficial">
+
+        <meta property="og:description"
+              content="Moda, diseño y productos exclusivos hechos en Ecuador.">
+
+        <meta property="og:url"
+              content="https://benitez-ec.com/vortice/">
+
+        {% if vortice.logo_horizontal %}
+            <meta property="og:image"
+                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+
+            <meta property="og:image:alt"
+                  content="Vórtice | Tienda Oficial">
+        {% endif %}
+
+
+        <!-- X / TWITTER -->
+
+        <meta name="twitter:card"
+              content="summary_large_image">
+
+        <meta name="twitter:title"
+              content="Vórtice | Tienda Oficial">
+
+        <meta name="twitter:description"
+              content="Moda, diseño y productos exclusivos hechos en Ecuador.">
+
+        {% if vortice.logo_horizontal %}
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+        {% endif %}
+
+    {% endblock metas %}
+
+
+    <!-- =====================================================
+         FAVICON VÓRTICE
+    ====================================================== -->
+
     {% if vortice.favicon %}
+
         <link rel="icon"
               type="image/png"
               href="/media/{{ vortice.favicon }}">
@@ -56,17 +100,18 @@
 
         <link rel="apple-touch-icon"
               href="/media/{{ vortice.favicon }}">
+
     {% endif %}
 
 
-    <!-- GOOGLE RECAPTCHA -->
+    <!-- =====================================================
+         GOOGLE RECAPTCHA
+    ====================================================== -->
+
     <script src="https://www.google.com/recaptcha/api.js"
-            async defer></script>
-
-
-    {% block metas %}
-        ...
-    {% endblock %}
+            async
+            defer>
+    </script>
 
 
     <!-- =====================================================
@@ -74,23 +119,22 @@
     ====================================================== -->
 
     <link rel="stylesheet"
-          href="/static/static_vortice/fonts/fonts.css">
+          href="{% static 'static_vortice/fonts/fonts.css' %}">
 
     <link rel="stylesheet"
-          href="/static/static_vortice/fonts/font-icons.css">
+          href="{% static 'static_vortice/fonts/font-icons.css' %}">
 
     <link rel="stylesheet"
-          href="/static/static_vortice/css/bootstrap.min.css">
+          href="{% static 'static_vortice/css/bootstrap.min.css' %}">
 
     <link rel="stylesheet"
-          href="/static/static_vortice/css/swiper-bundle.min.css">
+          href="{% static 'static_vortice/css/swiper-bundle.min.css' %}">
 
     <link rel="stylesheet"
-          href="/static/static_vortice/css/animate.css">
+          href="{% static 'static_vortice/css/animate.css' %}">
 
     <link rel="stylesheet"
-          type="text/css"
-          href="/static/static_vortice/css/styles.css">
+          href="{% static 'static_vortice/css/styles.css' %}">
 
 
     <!-- =====================================================
@@ -105,8 +149,8 @@
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap">
 
 
     <!-- =====================================================
@@ -114,15 +158,9 @@
     ====================================================== -->
 
     <link rel="stylesheet"
-          type="text/css"
-          href="/static/static_vortice/css/vortice-brand.css">
-
-
-
+          href="{% static 'static_vortice/css/vortice-brand.css' %}">
 
 </head>
-
-
 <body class="preload-wrapper">
 
 <div id="wrapper">

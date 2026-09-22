@@ -1,57 +1,347 @@
 ﻿<!doctype html>
 <html class="no-js" lang="en">
-    <head>
-        <title>Colexin</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="author" content="Colexin - Grupo Benitez" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <meta name="description" content="Colexin - Tienda especializada en productos coleccionables únicos y exclusivos.">
+{% load static %}
 
-        {% block metas %}
-        <meta property="fb:app_id" content="926164441218858">
-        <meta property="og:site_name" content="Colexin">
-        <meta property="og:title" content="Colexin - Tienda de Coleccionables">
-        <meta property="og:description" content="Descubre productos coleccionables únicos y exclusivos en Colexin. Encuentra figuras, memorabilia y artículos especiales para tu colección.">
-        <meta property="og:url" content="https://www.benitez-ec.com/colexin/">
-        <meta property="og:type" content="website">
+<!doctype html>
 
-        <!-- Usa una imagen general de la marca para la página de inicio -->
-        <meta property="og:image" content="https://www.benitez-ec.com/media/{{ marca.logo_color }}">
-        <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ marca.logo_color }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:image:type" content="image/png">
+<html class="no-js"
+      lang="es">
 
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Colexin - Tienda de Coleccionables">
-        <meta name="twitter:description" content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
-        <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ marca.logo_color }}">
-        {% endblock %}
-        <!-- favicon icon -->
-        <link rel="shortcut icon" href="/media/{{ marca.favicon }}">
-        <link rel="apple-touch-icon" href="/media/{{ marca.favicon }}">
-        <link rel="apple-touch-icon" sizes="72x80" href="/media/{{ marca.favicon }}">
-        <link rel="apple-touch-icon" sizes="114x150" href="/media/{{ marca.favicon }}">
-        <!-- google fonts preconnect -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- slider revolution CSS files -->
-        <link rel="stylesheet" type="text/css" href="/static/static_girekstudio/revolution/css/settings.css">
-        <link rel="stylesheet" type="text/css" href="/static/static_girekstudio/revolution/css/layers.css">
-        <link rel="stylesheet" type="text/css" href="/static/static_girekstudio/revolution/css/navigation.css">
-        <!-- style sheets and font icons  -->
-        <link rel="stylesheet" href="/static/static_girekstudio/css/vendors.min.css"/>
-        <link rel="stylesheet" href="/static/static_girekstudio/css/icon.min.css"/>
-        <link rel="stylesheet" href="/static/static_girekstudio/css/style.css"/>
-        <link rel="stylesheet" href="/static/static_girekstudio/css/responsive.css"/>
-        <link rel="stylesheet" href="/static/static_girekstudio/demos/decor-store/decor-store.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
 
-        <!-- Swiper CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <meta charset="utf-8">
+
+    <title>Colexin | Tienda de Coleccionables</title>
+
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+
+    <meta name="author"
+          content="Colexin - Grupo Benítez">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Colexin, tienda especializada en productos coleccionables únicos y exclusivos.">
 
 
-    </head>
+    <!-- =====================================================
+         URL CANÓNICA
+    ====================================================== -->
+
+    <link rel="canonical"
+          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+
+    <!-- =====================================================
+         FACEBOOK, WHATSAPP Y REDES SOCIALES
+    ====================================================== -->
+
+    {% block metas %}
+
+        <meta property="fb:app_id"
+              content="926164441218858">
+
+        <meta property="og:locale"
+              content="es_EC">
+
+        <meta property="og:site_name"
+              content="Colexin">
+
+        <meta property="og:title"
+              content="Colexin | Tienda de Coleccionables">
+
+        <meta property="og:description"
+              content="Descubre productos coleccionables únicos, figuras, memorabilia y artículos especiales para tu colección.">
+
+        <meta property="og:url"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+        <meta property="og:type"
+              content="website">
+
+
+        {% if marca and marca.logo_color %}
+
+            <meta property="og:image"
+                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
+
+            <meta property="og:image:secure_url"
+                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
+
+            <meta property="og:image:alt"
+                  content="Colexin | Tienda de Coleccionables">
+
+        {% endif %}
+
+
+        <!-- X / TWITTER -->
+
+        <meta name="twitter:card"
+              content="summary_large_image">
+
+        <meta name="twitter:title"
+              content="Colexin | Tienda de Coleccionables">
+
+        <meta name="twitter:description"
+              content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
+
+        {% if marca and marca.logo_color %}
+
+            <meta name="twitter:image"
+                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
+
+        {% endif %}
+
+    {% endblock metas %}
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    {% if marca and marca.favicon %}
+
+        <link rel="shortcut icon"
+              type="image/png"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="icon"
+              type="image/png"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="apple-touch-icon"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="apple-touch-icon"
+              sizes="72x72"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="apple-touch-icon"
+              sizes="114x114"
+              href="{{ marca.favicon.url }}">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossorigin>
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+
+    <!-- =====================================================
+         SLIDER REVOLUTION
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'static_girekstudio/revolution/css/settings.css' %}">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'static_girekstudio/revolution/css/layers.css' %}">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'static_girekstudio/revolution/css/navigation.css' %}">
+
+
+    <!-- =====================================================
+         ESTILOS GENERALES
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'static_girekstudio/css/vendors.min.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'static_girekstudio/css/icon.min.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'static_girekstudio/css/style.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'static_girekstudio/css/responsive.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'static_girekstudio/demos/decor-store/decor-store.css' %}">
+
+
+    <!-- BOOTSTRAP -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
+
+    <!-- SWIPER -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+</head>
+
+
+<body data-mobile-nav-style="classic">
+
+
+<!-- =====================================================
+     ENCABEZADO
+====================================================== -->
+
+<header class="header-with-topbar">
+
+    <nav class="navbar navbar-expand-lg header-light bg-transparent disable-button"
+         data-header-hover="light">
+
+        <div class="container-fluid">
+
+
+            <!-- LOGOTIPO -->
+
+            <div class="col-auto">
+
+                {% if marca and marca.logo_color %}
+
+                    <a class="navbar-brand"
+                       href="/colexin/">
+
+                        <img src="{{ marca.logo_color.url }}"
+                             data-at2x="{{ marca.logo_color.url }}"
+                             alt="Colexin"
+                             class="default-logo">
+
+                        <img src="{{ marca.logo_color.url }}"
+                             data-at2x="{{ marca.logo_color.url }}"
+                             alt="Colexin"
+                             class="alt-logo">
+
+                        <img src="{{ marca.logo_color.url }}"
+                             data-at2x="{{ marca.logo_color.url }}"
+                             alt="Colexin"
+                             class="mobile-logo">
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- MENÚ RESPONSIVE -->
+
+            <div class="col-auto menu-order position-static xs-ps-0">
+
+                <button class="navbar-toggler float-start"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Abrir menú">
+
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+                    <span class="navbar-toggler-line"></span>
+
+                </button>
+
+
+                <div class="collapse navbar-collapse justify-content-center"
+                     id="navbarNav">
+
+                    {% block menu %}
+
+                        <ul class="navbar-nav alt-font">
+
+                            <li class="nav-item">
+
+                                <a href="/colexin/"
+                                   class="nav-link">
+                                    Inicio
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item dropdown simple-dropdown">
+
+                                <a href="/colexin/tienda/"
+                                   class="nav-link">
+                                    Tienda
+                                </a>
+
+                                <i class="fa-solid fa-angle-down dropdown-toggle"
+                                   id="navbarDropdownMenuLink3"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                </i>
+
+                                <ul class="dropdown-menu"
+                                    aria-labelledby="navbarDropdownMenuLink3">
+
+                                    {% for tipo in categories %}
+
+                                        <li>
+
+                                            <a href="/colexin/tienda/{{ tipo.name }}/">
+                                                {{ tipo.name }}
+                                            </a>
+
+                                        </li>
+
+                                    {% endfor %}
+
+                                </ul>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a href="/colexin/blog/"
+                                   class="nav-link">
+                                    Blog
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    {% endblock menu %}
+
+                </div>
+
+            </div>
+
+
+            <!-- ESPACIO DERECHO -->
+
+            <div class="col-auto ms-auto">
+
+                <div class="header-icon">
+
+                    <div class="widget-text ms-25px md-ms-20px alt-font">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- FIN DEL ENCABEZADO -->
     <body data-mobile-nav-style="classic">
         <!-- start header -->
 
@@ -535,7 +825,7 @@
                                     <div class="row">
                                         <div class="col-12 filter-content">
                                             <ul class="shop-boxed shop-wrapper grid grid-5col xxl-grid-5col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-large text-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay":150, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                                                    <li class="grid-sizer">zsx</li>
+                                                    <li class="grid-sizer"></li>
                                                     {% for producto in products %}
                                                         {% if producto.principal %}
                                                             <!-- start shop item -->
