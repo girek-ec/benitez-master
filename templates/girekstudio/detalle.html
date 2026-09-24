@@ -1,9 +1,6 @@
 {% extends 'girekstudio/demo-branding-agency.html' %}
 {% load static %}
 
-{% extends 'girekstudio/demo-branding-agency.html' %}
-{% load static %}
-
 
 {% block title %}
     {{ publicacion.titulo }} | GirekStudio
@@ -226,6 +223,8 @@
     </style>
 
 {% endblock metas %}
+
+
 {% block principal %}
 
     <main class="detalle-girekstudio">
@@ -241,11 +240,14 @@
 
                             <img class="imagen-portada border-radius-2px"
                                  src="{{ publicacion.imagen_horizontal.url }}"
-                                 alt="{{ publicacion.titulo }}" >
+                                 alt="{{ publicacion.titulo }}">
 
                         {% else %}
+
+                            <img class="imagen-portada border-radius-2px"
                                  src="{{ publicacion.imagen_principal.url }}"
-                                 alt="{{ publicacion.titulo }} ">
+                                 alt="{{ publicacion.titulo }}">
+
                         {% endif %}
 
                     </div>
@@ -260,13 +262,12 @@
                 <div class="row justify-content-center">
 
                     <div class="col-12 text-center">
+
                         <span class="categoria-articulo fs-14 fw-700 ls-1px text-uppercase mb-15px d-block">
 
                             <a href="{% url 'blog_categoria' publicacion.categoria.slug %}"
                                class="categoria-articulo">
-
                                 {{ publicacion.categoria }}
-
                             </a>
 
                             <span class="text-medium-gray">
@@ -277,24 +278,30 @@
 
                         <span class="linea-decorativa mb-20px"></span>
 
-
                         <div class="w-140px mx-auto text-center">
+
                             <img src="{{ publicacion.imagen_principal.url }}"
                                  class="rounded-circle w-120px d-block mx-auto"
                                  alt="Girekstudio"
                                  data-no-retina="">
+
                         </div>
 
                         <h1 class="alt-font fw-600 ls-minus-2px text-dark-gray mx-auto w-100 mb-4"
                             style="margin-top: 10px !important;">
                             {{ publicacion.titulo }}
                         </h1>
+
                         {% if publicacion.subtitulo %}
-                            <p class="fs-20 lh-30 w-100 mx-auto" style="margin-top: -40px !important;">
+
+                            <p class="fs-20 lh-30 w-100 mx-auto"
+                               style="margin-top: -40px !important;">
                                 {{ publicacion.subtitulo }}
                             </p>
+
                         {% endif %}
-                     <!-- Autor -->
+
+                        <!-- Autor -->
                         <div class="d-flex justify-content-center align-items-center flex-wrap mt-15px">
 
                             <span class="fs-15 text-medium-gray me-5px">
@@ -307,12 +314,12 @@
 
                         </div>
 
-
                     </div>
 
                 </div>
             </div>
         </section>
+
 
         <!-- Contenido HTML -->
         <section class="pt-30px pb-0">
@@ -331,22 +338,27 @@
             </div>
         </section>
 
+
         <!-- Video -->
         {% if publicacion.video_embed_url %}
+
             <section class="pb-0">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12">
 
                             <div class="mb-25px">
+
                                 <span class="linea-decorativa me-10px"></span>
 
                                 <h5 class="d-inline-block text-dark-gray fw-600 mb-0">
                                     Historia audiovisual
                                 </h5>
+
                             </div>
 
                             <div class="video-blog">
+
                                 <iframe
                                         src="{{ publicacion.video_embed_url }}"
                                         title="Video: {{ publicacion.titulo }}"
@@ -355,44 +367,56 @@
                                         loading="lazy"
                                         allowfullscreen>
                                 </iframe>
+
                             </div>
 
                         </div>
                     </div>
                 </div>
             </section>
+
         {% endif %}
 
 
         <!-- Galería -->
         {% with fotos=publicacion.galeria.all %}
+
             {% if fotos %}
+
                 <section class="galeria-blog top-space-margin right-side-bar">
+
                     <div class="container">
 
                         <!-- Título de la galería -->
                         <div class="row justify-content-center mb-4">
+
                             <div class="col-12">
+
                                 <span class="linea-decorativa me-10px"></span>
 
                                 <h5 class="d-inline-block text-dark-gray fw-600 mb-0">
                                     Galería del proyecto
                                 </h5>
+
                             </div>
+
                         </div>
 
                         <!-- Imágenes -->
                         <div class="row justify-content-center">
+
                             <div class="col-12 blog-standard">
 
                                 <div class="blog-details mb-12">
+
                                     <ul class="image-gallery-style-01 mb-7 gallery-wrapper grid grid-2col xxl-grid-2col xl-grid-2col lg-grid-2col md-grid-2col sm-grid-2col xs-grid-1col gutter-small">
 
-                                        <!-- Elemento requerido por la cuadrícula -->
                                         <li class="grid-sizer"></li>
 
                                         {% for foto in fotos %}
+
                                             <li class="grid-item transition-inner-all">
+
                                                 <div class="gallery-box">
 
                                                     <a href="{{ foto.imagen.url }}"
@@ -414,42 +438,57 @@
                                                                 </div>
 
                                                             </div>
+
                                                         </div>
+
                                                     </a>
 
                                                     {% if foto.titulo %}
+
                                                         <div class="text-center mt-10px fs-14 text-medium-gray">
                                                             {{ foto.titulo }}
                                                         </div>
+
                                                     {% endif %}
 
                                                 </div>
+
                                             </li>
+
                                         {% empty %}
+
                                             <li class="col-12">
+
                                                 <p class="text-center text-medium-gray">
                                                     No existen fotografías disponibles.
                                                 </p>
+
                                             </li>
+
                                         {% endfor %}
 
                                     </ul>
+
                                 </div>
 
                             </div>
+
                         </div>
 
                     </div>
+
                 </section>
+
             {% endif %}
+
         {% endwith %}
-
-
 
 
         <!-- Categoría y regreso -->
         <section class="half-section">
+
             <div class="container">
+
                 <div class="row justify-content-center">
 
                     <div class="col-12 blog-standard">
@@ -470,10 +509,12 @@
                                class="btn btn-small btn-dark-gray btn-switch-text btn-rounded">
 
                                 <span>
+
                                     <span class="btn-double-text"
                                           data-text="Volver al archivo">
                                         Volver al archivo
                                     </span>
+
                                 </span>
 
                             </a>
@@ -483,7 +524,9 @@
                     </div>
 
                 </div>
+
             </div>
+
         </section>
 
 
@@ -499,10 +542,10 @@
 
                         <div class="col-12 text-center">
 
-                    <span class="text-uppercase fw-700 ls-2px fs-13 d-block mb-10px"
-                          style="color: #b58a4a;">
-                        Continúa explorando
-                    </span>
+                            <span class="text-uppercase fw-700 ls-2px fs-13 d-block mb-10px"
+                                  style="color: #b58a4a;">
+                                Continúa explorando
+                            </span>
 
                             <h5 class="fw-600 text-dark-gray alt-font ls-minus-1px">
                                 Otros artículos relacionados
@@ -527,7 +570,6 @@
 
                                         <figure class="position-relative mb-0 box-hover">
 
-                                            <!-- Imagen -->
                                             <div class="blog-image">
 
                                                 <img src="{{ blog.imagen_principal.url }}"
@@ -542,7 +584,6 @@
 
                                             <figcaption class="d-flex flex-column h-100">
 
-                                                <!-- Icono central -->
                                                 <div class="my-auto w-100 text-center blog-hover-icon">
 
                                                     <a href="{{ blog.get_absolute_url }}"
@@ -555,12 +596,10 @@
 
                                                 </div>
 
-                                                <!-- Información -->
                                                 <div class="position-relative post-content p-14 text-center last-paragraph-no-margin">
 
                                                     <div class="position-relative z-index-2 overflow-hidden">
 
-                                                        <!-- Categoría -->
                                                         <a href="{% url 'blog_categoria' blog.categoria.slug %}"
                                                            class="d-inline-block fs-12 text-gradient-light-blue-light-turquoise mb-5px text-uppercase fw-600">
 
@@ -568,7 +607,6 @@
 
                                                         </a>
 
-                                                        <!-- Título -->
                                                         <a href="{{ blog.get_absolute_url }}"
                                                            class="card-title fs-20 alt-font fw-500 text-white mb-0 d-block">
 
@@ -576,7 +614,6 @@
 
                                                         </a>
 
-                                                        <!-- Botón -->
                                                         <div class="hover-text">
 
                                                             <a href="{{ blog.get_absolute_url }}"
@@ -617,30 +654,40 @@
 
     </main>
 
-{% endblock %}
+{% endblock principal %}
+
 
 {% block extra_js %}
+
     <script>
+
         document.addEventListener('DOMContentLoaded', function () {
+
             if (!window.jQuery || !jQuery.fn.magnificPopup) {
                 console.error('No se pudo cargar Magnific Popup para la galería.');
                 return;
             }
 
             $('.galeria-blog').magnificPopup({
+
                 delegate: 'a.galeria-lightbox',
                 type: 'image',
+
                 closeOnContentClick: false,
                 closeBtnInside: true,
                 fixedContentPos: true,
+
                 mainClass: 'mfp-with-zoom',
                 removalDelay: 300,
+
                 image: {
                     verticalFit: true,
+
                     titleSrc: function (item) {
                         return item.el.attr('title') || '';
                     }
                 },
+
                 gallery: {
                     enabled: true,
                     navigateByImgClick: true,
@@ -649,11 +696,16 @@
                     tNext: 'Siguiente',
                     tCounter: '%curr% de %total%'
                 },
+
                 zoom: {
                     enabled: true,
                     duration: 300
                 }
+
             });
+
         });
+
     </script>
-{% endblock %}
+
+{% endblock extra_js %}
