@@ -1,55 +1,99 @@
 {% extends 'vortice/index_vortice.html' %}
 
 
+{% block title %}
+    Vórtice | Nuestra historia
+{% endblock title %}
+
+
+{% block meta_description %}
+    <meta name="description"
+          content="Conoce la historia de Vórtice, una marca ecuatoriana inspirada en nuestras raíces, el arte, la identidad y el diseño contemporáneo.">
+{% endblock meta_description %}
+
+
+{% block canonical %}
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+{% endblock canonical %}
+
+
 {% block metas %}
 
-    <!-- Open Graph -->
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:site_name" content="Vórtice">
-    <meta property="og:url" content="https://www.benitez-ec.com/vortice/">
-    <meta property="og:type" content="website">
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
+
+    <meta property="fb:app_id"
+          content="926164441218858">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:site_name"
+          content="Vórtice">
 
     <meta property="og:title"
-          content="Vórtice - Nuestra historia">
+          content="Vórtice | Nuestra historia">
 
     <meta property="og:description"
-          content="Vórtice. Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
+          content="Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
 
-    <meta property="og:image"
-          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
-
-    <meta property="og:image:secure_url"
-          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
-
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:url"
+          content="https://benitez-ec.com{{ request.path }}">
 
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@VorticeOficial">
+    {% if vortice.meta_about %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
+
+        <meta property="og:image:width"
+              content="1200">
+
+        <meta property="og:image:height"
+              content="630">
+
+        <meta property="og:image:alt"
+              content="Vórtice | Nuestra historia">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
 
     <meta name="twitter:title"
-          content="Vórtice - Nuestra historia">
+          content="Vórtice | Nuestra historia">
 
     <meta name="twitter:description"
-          content="Vórtice. Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
+          content="Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
 
-    <meta name="twitter:image"
-          content="https://www.benitez-ec.com/media/{{ vortice.meta_about }}">
+    {% if vortice.meta_about %}
 
-    <meta name="twitter:image:alt"
-          content="Vórtice - Nuestra historia">
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
 
-{% endblock %}
+        <meta name="twitter:image:alt"
+              content="Vórtice | Nuestra historia">
 
+    {% endif %}
+
+{% endblock metas %}
 
 
 {% block principal %}
-
-
-<!-- ==========================================================
+ <!-- ==========================================================
      VÓRTICE · NOSOTROS
      ========================================================== -->
 

@@ -33,7 +33,16 @@
          OPEN GRAPH · FACEBOOK Y WHATSAPP
     ====================================================== -->
 
+
+
     {% block metas %}
+
+        <!-- =====================================================
+             OPEN GRAPH · FACEBOOK Y WHATSAPP
+        ====================================================== -->
+
+        <meta property="fb:app_id"
+              content="926164441218858">
 
         <meta property="og:type"
               content="website">
@@ -53,17 +62,24 @@
         <meta property="og:url"
               content="https://benitez-ec.com/vortice/">
 
-        {% if vortice.logo_horizontal %}
+        {% if vortice.meta_inicio %}
+
             <meta property="og:image"
-                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+                  content="https://benitez-ec.com{{ vortice.meta_inicio.url }}">
 
             <meta property="og:image:secure_url"
-                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+                  content="https://benitez-ec.com{{ vortice.meta_inicio.url }}">
+
+            <meta property="og:image:width"
+                  content="1200">
+
+            <meta property="og:image:height"
+                  content="630">
 
             <meta property="og:image:alt"
                   content="Vórtice | Tienda Oficial">
-        {% endif %}
 
+        {% endif %}
 
         <!-- X / TWITTER -->
 
@@ -76,12 +92,18 @@
         <meta name="twitter:description"
               content="Moda, diseño y productos exclusivos hechos en Ecuador.">
 
-        {% if vortice.logo_horizontal %}
+        {% if vortice.meta_inicio %}
+
             <meta name="twitter:image"
-                  content="https://benitez-ec.com/media/{{ vortice.logo_horizontal }}">
+                  content="https://benitez-ec.com{{ vortice.meta_inicio.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="Vórtice | Tienda Oficial">
+
         {% endif %}
 
     {% endblock metas %}
+
 
 
     <!-- =====================================================
@@ -92,14 +114,14 @@
 
         <link rel="icon"
               type="image/png"
-              href="/media/{{ vortice.favicon }}">
+              href="{{ vortice.favicon.url }}">
 
         <link rel="shortcut icon"
               type="image/png"
-              href="/media/{{ vortice.favicon }}">
+              href="{{ vortice.favicon.url }}">
 
         <link rel="apple-touch-icon"
-              href="/media/{{ vortice.favicon }}">
+              href="{{ vortice.favicon.url }}">
 
     {% endif %}
 
