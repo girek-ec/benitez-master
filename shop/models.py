@@ -22,6 +22,31 @@ class Marca(models.Model):
     twitter = models.CharField(max_length=100, null=True, blank=True)
     youtube = models.CharField(max_length=100, null=True, blank=True)
 
+    # =====================================================
+    # IMÁGENES PARA REDES SOCIALES / OPEN GRAPH
+    # =====================================================
+
+    meta_inicio = models.ImageField(
+        upload_to='colexin/meta/',
+        help_text='Imagen para compartir la página de inicio. Recomendado: 1200 × 630 px',
+        null=True,
+        blank=True
+    )
+
+    meta_about = models.ImageField(
+        upload_to='colexin/meta/',
+        help_text='Imagen para compartir la página Nosotros. Recomendado: 1200 × 630 px',
+        null=True,
+        blank=True
+    )
+
+    meta_contacto = models.ImageField(
+        upload_to='colexin/meta/',
+        help_text='Imagen para compartir la página de contacto. Recomendado: 1200 × 630 px',
+        null=True,
+        blank=True
+    )
+
     def miniatura(self):
         return mark_safe("<img src='/media/%s' style='width: 100px'>"%self.logo_color)
 

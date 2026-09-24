@@ -38,64 +38,73 @@
          FACEBOOK, WHATSAPP Y REDES SOCIALES
     ====================================================== -->
 
-    {% block metas %}
+<!-- =====================================================
+     FACEBOOK, WHATSAPP Y REDES SOCIALES
+====================================================== -->
 
-        <meta property="fb:app_id"
-              content="926164441218858">
+{% block metas %}
 
-        <meta property="og:locale"
-              content="es_EC">
+    <meta property="fb:app_id"
+          content="926164441218858">
 
-        <meta property="og:site_name"
-              content="Colexin">
+    <meta property="og:locale"
+          content="es_EC">
 
-        <meta property="og:title"
+    <meta property="og:site_name"
+          content="Colexin">
+
+    <meta property="og:title"
+          content="Colexin | Tienda de Coleccionables">
+
+    <meta property="og:description"
+          content="Descubre productos coleccionables únicos, figuras, memorabilia y artículos especiales para tu colección.">
+
+    <meta property="og:url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+    <meta property="og:type"
+          content="website">
+
+
+{% if marca and marca.meta_inicio %}
+
+    <meta property="og:image"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
+
+    <meta property="og:image:secure_url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta property="og:image:alt"
+          content="Colexin | Tienda de Coleccionables">
+
+{% endif %}
+
+
+    <!-- X / TWITTER -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="Colexin | Tienda de Coleccionables">
+
+    <meta name="twitter:description"
+          content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
+
+    {% if marca and marca.meta_inicio %}
+
+        <meta name="twitter:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
+
+        <meta name="twitter:image:alt"
               content="Colexin | Tienda de Coleccionables">
 
-        <meta property="og:description"
-              content="Descubre productos coleccionables únicos, figuras, memorabilia y artículos especiales para tu colección.">
+    {% endif %}
 
-        <meta property="og:url"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-
-        <meta property="og:type"
-              content="website">
-
-
-        {% if marca and marca.logo_color %}
-
-            <meta property="og:image"
-                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
-
-            <meta property="og:image:secure_url"
-                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
-
-            <meta property="og:image:alt"
-                  content="Colexin | Tienda de Coleccionables">
-
-        {% endif %}
-
-
-        <!-- X / TWITTER -->
-
-        <meta name="twitter:card"
-              content="summary_large_image">
-
-        <meta name="twitter:title"
-              content="Colexin | Tienda de Coleccionables">
-
-        <meta name="twitter:description"
-              content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
-
-        {% if marca and marca.logo_color %}
-
-            <meta name="twitter:image"
-                  content="{{ request.scheme }}://{{ request.get_host }}{{ marca.logo_color.url }}">
-
-        {% endif %}
-
-    {% endblock metas %}
-
+{% endblock metas %}
 
     <!-- =====================================================
          FAVICON

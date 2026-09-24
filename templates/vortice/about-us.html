@@ -14,7 +14,7 @@
 
 {% block canonical %}
     <link rel="canonical"
-          href="https://benitez-ec.com{{ request.path }}">
+          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
 {% endblock canonical %}
 
 
@@ -27,11 +27,11 @@
     <meta property="fb:app_id"
           content="926164441218858">
 
-    <meta property="og:type"
-          content="website">
-
     <meta property="og:locale"
           content="es_EC">
+
+    <meta property="og:type"
+          content="website">
 
     <meta property="og:site_name"
           content="Vórtice">
@@ -43,22 +43,24 @@
           content="Nuestras raíces. Tu forma de llevarlas. Diseño ecuatoriano con identidad, creatividad y propósito.">
 
     <meta property="og:url"
-          content="https://benitez-ec.com{{ request.path }}">
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
 
+
+    <!-- IMAGEN SOCIAL · NUESTRA HISTORIA -->
 
     {% if vortice.meta_about %}
 
         <meta property="og:image"
-              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ vortice.meta_about.url }}">
 
         <meta property="og:image:secure_url"
-              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ vortice.meta_about.url }}">
 
         <meta property="og:image:width"
-              content="1200">
+              content="{{ vortice.meta_about.width }}">
 
         <meta property="og:image:height"
-              content="630">
+              content="{{ vortice.meta_about.height }}">
 
         <meta property="og:image:alt"
               content="Vórtice | Nuestra historia">
@@ -82,7 +84,7 @@
     {% if vortice.meta_about %}
 
         <meta name="twitter:image"
-              content="https://benitez-ec.com{{ vortice.meta_about.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ vortice.meta_about.url }}">
 
         <meta name="twitter:image:alt"
               content="Vórtice | Nuestra historia">
@@ -90,7 +92,6 @@
     {% endif %}
 
 {% endblock metas %}
-
 
 {% block principal %}
  <!-- ==========================================================

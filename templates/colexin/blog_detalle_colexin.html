@@ -2,20 +2,88 @@
 {% load static %}
 
 {% block metas %}
-    <meta name="description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
-    <meta name="author" content="Colexin">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Colexin">
-    <meta property="og:title" content="{{ publicacion.titulo }}">
-    <meta property="og:description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-    <meta property="og:image"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ publicacion.titulo }}">
-    <meta name="twitter:description" content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
-    <meta name="twitter:image"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+   <!-- =====================================================
+         SEO · PUBLICACIÓN COLEXIN
+    ====================================================== -->
+
+    <meta name="description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    <meta name="author"
+          content="Colexin">
+
+
+    <!-- =====================================================
+         FACEBOOK / WHATSAPP · OPEN GRAPH
+    ====================================================== -->
+
+    <meta property="fb:app_id"
+          content="926164441218858">
+
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:type"
+          content="article">
+
+    <meta property="og:site_name"
+          content="Colexin">
+
+    <meta property="og:title"
+          content="{{ publicacion.titulo }} | Colexin">
+
+    <meta property="og:description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    <meta property="og:url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+
+    <!-- IMAGEN PRINCIPAL DE LA PUBLICACIÓN -->
+
+    {% if publicacion.imagen_principal %}
+
+        <meta property="og:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+
+        <meta property="og:image:secure_url"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+
+        <meta property="og:image:width"
+              content="{{ publicacion.imagen_principal.width }}">
+
+        <meta property="og:image:height"
+              content="{{ publicacion.imagen_principal.height }}">
+
+        <meta property="og:image:alt"
+              content="{{ publicacion.titulo }} | Colexin">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="{{ publicacion.titulo }} | Colexin">
+
+    <meta name="twitter:description"
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+
+    {% if publicacion.imagen_principal %}
+
+        <meta name="twitter:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+
+        <meta name="twitter:image:alt"
+              content="{{ publicacion.titulo }} | Colexin">
+
+    {% endif %}
+
 
     <style>
         .detalle-colexin {

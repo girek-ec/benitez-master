@@ -1,24 +1,80 @@
 {% extends 'colexin/demo-decor-store.html' %}
-<!-- metas pagweb -->
+
+<!-- =====================================================
+     METAS · PRODUCTO COLEXIN
+====================================================== -->
+
 {% block metas %}
-<meta property="fb:app_id" content="926164441218858">
-<meta property="og:site_name" content="Colexin">
-<meta property="og:title" content="Colexin - {{ product.name }}">
-<meta property="og:description" content="{{ product.description }}">
-<meta property="og:url" content="https://www.benitez-ec.com/colexin/producto/{{ product.id }}/">
-<meta property="og:type" content="product">
 
-<meta property="og:image" content="https://www.benitez-ec.com/media/{{ product.image_1 }}">
-<meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ product.image_1 }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
+    <!-- FACEBOOK / WHATSAPP -->
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Colexin - {{ product.name }}">
-<meta name="twitter:description" content="{{ product.description }}">
-<meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ product.image_1 }}">
-{% endblock %}
+    <meta property="fb:app_id"
+          content="926164441218858">
+
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:site_name"
+          content="Colexin">
+
+    <meta property="og:title"
+          content="{{ product.name }} | Colexin">
+
+    <meta property="og:description"
+          content="{{ product.description|striptags|truncatechars:200 }}">
+
+    <meta property="og:url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+    <meta property="og:type"
+          content="product">
+
+
+    <!-- IMAGEN DEL PRODUCTO -->
+
+    {% if product.image_1 %}
+
+        <meta property="og:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+
+        <meta property="og:image:secure_url"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+
+        <meta property="og:image:width"
+              content="{{ product.image_1.width }}">
+
+        <meta property="og:image:height"
+              content="{{ product.image_1.height }}">
+
+        <meta property="og:image:alt"
+              content="{{ product.name }} | Colexin">
+
+    {% endif %}
+
+
+    <!-- X / TWITTER -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="{{ product.name }} | Colexin">
+
+    <meta name="twitter:description"
+          content="{{ product.description|striptags|truncatechars:200 }}">
+
+    {% if product.image_1 %}
+
+        <meta name="twitter:image"
+              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+
+        <meta name="twitter:image:alt"
+              content="{{ product.name }} | Colexin">
+
+    {% endif %}
+
+{% endblock metas %}
+
 {% block principal %}
         <!-- start breadcrumb -->
         <section style="margin-top: 80px !important;" class="border-top border-color-extra-medium-gray pt-20px pb-20px ps-45px pe-45px lg-ps-35px lg-pe-35px md-ps-15px md-pe-15px sm-ps-0 sm-pe-0">

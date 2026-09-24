@@ -1,3 +1,4 @@
+
 {% extends 'vortice/index_vortice.html' %}
 
 
@@ -14,7 +15,7 @@
 
 {% block canonical %}
     <link rel="canonical"
-          href="https://benitez-ec.com{{ request.path }}">
+          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
 {% endblock canonical %}
 
 
@@ -27,17 +28,14 @@
     <meta property="fb:app_id"
           content="926164441218858">
 
-    <meta property="og:type"
-          content="product">
-
     <meta property="og:locale"
           content="es_EC">
 
+    <meta property="og:type"
+          content="product">
+
     <meta property="og:site_name"
           content="Vórtice">
-
-    <meta property="og:url"
-          content="https://benitez-ec.com{{ request.path }}">
 
     <meta property="og:title"
           content="{{ products.nombre_produc }} | Vórtice">
@@ -45,14 +43,25 @@
     <meta property="og:description"
           content="{{ products.descripcion_produc|striptags|truncatechars:200 }}">
 
+    <meta property="og:url"
+          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+
+
+    <!-- IMAGEN PRINCIPAL DEL PRODUCTO -->
 
     {% if products.imagen_produc_01 %}
 
         <meta property="og:image"
-              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
 
         <meta property="og:image:secure_url"
-              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
+
+        <meta property="og:image:width"
+              content="{{ products.imagen_produc_01.width }}">
+
+        <meta property="og:image:height"
+              content="{{ products.imagen_produc_01.height }}">
 
         <meta property="og:image:alt"
               content="{{ products.nombre_produc }} | Producto Vórtice">
@@ -76,7 +85,7 @@
     {% if products.imagen_produc_01 %}
 
         <meta name="twitter:image"
-              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
+              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
 
         <meta name="twitter:image:alt"
               content="{{ products.nombre_produc }} | Producto Vórtice">
@@ -84,8 +93,6 @@
     {% endif %}
 
 {% endblock metas %}
-
-
 {% block principal %}
     <!-- Header -->
     <!-- breadcrumb -->
