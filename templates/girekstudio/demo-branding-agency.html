@@ -2,55 +2,204 @@
 <html class="no-js" lang="es">
 
 <head>
+
     <meta charset="utf-8">
-    <title>GirekStudio - Agencia de Diseño</title>
-    <meta name="author" content="GirekStudio - Grupo Benitez" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="description" content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web y soluciones digitales.">
 
-{% block metas %}
-<!-- SEO -->
-    <meta name="description" content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web y soluciones digitales.">
-    <meta name="author" content="GirekStudio - Agencia de Diseño">
+    <meta name="author"
+          content="GirekStudio | Grupo Benítez">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:locale" content="es_ES">
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:site_name" content="GirekStudio">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="GirekStudio - Agencia de Diseño">
-    <meta property="og:description" content="{{ editable.sec_2_detalle_4 }}">
-    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/">
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
-    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GirekStudio - Agencia de Diseño">
-    <meta name="twitter:description" content="{{ editable.sec_2_detalle_4 }}">
-    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ editable.sec_1_imagen_01 }}">
-    <meta name="twitter:image:alt" content="GirekStudio - Agencia de Diseño">
-{% endblock %}
 
-    <!-- favicon icon -->
-    <link rel="shortcut icon" href="/media/{{ marca.favicon }}">
-    <link rel="apple-touch-icon" href="/media/{{ marca.favicon }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="/media/{{ marca.favicon }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="/media/{{ marca.favicon }}">
-    <!-- google fonts preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- style sheets and font icons  -->
-    <link rel="stylesheet" href="/static/static_girekstudio/css/vendors.min.css"/>
-    <link rel="stylesheet" href="/static/static_girekstudio/css/icon.min.css"/>
-    <link rel="stylesheet" href="/static/static_girekstudio/css/style.css"/>
-    <link rel="stylesheet" href="/static/static_girekstudio/css/responsive.css"/>
-    <link rel="stylesheet" href="/static/static_girekstudio/demos/branding-agency/branding-agency.css"/>
-    <link rel="stylesheet" href="/static/static_girekstudio/vendor/magnific-popup/magnific-popup.min.css"/>
-    <!--<link rel="stylesheet" href="/static/static_girekstudio/demos/fashion-store/fashion-store.css" />-->
+    <!-- =====================================================
+         TÍTULO
+    ====================================================== -->
+
+    <title>
+        {% block title %}
+            GirekStudio | Agencia de Diseño y Desarrollo Web
+        {% endblock title %}
+    </title>
+
+
+    <!-- =====================================================
+         SEO · DESCRIPCIÓN
+    ====================================================== -->
+
+    {% block meta_description %}
+
+        <meta name="description"
+              content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web, identidad visual y soluciones digitales.">
+
+    {% endblock meta_description %}
+
+
+    <!-- =====================================================
+         SEO · DIRECCIÓN CANÓNICA
+    ====================================================== -->
+
+    {% block canonical %}
+
+        <link rel="canonical"
+              href="https://benitez-ec.com{{ request.path }}">
+
+    {% endblock canonical %}
+
+
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
+
+    {% block metas %}
+
+        <meta property="fb:app_id"
+              content="926164441218858">
+
+        <meta property="og:locale"
+              content="es_EC">
+
+        <meta property="og:type"
+              content="website">
+
+        <meta property="og:site_name"
+              content="GirekStudio">
+
+        <meta property="og:title"
+              content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        <meta property="og:description"
+              content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web, identidad visual y soluciones digitales.">
+
+        <meta property="og:url"
+              content="https://benitez-ec.com{{ request.path }}">
+
+
+        <!-- =================================================
+             IMAGEN SOCIAL
+        ================================================== -->
+
+        {% if editable.sec_1_imagen_01 %}
+
+            <meta property="og:image"
+                  content="https://benitez-ec.com{{ editable.sec_1_imagen_01.url }}">
+
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com{{ editable.sec_1_imagen_01.url }}">
+
+            <meta property="og:image:alt"
+                  content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        {% elif marca.imagen %}
+
+            <meta property="og:image"
+                  content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+            <meta property="og:image:width"
+                  content="{{ marca.imagen.width }}">
+
+            <meta property="og:image:height"
+                  content="{{ marca.imagen.height }}">
+
+            <meta property="og:image:alt"
+                  content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        {% endif %}
+
+
+        <!-- =================================================
+             X / TWITTER
+        ================================================== -->
+
+        <meta name="twitter:card"
+              content="summary_large_image">
+
+        <meta name="twitter:title"
+              content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        <meta name="twitter:description"
+              content="Agencia de diseño y desarrollo web en Ecuador. Branding, sitios web, identidad visual y soluciones digitales.">
+
+        {% if editable.sec_1_imagen_01 %}
+
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com{{ editable.sec_1_imagen_01.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        {% elif marca.imagen %}
+
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="GirekStudio | Agencia de Diseño y Desarrollo Web">
+
+        {% endif %}
+
+    {% endblock metas %}
+
+
+    <!-- =====================================================
+         FAVICON GIREKSTUDIO
+    ====================================================== -->
+
+    {% if marca.favicon %}
+
+        <link rel="icon"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="shortcut icon"
+              href="{{ marca.favicon.url }}">
+
+        <link rel="apple-touch-icon"
+              href="{{ marca.favicon.url }}">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com"
+          crossorigin>
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+
+    <!-- =====================================================
+         CSS ORIGINAL DE GIREKSTUDIO
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/css/vendors.min.css">
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/css/icon.min.css">
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/css/style.css">
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/demos/branding-agency/branding-agency.css">
+
+    <link rel="stylesheet"
+          href="/static/static_girekstudio/vendor/magnific-popup/magnific-popup.min.css">
+
 </head>
+
+
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 <!-- start header -->
 <header>

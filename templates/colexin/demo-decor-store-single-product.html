@@ -1,31 +1,42 @@
 {% extends 'colexin/demo-decor-store.html' %}
+{% load static %}
 
 
 {% block title %}
-    {{ product.name }} | Colexin
+    {{ publicacion.titulo }} | Colexin
 {% endblock title %}
 
 
 {% block meta_description %}
     <meta name="description"
-          content="{{ product.description|striptags|truncatechars:200 }}">
+          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
 {% endblock meta_description %}
 
 
+<!-- =====================================================
+     SEO · DIRECCIÓN CANÓNICA
+====================================================== -->
+
 {% block canonical %}
+
     <link rel="canonical"
           href="https://benitez-ec.com{{ request.path }}">
+
 {% endblock canonical %}
 
-
-<!-- =====================================================
-     METAS · PRODUCTO COLEXIN
-====================================================== -->
 
 {% block metas %}
 
     <!-- =====================================================
-         FACEBOOK / WHATSAPP
+         SEO · PUBLICACIÓN COLEXIN
+    ====================================================== -->
+
+    <meta name="author"
+          content="Colexin">
+
+
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
     ====================================================== -->
 
     <meta property="fb:app_id"
@@ -35,41 +46,41 @@
           content="es_EC">
 
     <meta property="og:type"
-          content="product">
+          content="article">
 
     <meta property="og:site_name"
           content="Colexin">
 
     <meta property="og:title"
-          content="{{ product.name }} | Colexin">
+          content="{{ publicacion.titulo }} | Colexin">
 
     <meta property="og:description"
-          content="{{ product.description|striptags|truncatechars:200 }}">
+          content="{{ publicacion.subtitulo|striptags|truncatechars:200 }}">
 
     <meta property="og:url"
           content="https://benitez-ec.com{{ request.path }}">
 
 
     <!-- =====================================================
-         IMAGEN PRINCIPAL DEL PRODUCTO
+         IMAGEN PRINCIPAL DE LA PUBLICACIÓN
     ====================================================== -->
 
-    {% if product.image_1 %}
+    {% if publicacion.imagen_principal %}
 
         <meta property="og:image"
-              content="https://benitez-ec.com{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta property="og:image:secure_url"
-              content="https://benitez-ec.com{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta property="og:image:width"
-              content="{{ product.image_1.width }}">
+              content="{{ publicacion.imagen_principal.width }}">
 
         <meta property="og:image:height"
-              content="{{ product.image_1.height }}">
+              content="{{ publicacion.imagen_principal.height }}">
 
         <meta property="og:image:alt"
-              content="{{ product.name }} | Colexin">
+              content="{{ publicacion.titulo }} | Colexin">
 
     {% endif %}
 
@@ -82,22 +93,26 @@
           content="summary_large_image">
 
     <meta name="twitter:title"
-          content="{{ product.name }} | Colexin">
+          content="{{ publicacion.titulo }} | Colexin">
 
     <meta name="twitter:description"
-          content="{{ product.description|striptags|truncatechars:200 }}">
+          content="{{ publicacion.subtitulo|striptags|truncatechars:200 }}">
 
-    {% if product.image_1 %}
+    {% if publicacion.imagen_principal %}
 
         <meta name="twitter:image"
-              content="https://benitez-ec.com{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta name="twitter:image:alt"
-              content="{{ product.name }} | Colexin">
+              content="{{ publicacion.titulo }} | Colexin">
 
     {% endif %}
 
 {% endblock metas %}
+
+
+
+
 
 {% block principal %}
         <!-- start breadcrumb -->

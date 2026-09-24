@@ -1,3 +1,4 @@
+
 {% extends 'vortice/index_vortice.html' %}
 
 
@@ -50,40 +51,48 @@
          IMAGEN SOCIAL SEGÚN SECCIÓN
     ====================================================== -->
 
-    {% if cliente.cliente|lower == "hombre" and vortice.meta_hombre %}
+    {% if cliente.cliente|lower == "hombre" %}
 
-        <meta property="og:image"
-              content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
+        {% if vortice.meta_hombre %}
 
-        <meta property="og:image:secure_url"
-              content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
+            <meta property="og:image"
+                  content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
 
-        <meta property="og:image:width"
-              content="{{ vortice.meta_hombre.width }}">
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
 
-        <meta property="og:image:height"
-              content="{{ vortice.meta_hombre.height }}">
+            <meta property="og:image:width"
+                  content="{{ vortice.meta_hombre.width }}">
 
-        <meta property="og:image:alt"
-              content="Hombre | Vórtice">
+            <meta property="og:image:height"
+                  content="{{ vortice.meta_hombre.height }}">
+
+            <meta property="og:image:alt"
+                  content="Hombre | Vórtice">
+
+        {% endif %}
 
 
-    {% elif cliente.cliente|lower == "mujer" and vortice.meta_mujer %}
+    {% elif cliente.cliente|lower == "mujer" %}
 
-        <meta property="og:image"
-              content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
+        {% if vortice.meta_mujer %}
 
-        <meta property="og:image:secure_url"
-              content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
+            <meta property="og:image"
+                  content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
 
-        <meta property="og:image:width"
-              content="{{ vortice.meta_mujer.width }}">
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
 
-        <meta property="og:image:height"
-              content="{{ vortice.meta_mujer.height }}">
+            <meta property="og:image:width"
+                  content="{{ vortice.meta_mujer.width }}">
 
-        <meta property="og:image:alt"
-              content="Mujer | Vórtice">
+            <meta property="og:image:height"
+                  content="{{ vortice.meta_mujer.height }}">
+
+            <meta property="og:image:alt"
+                  content="Mujer | Vórtice">
+
+        {% endif %}
 
     {% endif %}
 
@@ -102,26 +111,36 @@
           content="Descubre la colección de {{ cliente.cliente }} de Vórtice. Diseño ecuatoriano contemporáneo inspirado en nuestras raíces.">
 
 
-    {% if cliente.cliente|lower == "hombre" and vortice.meta_hombre %}
+    {% if cliente.cliente|lower == "hombre" %}
 
-        <meta name="twitter:image"
-              content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
+        {% if vortice.meta_hombre %}
 
-        <meta name="twitter:image:alt"
-              content="Hombre | Vórtice">
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com{{ vortice.meta_hombre.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="Hombre | Vórtice">
+
+        {% endif %}
 
 
-    {% elif cliente.cliente|lower == "mujer" and vortice.meta_mujer %}
+    {% elif cliente.cliente|lower == "mujer" %}
 
-        <meta name="twitter:image"
-              content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
+        {% if vortice.meta_mujer %}
 
-        <meta name="twitter:image:alt"
-              content="Mujer | Vórtice">
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com{{ vortice.meta_mujer.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="Mujer | Vórtice">
+
+        {% endif %}
 
     {% endif %}
 
 {% endblock metas %}
+
+
 
 {% block principal %}
 

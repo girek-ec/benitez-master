@@ -1,27 +1,132 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+
+
+{% block title %}
+    {{ product.nombre_producto }} | GirekStudio
+{% endblock title %}
+
+
+{% block meta_description %}
+
+    <meta name="description"
+          content="{{ product.descripcion|striptags|truncatechars:160 }}">
+
+{% endblock meta_description %}
+
+
+{% block canonical %}
+
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+
+{% endblock canonical %}
+
+
 {% block metas %}
-<!-- Meta etiquetas Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
-<meta property="fb:app_id" content="926164441218858">
-<meta property="og:site_name" content="GirekStudio">
-<meta property="og:url" content="https://www.benitez-ec.com/girekstudio/producto/{{ product.id }}/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GirekStudio | {{ product.nombre_producto }}">
-<meta property="og:description" content="{{ product.descripcion }}">
 
-<meta property="og:image" content="https://www.benitez-ec.com/media/{{ product.imagen }}">
-<meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ product.imagen }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/png">
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
 
-<!-- Meta etiquetas para Twitter (Twitter Cards) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ product.nombre_producto }} | GirekStudio">
-<meta name="twitter:description" content="{{ product.descripcion }}">
-<meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ product.imagen }}">
-{% endblock %}
+    <meta property="fb:app_id"
+          content="926164441218858">
 
-  {% block principal %}
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:type"
+          content="product">
+
+    <meta property="og:site_name"
+          content="GirekStudio">
+
+    <meta property="og:title"
+          content="{{ product.nombre_producto }} | GirekStudio">
+
+    <meta property="og:description"
+          content="{{ product.descripcion|striptags|truncatechars:200 }}">
+
+    <meta property="og:url"
+          content="https://benitez-ec.com{{ request.path }}">
+
+
+    <!-- =====================================================
+         IMAGEN SOCIAL · PRODUCTO
+    ====================================================== -->
+
+    {% if product.imagen %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ product.imagen.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ product.imagen.url }}">
+
+        <meta property="og:image:width"
+              content="{{ product.imagen.width }}">
+
+        <meta property="og:image:height"
+              content="{{ product.imagen.height }}">
+
+        <meta property="og:image:alt"
+              content="{{ product.nombre_producto }} | GirekStudio">
+
+    {% elif marca.imagen %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:width"
+              content="{{ marca.imagen.width }}">
+
+        <meta property="og:image:height"
+              content="{{ marca.imagen.height }}">
+
+        <meta property="og:image:alt"
+              content="GirekStudio | Agencia de Diseño">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="{{ product.nombre_producto }} | GirekStudio">
+
+    <meta name="twitter:description"
+          content="{{ product.descripcion|striptags|truncatechars:200 }}">
+
+    {% if product.imagen %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ product.imagen.url }}">
+
+        <meta name="twitter:image:alt"
+              content="{{ product.nombre_producto }} | GirekStudio">
+
+    {% elif marca.imagen %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta name="twitter:image:alt"
+              content="GirekStudio | Agencia de Diseño">
+
+    {% endif %}
+
+{% endblock metas %}
+
+
+
+{% block principal %}
         <!-- start section -->
         <section class="top-space-margin bg-gradient-very-light-gray pt-20px pb-20px ps-45px pe-45px sm-ps-15px sm-pe-15px">
             <div class="container-fluid">

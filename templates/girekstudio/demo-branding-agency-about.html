@@ -1,28 +1,124 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+{% load static %}
+
+
+{% block title %}
+    GirekStudio | Nuestra agencia
+{% endblock title %}
+
+
+{% block meta_description %}
+
+    <meta name="description"
+          content="Conoce GirekStudio, agencia ecuatoriana especializada en diseño, branding, desarrollo web, identidad visual y soluciones digitales.">
+
+{% endblock meta_description %}
+
+
+{% block canonical %}
+
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+
+{% endblock canonical %}
+
+
 {% block metas %}
-    <!-- SEO básico -->
-    <meta name="description" content="{{ editable.sec_2_detalle_4 }}">
-    <meta name="author" content="GirekStudio">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="fb:app_id" content="926164441218858">
-    <meta property="og:site_name" content="GirekStudio">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="GirekStudio - Agencia de Diseño | Nosotros">
-    <meta property="og:description" content="{{ editable.sec_2_detalle_4 }}">
-    <meta property="og:url" content="https://www.benitez-ec.com/girekstudio/estudio/">
-    <meta property="og:image" content="https://www.benitez-ec.com/media/{{ editable.sec_2_imagen_1 }}">
-    <meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ editable.sec_2_imagen_1 }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GirekStudio - Agencia de Diseño | Nosotros">
-    <meta name="twitter:description" content="{{ editable.sec_2_detalle_4 }}">
-    <meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ editable.sec_2_imagen_1 }}">
-    <meta name="twitter:image:alt" content="GirekStudio - Agencia de Diseño">
-{% endblock %}
+    <meta property="fb:app_id"
+          content="926164441218858">
+
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:site_name"
+          content="GirekStudio">
+
+    <meta property="og:title"
+          content="GirekStudio | Nuestra agencia">
+
+    <meta property="og:description"
+          content="Diseño, branding, desarrollo web e identidad visual para transformar ideas en experiencias y soluciones digitales.">
+
+    <meta property="og:url"
+          content="https://benitez-ec.com{{ request.path }}">
+
+
+    <!-- =====================================================
+         IMAGEN SOCIAL · NUESTRA AGENCIA
+    ====================================================== -->
+
+    {% if editable.sec_2_imagen_1 %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ editable.sec_2_imagen_1.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ editable.sec_2_imagen_1.url }}">
+
+        <meta property="og:image:alt"
+              content="GirekStudio | Nuestra agencia">
+
+    {% elif marca.imagen %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:width"
+              content="{{ marca.imagen.width }}">
+
+        <meta property="og:image:height"
+              content="{{ marca.imagen.height }}">
+
+        <meta property="og:image:alt"
+              content="GirekStudio | Nuestra agencia">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="GirekStudio | Nuestra agencia">
+
+    <meta name="twitter:description"
+          content="Diseño, branding, desarrollo web e identidad visual para transformar ideas en experiencias y soluciones digitales.">
+
+    {% if editable.sec_2_imagen_1 %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ editable.sec_2_imagen_1.url }}">
+
+        <meta name="twitter:image:alt"
+              content="GirekStudio | Nuestra agencia">
+
+    {% elif marca.imagen %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta name="twitter:image:alt"
+              content="GirekStudio | Nuestra agencia">
+
+    {% endif %}
+
+{% endblock metas %}
+
 
  {% block principal %}
         <!-- start banner -->

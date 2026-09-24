@@ -1,29 +1,141 @@
 ﻿{% extends 'girekstudio/demo-branding-agency.html' %}
+
+
+{% block title %}
+    {{ proyecto.nombreproyecto }} | GirekStudio
+{% endblock title %}
+
+
+{% block meta_description %}
+
+    <meta name="description"
+          content="{{ proyecto.detalle|striptags|truncatechars:160 }}">
+
+{% endblock meta_description %}
+
+
+{% block canonical %}
+
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+
+{% endblock canonical %}
+
+
 {% block metas %}
-<!-- Open Graph / Facebook / WhatsApp -->
-<meta property="fb:app_id" content="926164441218858">
-<meta property="og:site_name" content="GirekStudio">
-<meta property="og:title" content="{{ proyecto.nombreproyecto }} | GirekStudio">
-<meta property="og:description" content="{{ proyecto.detalle }}">
-<meta property="og:url" content="https://www.benitez-ec.com/girekstudio/portafolio/{{ proyecto.id }}/">
-<meta property="og:type" content="article">
 
-<!-- IMAGEN (CLAVE PARA EL ERROR) -->
-<meta property="og:image" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
-<meta property="og:image:secure_url" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
+    <!-- =====================================================
+         OPEN GRAPH · FACEBOOK Y WHATSAPP
+    ====================================================== -->
 
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ proyecto.nombreproyecto }} | GirekStudio">
-<meta name="twitter:description" content="{{ proyecto.detalle }}">
-<meta name="twitter:image" content="https://www.benitez-ec.com/media/{{ proyecto.imagen }}">
-{% endblock %}
+    <meta property="fb:app_id"
+          content="926164441218858">
+
+    <meta property="og:locale"
+          content="es_EC">
+
+    <meta property="og:type"
+          content="article">
+
+    <meta property="og:site_name"
+          content="GirekStudio">
+
+    <meta property="og:title"
+          content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    <meta property="og:description"
+          content="{{ proyecto.detalle|striptags|truncatechars:200 }}">
+
+    <meta property="og:url"
+          content="https://benitez-ec.com{{ request.path }}">
 
 
+    <!-- =====================================================
+         IMAGEN SOCIAL · PROYECTO
+    ====================================================== -->
 
+    {% if proyecto.imagen %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ proyecto.imagen.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ proyecto.imagen.url }}">
+
+        <meta property="og:image:alt"
+              content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    {% elif proyecto.imagen_rectang %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ proyecto.imagen_rectang.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ proyecto.imagen_rectang.url }}">
+
+        <meta property="og:image:alt"
+              content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    {% elif marca.imagen %}
+
+        <meta property="og:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:secure_url"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta property="og:image:width"
+              content="{{ marca.imagen.width }}">
+
+        <meta property="og:image:height"
+              content="{{ marca.imagen.height }}">
+
+        <meta property="og:image:alt"
+              content="GirekStudio | Portafolio">
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    <meta name="twitter:description"
+          content="{{ proyecto.detalle|striptags|truncatechars:200 }}">
+
+    {% if proyecto.imagen %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ proyecto.imagen.url }}">
+
+        <meta name="twitter:image:alt"
+              content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    {% elif proyecto.imagen_rectang %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ proyecto.imagen_rectang.url }}">
+
+        <meta name="twitter:image:alt"
+              content="{{ proyecto.nombreproyecto }} | GirekStudio">
+
+    {% elif marca.imagen %}
+
+        <meta name="twitter:image"
+              content="https://benitez-ec.com{{ marca.imagen.url }}">
+
+        <meta name="twitter:image:alt"
+              content="GirekStudio | Portafolio">
+
+    {% endif %}
+
+{% endblock metas %}
 
 
 {% block principal %}
