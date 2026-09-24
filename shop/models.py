@@ -40,6 +40,13 @@ class Marca(models.Model):
         blank=True
     )
 
+    meta_blog = models.ImageField(
+        upload_to='colexin/meta/',
+        help_text='Imagen para compartir el blog. Recomendado: 1200 × 630 px',
+        null=True,
+        blank=True
+    )
+
     meta_contacto = models.ImageField(
         upload_to='colexin/meta/',
         help_text='Imagen para compartir la página de contacto. Recomendado: 1200 × 630 px',

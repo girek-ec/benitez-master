@@ -1,5 +1,23 @@
 {% extends 'vortice/index_vortice.html' %}
 
+
+{% block title %}
+    {{ mesmoda.titulo }} | Modelo del Mes · Vórtice
+{% endblock title %}
+
+
+{% block meta_description %}
+    <meta name="description"
+          content="{{ mesmoda.titulo }} — {{ mesmoda.subtitulo|striptags|truncatechars:160 }} | Modelo del Mes de Vórtice.">
+{% endblock meta_description %}
+
+
+{% block canonical %}
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+{% endblock canonical %}
+
+
 {% block metas %}
 
     <!-- =====================================================
@@ -12,31 +30,33 @@
     <meta property="og:locale"
           content="es_EC">
 
-    <meta property="og:site_name"
-          content="Vórtice">
-
     <meta property="og:type"
           content="article">
 
+    <meta property="og:site_name"
+          content="Vórtice">
+
     <meta property="og:title"
-          content="{{ mesmoda.titulo }} | Vórtice">
+          content="{{ mesmoda.titulo }} | Modelo del Mes · Vórtice">
 
     <meta property="og:description"
           content="{{ mesmoda.subtitulo|striptags|truncatechars:200 }}">
 
     <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+          content="https://benitez-ec.com{{ request.path }}">
 
 
-    <!-- IMAGEN PROPIA DE LA PUBLICACIÓN -->
+    <!-- =====================================================
+         IMAGEN PROPIA DEL MODELO DEL MES
+    ====================================================== -->
 
     {% if mesmoda.imagen %}
 
         <meta property="og:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ mesmoda.imagen.url }}">
+              content="https://benitez-ec.com{{ mesmoda.imagen.url }}">
 
         <meta property="og:image:secure_url"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ mesmoda.imagen.url }}">
+              content="https://benitez-ec.com{{ mesmoda.imagen.url }}">
 
         <meta property="og:image:width"
               content="{{ mesmoda.imagen.width }}">
@@ -45,7 +65,7 @@
               content="{{ mesmoda.imagen.height }}">
 
         <meta property="og:image:alt"
-              content="{{ mesmoda.titulo }} | Vórtice">
+              content="{{ mesmoda.titulo }} | Modelo del Mes de Vórtice">
 
     {% endif %}
 
@@ -58,7 +78,7 @@
           content="summary_large_image">
 
     <meta name="twitter:title"
-          content="{{ mesmoda.titulo }} | Vórtice">
+          content="{{ mesmoda.titulo }} | Modelo del Mes · Vórtice">
 
     <meta name="twitter:description"
           content="{{ mesmoda.subtitulo|striptags|truncatechars:200 }}">
@@ -66,14 +86,15 @@
     {% if mesmoda.imagen %}
 
         <meta name="twitter:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ mesmoda.imagen.url }}">
+              content="https://benitez-ec.com{{ mesmoda.imagen.url }}">
 
         <meta name="twitter:image:alt"
-              content="{{ mesmoda.titulo }} | Vórtice">
+              content="{{ mesmoda.titulo }} | Modelo del Mes de Vórtice">
 
     {% endif %}
 
 {% endblock metas %}
+
 
 {% block principal %}
 

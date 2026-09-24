@@ -1,18 +1,41 @@
 {% extends 'colexin/demo-decor-store.html' %}
 
+
+{% block title %}
+    {{ product.name }} | Colexin
+{% endblock title %}
+
+
+{% block meta_description %}
+    <meta name="description"
+          content="{{ product.description|striptags|truncatechars:200 }}">
+{% endblock meta_description %}
+
+
+{% block canonical %}
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+{% endblock canonical %}
+
+
 <!-- =====================================================
      METAS · PRODUCTO COLEXIN
 ====================================================== -->
 
 {% block metas %}
 
-    <!-- FACEBOOK / WHATSAPP -->
+    <!-- =====================================================
+         FACEBOOK / WHATSAPP
+    ====================================================== -->
 
     <meta property="fb:app_id"
           content="926164441218858">
 
     <meta property="og:locale"
           content="es_EC">
+
+    <meta property="og:type"
+          content="product">
 
     <meta property="og:site_name"
           content="Colexin">
@@ -24,21 +47,20 @@
           content="{{ product.description|striptags|truncatechars:200 }}">
 
     <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-
-    <meta property="og:type"
-          content="product">
+          content="https://benitez-ec.com{{ request.path }}">
 
 
-    <!-- IMAGEN DEL PRODUCTO -->
+    <!-- =====================================================
+         IMAGEN PRINCIPAL DEL PRODUCTO
+    ====================================================== -->
 
     {% if product.image_1 %}
 
         <meta property="og:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ product.image_1.url }}">
 
         <meta property="og:image:secure_url"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ product.image_1.url }}">
 
         <meta property="og:image:width"
               content="{{ product.image_1.width }}">
@@ -52,7 +74,9 @@
     {% endif %}
 
 
-    <!-- X / TWITTER -->
+    <!-- =====================================================
+         X / TWITTER
+    ====================================================== -->
 
     <meta name="twitter:card"
           content="summary_large_image">
@@ -66,7 +90,7 @@
     {% if product.image_1 %}
 
         <meta name="twitter:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ product.image_1.url }}">
+              content="https://benitez-ec.com{{ product.image_1.url }}">
 
         <meta name="twitter:image:alt"
               content="{{ product.name }} | Colexin">

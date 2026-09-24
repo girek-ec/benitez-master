@@ -1,13 +1,29 @@
 {% extends 'colexin/demo-decor-store.html' %}
 {% load static %}
 
-{% block metas %}
-   <!-- =====================================================
-         SEO · PUBLICACIÓN COLEXIN
-    ====================================================== -->
 
+{% block title %}
+    {{ publicacion.titulo }} | Colexin
+{% endblock title %}
+
+
+{% block meta_description %}
     <meta name="description"
           content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+{% endblock meta_description %}
+
+
+{% block canonical %}
+    <link rel="canonical"
+          href="https://benitez-ec.com{{ request.path }}">
+{% endblock canonical %}
+
+
+{% block metas %}
+
+    <!-- =====================================================
+         SEO · PUBLICACIÓN COLEXIN
+    ====================================================== -->
 
     <meta name="author"
           content="Colexin">
@@ -33,21 +49,23 @@
           content="{{ publicacion.titulo }} | Colexin">
 
     <meta property="og:description"
-          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+          content="{{ publicacion.subtitulo|striptags|truncatechars:200 }}">
 
     <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+          content="https://benitez-ec.com{{ request.path }}">
 
 
-    <!-- IMAGEN PRINCIPAL DE LA PUBLICACIÓN -->
+    <!-- =====================================================
+         IMAGEN PRINCIPAL DE LA PUBLICACIÓN
+    ====================================================== -->
 
     {% if publicacion.imagen_principal %}
 
         <meta property="og:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta property="og:image:secure_url"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta property="og:image:width"
               content="{{ publicacion.imagen_principal.width }}">
@@ -72,17 +90,22 @@
           content="{{ publicacion.titulo }} | Colexin">
 
     <meta name="twitter:description"
-          content="{{ publicacion.subtitulo|striptags|truncatechars:160 }}">
+          content="{{ publicacion.subtitulo|striptags|truncatechars:200 }}">
 
     {% if publicacion.imagen_principal %}
 
         <meta name="twitter:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ publicacion.imagen_principal.url }}">
+              content="https://benitez-ec.com{{ publicacion.imagen_principal.url }}">
 
         <meta name="twitter:image:alt"
               content="{{ publicacion.titulo }} | Colexin">
 
     {% endif %}
+
+
+    <!-- =====================================================
+         ESTILOS · DETALLE BLOG COLEXIN
+    ====================================================== -->
 
 
     <style>

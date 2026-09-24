@@ -1,110 +1,128 @@
-﻿<!doctype html>
-<html class="no-js" lang="en">
-{% load static %}
+﻿{% load static %}
 
 <!doctype html>
-
-<html class="no-js"
-      lang="es">
+<html class="no-js" lang="es">
 
 <head>
 
-    <meta charset="utf-8">
+    <!-- =====================================================
+         CONFIGURACIÓN GENERAL
+    ====================================================== -->
 
-    <title>Colexin | Tienda de Coleccionables</title>
+    <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible"
           content="IE=edge">
 
-    <meta name="author"
-          content="Colexin - Grupo Benítez">
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Colexin, tienda especializada en productos coleccionables únicos y exclusivos.">
+    <meta name="author"
+          content="Colexin - Grupo Benítez">
+
+
+    <!-- =====================================================
+         TÍTULO
+    ====================================================== -->
+
+    <title>{% block title %}Colexin | Tienda de Coleccionables{% endblock title %}</title>
+
+
+    <!-- =====================================================
+         META DESCRIPTION
+    ====================================================== -->
+
+    {% block meta_description %}
+        <meta name="description"
+              content="Colexin, tienda especializada en productos coleccionables únicos y exclusivos.">
+    {% endblock meta_description %}
 
 
     <!-- =====================================================
          URL CANÓNICA
     ====================================================== -->
 
-    <link rel="canonical"
-          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    {% block canonical %}
+        <link rel="canonical"
+              href="https://benitez-ec.com{{ request.path }}">
+    {% endblock canonical %}
 
 
     <!-- =====================================================
-         FACEBOOK, WHATSAPP Y REDES SOCIALES
+         OPEN GRAPH · FACEBOOK · WHATSAPP
     ====================================================== -->
 
-<!-- =====================================================
-     FACEBOOK, WHATSAPP Y REDES SOCIALES
-====================================================== -->
+    {% block metas %}
 
-{% block metas %}
+        <meta property="fb:app_id"
+              content="926164441218858">
 
-    <meta property="fb:app_id"
-          content="926164441218858">
+        <meta property="og:locale"
+              content="es_EC">
 
-    <meta property="og:locale"
-          content="es_EC">
+        <meta property="og:type"
+              content="website">
 
-    <meta property="og:site_name"
-          content="Colexin">
+        <meta property="og:site_name"
+              content="Colexin">
 
-    <meta property="og:title"
-          content="Colexin | Tienda de Coleccionables">
-
-    <meta property="og:description"
-          content="Descubre productos coleccionables únicos, figuras, memorabilia y artículos especiales para tu colección.">
-
-    <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-
-    <meta property="og:type"
-          content="website">
-
-
-{% if marca and marca.meta_inicio %}
-
-    <meta property="og:image"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
-
-    <meta property="og:image:secure_url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
-
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta property="og:image:alt"
-          content="Colexin | Tienda de Coleccionables">
-
-{% endif %}
-
-
-    <!-- X / TWITTER -->
-
-    <meta name="twitter:card"
-          content="summary_large_image">
-
-    <meta name="twitter:title"
-          content="Colexin | Tienda de Coleccionables">
-
-    <meta name="twitter:description"
-          content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
-
-    {% if marca and marca.meta_inicio %}
-
-        <meta name="twitter:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ marca.meta_inicio.url }}">
-
-        <meta name="twitter:image:alt"
+        <meta property="og:title"
               content="Colexin | Tienda de Coleccionables">
 
-    {% endif %}
+        <meta property="og:description"
+              content="Descubre productos coleccionables únicos, figuras, memorabilia y artículos especiales para tu colección.">
 
-{% endblock metas %}
+        <meta property="og:url"
+              content="https://benitez-ec.com{{ request.path }}">
+
+
+        <!-- IMAGEN SOCIAL · PÁGINA PRINCIPAL -->
+
+        {% if marca and marca.meta_inicio %}
+
+            <meta property="og:image"
+                  content="https://benitez-ec.com{{ marca.meta_inicio.url }}">
+
+            <meta property="og:image:secure_url"
+                  content="https://benitez-ec.com{{ marca.meta_inicio.url }}">
+
+            <meta property="og:image:width"
+                  content="{{ marca.meta_inicio.width }}">
+
+            <meta property="og:image:height"
+                  content="{{ marca.meta_inicio.height }}">
+
+            <meta property="og:image:alt"
+                  content="Colexin | Tienda de Coleccionables">
+
+        {% endif %}
+
+
+        <!-- =====================================================
+             X / TWITTER
+        ====================================================== -->
+
+        <meta name="twitter:card"
+              content="summary_large_image">
+
+        <meta name="twitter:title"
+              content="Colexin | Tienda de Coleccionables">
+
+        <meta name="twitter:description"
+              content="Descubre productos coleccionables únicos y exclusivos en Colexin.">
+
+        {% if marca and marca.meta_inicio %}
+
+            <meta name="twitter:image"
+                  content="https://benitez-ec.com{{ marca.meta_inicio.url }}">
+
+            <meta name="twitter:image:alt"
+                  content="Colexin | Tienda de Coleccionables">
+
+        {% endif %}
+
+    {% endblock metas %}
+
 
     <!-- =====================================================
          FAVICON
@@ -184,19 +202,22 @@
           href="{% static 'static_girekstudio/demos/decor-store/decor-store.css' %}">
 
 
-    <!-- BOOTSTRAP -->
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
 
-    <!-- SWIPER -->
+    <!-- =====================================================
+         SWIPER
+    ====================================================== -->
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 </head>
-
 
 <body data-mobile-nav-style="classic">
 
@@ -369,7 +390,7 @@
                                 <li data-index="rs-{{ producto.id }}" data-transition="fade" data-slotamount="default"
                                     data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default"
                                     data-easeout="default" data-masterspeed="300"
-                                    data-thumb="http://works.themepunch.com/revolution_5_3/wp-content/" data-rotate="0"
+                                    data-thumb="https://works.themepunch.com/revolution_5_3/wp-content/" data-rotate="0"
                                     data-saveperformance="off" data-title="Slide" data-param1="01" data-description="">
                                     <!-- slide's main background image -->
                                     <img src="/static/static_girekstudio/images/rev-trans-tile.png" alt="dummy"
@@ -1148,8 +1169,6 @@
 <script type="text/javascript" src="/static/static_girekstudio/js/main.js"></script>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-</body>
-</html>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1173,3 +1192,6 @@
         });
     });
 </script>
+
+</body>
+</html>

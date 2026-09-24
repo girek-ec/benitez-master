@@ -1,4 +1,3 @@
-
 {% extends 'vortice/index_vortice.html' %}
 
 
@@ -15,7 +14,7 @@
 
 {% block canonical %}
     <link rel="canonical"
-          href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+          href="https://benitez-ec.com{{ request.path }}">
 {% endblock canonical %}
 
 
@@ -44,18 +43,20 @@
           content="{{ products.descripcion_produc|striptags|truncatechars:200 }}">
 
     <meta property="og:url"
-          content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+          content="https://benitez-ec.com{{ request.path }}">
 
 
-    <!-- IMAGEN PRINCIPAL DEL PRODUCTO -->
+    <!-- =====================================================
+         IMAGEN PRINCIPAL DEL PRODUCTO
+    ====================================================== -->
 
     {% if products.imagen_produc_01 %}
 
         <meta property="og:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
+              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
 
         <meta property="og:image:secure_url"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
+              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
 
         <meta property="og:image:width"
               content="{{ products.imagen_produc_01.width }}">
@@ -85,7 +86,7 @@
     {% if products.imagen_produc_01 %}
 
         <meta name="twitter:image"
-              content="{{ request.scheme }}://{{ request.get_host }}{{ products.imagen_produc_01.url }}">
+              content="https://benitez-ec.com{{ products.imagen_produc_01.url }}">
 
         <meta name="twitter:image:alt"
               content="{{ products.nombre_produc }} | Producto Vórtice">
